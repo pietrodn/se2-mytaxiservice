@@ -1,0 +1,67 @@
+\documentclass[12pt]{report}
+\usepackage[utf8]{inputenc}
+% hyperref
+\usepackage[bookmarks, colorlinks, breaklinks]{hyperref}  % PDF hyperlinks, with coloured links
+\hypersetup{linkcolor=black, citecolor=black, filecolor=black, urlcolor=black} % black links, for printed output
+\begin{document}
+
+\title{Requirements Analysis and Specification Document: myTaxiService}
+\author{Chitti Eleonora, De Nicolao Pietro, Delbono Alex}
+\date{\today}
+\maketitle
+\tableofcontents
+
+%%%%%% INTRODUCTION %%%%%%%%
+\chapter{Introduction}
+
+\section{Purpose}
+\input{introduction/purpose.tex}
+
+\section{Scope}
+\input{introduction/scope.tex}
+
+\section{Definitions, acronyms, and abbreviations}
+\input{introduction/definitions.tex}
+
+\section{References}
+\input{introduction/references.tex}
+
+\section{Overview}
+\input{introduction/overview.tex}
+
+%%%%%% OVERALL DESCRIPTION %%%%%%%%
+\chapter{Overall description}
+
+\section{Product perspective}
+\input{overall_description/perspective.tex}
+
+\section{Product functions}
+\input{overall_description/functions.tex}
+
+\section{User characteristics}
+\input{overall_description/characteristics.tex}
+
+\section{Constraints}
+\input{overall_description/constraints.tex}
+
+\section{Assumptions and dependencies}
+\input{overall_description/assumptions.tex}
+
+%%%%%% SPECIFIC REQUIREMENTS %%%%%%%%
+\chapter{Specific requirements}
+\section{External interface requirements}
+\input{specific_requirements/external_interface.tex}
+
+\section{System features}
+\input{specific_requirements/system_features.tex}
+
+\section{Performance requirements}
+\input{specific_requirements/performance.tex}
+\section{Design constraints}
+\input{specific_requirements/constraints.tex}
+\section{Software system attributes}
+\input{specific_requirements/software_system_attributes.tex}
+\section{Other requirements}
+\input{specific_requirements/other_requirements.tex}
+
+\end{document}
