@@ -3,8 +3,10 @@
 % hyperref
 \usepackage[bookmarks, colorlinks, breaklinks]{hyperref}  % PDF hyperlinks, with coloured links
 \hypersetup{linkcolor=black, citecolor=black, filecolor=black, urlcolor=black} % black links, for printed output
-\begin{document}
 
+\def\chapterautorefname{Chapter}
+
+\begin{document}
 \title{Requirements Analysis and Specification Document: myTaxiService}
 \author{Chitti Eleonora, De Nicolao Pietro, Delbono Alex}
 \date{\today}
@@ -13,6 +15,7 @@
 
 %%%%%% INTRODUCTION %%%%%%%%
 \chapter{Introduction}
+\label{ch:introduction}
 
 \section{Purpose}
 \input{introduction/purpose.tex}
@@ -31,6 +34,7 @@
 
 %%%%%% OVERALL DESCRIPTION %%%%%%%%
 \chapter{Overall description}
+\label{ch:overall-desc}
 
 \section{Product perspective}
 \input{overall_description/perspective.tex}
@@ -49,6 +53,8 @@
 
 %%%%%% SPECIFIC REQUIREMENTS %%%%%%%%
 \chapter{Specific requirements}
+\label{ch:requirements}
+
 \section{External interface requirements}
 \input{specific_requirements/external_interface.tex}
 
@@ -57,11 +63,14 @@
 
 \section{Performance requirements}
 \input{specific_requirements/performance.tex}
-\section{Design constraints}
+
+\section{Design constraints}
 \input{specific_requirements/constraints.tex}
-\section{Software system attributes}
+
+\section{Software system attributes}
 \input{specific_requirements/software_system_attributes.tex}
-\section{Other requirements}
+
+\section{Other requirements}
 \input{specific_requirements/other_requirements.tex}
 
 \end{document}
