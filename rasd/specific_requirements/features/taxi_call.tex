@@ -6,8 +6,24 @@ After the request, the passenger is informed by the system about the waiting tim
 
 Requests shall be forwarded to available and active taxi drivers in the same zone of the passengers. Taxi drivers shall be able to accept or reject an incoming request.
 
+\subsubsection{Scenario 1}
+Alice needs a taxi. She opens the myTaxiService mobile app on her phone, and selects "Call a taxi". She authorizes the application to access her GPS data, checks on the map that her position is correct and confirms the request.
+
+The system forwards the request to Bob, the first taxi driver in Alice's taxi zone. Bob decides to accept the call: a map of Alice's position gets displayed on Bob's phone and the navigator starts.
+
+The position of Bob is transmitted from Bob's phone to the system, which computes the ETA for the incoming taxi and shows it to Alice. Bob arrives and picks Alice up. Then he confirms that the passenger is on board.
+
+When the ride is over, Bob taps on "Finish ride" so that the system knows that Bob is ready for another ride.
+
+\subsubsection{Scenario 2}
+Luke needs a taxi. He requests it and the request is forwarded to the first taxi driver in queue, Chewbacca. Chewbacca decides to reject the incoming request, so the system puts him at the bottom of the queue.
+
+Luke's request gets forwarded to the new first taxi driver in queue, Han Solo. Han accepts the request and comes to pick up Luke.
+
 \subsubsection{Response sequence}
-\begin{figure}[h]
+The response sequence is illustrated in figure~\ref{sequence-taxicall}.
+\begin{figure}[ht]
+\label{sequence-taxicall}
 \includegraphics[width=\textwidth]{diagrams/sequence_taxicall.pdf}
 \caption{Sequence diagram of a successful taxi call.}
 \end{figure}
