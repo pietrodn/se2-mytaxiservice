@@ -9,8 +9,24 @@ The web applications works on any web server that supports PHP. The mobile appli
 
 %TODO block diagram
 
-%TODO subsections (Alex)
+%  Alex
 \subsection{User interfaces}
-\subsection{Hardware interfaces}
+The user interfaces must provide the following logical characteristics both in the mobile app and in the web interface:
+\begin{itemize}
+\item The possibility to choose the language used in the contents in every moment during every operation.
+\item A first screen in which the user must login to begin operations.
+\item A dashboard with links to every function in order to show the user the capabilities of the system and allow him to save time. 
+\item A link to the dashboard in every screen.
+\item A reminder in the top bar to show the last taxi service called, with a link to a screen which displays the reserved taxi history 
+\end{itemize}
+
+\subsection{Hardware interfaces} 
+The system has to deal with the dichotomy of the web user interaction and the mobile one. It is necessary to provide a common look and feel, without losing simplicity with the different hardware interfaces. For instance, the compilation of data fields has to be made with multiple choices in order to simplify the user's experience of the app. Same goes for the dimension of buttons that can not be too small.
+
 \subsection{Software interfaces}
-\subsection{Communications interfaces}
+The required software products used by the systems are:
+\begin{itemize}
+\item MySQL 5.7   \url{http://dev.mysql.com}
+\item Java SE 8   \url{http://java.com}
+\end{itemize}
+% TODO review Software interfaces and user interfaces for avoiding inconsistency
