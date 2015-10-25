@@ -1,0 +1,81 @@
+\label{user-registration}
+\subsubsection{Purpose}
+Any user car subscribe through the web application or the mobile one. 
+
+In both cases user has to fill a registration form and must agree the personal data treatment according his/her country privacy policy, otherwise the registration request is denied.
+
+The system registers the user: 
+As soon as he/she has submitted the privacy policy agreement, the system verifies the consistence of the informations submitted and a confirmation mail is sent to verify the availability of the user mail-address. 
+After this last check the registration ends successfully.
+
+The system has two kind of registration forms (so two kind of registered users) one for passenger and one for taxi drivers.
+
+\begin{itemize}
+\item Passenger registration form: the system registers the user as a passenger; once the user has subscribed the system allows him or her to rent a taxi. 
+The form requires the following informations:
+\begin{itemize}
+\item mail-address
+\item username 
+\item password
+\item Name
+\item Surname
+\item address (optional filling)
+\item phone number (optional filling)
+\end{itemize}
+
+
+
+\item Taxi driver registration form: the taxi driver registration is more restrictive and requires more user's informations.
+
+The system registers a user that claims to be a taxi driver only if he is able to demonstrate it with a taxi license; also a medical certificate that ensures the good health of the driver is required.
+The form requires the following informations:
+\begin{itemize}
+\item mail-address
+\item username 
+\item password
+\item Name
+\item Surname
+\item address 
+\item phone number
+\item medical certificate
+\item taxi license
+\item taxi id-number
+\item taxi number-plate
+\end{itemize}
+\end{itemize}
+
+
+\subsubsection{Scenario 1}
+Alice, a normal citizen without a car, has just discovered the existence of myTaxiService web application and she wants to use it. 
+She opens the home of myTaxiService page on web and clicks on "passenger registration". 
+
+She gives all the informations required and she authorizes the personal data treatment. 
+
+The system verifies the informations submitted and sends a confirmation mail.
+So Alice checks the mailbox, opens the mail and clicks on the button "confirm e-mail". 
+
+The system informs Alice that the registration has ended with success.
+
+\subsubsection{Scenario 2}
+Bob is a taxi driver that wants to subscribe to myTaxiService application. 
+He downloads the mobile application from his phone app-store and once he opens it, he selects "taxi driver registration". 
+He fills the form, luckily he has gone to the doctor some days before and has a certificate, and authorizes the personal data treatment.
+However he forgot to write his phone number on the form so the system warns him about the forgetfulness.
+Only after the complete and correct filling of the form, and the personal data treatment authorization, the registration is one step near the successfully end.
+
+The system verifies, one more time, the informations submitted and sends a confirmation mail.
+So Bob checks the mailbox, opens the mail and clicks on the button "confirm e-mail". 
+
+The system informs Bob that the registration has ended with success.
+
+
+
+
+\subsubsection{Associated functional requirements}
+\begin{enumerate}
+\item The system must verify the consistence of the user's Name, Surname and nickname. There mustn't be another one already subscribed with the same credentials.
+\item The system accepts a password that contains al least one number and one capital letter and that has a minimum length of eight characters.
+\item If the personal data treatment isn't authorized the subscription is canceled.
+\item The system must abort the registration at each instant if it is user's wish.
+\item The subscription isn't ended successfully until the e-mail isn't confirmed. After two days without answer the systems sends anther confirmation e-mail. After seven days user's registration info are deleted.
+
