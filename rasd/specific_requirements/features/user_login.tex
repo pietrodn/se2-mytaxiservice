@@ -1,5 +1,31 @@
+\label{user-login}
+\subsubsection{Purpose}
+Any subscribed user can login to use myTaxiService services.
+The system recalls the nickname or the registration e-mail and the password to log in correctly.
+
+If the user doesn't recall his password, a new one is sent on the user's mail address. Only if the user clicks on the link in the e-mail the password is reset and, soon as he logs in, it is asked him to choose a new one. 
+
+\subsubsection{Scenario 1}
+Bob opens the home of myTaxiService page on web and clicks on "login". 
+It is asked him to enter nickname or e-mail and password, he doesn't recall his nickname so he enters the registration e-mail and the password. He selects "enter". 
+Everything is correct so he can access to app services as a logged user.
+
+\subsubsection{Scenario 2}
+Alice opens the home of myTaxiService page on web and clicks on "login".  
+It is asked her to enter nickname or e-mail and password, she enters nickname and password and selects "enter". However the password entered isn't the correct one so the system asks her to reenter it. 
+After some failed attempts she select "password forgot". 
+The system sends a new password via e-mail. She enters that one and the access is permitted, but before ending the login successfully the system requires her to change the password entering a new one. 
+After she has done it correctly she has finally obtained access to application services.
 
 
-
-
-
+\subsubsection{Associated functional requirements}
+\begin{enumerate}
+\item The system must verify the nickname, it has to correspond to the one entered at registration.
+\item The system must verify the e-mail, it has to correspond to the one entered at registration.
+\item The system must verify the password, it has to correspond to the one entered at registration.
+\item The system must grant the access only to users that entered the correct nickname or e-mail and the correct password.
+\item The system sends an e-mail after the "password forgot" button is selected.
+\item The system reset the user's password only after the link on e-mail is clicked.
+\item If the password entered is wrong a new one can be entered at least 10 seconds later.
+\item The system accepts a new password that contains al least one number and one capital letter and that has a minimum length of eight characters.
+\end{enumerate}

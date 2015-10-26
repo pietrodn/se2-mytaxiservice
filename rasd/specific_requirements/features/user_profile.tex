@@ -2,7 +2,7 @@
 \subsubsection{Purpose}
 Any subscribed user can view or update his profile informations. 
 
-The system consider taxi drivers accessible for ride only if they load a new medical certificate every two years. A recall mail is sent to the taxi driver three months before the timeline.
+The system consider taxi drivers accessible for ride only if they load a new medical certificate every two years. A recall mail is sent to the taxi driver three months before the timeline. %licence or medical certificate?
 
 
 Logged passengers can:
@@ -23,11 +23,27 @@ Logged taxi drivers can:
 
 
 \subsubsection{Scenario 1}
-
+Alice, a myTaxiService user without a car, wants to count how many times she has rent a taxi in the last month. She opens the home of myTaxiService page on web and clicks on "login". 
+After she has logged in correctly she clicks on "load profile" and all informations about her account appears on screen including the taxi request list. 
 
 \subsubsection{Scenario 2}
+Gabriele's girlfriend has discovered his password but he doesn't want her knowing where he has done. So he decides to change his password immediately. He opens the app on her cell phone, he selects "load profile" and after "modify password". The system asks him to enter the old password and the new one two times to avoid errors. Then he selects "done", once it is verified that everything is ok, it is print on screen that the change ended successfully.
 
 
+\subsubsection{Scenario 3}
+A recall mail is sent to Bob, a myTaxiService user that has registered as taxi-driver, to advise him that he has to update his profile with a new medical certificate. A week later, after the medical checkup that ensures a good health, he opens the app on his cell phone, he selects "load profile" and after "modify" and he enters the new medical certificate info; so he confirms selecting "done".
+
+\subsubsection{Associated functional requirements}
+\begin{enumerate}
+\item The system must verify the consistence of the modified information. There mustn't be another one already subscribed with the same credentials.
+\item The system accepts a new password that contains al least one number and one capital letter and that has a minimum length of eight characters.
+\item The system accept a new password only if the old one has been submitted correctly before.
+\item The system asks new password two times, when a user wants to modify it.
+\item The system accepts the new password only if the same one was entered both times.
+\item The system must abort the modification at each instant if it is user's wish.
+\item The modified item isn't saved successfully until the "done" choice isn't selected by the user.
+\item The system sends a recall mail three months before the achievement of the two years of the last medical certificate submission.
+\end{enumerate}
 
 
 

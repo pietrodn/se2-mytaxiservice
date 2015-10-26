@@ -11,8 +11,9 @@ After this last check the registration ends successfully.
 The system has two kind of registration forms (so two kind of registered users) one for passenger and one for taxi drivers.
 
 
-
-Passenger registration form: the system registers the user as a passenger; once the user has subscribed the system allows him or her to rent a taxi. 
+\begin{itemize}
+\item Passenger registration form: 
+The system registers the user as a passenger; once the user has subscribed the system allows him or her to rent a taxi. 
 The form requires the following informations:
 \begin{itemize}
 \item mail-address
@@ -27,8 +28,8 @@ The form requires the following informations:
 
 
 
-Taxi driver registration form: the taxi driver registration is more restrictive and requires more user's informations.
-
+\item Taxi driver registration form: 
+The taxi driver registration is more restrictive and requires more user's informations.
 The system registers a user that claims to be a taxi driver only if he is able to demonstrate it with a taxi license; also a medical certificate that ensures the good health of the driver is required.
 The form requires the following informations:
 
@@ -41,9 +42,11 @@ The form requires the following informations:
 \item address 
 \item phone number
 \item medical certificate
+%name of the doctor?
 \item taxi license
 \item taxi id-number
 \item taxi number-plate
+\end{itemize}
 \end{itemize}
 
 
@@ -78,6 +81,8 @@ The system informs Bob that the registration has ended with success.
 \begin{enumerate}
 \item The system must verify the consistence of the user's Name, Surname and nickname. There mustn't be another one already subscribed with the same credentials.
 \item The system accepts a password that contains al least one number and one capital letter and that has a minimum length of eight characters.
+\item The system asks the password two times.
+\item The system accepts the password only if the same one was entered both times.
 \item If the personal data treatment isn't authorized the subscription is canceled.
 \item The system must abort the registration at each instant if it is user's wish.
 \item The subscription isn't ended successfully until the e-mail isn't confirmed. After two days without answer the systems sends anther confirmation e-mail. After seven days user's registration info are deleted.
