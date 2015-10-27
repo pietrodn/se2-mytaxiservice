@@ -21,11 +21,17 @@ Luke needs a taxi. He requests it and the request is forwarded to the first taxi
 Luke's request gets forwarded to the new first taxi driver in queue, Han Solo. Han accepts the request and comes to pick up Luke.
 
 \subsubsection{Response sequence}
-The response sequence is illustrated in figure~\ref{sequence-taxicall}.
-\begin{figure}[ht]
-\label{sequence-taxicall}
+The response sequence is illustrated in figures \ref{fig:sequence-taxicall} and \ref{fig:sequence-taxicall-refused}.
+\begin{figure}
 \includegraphics[width=\textwidth]{diagrams/sequence_taxicall.pdf}
-\caption{Sequence diagram of a successful taxi call.}
+\caption{Sequence diagram of a successful taxi call, picked up by the first taxi driver called by the system.}
+\label{fig:sequence-taxicall}
+\end{figure}
+
+\begin{figure}
+\includegraphics[width=\textwidth]{diagrams/sequence_taxicall_refused.pdf}
+\caption{Sequence diagram of a taxi call when the first taxi driver to receive the request refuses the call and the second one accepts it.}
+\label{fig:sequence-taxicall-refused}
 \end{figure}
 
 \subsubsection{Associated functional requirements}
