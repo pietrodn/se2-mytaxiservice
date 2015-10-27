@@ -9,13 +9,15 @@ As soon as the user has submitted all the data, the system verifies the consiste
 The system has two kind of registration forms (so two kind of registered users) one for passenger and one for taxi drivers.
 
 The taxi driver registration is more restrictive and requires more user's information.
-The system registers a user that claims to be a taxi driver only if he is able to demonstrate it with a taxi license; also a medical certificate that ensures the good health of the driver is required.
+The system registers a user that claims to be a taxi driver only if he is able to demonstrate it with a currently valid taxi license.
+
+% TODO: statechart
 
 \subsubsection{Scenario 1}
 Alice, a normal citizen without a car, has just discovered the existence of myTaxiService web application and she wants to use it. 
 She opens the home of myTaxiService page on web and clicks on "passenger registration". 
 
-She gives all the informations required and she authorizes the personal data treatment. 
+She gives all the informations required and she authorises the personal data treatment. 
 
 The system verifies the submitted information and sends a confirmation mail.
 Alice checks the mailbox, opens the mail and clicks on the "confirm e-mail" link. 
@@ -25,10 +27,10 @@ The system informs Alice that the registration has ended with success.
 \subsubsection{Scenario 2}
 Bob is a taxi driver that wants to subscribe to myTaxiService application. 
 He downloads the mobile application from his phone app-store and once he opens it, he selects "taxi driver registration". 
-He fills the form, luckily he has gone to the doctor some days before and has a certificate, and authorizes the personal data treatment.
+He fills the form, enters his licence ID and authorises the personal data treatment.
 
 However he forgets to write his phone number on the form so the system warns him about the forgetfulness.
-Only after the complete and correct filling of the form, and the personal data treatment authorization, the registration is one step near the successfully end.
+Only after the complete and correct filling of the form, and the personal data treatment authorisation, the registration is one step near the successfully end.
 
 The system verifies the informations submitted and sends a confirmation mail.
 Bob checks the mailbox, opens the mail and clicks on "confirm e-mail". 
@@ -41,7 +43,7 @@ The system informs Bob that the registration has ended with success.
     \item On registration, the user can choose to register as a passenger or as a taxi driver.
     \item Passengers must provide the following information:
     \begin{itemize}
-        \item mail-address
+        \item e-mail address
         \item username 
         \item password
         \item name
@@ -51,24 +53,28 @@ The system informs Bob that the registration has ended with success.
     \end{itemize}
     \item Taxi drivers must provide the following information:
     \begin{itemize}
-        \item mail-address
+        \item e-mail address
         \item username 
         \item password
         \item name
         \item surname
         \item address 
         \item phone number
-        \item medical certificate
-        \item taxi license
-        \item taxi id-number
+        \item taxi license ID
         \item taxi number-plate
     \end{itemize}
-    \item The system must verify the consistence of the user's name, surname and nickname. There mustn't be another user already subscribed with the same credentials.
-    \item The system accepts a password that contains al least one number and one capital letter and that has a minimum length of eight characters.
-    \item The system asks the password two times.
+    \item There mustn't be another user already subscribed with the same username or e-mail.
+    \item The username must match the regular expression\\``\texttt{[a-zA-Z][a-zA-Z0-9]\{2,20\}}''
+    \item The system accepts a password that contains at least one number and one capital letter and that has a minimum length of eight characters.
+    \item The system must ask for the password twice.
     \item The system accepts the password only if the same one is entered identically both times.
-    \item If the personal data treatment isn't authorized, the subscription is canceled.
+    \item If the personal data treatment is not authorised, the subscription is canceled.
     \item The system must allow the user to abort the registration process at any time.
-    \item The subscription isn't ended successfully until the confirmation e-mail isn't confirmed. After two days without and answer, the systems sends another confirmation e-mail. After seven days user's registration info are deleted.
+    \item Email confirmation process:
+    \begin{enumerate}
+    \item The subscription ends successfully when the user clicks on the link in the confirmation e-mail.
+    \item After two days without any answer, the systems sends another confirmation e-mail.
+    \item After seven days user's registration info are deleted and the user may re-try the registration process.
+   \end{enumerate}
 \end{enumerate}
 

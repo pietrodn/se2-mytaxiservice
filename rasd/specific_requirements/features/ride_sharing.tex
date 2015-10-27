@@ -3,11 +3,13 @@
 
 Every subscribed passenger shall be able to activate the ride sharing function in the mobile app or in the web interface. When this mode is enabled, the passenger has to provide the system also with a destination for the ride.
 
-The system, before allocating a taxi, inserts the pending ride in the set of shared rides and tries to identify possible sharing solutions. Using an adeguate algorithm it can propose every possible sharing option to the user. 
+The system, before allocating a taxi, inserts the pending ride in the set of shared rides and tries to identify possible sharing solutions.
+With an adeguate algorithm it can propose every feasible sharing solution to the user.
 
-The passenger can choose to share the ride with one of the pending rides or to refuse the proposal.
+The first user who reserves a taxi is called the ``owner'' of the ride.
+The passenger can choose to join one of the pending rides or to refuse the proposal, becoming the owner of a new ride.
 
-In the first case the system informs the user which has allocated the ride. The new passenger has to go to the meeting point with the other user in time. If he/she is not able to do that the taxi does not wait for him/her.
+In the first case the system informs the owner of the ride. The new passenger has to go to the meeting point with the other user in time. If he/she is not able to do that the taxi does not wait for him/her.
 
 In the second case the system allocates the taxi (\ref{taxi-availability}) and applies the standard procedure \ref{standard-call}. If there is another user who wants to share the ride with compatible options, the system allows it and redirects this last user to the meeting point with the new user and informs the previous user and the taxi driver.
 

@@ -2,8 +2,13 @@
 
 \subsection{Reliability}
 %This should specify the factors required to establish the required reliability of the software system at time of delivery.
+
 \subsection{Availability}
 %This should specify the factors required to guarantee a defined availability level for the entire system such as checkpoint, recovery, and restart.
+\begin{enumerate}
+\item The system must guarantee an availability of 98\%.
+\end{enumerate}
+
 \subsection{Security}
 %This should specify the factors that protect the software from accidental or malicious access, use, modifica- tion, destruction, or disclosure. Specific requirements in this area could include the need to
 %a) Utilize certain cryptographical techniques;
@@ -11,6 +16,14 @@
 %c) Assign certain functions to different modules;
 %d) Restrict communications between some areas of the program;
 %e) Check data integrity for critical variables.
+
+\begin{enumerate}
+\item All the communications between server and clients must be protected by strong encryption using the SSL protocol.
+\item All attempts of establishing an unsecure communication channel (e.g. plain HTTP) with the server must be refused.
+\item Users' passwords must not be stored in plain text in the database: instead, they must be hashed and salted.
+\item The system must log all login attempts with IP addresses for at least 7 days.
+\end{enumerate}
+
 \subsection{Maintainability}
 
 %TODO Eleonora

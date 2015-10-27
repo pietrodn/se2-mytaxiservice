@@ -1,1 +1,30 @@
-\subsection{User interfaces}\subsection{Hardware interfaces}\subsection{Software interfaces}\subsection{Communications interfaces}
+\subsection{User interfaces}
+
+\begin{itemize}
+    \item Web application
+        \begin{enumerate}
+        \item The web pages must adhere to the W3C standards. In particular, the software conforms to the HTML5~\cite{w3c-html5} and CSS~\cite{w3c-css} standards.
+        \item The web pages must be accessible also by text-only browsers.
+        \end{enumerate}
+    \item Mobile app
+        \begin{enumerate}
+        	\item The iOS version must adhere to the iOS Human Interface Guidelines~\cite{apple-ios-hig}.
+	\item The Android version must follow Android design guidelines~\cite{google-android-hig}.
+        \end{enumerate}
+     \item Server back-end
+     	\begin{enumerate}
+		\item The server back-end must be configurable by means of a configuration text file.
+	\end{enumerate}
+	\item The clients must have an UI that is accessible to disabled people.
+	\item All clients must show to the logged user a dashboard which allows access to all functionalities.
+\end{itemize}
+
+\subsection{Hardware interfaces}
+
+This project does not support any hardware interfaces.
+
+\subsection{Software interfaces}
+% TODO alex
+
+\subsection{Communications interfaces}
+The clients communicate with the server via HTTPS requests (port 443).
