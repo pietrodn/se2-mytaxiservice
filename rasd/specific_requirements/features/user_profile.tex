@@ -4,21 +4,6 @@ Any subscribed user can view or update his profile information.
 
 The system allows taxi drivers to use the service only if they load a new medical certificate every two years. A reminder e-mail is sent to the taxi driver three months before the expiration. %licence or medical certificate?
 
-Logged passengers can:
-\begin{itemize}
-\item view their user profile
-\item modify their user profile
-\item view the latest taxi request
-\item view the list of taxi requests
-\end{itemize}
-
-Logged taxi drivers can:
-\begin{itemize}
-\item view their user profile
-\item modify their user profile
-\item view the latest accepted taxi request
-\item view the list of accepted requests
-\end{itemize}
 
 \subsubsection{Scenario 1}
 Alice, a myTaxiService passenger without a car, wants to count how many times she has used a taxi in the last month.
@@ -33,14 +18,52 @@ A recall mail is sent to Bob, a myTaxiService user that has registered as taxi-d
 
 \subsubsection{Associated functional requirements}
 \begin{enumerate}
-\item The system must verify the consistence of the modified information. There mustn't be another one already subscribed with the same credentials. %TODO: it's possible to change username/email? That's not clear!
+
+\item Logged passengers can:
+\begin{itemize}
+\item view user profile
+\item modify an information
+\item delete account
+\item view the latest taxi request
+\item view taxi requests list
+\end{itemize}
+
+\item Logged taxi drivers can:
+\begin{itemize}
+\item view user profile
+\item modify an information
+\item delete account
+\item view the latest taxi request accepted
+\item view requests accepted list
+\end{itemize}
+
+\item The system sends a recall mail three months before the expiration of the two years' validity of the last medical certificate submission.
+
+\item Delete the account: 
+\begin{enumerate}
+\item The system allows to delete the user's account with an option on screen.
+\item After "delete account" is selected, the user has to ensures his decision selecting on screen "proceed": the system deletes the account only after user's confirmation.
+\item When an account i deleted also all the informations in it are lost.
+\end{enumerate}
+
+\item Modify the profile:
+\begin{enumerate}
+\item The system allows to change one or more information on the profile: any information can be changed, even the nickname or e-mail.
+\item The system must verify the consistence of the modified information. It has to exist and it has to be unique (i.e. there mustn't be another user that has already entered the same info). 
+\item If the e-mail is changed The system sends a confirmation mail on the new address.
+%it is only changed when the link on the e-mail is clicked?
+\item The system replaces the old information with the new one as soon as it has been verified.
 \item The system accepts a new password that contains al least one number and one capital letter and that has a minimum length of eight characters.
 \item The system accept a new password only if the old one has been submitted correctly before.
 \item The system asks for the new password two times, when a user wants to change it.
 \item The system accepts the new password only if the same one was entered twice.
 \item The system must allow the user to abort the modification at any time.
-\item The modified item isn't saved successfully until the "done" choice isn't selected by the user. %TODO what's the "item"?
-\item The system sends a recall mail three months before the expiration of the two years' validity of the last medical certificate submission.
+\item The old information isn't  replaced until the "done" choice isn't selected by the user.
+\end{enumerate}
+
+
+
+
 \end{enumerate}
 
 
