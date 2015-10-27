@@ -1,21 +1,21 @@
 \label{driver-notification}
 \subsubsection{Purpose}
 
-After a taxi driver has informed the system about his/her availability, %TODO 3.2.5 reference
+After a taxi driver has informed the system about his/her availability (section~\ref{taxi-availability})
 he/she will be able to receive ride request notifications. The taxi driver receives the notification on his/her cell phone and has one minute to accept or reject the request. If after one minute the request is not answered, the system will consider the request as refused.
 
 \subsubsection{Scenario 1}
 Travis, who suffers from chronic insomnia, every night waits in his taxi for an incoming request. When a user requests a taxi, the system processes the request and decides which taxi driver to send. 
 
-For a new incoming request, the system chooses Travis, who is on the top of the queue and quite near the location. It sends him a notification on his mobile app. Travis reads the message which reports location and hour of the meeting and decides to accept the request pushing the appropriate button on the display.
+For a new incoming request, the system chooses Travis, who is on the top of the queue and in the same taxi zone of the passenger. The system sends him a notification on his mobile app. Travis reads the message which reports location and time of the meeting and decides to accept the request pushing the appropriate button on the display.
 
-The system acknowledges the decision and waits for Travis to notify that the passenger is on board (last part of \ref{standard-call}).
+The system acknowledges the decision and waits for Travis to notify that the passenger is on board (last part of~\ref{standard-call}).
 
 \subsubsection{Scenario 2}
-The system receives a new incoming request from a user and selects Frank Martin as designated taxi driver. %TODO 3.2.5 reference
+The system receives a new incoming request from a user and selects Frank Martin as designated taxi driver (section~\ref{taxi-availability}).
 The system sends him a notification and waits for the reply.
 
-Frank has done a very demanding ride and decides to refuse the request using the interface of the app. The system receives Frank's decision and looks for another available taxi on the defined area.
+Frank has done a very demanding ride and decides to refuse the request using the interface of the app. The system receives Frank's decision and looks for another available taxi on the same taxi area.
 
 \subsubsection{Response sequence}
 %TODO use case
@@ -23,13 +23,13 @@ The use case associated to the response sequence is shown in figure.
 
 \subsubsection{Associated functional requirements}
 \begin{enumerate}
-\item The taxi has to be in the system queue.
-\item The GPS on the taxi is available.
+\item The taxi has to be in the taxi zone queue.
+\item The GPS on the mobile phone fo the taxi driver is available.
 \item The GPS position of the taxi must be in the same area of the user's.
-\item The app must show the request to the taxi driver.
-\item The taxi driver can accept or decline the request using the app.
+\item The app must show the request notification to the taxi driver.
+\item The system allows the taxi driver to accept or decline the request using the app.
 \item The app must produce sounds or visual notifications as the taxi driver has chosen.
-\item The system must use timeouts in order to prevent infinite pending request.
-\item The system has to provide the taxi driver with the meeting information.
-\item The taxi driver has to reply in one minute or the request is automatically refused.
+\item The system must use timeouts in order to prevent infinite pending requests.
+\item The system has to provide the taxi driver with information about the time and place of the meeting with the passenger.
+\item The system gives to the taxi driver one minute to reply. Else, the request is automatically refused.
 \end{enumerate}

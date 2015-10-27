@@ -1,31 +1,33 @@
 \label{user-login}
 \subsubsection{Purpose}
 Any subscribed user can login to use myTaxiService services.
-The system recalls the nickname or the registration e-mail and the password to log in correctly.
+The system requires the user to provide nickname and password, or e-mail and password, to log in correctly.
 
-If the user doesn't recall his password, a new one is sent on the user's mail address. Only if the user clicks on the link in the e-mail the password is reset and, soon as he logs in, it is asked him to choose a new one. 
+If the user doesn't remember his password, a new one is sent to the user's e-mail address. If the user clicks on the link in the e-mail, the password is reset and, as soon as he logs in, the system asks him to choose a new one. 
 
 \subsubsection{Scenario 1}
-Bob opens the home of myTaxiService page on web and clicks on "login". 
-It is asked him to enter nickname or e-mail and password, he doesn't recall his nickname so he enters the registration e-mail and the password. He selects "enter". 
-Everything is correct so he can access to app services as a logged user.
+Bob opens the home page of myTaxiService on the web and clicks on "login". 
+he's asked to enter the nickname or the e-mail and the password. He doesn't recall his nickname, so he enters the registration e-mail and the password. He clicks on "enter". 
+Everything is correct so he can access to the services as a logged user.
 
 \subsubsection{Scenario 2}
 Alice opens the home of myTaxiService page on web and clicks on "login".  
-It is asked her to enter nickname or e-mail and password, she enters nickname and password and selects "enter". However the password entered isn't the correct one so the system asks her to reenter it. 
-After some failed attempts she select "password forgot". 
-The system sends a new password via e-mail. She enters that one and the access is permitted, but before ending the login successfully the system requires her to change the password entering a new one. 
-After she has done it correctly she has finally obtained access to application services.
-
+She is asked to enter the nickname or e-mail and the password.
+She enters nickname and password and selects "enter". However, the entered password isn't correct so the system asks her to re-enter it. 
+After some failed attempts she select "password forgot".
+The system sends to her a new password via e-mail. She enters that one and the access is permitted, but before successfully ending the login the system requires her to change the password immediately. 
+Alice changes her password and finally logs in to the services.
 
 \subsubsection{Associated functional requirements}
 \begin{enumerate}
-\item The system must verify the nickname, it has to correspond to the one entered at registration.
-\item The system must verify the e-mail, it has to correspond to the one entered at registration.
-\item The system must verify the password, it has to correspond to the one entered at registration.
-\item The system must grant the access only to users that entered the correct nickname or e-mail and the correct password.
-\item The system sends an e-mail after the "password forgot" button is selected.
-\item The system reset the user's password only after the link on e-mail is clicked.
-\item If the password entered is wrong a new one can be entered at least 10 seconds later.
-\item The system accepts a new password that contains al least one number and one capital letter and that has a minimum length of eight characters.
+    \item In order to log in, the user must insert either a nickname, or the registration e-mail, but not both.
+    \item On login, the system must grant to the user access to his/her account if and only if the following conditions are met:
+    \begin{enumerate}
+    	\item The inserted nickname corresponds to a username of an existing user, or the inserted e-mail corresponds to the registration e-mail of an existing user.
+	\item The inserted password is the same of that of the user identified above.
+    \end{enumerate}
+    \item The system sends an e-mail after the "password forgot" button is selected.
+    \item The system reset the user's password only after the link on e-mail is clicked.
+    \item If the password entered is wrong a new attempt can be made only 10 seconds later.
+    \item The system accepts a new password that contains al least one number and one capital letter and that has a minimum length of eight characters.
 \end{enumerate}
