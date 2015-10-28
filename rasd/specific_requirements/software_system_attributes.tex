@@ -1,7 +1,8 @@
-%TODO Pietro
-
 \subsection{Reliability}
 %This should specify the factors required to establish the required reliability of the software system at time of delivery.
+
+The system is not currently designed to run in a distributed environment, but it may be the case in future versions.
+The reliability of the system is strictly related to the reliability of the server it runs on.
 
 \subsection{Availability}
 %This should specify the factors required to guarantee a defined availability level for the entire system such as checkpoint, recovery, and restart.
@@ -22,13 +23,22 @@
 \item All attempts of establishing an unsecure communication channel (e.g. plain HTTP) with the server must be refused.
 \item Users' passwords must not be stored in plain text in the database: instead, they must be hashed and salted.
 \item The system must log all login attempts with IP addresses for at least 7 days.
+\item The modules must state clearly which data they will need to read and write.
 \end{enumerate}
 
 \subsection{Maintainability}
 
-%TODO Eleonora
-
 %This should specify attributes of software that relate to the ease of maintenance of the software itself. There may be some requirement for certain modularity, interfaces, complexity, etc. Requirements should not be placed here just because they are thought to be good design practices.
+
+The code should be well documented using JavaDoc in order to be understood and fixed by developers later.
+The system must provide a configurable logging function for debugging purposes.
+
+The development of the software will follow the object-oriented Model-View-Controller pattern and the separation of concerns principle.
+
+The build from source code in the Version Control System will be completely automated, as well as unit testing.
+
+The system will support modular extensions in order to have a stable core and divide the core development from the external modules, debugging them separately.
+
 \subsection{Portability}
 %This should specify attributes of software that relate to the ease of porting the software to other host machines and/or operating systems. This may include the following:
 %a) Percentage of components with host-dependent code;
@@ -36,3 +46,10 @@
 %c) Use of a proven portable language;
 %d) Use of a particular compiler or language subset;
 %e) Use of a particular operating system.
+
+The back-end server software will be written in Java. It must run on every platform that supports the JVM, and extensive testing will be carried out on every OS to make sure that the system's really portable.
+
+There will not be host-dependent dependencies.
+
+The web application shall run on every modern browser. %TODO specify more clearly
+The mobile application must be supported by the last 2 major versions of Android and iOS.
