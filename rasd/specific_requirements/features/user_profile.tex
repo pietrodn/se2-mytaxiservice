@@ -2,9 +2,8 @@
 \subsubsection{Purpose}
 Any subscribed user can view or update his profile information. 
 
-The system allows taxi drivers to use the service only if they load a new medical certificate every two years. A reminder e-mail is sent to the taxi driver three months before the expiration. %licence 
+The system allows taxi drivers to use the service only if they load a valid license. A reminder e-mail is sent to the taxi driver three months before the expiration. 
 
-% TODO: class diagram
 
 \subsubsection{Scenario 1}
 Alice, a myTaxiService passenger without a car, wants to count how many times she has used a taxi in the last month.
@@ -15,7 +14,7 @@ After she has logged in correctly, she clicks on "load profile" and all the info
 Gabriele's girlfriend has discovered his password but he doesn't want her to know where he has been. So he decides to change his password immediately. He opens the app on her cell phone, he selects "load profile" and after he selects "modify password". The system asks him to enter the old password and the new one two times to avoid errors. Once he has verified that everything's ok, he selects "done", and the system confirms that the password has been successfully set.
 
 \subsubsection{Scenario 3}
-A recall mail is sent to Bob, a myTaxiService user that has registered as taxi-driver, to notice him that he has to update his profile with a new medical certificate. A week later, after the medical checkup that ensures his good health, he opens the app on his cell phone, he selects "load profile", then "modify". He enters the new medical certificate info, then confirms selecting "done". The system confirms that the medical certificate has been successfully inserted.
+A recall mail is sent to Bob, a myTaxiService user that has registered as taxi-driver, to notice him that he has to update his profile with a valid license. A week later he opens the app on his cell phone, he selects "load profile", then "modify". He enters the new license, then confirms selecting "done". The system confirms that the licence has been successfully inserted.
 
 \subsubsection{Associated functional requirements}
 \begin{enumerate}
@@ -38,7 +37,7 @@ A recall mail is sent to Bob, a myTaxiService user that has registered as taxi-d
 \item view requests accepted list
 \end{itemize}
 
-\item The system sends a recall mail three months before the expiration of the two years' validity of the last medical certificate submission.
+\item The system sends a recall mail three months before the expiration of the license submitted.
 
 \item Delete the account: 
 \begin{enumerate}
@@ -51,7 +50,7 @@ A recall mail is sent to Bob, a myTaxiService user that has registered as taxi-d
 \begin{enumerate}
 \item The system allows to change one or more information on the profile: any information can be changed, even the nickname or e-mail.
 \item The system must verify the consistence of the modified information. It has to exist and it has to be unique (i.e. there mustn't be another user that has already entered the same info). 
-\item If the e-mail is changed The system sends a confirmation mail on the new address.
+\item If the e-mail is changed the system sends a confirmation mail on the new address.
 %it is only changed when the link on the e-mail is clicked?
 \item The system replaces the old information with the new one as soon as it has been verified.
 \item The system accepts a new password that contains al least one number and one capital letter and that has a minimum length of eight characters.

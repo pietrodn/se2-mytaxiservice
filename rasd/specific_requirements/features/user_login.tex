@@ -5,8 +5,6 @@ The system requires the user to provide nickname and password, or e-mail and pas
 
 If the user doesn't remember his password, a new one is sent to the user's e-mail address. If the user clicks on the link in the e-mail, the password is reset and, as soon as he logs in, the system asks him to choose a new one. 
 
-% TODO: sequence diagram
-
 \subsubsection{Scenario 1}
 Bob opens the home page of myTaxiService on the web and clicks on "login". 
 he's asked to enter the nickname or the e-mail and the password. He doesn't recall his nickname, so he enters the registration e-mail and the password. He clicks on "enter". 
@@ -19,6 +17,15 @@ She enters nickname and password and selects "enter". However, the entered passw
 After some failed attempts she select "password forgot".
 The system sends to her a new password via e-mail. She enters that one and the access is permitted, but before successfully ending the login the system requires her to change the password immediately. 
 Alice changes her password and finally logs in to the services.
+
+
+\subsubsection{Response sequence}
+The response sequence is illustrated in figure \ref{fig:sequence-login}.
+\begin{figure}
+\includegraphics[width=\textwidth]{diagrams/sequence_login.pdf}
+\caption{Sequence diagram of a user login.}
+\label{fig:sequence-login}
+\end{figure}
 
 \subsubsection{Associated functional requirements}
 \begin{enumerate}
