@@ -23,6 +23,46 @@ Ernie receives the request and accepts the meeting. The system pops Ernie from t
 
 When Ernie accomplishes the ride, he notifies the system, which retrieves the new GPS position and inserts Ernie's in the queue.
 
+\subsubsection{Use case}
+The use case for a taxi availability handling is shown in~\autoref{usecase-taxiavailability}.
+
+\begin{table}
+\begin{center}
+\begin{tabular}{| l | p{0.6\textwidth} |}
+\hline
+Actor & Taxi driver \\
+\hline
+Goal & Goal~\ref{g-notify}
+\\
+\hline
+Input condition & Taxi drivers are logged in and change his status to "in service".  \\
+\hline
+Event Flow & \begin{enumerate}
+	\item The taxi driver changes his status to "in service"
+	\item The system enqueues the taxi in the right queue using GPS informations
+	\item A new request incomes
+	\item The system chooses the first taxi in the queue and sends the request for a ride
+	\item The taxi driver can either accept or deny the request; if he denies it, the request is forwarded to the next taxi driver in the queue, and so on.
+	\item When a taxi driver accepts the request, the system dequeues it and marks it as busy
+	\item The taxi driver drives to the location
+	\item The taxi driver notifies that the passenger is on board
+	\item When the ride is completed, the taxi driver notifies it to the system
+	\item The system enqueues the taxi in the right queue using GPS informations
+	\item The taxi driver changes his status to "not in service"
+	\item The system dequeues the taxi
+\end{enumerate}
+\\
+\hline
+Output condition & The driver changes his status to "not in service". \\
+\hline
+Exception & No taxi is available in the passenger's zone. \\
+\hline
+\end{tabular}
+\end{center}
+\caption{Use case for taxi availability handling.}
+\label{usecase-taxiavailability}
+\end{table}
+
 \subsubsection{Response sequence}
 The response sequence associated with this functionality is shown in figure~\ref{fig:taxi_availability}.
 \begin{figure}

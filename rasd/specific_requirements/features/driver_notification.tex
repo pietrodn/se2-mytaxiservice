@@ -17,6 +17,39 @@ The system sends him a notification and waits for the reply.
 
 Frank has done a very demanding ride and decides to refuse the request using the interface of the app. The system receives Frank's decision and looks for another available taxi on the same taxi area.
 
+\subsubsection{Use case}
+The use case for a driver notification is shown in~\autoref{usecase-drivernotification}.
+
+\begin{table}
+\begin{center}
+\begin{tabular}{| l | p{0.6\textwidth} |}
+\hline
+Actor & Taxi driver \\
+\hline
+Goal & Goal~\ref{g-notify}
+\\
+\hline
+Input condition & The system informs the taxi driver about a new request.  \\
+\hline
+Event Flow & \begin{enumerate}
+	\item The system informs the taxi driver about a new request, specifying time and location of the ride
+	\item The taxi driver sees the information on his cell phone and chooses if accepting or refusing the request
+	\item If after a minute the taxi driver has not sent the response, the system considers the request refused
+	\item If the request is accepted,  the system dequeues the taxi and marks it as busy, otherwise sends the request to the next taxi
+	\item When someone has accepted the system notifies it to the passenger specifying the arrival time of the taxi
+	\end{enumerate}
+\\
+\hline
+Output condition & The system informs the passenger with the estimated time arrival of the taxi. \\
+\hline
+Exception & No taxi replies the request. \\
+\hline
+\end{tabular}
+\end{center}
+\caption{Use case for driver notification.}
+\label{usecase-drivernotification}
+\end{table}
+
 \subsubsection{Response sequence}
 The use case associated to the response sequence is shown in figure~\ref{fig:sequence-taxicall-refused}.
 
