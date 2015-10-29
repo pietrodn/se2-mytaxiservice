@@ -1,4 +1,4 @@
 all:
 	pdflatex main.tex
 clean:
-	rm *.log *.aux *.out *.toc
+	rm -f *.pdf *.log *.aux *.out *.toc
