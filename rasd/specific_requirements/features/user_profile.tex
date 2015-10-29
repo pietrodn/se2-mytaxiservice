@@ -14,7 +14,45 @@ After she has logged in correctly, she clicks on "load profile" and all the info
 Gabriele's girlfriend has discovered his password but he doesn't want her to know where he has been. So he decides to change his password immediately. He opens the app on her cell phone, he selects "load profile" and after he selects "modify password". The system asks him to enter the old password and the new one two times to avoid errors. Once he has verified that everything's ok, he selects "done", and the system confirms that the password has been successfully set.
 
 \subsubsection{Scenario 3}
-A recall mail is sent to Bob, a myTaxiService user that has registered as taxi-driver, to notice him that he has to update his profile with a valid license. A week later he opens the app on his cell phone, he selects "load profile", then "modify". He enters the new license, then confirms selecting "done". The system confirms that the licence has been successfully inserted.
+A recall mail is sent to Bob, a myTaxiService user that has registered as taxi-driver, to notice him that he has to update his profile with a valid license. A week later he opens the app on his cell phone, he selects "load profile", then "modify". He enters the new license, then confirms selecting "done". The system confirms that the license has been successfully inserted.
+
+
+\subsubsection{Use case}
+The use case for user profile is shown in~\autoref{usecase-profile}.
+%TODO (Eleonora) complete profile use case
+
+\begin{table}
+\begin{center}
+\begin{tabular}{| l | p{0.6\textwidth} |}
+\hline
+Actor & Registered user \\
+\hline
+Goal & Goal ~\ref{g-login}
+\\
+\hline
+Input condition & Passenger is already logged in and wants to check his profile.  \\
+\hline
+Event Flow & \begin{enumerate}
+	\item The user selects load profile.
+	\item The user's profile page is loaded.
+
+	
+	\end{enumerate}
+\\
+\hline
+Output condition & . \\
+\hline
+
+Exception & . \\
+\hline
+\end{tabular}
+\end{center}
+\caption{Use case for user profile.}
+\label{usecase-profile}
+\end{table}
+
+
+
 
 \subsubsection{Associated functional requirements}
 \begin{enumerate}
@@ -48,8 +86,10 @@ A recall mail is sent to Bob, a myTaxiService user that has registered as taxi-d
 
 \item Modify the profile:
 \begin{enumerate}
-\item The system allows to change one or more information on the profile: any information can be changed, even the nickname or e-mail.
-\item The system must verify the consistence of the modified information. It has to exist and it has to be unique (i.e. there mustn't be another user that has already entered the same info). 
+\item The system allows to change one or more information on the profile: any information can be changed, even the username or e-mail.
+\item The system must verify that the new username entered is unique, i.e. there mustn't be another user that has already entered the same username. 
+\item  The system accept the new username only if it matches the regular expression\\``\texttt{[a-zA-Z][a-zA-Z0-9]\{2,20\}}'' 
+\item The system must verify that the new e-mail entered is unique, i.e. there mustn't be another user that has already entered the same e-mail. 
 \item If the e-mail is changed the system sends a confirmation mail on the new address.
 %it is only changed when the link on the e-mail is clicked?
 \item The system replaces the old information with the new one as soon as it has been verified.

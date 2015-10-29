@@ -19,6 +19,47 @@ The system sends to her a new password via e-mail. She enters that one and the a
 Alice changes her password and finally logs in to the services.
 
 
+
+\subsubsection{Use case}
+The use case for user login is shown in~\autoref{usecase-login}.
+
+\begin{table}
+\begin{center}
+\begin{tabular}{| l | p{0.6\textwidth} |}
+\hline
+Actor & Registered passenger or taxi driver \\
+\hline
+Goal & Goal ~\ref{g-login}
+\\
+\hline
+Input condition & The user, already registered, chooses to login.  \\
+\hline
+Event Flow & \begin{enumerate}
+	\item The user selects "login".
+	\item The login page is shown. \label{load-login}
+	\item The user enters his/her credentials.
+	\end{enumerate}
+\\
+\hline
+Output condition & The system tells the user that he/she has been successfully logged in.
+It is loaded the main page where the user can choose one of the myTaxiService options. \\
+\hline
+
+Exception & If the username/e-mail or password entered are wrong, the system notifies the user and the login page is reloaded (step~\ref{load-login} of Event Flow): the login has failed. 
+
+	
+ \\
+\hline
+\end{tabular}
+\end{center}
+\caption{Use case for user login.}
+\label{usecase-login}
+\end{table}
+
+
+
+
+
 \subsubsection{Response sequence}
 The response sequence is illustrated in figure \ref{fig:sequence-login}.
 \begin{figure}
@@ -31,12 +72,12 @@ The response sequence is illustrated in figure \ref{fig:sequence-login}.
 \begin{enumerate}
     \item In order to log in, the user must insert either a nickname, or the registration e-mail, but not both.
     \item On login, the system must grant to the user access to his/her account if and only if the following conditions are met:
-    \begin{enumerate}
+    \begin{enumerate} 
     	\item The inserted nickname corresponds to a username of an existing user, or the inserted e-mail corresponds to the registration e-mail of an existing user.
 	\item The inserted password is the same of that of the user identified above.
     \end{enumerate}
     \item The system sends an e-mail after the "password forgot" button is selected.
     \item The system reset the user's password only after the link on e-mail is clicked.
     \item If the password entered is wrong a new attempt can be made only 10 seconds later.
-    \item The system accepts a new password that contains al least one number and one capital letter and that has a minimum length of eight characters.
+  
 \end{enumerate}
