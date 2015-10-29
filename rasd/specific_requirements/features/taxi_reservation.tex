@@ -7,23 +7,53 @@ John McClane will need a taxi to get to the airport tomorrow morning. He opens t
 
 The morning after, at 5:50 AM, the first taxi driver in the queue gets McClane's request and accepts it. He comes to pick up McClane and brings him to the airport.
 
+\subsubsection{Use case}
+\begin{center}
+\begin{tabular}{| l | p{0.6\textwidth} |}
+\hline
+Actor & Passenger \\
+\hline
+Goal & Goal~\ref{g-reserve}
+\\
+\hline
+Input condition & Passenger is already logged in and chooses to reserve a taxi.  \\
+\hline
+Event Flow & \begin{enumerate}
+	\item The passenger chooses to reserve a taxi using his client.
+	\item The passenger chooses the origin and destination addresses, and the time of pick-up.
+	\item The passenger confirms the reservation.
+	\item 10 minutes prior to the ride time, the request gets forwarded to the first taxi in the queue of the same taxi zone of the user.
+	\item The taxi driver can either accept or deny the request; if he denies it, the request is forwarded to the next taxi driver in the queue, and so on.
+	\item Finally the request gets accepted by a taxi driver.
+	\item The passenger gets notified that a taxi driver accepted his request and is given the ETA of the incoming taxi.
+	\item When the taxi driver meets the passenger, he/she signals that the passenger is on board.
+\end{enumerate}
+\\
+\hline
+Output condition & The driver confirms that the passenger is aboard. \\
+\hline
+Exception & No taxi is available in the passenger's zone. \\
+\hline
+\end{tabular}
+\end{center}
+
 \subsubsection{Response sequence}
 The response sequence is illustrated in figure~\ref{fig:sequence-taxireservation}.
-\begin{figure}[ht]
-\includegraphics[width=\textwidth]{diagrams/sequence_taxireservation.pdf}
-\caption{Sequence diagram of a successful taxi reservation.}
-\label{fig:sequence-taxireservation}
+\begin{figure}
+	\includegraphics[width=\textwidth]{diagrams/sequence_taxireservation.pdf}
+	\caption{Sequence diagram of a successful taxi reservation.}
+	\label{fig:sequence-taxireservation}
 \end{figure}
 
 \subsubsection{Associated functional requirements}
 \begin{enumerate}
-\item The system presents the passenger with the option to reserve a taxi.
-\item The system asks the passenger the origin and the destination of the ride.
-\item Origin and destination must be valid addresses.
-\item If GPS info is present and accurate within 50 m, the passenger can specify "current position" as the destination of the ride.
-\item The system asks passenger for the date and time of the ride.
-\item The system lets the passenger enter only valid dates and times.
-\item The system lets the passenger reserve a taxi from 48 hours to 2 hours before the actual ride time.
-\item 10 minutes before the specified arriving time, the system allocates a taxi for the passenger by putting a request in the queue as described in subsection~\ref{standard-call}.
-\item After the request is accepted, the passenger gets notified with the ETA of the incoming taxi along with its position.
+	\item The system presents the passenger with the option to reserve a taxi.
+	\item The system asks the passenger the origin and the destination of the ride.
+	\item Origin and destination must be valid addresses.
+	\item If GPS info is present and accurate within 50 m, the passenger can specify "current position" as the destination of the ride.
+	\item The system asks passenger for the date and time of the ride.
+	\item The system lets the passenger enter only valid dates and times.
+	\item The system lets the passenger reserve a taxi from 48 hours to 2 hours before the actual ride time.
+	\item 10 minutes before the specified arriving time, the system allocates a taxi for the passenger by putting a request in the queue as described in subsection~\ref{standard-call}.
+	\item After the request is accepted, the passenger gets notified with the ETA of the incoming taxi along with its position.
 \end{enumerate}

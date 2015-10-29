@@ -18,24 +18,24 @@ Batman needs a taxi and decides to enable the sharing mode on his cell phone. Th
  
 When Batman submits the form, the system matches the path of Batman's ride with every pending ride started from Batman's area. It finds only one compatible ride and sends it to Batman.
  
- Batman finds that it is Joker's pending ride and decides to refuse the share. Then the system allocates a new taxi.
- 
- A new user, Robin, is in Batman's area and wants to take a taxi. He decides to enable the sharing function and the system proposes him Batman's and Joker's ones. He chooses Batman's: the system, which has already communicated location and time to Robin, notifies Batman and the taxi driver that there is an additional passenger.
- 
- When the taxi arrives, the taxi driver confirms from his mobile app how many passengers he has picked up.
- 
- \subsubsection{Response sequence}
- The response sequence is illustrated in figure
- %TODO use case
- 
- \subsubsection{Associated functional requirements}
- \begin{enumerate}
- \item The system has to know the starting point of the new passenger in order to provide physical sharing solutions. It has to compute the estimated walking time to reach the meeting location and compare it with the estimated taxi arrival time.
- \item The user can enable the sharing function both in mobile app and in web interface.
- \item The user can choose between possible sharing solutions or a new taxi.
- \item The system has to communicate to the taxi driver the possible presence of the new passenger.
- \item The system must be able to analyse the current sharing situation.
- \item The system must evaluate the number of seats available in every taxi.
- \item The taxi driver can insert the number of passengers who have been picked up.
- \item After the user chooses to enable the sharing mode, the system has to specify, for every sharing ride, the location and the time.
- \end{enumerate}
+Batman finds that it is Joker's pending ride and decides to refuse the share. Then the system allocates a new taxi.
+
+A new user, Robin, is in Batman's area and wants to take a taxi. He decides to enable the sharing function and the system proposes him Batman's and Joker's ones. He chooses Batman's: the system, which has already communicated location and time to Robin, notifies Batman and the taxi driver that there is an additional passenger.
+
+When the taxi arrives, the taxi driver confirms from his mobile app how many passengers he has picked up.
+
+\subsubsection{Response sequence}
+The response sequence is illustrated in figure
+%TODO use case
+
+\subsubsection{Associated functional requirements}
+\begin{enumerate}
+\item The system has to know the starting point of the new passenger in order to provide physical sharing solutions. It has to compute the estimated walking time to reach the meeting location and compare it with the estimated taxi arrival time.
+\item The user can enable the sharing function both in mobile app and in web interface.
+\item The user can choose between possible sharing solutions or a new taxi.
+\item The system has to communicate to the taxi driver the possible presence of the new passenger.
+\item The system must be able to analyse the current sharing situation.
+\item The system must evaluate the number of seats available in every taxi.
+\item The taxi driver can insert the number of passengers who have been picked up.
+\item After the user chooses to enable the sharing mode, the system has to specify, for every sharing ride, the location and the time.
+\end{enumerate}
