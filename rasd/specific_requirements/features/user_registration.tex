@@ -1,6 +1,6 @@
 \label{user-registration}
 \subsubsection{Purpose}
-Any user can subscribe through the web application or the mobile app. 
+Any user can subscribe through the web application or the mobile app.
 
 In both cases the user has to fill a registration form and must agree to the personal data policy according his/her country privacy laws, otherwise the registration request is denied.
 
@@ -11,29 +11,27 @@ The system has two kind of registration forms (so two kind of registered users) 
 The taxi driver registration is more restrictive and requires more user's information.
 The system registers a user that claims to be a taxi driver only if he is able to demonstrate it with a currently valid taxi license.
 
-% TODO: statechart
-
 \subsubsection{Scenario 1}
-Alice, a normal citizen without a car, has just discovered the existence of myTaxiService web application and she wants to use it. 
-She opens the home of myTaxiService page on web and clicks on "passenger registration". 
+Alice, a normal citizen without a car, has just discovered the existence of myTaxiService web application and she wants to use it.
+She opens the home of myTaxiService page on web and clicks on "passenger registration".
 
-She gives all the information required and authorises the personal data treatment. 
+She gives all the information required and authorises the personal data treatment.
 
 The system verifies the submitted information and sends a confirmation mail.
-Alice checks the mailbox, opens the mail and clicks on the "confirm e-mail" link. 
+Alice checks the mailbox, opens the mail and clicks on the "confirm e-mail" link.
 
 The system informs Alice that the registration has ended with success.
 
 \subsubsection{Scenario 2}
-Bob is a taxi driver that wants to subscribe to myTaxiService application. 
-He downloads the mobile application from his phone app-store and once he opens it, he selects "taxi driver registration". 
+Bob is a taxi driver that wants to subscribe to myTaxiService application.
+He downloads the mobile application from his phone app-store and once he opens it, he selects "taxi driver registration".
 He fills the form, enters his licence ID and authorises the personal data treatment.
 
 However he forgets to write his phone number on the form so the system warns him about the forgetfulness.
 Only after the complete and correct filling of the form, and the personal data treatment authorisation, the registration is one step near the successfully end.
 
 The system verifies the information submitted and sends a confirmation mail.
-Bob checks the mailbox, opens the mail and clicks on "confirm e-mail". 
+Bob checks the mailbox, opens the mail and clicks on "confirm e-mail".
 
 The system informs Bob that the registration has ended with success.
 
@@ -52,7 +50,7 @@ The statechart is illustrated in figure \ref{fig:statechart-registration}.
     \item Passengers must provide the following information:
     \begin{itemize}
         \item e-mail address
-        \item username 
+        \item username
         \item password
         \item name
         \item surname
@@ -62,11 +60,11 @@ The statechart is illustrated in figure \ref{fig:statechart-registration}.
     \item Taxi drivers must provide the following information:
     \begin{itemize}
         \item e-mail address
-        \item username 
+        \item username
         \item password
         \item name
         \item surname
-        \item address 
+        \item address
         \item phone number
         \item taxi license ID
         \item taxi number-plate
@@ -85,4 +83,3 @@ The statechart is illustrated in figure \ref{fig:statechart-registration}.
     \item After seven days user's registration info are deleted and the user may re-try the registration process.
    \end{enumerate}
 \end{enumerate}
-
