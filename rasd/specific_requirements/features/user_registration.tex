@@ -46,34 +46,31 @@ Actor & Unregistered user, Registered passenger or taxi driver \\
 Goal & Goal ~\ref{g-login}
 \\
 \hline
-Input condition & None  \\
+Input condition & The user chooses to create a new user account.  \\
 \hline
 Event Flow & \begin{enumerate}
 	\item The user selects taxi driver or passenger registration.
-	\item The registration form is loaded and the user compiles it.
-	\item The user authorises the personal data treatment.
+	\item The registration form is loaded and the user compiles it.\label{load-registration}
+	\item The user authorizes the personal data treatment.
 	\item The user reads the e-mail received by myTaxiService and clicks on the link to confirm the registration.
 	\end{enumerate}
 \\
 \hline
-Output condition & The user has been successfully registered, now he or she can login and request a taxi as a passenger or work through myTaxiService as a taxi driver . \\
+Output condition & The system tells the user that he/she has been successfully registered. \\
 \hline
 
-Exception &  An exception occurs when one of these is not respected: 
+Exception &  The following requirements may generate exceptions:
+	\ref{f-sameInfo},    %The username/e-mail is already use by someone else.
+	\ref{f-usrn},       %The username doesn't respect the restrictions.
+	\ref{f-psw1},     %The password doesn't respect the restrictions.
+	\ref{f-psw2}.    %The password entered the second time is different from the first one.
 
-	\begin{itemize}
-	\item ~\ref{f-sameInfo}    %The username/e-mail is already use by someone else.
-	\item ~\ref{f-usrn}       %The username doesn't respect the restrictions.
-	\item ~\ref{f-psw1}     %The password doesn't respect the restrictions.
-	\item ~\ref{f-psw2}    %The password entered the second time is different from the first one.
-	\end{itemize}
-	These exceptions are handled advising the user and reloading the registration form (2 of Event Flow)
-	\begin{itemize}
-	\item ~\ref{f-dataTreat}   %The user doesn't authorises the data treatment.
-	\item ~\ref{f-confirm}   %The user doesn't confirms the registration clicking on the link received via e-mail.
-	\end{itemize}
-	These are handled deleting all user's registration info: the registration ends failing.
-	
+These exceptions are handled noticing the user of the problem and reloading the registration form (step~\ref{load-registration} of Event Flow):
+\ref{f-dataTreat},   %The user doesn't authorises the data treatment.
+\ref{f-confirm}.   %The user doesn't confirms the registration clicking on the link received via e-mail.
+
+If the registration is aborted or fails, all user's data is deleted.
+
  \\
 \hline
 \end{tabular}
