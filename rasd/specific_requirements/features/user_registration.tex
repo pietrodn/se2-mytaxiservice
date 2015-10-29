@@ -35,9 +35,10 @@ Bob checks the mailbox, opens the mail and clicks on "confirm e-mail".
 
 The system informs Bob that the registration has ended with success.
 
-
-
 \subsubsection{Use case}
+The use case for user registration is shown in~\autoref{usecase-registration}.
+
+\begin{table}
 \begin{center}
 \begin{tabular}{| l | p{0.6\textwidth} |}
 \hline
@@ -60,29 +61,29 @@ Output condition & The system tells the user that he/she has been successfully r
 \hline
 
 Exception &  \begin{itemize}
-	\item Some exceptions are handled notifying the user of the problem and reloading the registration form (step~\ref{load-registration} of Event Flow)
-	
+	\item Some exceptions are handled notifying the user of the problem and reloading the registration form (step~\ref{load-registration} of Event Flow).
+
 	The requirements that generate these kind of exceptions are:
 	\ref{f-sameInfo},    %The username/e-mail is already use by someone else.
 	\ref{f-usrn},       %The username doesn't respect the restrictions.
 	\ref{f-psw1},     %The password doesn't respect the restrictions.
 	\ref{f-psw2}.    %The password entered the second time is different from the first one.
-	\item Some exceptions are handled aborting the registration (all user's data is deleted) 
-	
+	\item Some exceptions are handled aborting the registration (all user's data is deleted).
+
 	The requirements that generate these kind of exceptions are:
 	\ref{f-dataTreat},   %The user doesn't authorises the data treatment.
 	\ref{f-confirm}.   %The user doesn't confirms the registration clicking on the link received via e-mail.
 	\end{itemize}
-
-
  \\
 \hline
 \end{tabular}
 \end{center}
-
+\caption{Use case for user registration.}
+\label{usecase-registration}
+\end{table}
 
 \subsubsection{Statechart}
-The statechart is illustrated in figure \ref{fig:statechart-registration}.
+The statechart of the registration process is illustrated in figure \ref{fig:statechart-registration}.
 \begin{figure}
 \includegraphics[width=\textwidth]{diagrams/statechart_registration.pdf}
 \caption{Statechart of the registration process.}
