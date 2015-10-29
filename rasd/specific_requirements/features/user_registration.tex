@@ -35,6 +35,51 @@ Bob checks the mailbox, opens the mail and clicks on "confirm e-mail".
 
 The system informs Bob that the registration has ended with success.
 
+
+
+\subsubsection{Use case}
+\begin{center}
+\begin{tabular}{| l | p{0.6\textwidth} |}
+\hline
+Actor & Unregistered user, Registered passenger or taxi driver \\
+\hline
+Goal & Goal ~\ref{g-login}
+\\
+\hline
+Input condition & None  \\
+\hline
+Event Flow & \begin{enumerate}
+	\item The user selects taxi driver or passenger registration.
+	\item The registration form is loaded and the user compiles it.
+	\item The user authorises the personal data treatment.
+	\item The user reads the e-mail received by myTaxiService and clicks on the link to confirm the registration.
+	\end{enumerate}
+\\
+\hline
+Output condition & The user has been successfully registered, now he or she can login and request a taxi as a passenger or work through myTaxiService as a taxi driver . \\
+\hline
+
+Exception &  An exception occurs when one of these is not respected: 
+
+	\begin{itemize}
+	\item ~\ref{f-sameInfo}    %The username/e-mail is already use by someone else.
+	\item ~\ref{f-usrn}       %The username doesn't respect the restrictions.
+	\item ~\ref{f-psw1}     %The password doesn't respect the restrictions.
+	\item ~\ref{f-psw2}    %The password entered the second time is different from the first one.
+	\end{itemize}
+	These exceptions are handled advising the user and reloading the registration form (2 of Event Flow)
+	\begin{itemize}
+	\item ~\ref{f-dataTreat}   %The user doesn't authorises the data treatment.
+	\item ~\ref{f-confirm}   %The user doesn't confirms the registration clicking on the link received via e-mail.
+	\end{itemize}
+	These are handled deleting all user's registration info: the registration ends failing.
+	
+ \\
+\hline
+\end{tabular}
+\end{center}
+
+
 \subsubsection{Statechart}
 The statechart is illustrated in figure \ref{fig:statechart-registration}.
 \begin{figure}
@@ -69,17 +114,17 @@ The statechart is illustrated in figure \ref{fig:statechart-registration}.
         \item taxi license ID
         \item taxi number-plate
     \end{itemize}
-    \item There mustn't be another user already subscribed with the same username or e-mail.
-    \item The username must match the regular expression\\``\texttt{[a-zA-Z][a-zA-Z0-9]\{2,20\}}''
-    \item The system accepts a password that contains at least one number and one capital letter and that has a minimum length of eight characters.
+    \item There mustn't be another user already subscribed with the same username or e-mail. \label{f-sameInfo}
+    \item The username must match the regular expression\\``\texttt{[a-zA-Z][a-zA-Z0-9]\{2,20\}}''    \label{f-usrn}
+    \item The system accepts a password that contains at least one number and one capital letter and that has a minimum length of eight characters.  \label{f-psw1}
     \item The system must ask for the password twice.
-    \item The system accepts the password only if the same one is entered identically both times.
-    \item If the personal data treatment is not authorised, the subscription is canceled.
+    \item The system accepts the password only if the same one is entered identically both times. \label{f-psw2}
+    \item If the personal data treatment is not authorised, the subscription is canceled. \label{f-dataTreat}
     \item The system must allow the user to abort the registration process at any time.
     \item Email confirmation process:
     \begin{enumerate}
     \item The subscription ends successfully when the user clicks on the link in the confirmation e-mail.
     \item After two days without any answer, the systems sends another confirmation e-mail.
-    \item After seven days user's registration info are deleted and the user may re-try the registration process.
+    \item After seven days user's registration info are deleted and the user may re-try the registration process.  \label{f-confirm}
    \end{enumerate}
 \end{enumerate}
