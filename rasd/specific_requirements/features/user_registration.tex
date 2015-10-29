@@ -59,17 +59,21 @@ Event Flow & \begin{enumerate}
 Output condition & The system tells the user that he/she has been successfully registered. \\
 \hline
 
-Exception &  The following requirements may generate exceptions:
+Exception &  \begin{itemize}
+	\item Some exceptions are handled notifying the user of the problem and reloading the registration form (step~\ref{load-registration} of Event Flow)
+	
+	The requirements that generate these kind of exceptions are:
 	\ref{f-sameInfo},    %The username/e-mail is already use by someone else.
 	\ref{f-usrn},       %The username doesn't respect the restrictions.
 	\ref{f-psw1},     %The password doesn't respect the restrictions.
 	\ref{f-psw2}.    %The password entered the second time is different from the first one.
+	\item Some exceptions are handled aborting the registration (all user's data is deleted) 
+	
+	The requirements that generate these kind of exceptions are:
+	\ref{f-dataTreat},   %The user doesn't authorises the data treatment.
+	\ref{f-confirm}.   %The user doesn't confirms the registration clicking on the link received via e-mail.
+	\end{itemize}
 
-These exceptions are handled noticing the user of the problem and reloading the registration form (step~\ref{load-registration} of Event Flow):
-\ref{f-dataTreat},   %The user doesn't authorises the data treatment.
-\ref{f-confirm}.   %The user doesn't confirms the registration clicking on the link received via e-mail.
-
-If the registration is aborted or fails, all user's data is deleted.
 
  \\
 \hline
