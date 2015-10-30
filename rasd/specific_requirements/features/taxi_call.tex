@@ -7,13 +7,13 @@ After the request, the passenger is informed by the system about the waiting tim
 Requests shall be forwarded to available and active taxi drivers in the same zone of the passengers. Taxi drivers shall be able to accept or reject an incoming request.
 
 \subsubsection{Scenario 1}
-Alice needs a taxi. She opens the myTaxiService mobile app on her phone, and selects "Call a taxi". She authorizes the application to access her GPS data, checks on the map that her position is correct and confirms the request.
+Alice needs a taxi. She opens the myTaxiService mobile app on her phone, and selects ``Call a taxi''. She authorizes the application to access her GPS data, checks on the map that her position is correct and confirms the request.
 
 The system forwards the request to Bob, the first taxi driver in Alice's taxi zone. Bob decides to accept the call: a map of Alice's position gets displayed on Bob's phone and the navigator starts.
 
 The position of Bob is transmitted from Bob's phone to the system, which computes the ETA for the incoming taxi and shows it to Alice. Bob arrives and picks Alice up. Then he confirms that the passenger is on board.
 
-When the ride is over, Bob taps on "Finish ride" so that the system knows that Bob is ready for another ride.
+When the ride is over, Bob taps on ``Finish ride'' so that the system knows that Bob is ready for another ride.
 
 \subsubsection{Scenario 2}
 Luke needs a taxi. He requests it and the request is forwarded to the first taxi driver in queue, Chewbacca. Chewbacca decides to reject the incoming request, so the system puts him at the bottom of the queue.
@@ -86,7 +86,7 @@ The response sequence is illustrated in figures \ref{fig:sequence-taxicall} and 
 	\item If there's no taxi driver in the passenger's taxi zone, the request is refused and en error message is displayed to the passenger.
 	\item When a taxi driver receives a request, the mobile application shows a notification and emits a sound.
 	\item When receiving a request, the taxi driver is presented with the possibility of accepting or denying it.
-	\item After having accepted a request, the taxi driver is automatically marked as "busy".
+	\item After having accepted a request, the taxi driver is automatically marked as ``busy''.
 	\item After having accepted a request, the mobile application shows to the taxi driver a map with the location of the passenger, and automatically starts navigation instructions on the app preferred by the taxi driver (Google Maps, Waze, TomTom, etc.).
 	\item After the taxi request is accepted, the app shows the passenger a map with the current position of the incoming taxi.
 	\item After the taxi request is accepted, the passenger is informed about the ETA for the incoming taxi.
@@ -94,4 +94,6 @@ The response sequence is illustrated in figures \ref{fig:sequence-taxicall} and 
 	\item The ETA for the incoming taxi is computed by the system considering the distance from the taxi to the passenger and the current traffic conditions.
 	\item When the taxi is within 20 m from the passenger, the app asks the taxi driver to confirm that the passenger is aboard.
 	\item When the taxi driver confirms that the passenger is aboard, the taxi request is marked as fulfilled and the system stops to show the waiting time to the passenger.
+	\item The system must prevent the passenger to call a taxi while he/she is already waiting for one.
+	\item The system must prevent the passenger to call a taxi while he/she is already travelling in a taxi.
 \end{enumerate}

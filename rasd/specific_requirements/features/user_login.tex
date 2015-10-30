@@ -6,15 +6,15 @@ The system requires the user to provide nickname and password, or e-mail and pas
 If the user doesn't remember his password, a new one is sent to the user's e-mail address. If the user clicks on the link in the e-mail, the password is reset and, as soon as he logs in, the system asks him to choose a new one. 
 
 \subsubsection{Scenario 1}
-Bob opens the home page of myTaxiService on the web and clicks on "login". 
-he's asked to enter the nickname or the e-mail and the password. He doesn't recall his nickname, so he enters the registration e-mail and the password. He clicks on "enter". 
+Bob opens the home page of myTaxiService on the web and clicks on ``login''. 
+he's asked to enter the nickname or the e-mail and the password. He doesn't recall his nickname, so he enters the registration e-mail and the password. He clicks on ``enter''. 
 Everything is correct so he can access to the services as a logged user.
 
 \subsubsection{Scenario 2}
-Alice opens the home of myTaxiService page on web and clicks on "login".  
+Alice opens the home of myTaxiService page on web and clicks on ``login''.  
 She is asked to enter the nickname or e-mail and the password.
-She enters nickname and password and selects "enter". However, the entered password isn't correct so the system asks her to re-enter it. 
-After some failed attempts she select "password forgot".
+She enters nickname and password and selects ``enter''. However, the entered password isn't correct so the system asks her to re-enter it. 
+After some failed attempts she select ``password forgot''.
 The system sends to her a new password via e-mail. She enters that one and the access is permitted, but before successfully ending the login the system requires her to change the password immediately. 
 Alice changes her password and finally logs in to the services.
 
@@ -35,7 +35,7 @@ Goal & Goal ~\ref{g-login}
 Input condition & The user, already registered, chooses to login.  \\
 \hline
 Event Flow & \begin{enumerate}
-	\item The user selects "login".
+	\item The user selects ``login''.
 	\item The login page is shown. \label{load-login}
 	\item The user enters his/her credentials.
 	\end{enumerate}
@@ -76,7 +76,7 @@ The response sequence is illustrated in figure \ref{fig:sequence-login}.
     	\item The inserted nickname corresponds to a username of an existing user, or the inserted e-mail corresponds to the registration e-mail of an existing user.
 	\item The inserted password is the same of that of the user identified above.
     \end{enumerate}
-    \item The system sends an e-mail after the "password forgot" button is selected.
+    \item The system sends an e-mail after the ``password forgot'' button is selected.
     \item The system reset the user's password only after the link on e-mail is clicked.
     \item If the password entered is wrong a new attempt can be made only 10 seconds later.
   

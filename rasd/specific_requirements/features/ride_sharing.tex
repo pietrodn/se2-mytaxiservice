@@ -11,14 +11,14 @@ The passenger can choose to join one of the pending rides or to refuse the propo
 
 In the first case the system informs the owner of the ride. The new passenger has to go to the meeting point with the owner of the ride in time. If he/she is not able to do that the taxi does not wait for him/her.
 
-In the second case the system allocates the taxi (\ref{taxi-availability}) and applies the standard procedure \ref{standard-call}.  The user becomes the owner of the ride. 
+In the second case the system allocates the taxi (\ref{taxi-availability}) and applies the standard procedure \ref{standard-call}.  The user becomes the owner of the ride.
 If there is another user who wants to share the ride with compatible options, the system allows it and redirects this last user to the meeting point with the owner who is informed same as the taxi driver.
 
 \subsubsection{Scenario 1}
 Batman needs a taxi and decides to enable the sharing mode on his cell phone. The app requires also the destination point of Batman's travel.
- 
+
 When Batman submits the form, the system matches the path of Batman's ride with every pending ride started from Batman's area. It finds only one compatible ride and sends it to Batman.
- 
+
 Batman finds that it is Joker's pending ride and decides to refuse the share. Then the system allocates a new taxi.
 
 A new user, Robin, is in Batman's area and wants to take a taxi. He decides to enable the sharing function and the system proposes him Batman's and Joker's ones. He chooses Batman's: the system, which has already communicated location and time to Robin, notifies Batman and the taxi driver that there is an additional passenger.
@@ -65,12 +65,6 @@ The response sequence is illustrated in figure \ref{fig:sequence-sharing}
 	\includegraphics[width=\textwidth]{diagrams/ride_sharing.pdf}
 	\caption{Sequence diagram of a ride sharing.}
 	\label{fig:sequence-sharing}
-\end{figure}
-
-\begin{figure}
-	\includegraphics[width=\textwidth]{diagrams/sequence_taxicall_refused.pdf}
-	\caption{Sequence diagram of a taxi call when the first taxi driver to receive the request refuses the call and the second one accepts it.}
-	\label{fig:sequence-taxicall-refused}
 \end{figure}
 
 \subsubsection{Associated functional requirements}

@@ -1,9 +1,9 @@
 \label{taxi-availability}
 \subsubsection{Purpose}
 
-When a taxi driver is ready for a ride, he/she shall be able to notify the system using his mobile phone. With the app he/she can change his status from "not in service" to "in service".
+When a taxi driver is ready for a ride, he/she shall be able to notify the system using his mobile phone. With the app he/she can change his status from ``not in service'' to ``in service''.
 
-When the system receives the status update from the taxi driver, it inserts him/her in the right queue for his/her taxi zone using the information from the taxi GPS if the new status is "in service", or it removes him/her from the queue if the new status is "not in service".
+When the system receives the status update from the taxi driver, it inserts him/her in the right queue for his/her taxi zone using the information from the taxi GPS if the new status is ``in service'', or it removes him/her from the queue if the new status is ``not in service''.
 
 After a ride, a taxi driver has to notify, using the dedicated section of the app, that the ride is over. The system shall reinsert the taxi into the right queue.
 %TODO define FIFO
@@ -13,7 +13,7 @@ The queues are FIFO and when a taxi driver refuses a ride, the system moves the 
 When a taxi driver accepts a ride, the system marks the taxi as busy and removes it from the top of the queue.
 
 \subsubsection{Scenario 1}
-Ernie gets in his taxi, ready to start his working day. He takes out his phone from his pocket and after logging in he changes his status in "in service".
+Ernie gets in his taxi, ready to start his working day. He takes out his phone from his pocket and after logging in he changes his status in ``in service''.
 
 The system acquires the changing and retrieves the GPS position of Ernie's taxi. It analyses the data and puts the taxi in the right queue.
 
@@ -28,17 +28,17 @@ The use case for a taxi availability handling is shown in~\autoref{usecase-taxia
 
 \begin{table}
 \begin{center}
-\begin{tabular}{| l | p{0.6\textwidth} |}
+\begin{tabular}{| l | p{0.7\textwidth} |}
 \hline
 Actor & Taxi driver \\
 \hline
 Goal & Goal~\ref{g-notify}
 \\
 \hline
-Input condition & Taxi drivers are logged in and change his status to "in service".  \\
+Input condition & Taxi drivers are logged in and change his status to ``in service''.  \\
 \hline
 Event Flow & \begin{enumerate}
-	\item The taxi driver changes his status to "in service"
+	\item The taxi driver changes his status to ``in service''
 	\item The system enqueues the taxi in the right queue using GPS informations
 	\item A new request incomes
 	\item The system chooses the first taxi in the queue and sends the request for a ride
@@ -48,12 +48,12 @@ Event Flow & \begin{enumerate}
 	\item The taxi driver notifies that the passenger is on board
 	\item When the ride is completed, the taxi driver notifies it to the system
 	\item The system enqueues the taxi in the right queue using GPS informations
-	\item The taxi driver changes his status to "not in service"
+	\item The taxi driver changes his status to ``not in service''
 	\item The system dequeues the taxi
 \end{enumerate}
 \\
 \hline
-Output condition & The driver changes his status to "not in service". \\
+Output condition & The driver changes his status to ``not in service''. \\
 \hline
 Exception & No taxi is available in the passenger's zone. \\
 \hline
@@ -74,7 +74,7 @@ The response sequence associated with this functionality is shown in figure~\ref
 \subsubsection{Associated functional requirements}
 \begin{enumerate}
 \item The system knows the information about the GPS installed on the taxi.
-\item The mobile app has to offer to the taxi driver the "change status" function and the "ride complete" function.
+\item The mobile app has to offer to the taxi driver the ``change status'' function and the ``ride complete'' function.
 \item The system must notify the taxi when a request is incoming.
 \item The system inserts the taxi in the right queue and changes it if the taxi changes area.
 \item For every new request, the system chooses the taxi driver on the top of the queue.
