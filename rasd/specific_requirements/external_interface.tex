@@ -1,5 +1,6 @@
 \subsection{User interfaces}
 
+The user interfaces must satisfy the following UI constraints:
 \begin{itemize}
     \item Web application
         \begin{enumerate}
@@ -15,18 +16,34 @@
      	\begin{enumerate}
 		\item The server back-end must be configurable by means of a configuration text file.
 	\end{enumerate}
-	\item The clients must have an UI that is accessible to disabled people.
-	\item All clients must show to the logged user a dashboard which allows access to all functionalities.
+    \item Common to all interfaces:
+    \begin{enumerate}
+        \item The clients must have an UI that is accessible to disabled people.
+        \item The interface must offer the possibility to choose the language used at all times.
+        \item The first screen must ask the user to login in order to begin operations.
+        \item A dashboard with links to every function shall be displayed in the home page in order to show the user the capabilities of the system and allow him to save time.
+        \item The dashboard must be linked in every screen.
+        \item The top bar must show the last taxi service called, with a link to a screen which displays the reserved taxi history.
+        \item The compilation of data fields has to be made with suitable controls (multiple choice, date picker, text field, \ldots) in order to simplify the user's experience of the app.
+        \item UI controls and views must be suitable for the input interface and the screen size.
+    \end{enumerate}
 \end{itemize}
 
 \subsection{Hardware interfaces}
 
-The system does not support any hardware interfaces.
+The client app must be able to access the GPS data of the user's phone.
+It has to deal with security dialogs, authorization and platform-specific code.
 
 \subsection{Software interfaces}
 The system is built in a modular fashion: the core part of the system exposes public APIs allowing the building of new interfaces and modules.
 
 For a detailed specification of the programmatic interfaces, see \autoref{sec:api}.
+
+The required software products used by the back-end are:
+\begin{itemize}
+\item MySQL 5.7   \url{http://dev.mysql.com}
+\item Java SE 8   \url{http://java.com}
+\end{itemize}
 
 \subsection{Communications interfaces}
 The clients communicate with the server via HTTPS requests (port 443).
