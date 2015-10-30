@@ -1,10 +1,24 @@
 \documentclass[12pt, a4paper]{report}
 \usepackage[utf8]{inputenc}
+
 % hyperref
 \usepackage[bookmarks, colorlinks, breaklinks]{hyperref}  % PDF hyperlinks, with coloured links
 \hypersetup{linkcolor=black, citecolor=black, filecolor=black, urlcolor=black} % black links, for printed output
+
+% Support for the inclusion of figures
 \usepackage{graphicx}
+
+% "Contents" and "bibliography" are included in the summary.
 \usepackage{tocbibind}
+
+% Packages and configuration for Alloy code listing
+\usepackage{listings}
+\usepackage{alloy}
+\usepackage{color}
+\usepackage{courier}
+\definecolor{alloy-keyword}{rgb}{0.23, 0.23, 0.7}
+\definecolor{alloy-comment}{rgb}{0.18, 0.64, 0.18}
+\definecolor{alloy-string}{rgb}{0.71, 0.18, 0.71}
 
 \def\chapterautorefname{Chapter}
 
@@ -80,6 +94,9 @@
 
 \section{Other requirements}
 \input{specific_requirements/other_requirements.tex}
+
+\section{Alloy}
+\input{alloy/alloy.tex}
 
 \input{bibliography.tex}
 \end{document}
