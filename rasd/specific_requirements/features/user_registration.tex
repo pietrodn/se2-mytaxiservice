@@ -73,6 +73,7 @@ Exception &  \begin{itemize}
 
 	The requirements that generate these kind of exceptions are:
 	\ref{f-sameInfo},    %The username/e-mail is already use by someone else.
+	\ref{f-sameTaxi},   %The taxi license or number plate is already use by someone else.
 	\ref{f-usrn},       %The username doesn't respect the restrictions.
 	\ref{f-psw1},     %The password doesn't respect the restrictions.
 	\ref{f-psw2}.    %The password entered the second time is different from the first one.
@@ -93,9 +94,11 @@ Exception &  \begin{itemize}
 \subsubsection{Statechart}
 The statechart of the registration process is illustrated in figure \ref{fig:statechart-registration}.
 \begin{figure}
-\includegraphics[width=\textwidth]{diagrams/statechart_registration.pdf}
+\begin{center}
+\includegraphics[width=0.7\textwidth]{diagrams/statechart_registration.pdf}
 \caption{Statechart of the registration process.}
 \label{fig:statechart-registration}
+\end{center}
 \end{figure}
 
 \subsubsection{Associated functional requirements}
@@ -125,6 +128,7 @@ The statechart of the registration process is illustrated in figure \ref{fig:sta
         \item taxi number-plate
     \end{itemize}
     \item There mustn't be another user already subscribed with the same username or e-mail. \label{f-sameInfo}
+      \item There mustn't be another taxi driver already subscribed with the same taxi license or taxi number plate. \label{f-sameTaxi}
     \item The username must match the regular expression\\``\texttt{[a-zA-Z][a-zA-Z0-9]\{2,20\}}''    \label{f-usrn}
     \item The system accepts a password that contains at least one number and one capital letter and that has a minimum length of eight characters.  \label{f-psw1}
     \item The system must ask for the password twice.
