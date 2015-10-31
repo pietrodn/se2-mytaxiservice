@@ -16,11 +16,11 @@ Ernie gets in his taxi, ready to start his working day. He takes out his phone f
 
 The system acquires the changing and retrieves the GPS position of Ernie's taxi. It analyses the data and puts the taxi in the right queue.
 
-After thirty minutes the system has an incoming request from the Ernie's zone. The first taxi on the top of the queue is Ernie's. The system sends a notification to Ernie and waits for a reply.
+After thirty minutes the system has an incoming request from Ernie's zone. The first taxi on the top of the queue is Ernie's. The system sends a notification to Ernie and waits for a reply.
 
 Ernie receives the request and accepts the meeting. The system pops Ernie from the top of the queue and marks it as busy.
 
-When Ernie accomplishes the ride, he notifies the system, which retrieves the new GPS position and inserts Ernie's in the queue.
+When Ernie accomplishes the ride, he notifies the system, which retrieves the new GPS position and inserts Ernie's taxi in the queue.
 
 \subsubsection{Use case}
 The use case for a taxi availability handling is shown in~\autoref{usecase-taxiavailability}.
@@ -34,11 +34,11 @@ Actor & Taxi driver \\
 Goal & Goal~\ref{g-notify}
 \\
 \hline
-Input condition & Taxi drivers are logged in and change his status to ``in service''.  \\
+Input condition & Taxi drivers are logged in and change their status to ``in service''.  \\
 \hline
 Event Flow & \begin{enumerate}
 	\item The taxi driver changes his status to ``in service''
-	\item The system enqueues the taxi in the right queue using GPS informations
+	\item The system enqueues the taxi in the right queue using GPS information
 	\item A new request incomes
 	\item The system chooses the first taxi in the queue and sends the request for a ride
 	\item The taxi driver can either accept or deny the request; if he denies it, the request is forwarded to the next taxi driver in the queue, and so on.
@@ -46,7 +46,7 @@ Event Flow & \begin{enumerate}
 	\item The taxi driver drives to the location
 	\item The taxi driver notifies that the passenger is on board
 	\item When the ride is completed, the taxi driver notifies it to the system
-	\item The system enqueues the taxi in the right queue using GPS informations
+	\item The system enqueues the taxi in the right queue using GPS information
 	\item The taxi driver changes his status to ``not in service''
 	\item The system dequeues the taxi
 \end{enumerate}
@@ -77,7 +77,7 @@ The response sequence associated with this functionality is shown in figure~\ref
 \item The system must notify the taxi when a request is incoming.
 \item The system inserts the taxi in the right queue and changes it if the taxi changes area.
 \item For every new request, the system chooses the taxi driver on the top of the queue.
-\item The taxi driver has to reply in one minute to the request, else the ride is automatically refused.
+\item The taxi driver has to reply in one minute to the request, otherwise the ride is automatically refused.
 \item The system manages the queues using the FIFO policy.
 \item When busy, the taxi driver is presented by the mobile application with the option to end the ride.
 \item When the taxi driver ends the ride, he or she is marked as available and gets re-inserted in the taxi queue of the taxi zone where he or she is located.

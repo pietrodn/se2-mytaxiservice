@@ -11,7 +11,7 @@ Alice needs a taxi. She opens the myTaxiService mobile app on her phone, and sel
 
 The system forwards the request to Bob, the first taxi driver in Alice's taxi zone. Bob decides to accept the call: a map of Alice's position gets displayed on Bob's phone and the navigator starts.
 
-The position of Bob is transmitted from Bob's phone to the system, which computes the ETA for the incoming taxi and shows it to Alice. Bob arrives and picks Alice up. Then he confirms that the passenger is on board.
+Bob's position is transmitted from his phone to the system, which computes the ETA for the incoming taxi and shows it to Alice. Bob arrives and picks Alice up. Then he confirms that the passenger is on board.
 
 When the ride is over, Bob taps on ``Finish ride'' so that the system knows that Bob is ready for another ride.
 
@@ -101,7 +101,7 @@ The response sequence is illustrated in figures \ref{fig:sequence-taxicall} and 
 	\item The ETA for the incoming taxi is fetched from the server every 90 s.
 	\item The ETA for the incoming taxi is computed by the system considering the distance from the taxi to the passenger and the current traffic conditions.
 	\item When the taxi is within 20 m from the passenger, the app asks the taxi driver to confirm that the passenger is aboard.
-	\item When the taxi driver confirms that the passenger is aboard, the taxi request is marked as fulfilled and the system stops to show the waiting time to the passenger.
+	\item When the taxi driver confirms that the passenger is aboard, the taxi request is marked as fulfilled and the system stops showing the waiting time to the passenger.
 	\item The system must prevent the passenger to call a taxi while he/she is already waiting for one.
 	\item The system must prevent the passenger to call a taxi while he/she is already travelling in a taxi.
 \end{enumerate}
