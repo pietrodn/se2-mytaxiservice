@@ -6,7 +6,6 @@ When a taxi driver is ready for a ride, he/she shall be able to notify the syste
 When the system receives the status update from the taxi driver, it inserts him/her in the right queue for his/her taxi zone using the information from the taxi GPS if the new status is ``in service'', or it removes him/her from the queue if the new status is ``not in service''.
 
 After a ride, a taxi driver has to notify, using the dedicated section of the app, that the ride is over. The system shall reinsert the taxi into the right queue.
-%TODO define FIFO
 
 The queues are FIFO and when a taxi driver refuses a ride, the system moves the taxi to the bottom of the same queue.
 
