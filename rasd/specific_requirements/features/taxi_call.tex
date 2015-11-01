@@ -20,6 +20,12 @@ Luke needs a taxi. He requests it and the request is forwarded to the first taxi
 
 Luke's request gets forwarded to the new first taxi driver in queue, Han Solo. Han accepts the request and comes to pick up Luke.
 
+\subsubsection{Scenario 3}
+Luke, Leila and Obi-Wan need a taxi. Luke has myTaxiService app on his phone so he opens it and selects ``Call a taxi''. He checks that position is correct, he enters three as number of seats required and confirms the request.
+
+Luke's request gets forwarded to the first taxi driver in queue, Han Solo, that accepts the request and comes to pick up the group of friends.
+
+
 \begin{figure}
 \begin{center}
 \includegraphics[width=0.4\textwidth]{mockup/TaxiCall.pdf}
@@ -86,7 +92,8 @@ The response sequence is illustrated in figures \ref{fig:sequence-taxicall} and 
 		\item (Web) In the web application the user is always requested to insert a valid address. Then the address is shown on a map and the user can confirm its position.
 	\end{enumerate}
 
-	\item When the system knows the passenger's position, it presents the passenger the option to request a taxi.
+	\item When the system knows the passenger's position, it asks the number of seats required in the taxi.
+	\item Once the system knows the number of seats required, it presents the passenger the option to request a taxi.
 	\item The system must ask the passenger for confirmation before delivering the taxi request.
 	\item After the passenger's confirmation of a taxi request, the request is delivered to the first taxi in the queue for the taxi zone in which the user is located.
 	\item Taxi requests are forwarded only to active taxi drivers which are located in the same taxi zone, who are not currently busy.

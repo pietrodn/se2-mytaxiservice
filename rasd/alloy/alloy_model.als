@@ -25,7 +25,7 @@ sig TaxiDriver extends User {
 	phoneNumber: one String,
 	logs: set TaxiLog,
 	currentLog: one TaxiLog,
-	numberOfSeats: one Integer,
+	numberOfSeats: one Int,
 }{
 	currentLog in logs
 	no log: logs | log.date > currentLog.date
@@ -50,11 +50,21 @@ sig Ride {
 	beginDate: lone Date,
 	endDate: lone Date,
 	taxiDriver: one TaxiDriver,
-	passengers: some Passenger,
+	registeredPassenger: some Passenger,
+// the registered Passenger in a ride is only one, 
+//but in case of taxi sharing the number of registered Passenger increases.
+
+	numOfTravelers: one Int,
+//numOfTravelers represents the number of the 
+//clients on the taxi, registered or not.
+//minimum one passenger has to be registered as 
+//a Passenger in the system in order to rent a taxi
+
 	status: one RideStatus,
 } {
 	beginDate < endDate
-	#passengers <= taxiDriver.numberOfSeats
+	numOfTravelers <= taxiDriver.numberOfSeats
+	#registeredPassenger<=numOfTravelers
 }
 
 sig TaxiLog {
