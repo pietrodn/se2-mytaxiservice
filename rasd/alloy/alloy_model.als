@@ -25,6 +25,7 @@ sig TaxiDriver extends User {
 	phoneNumber: one String,
 	logs: set TaxiLog,
 	currentLog: one TaxiLog,
+	numberOfSeats: one Integer,
 }{
 	currentLog in logs
 	no log: logs | log.date > currentLog.date
@@ -53,6 +54,7 @@ sig Ride {
 	status: one RideStatus,
 } {
 	beginDate < endDate
+	#passengers <= taxiDriver.numberOfSeats
 }
 
 sig TaxiLog {

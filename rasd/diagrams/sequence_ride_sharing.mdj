@@ -33,7 +33,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFQtcEnZsetg40="
 									},
-									"name": "rideSharing",
+									"name": "RideSharing",
 									"visible": true,
 									"defaultDiagram": false,
 									"ownedViews": [
@@ -64,11 +64,11 @@
 													"containerExtending": false,
 													"left": 79,
 													"top": 10,
-													"width": 66,
+													"width": 71,
 													"height": 13,
 													"autoResize": false,
 													"underline": false,
-													"text": "rideSharing",
+													"text": "RideSharing",
 													"horizontalAlignment": 2,
 													"verticalAlignment": 5
 												},
@@ -109,7 +109,7 @@
 											"containerExtending": false,
 											"left": 8,
 											"top": 5,
-											"width": 695,
+											"width": 673,
 											"height": 676,
 											"autoResize": false,
 											"nameLabel": {
@@ -1106,19 +1106,19 @@
 													"showShadow": true,
 													"containerChangeable": false,
 													"containerExtending": false,
-													"left": 29,
+													"left": 104,
 													"top": 163,
-													"width": 162,
+													"width": 169,
 													"height": 13,
 													"autoResize": false,
-													"alpha": 1.5707963267948966,
-													"distance": 10,
+													"alpha": 1.5822890721889233,
+													"distance": 87.00574693662483,
 													"hostEdge": {
 														"$ref": "AAAAAAFQtcNj1siAMsc="
 													},
 													"edgePosition": 1,
 													"underline": false,
-													"text": "2 : calulateCompatibleRides",
+													"text": "2 : calculateCompatibleRides",
 													"horizontalAlignment": 2,
 													"verticalAlignment": 5
 												},
@@ -1953,7 +1953,7 @@
 													},
 													"edgePosition": 1,
 													"underline": false,
-													"text": "7 : sendExtimatedTime",
+													"text": "7 : sendEstimatedTime",
 													"horizontalAlignment": 2,
 													"verticalAlignment": 5
 												},
@@ -2275,13 +2275,13 @@
 													"showShadow": true,
 													"containerChangeable": false,
 													"containerExtending": false,
-													"left": 26,
+													"left": 112,
 													"top": 435,
 													"width": 169,
 													"height": 13,
 													"autoResize": false,
-													"alpha": 1.5707963267948966,
-													"distance": 10,
+													"alpha": 1.5813212527187117,
+													"distance": 95.00526301210897,
 													"hostEdge": {
 														"$ref": "AAAAAAFQtceA9MkqXvo="
 													},
@@ -3114,7 +3114,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFQtcEnZsetg40="
 									},
-									"name": "calulateCompatibleRides",
+									"name": "calculateCompatibleRides",
 									"source": {
 										"$ref": "AAAAAAFQtcGKyse9q00="
 									},
@@ -3199,7 +3199,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFQtcEnZsetg40="
 									},
-									"name": "sendExtimatedTime",
+									"name": "sendEstimatedTime",
 									"source": {
 										"$ref": "AAAAAAFQtcGKyse9q00="
 									},
@@ -3381,6 +3381,7 @@
 							"visibility": "public",
 							"isStatic": false,
 							"isLeaf": false,
+							"type": "",
 							"isReadOnly": false,
 							"isOrdered": false,
 							"isUnique": false,
@@ -3398,6 +3399,7 @@
 							"visibility": "public",
 							"isStatic": false,
 							"isLeaf": false,
+							"type": "",
 							"isReadOnly": false,
 							"isOrdered": false,
 							"isUnique": false,
@@ -3415,6 +3417,7 @@
 							"visibility": "public",
 							"isStatic": false,
 							"isLeaf": false,
+							"type": "",
 							"isReadOnly": false,
 							"isOrdered": false,
 							"isUnique": false,
@@ -3432,6 +3435,7 @@
 							"visibility": "public",
 							"isStatic": false,
 							"isLeaf": false,
+							"type": "",
 							"isReadOnly": false,
 							"isOrdered": false,
 							"isUnique": false,
