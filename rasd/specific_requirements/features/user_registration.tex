@@ -2,26 +2,26 @@
 \subsubsection{Purpose}
 Any user can subscribe through the web application or the mobile app.
 
-In both cases the user has to fill a registration form and must agree to the personal data policy according his/her country privacy laws, otherwise the registration request is denied.
+In both cases the user has to fill a registration form and must agree to the personal data policy according to his/her country privacy laws, otherwise the registration request shall be aborted.
 
-As soon as the user has submitted all the data, the system verifies the consistency of the information and a confirmation mail is sent to check the availability of the user mail-address.  After this last check the registration ends successfully.
+As soon as the user has submitted all the data, the system verifies the consistency of the information and a confirmation mail is sent to check the availability of the email-address.  After this last check the registration ends successfully.
 
-The system has two kind of registration forms (so two kind of registered users) one for passenger and one for taxi drivers.
+The system has two kind of registration forms (for the two kinds of registered users): one for passengers and one for taxi drivers.
 
 The taxi driver registration is more restrictive and requires more user information.
-The system registers a user that claims to be a taxi driver only if he is able to prove it with a currently valid taxi license.
+The system registers a user that claims to be a taxi driver only if he/she is able to prove it with a currently valid taxi license.
 
 
 \subsubsection{Scenario 1}
 Alice, a normal citizen without a car, has just discovered the existence of myTaxiService web application and she wants to use it.
-She opens the home of myTaxiService page on web and clicks on ``passenger registration''.
+She opens the homepage of myTaxiService on the website and clicks on ``passenger registration''.
 
 She gives all the information required and authorises the personal data treatment.
 
 The system verifies the submitted information and sends a confirmation mail.
 Alice checks the mailbox, opens the mail and clicks on the ``confirm e-mail'' link.
 
-The system informs Alice that the registration has ended with success.
+The system informs Alice that the registration succeeded.
 
 \subsubsection{Scenario 2}
 Bob is a taxi driver that wants to subscribe to myTaxiService application.
@@ -128,7 +128,7 @@ The statechart of the registration process is illustrated in figure \ref{fig:sta
         \item taxi number-plate
     \end{itemize}
     \item There mustn't be another user already subscribed with the same username or e-mail. \label{f-sameInfo}
-      \item There mustn't be another taxi driver already subscribed with the same taxi license or taxi number plate. \label{f-sameTaxi}
+    \item There mustn't be another taxi driver already subscribed with the same taxi license or taxi number plate. \label{f-sameTaxi}
     \item The username must match the regular expression\\``\texttt{[a-zA-Z][a-zA-Z0-9]\{2,20\}}''    \label{f-usrn}
     \item The system accepts a password that contains at least one number and one capital letter and that has a minimum length of eight characters.  \label{f-psw1}
     \item The system must ask for the password twice.
@@ -137,8 +137,8 @@ The statechart of the registration process is illustrated in figure \ref{fig:sta
     \item The system must allow the user to abort the registration process at any time.
     \item Email confirmation process:
     \begin{enumerate}
-    \item The subscription ends successfully when the user clicks on the link in the confirmation e-mail.
-    \item After two days without an answer, the systems sends another confirmation e-mail.
-    \item After seven days, the user's registration info are deleted and the user may re-try the registration process.  \label{f-confirm}
-   \end{enumerate}
+	    \item The subscription ends successfully when the user clicks on the link in the confirmation e-mail.
+	    \item After two days without an answer, the systems sends another confirmation e-mail.
+	    \item After seven days, the user's registration info are deleted and the user may re-try the registration process.  \label{f-confirm}
+	\end{enumerate}
 \end{enumerate}
