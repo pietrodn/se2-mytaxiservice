@@ -5,21 +5,20 @@ open util/boolean
 
 // Dates are expressed as the number of seconds from 1970-01-01
 
+// ---- SIGNATURES ----
+
 abstract sig User {
-	username: one String,
-	email: one String,
-	password: one String,
-	name: one String,
-	surname: one String,
-	address: lone String,
-	phoneNumber: lone String,
+	username: one Stringa,
+	email: one Stringa,
+	password: one Stringa,
+	name: one Stringa,
+	surname: one Stringa,
+	address: lone Stringa,
+	phoneNumber: lone Stringa,
 	emailConfirmed: one Bool,
 }
 
-fact UniqueUsers {
-	no u1, u2: User | (u1 != u2 and
-		(u1.username = u2.username or u1.email = u2.email))
-}
+sig Stringa {}
 
 sig Passenger extends User {
 	currentPosition: lone Position,
@@ -27,7 +26,7 @@ sig Passenger extends User {
 
 sig TaxiDriver extends User {
 	licenseID: one Int,
-	taxiNumberPlate: one String,
+	taxiNumberPlate: one Stringa,
 	logs: set TaxiLog,
 	currentLog: lone TaxiLog,
 	numberOfSeats: one Int,
@@ -37,18 +36,17 @@ sig TaxiDriver extends User {
 
 	#address = 1
 	#phoneNumber = 1
+
+	licenseID > 0
+	numberOfSeats > 0
 }
 
-fact UniqueTaxiDrivers {
-	no u1, u2: TaxiDriver | (u1 != u2 and
-		(u1.licenseID = u2.licenseID
-			or u1.taxiNumberPlate = u2.taxiNumberPlate))
-}
+sig Float {}
 
 // GPS position
 sig Position {
-	latitude: one Int,
-	longitude: one Int,
+	latitude: one Float,
+	longitude: one Float,
 }
 
 // Signature representing a generic ride
@@ -60,7 +58,7 @@ sig Ride {
 	beginDate: lone Int,
 	endDate: lone Int,
 	taxiDriver: one TaxiDriver,
-	
+
 	// passengers who booked a taxi
 	registeredPassengers: some Passenger,
 
@@ -70,9 +68,10 @@ sig Ride {
 	status: one RideStatus,
 	isShared: one Bool,
 } {
+	beginDate > 0
 	beginDate < endDate
 	numOfTravelers <= taxiDriver.numberOfSeats
-	#registeredPassengers<=numOfTravelers
+	#registeredPassengers <= numOfTravelers
 	(#registeredPassengers > 1) implies (isShared = True)
 	(#destination > 1) implies (isShared = True)
 	#destination <= #registeredPassengers
@@ -82,14 +81,8 @@ sig TaxiLog {
 	date: one Int,
 	position: one Position,
 	status: one TaxiStatus,
-}
-
-fact UniqueTaxiLog {
-	// There should not be two taxi logs
-	// for the same taxi driver in the same date.
-	no tl1, tl2: TaxiLog, td: TaxiDriver |
-		tl1 in td.logs and tl2 in td.logs
-		and tl1.date = tl2.date and tl1 != tl2
+} {
+	date > 0
 }
 
 abstract sig TaxiStatus {}
@@ -105,6 +98,29 @@ sig COMPLETED extends RideStatus {}
 sig TaxiZone {
 	number: one Int,
 	queue: one TaxiQueue
+} {
+	number > 0
+}
+
+sig TaxiQueue {
+	zone: one TaxiZone,
+	drivers: set TaxiDriver,
+}
+
+// ---- FACTS ----
+
+fact UniqueTaxiDrivers {
+	no u1, u2: TaxiDriver | (u1 != u2 and
+		(u1.licenseID = u2.licenseID
+			or u1.taxiNumberPlate = u2.taxiNumberPlate))
+}
+
+fact UniqueTaxiLog {
+	// There should not be two taxi logs
+	// for the same taxi driver in the same date.
+	no tl1, tl2: TaxiLog, td: TaxiDriver |
+		tl1 in td.logs and tl2 in td.logs
+		and tl1.date = tl2.date and tl1 != tl2
 }
 
 fact UniqueTaxiZone {
@@ -112,9 +128,9 @@ fact UniqueTaxiZone {
 	queue = ~zone
 }
 
-sig TaxiQueue {
-	zone: one TaxiZone,
-	drivers: set TaxiDriver,
+fact UniqueUsers {
+	no u1, u2: User | (u1 != u2 and
+		(u1.username = u2.username or u1.email = u2.email))
 }
 
 // If a taxi driver participates is a ride,
@@ -155,8 +171,21 @@ fact OneQueuePerDriver {
 	all t: TaxiDriver | (lone q: TaxiQueue | t in q.drivers)
 }
 
+// ---- ASSERTIONS ----
+
 assert A {
 	all t: TaxiDriver | (lone q: TaxiQueue | t in q.drivers)
 }
+//check A
 
-check A for 3
+// ---- PREDICATES ----
+
+pred show(){
+	#Passenger > 1
+	#Ride > 1
+	#TaxiDriver > 1
+	#Position > 1
+	#{x: Ride | x.isShared = True} > 1
+}
+
+run show for 4
