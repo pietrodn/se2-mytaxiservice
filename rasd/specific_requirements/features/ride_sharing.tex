@@ -9,7 +9,7 @@ With an adequate algorithm it can propose every feasible sharing solution to the
 The first user who reserves a taxi is called the ``owner'' of the ride.
 The passenger can choose to join one of the pending rides or to refuse the proposal, becoming the owner of a new ride.
 
-In the first case the system informs the owner of the ride. The new passenger and eventually his crowd have to go to the meeting point with the owner of the ride in time. If they are not able to do that the taxi does not wait for them.
+In the first case the system informs the owner of the ride. The new passenger and eventually his crowd, i.e. the travelers, have to go to the meeting point with the owner of the ride in time. If they are not able to do that the taxi does not wait for them.
 
 In the second case the system allocates the taxi (\ref{taxi-availability}) and applies the standard procedure (\ref{standard-call}).  The user becomes the owner of the ride.
 If there is another passenger willing to share the same ride, the system allows it and redirects this last user to the meeting point with the owner, who is informed as well as the taxi driver.
@@ -78,7 +78,8 @@ It has to compute the estimated walking time to reach the meeting location and c
 \item The passenger can choose between possible sharing solutions or a new taxi.
 \item The system has to communicate to the taxi driver the presence of a new passenger.
 \item The system must be able to analyse the current sharing situation. % TODO too generic
-\item The total number of passengers must not exceed the number of seats available in each taxi.
+\item The total number of passengers must not exceed the number of seats available in each taxi. 
+%TODO passengers or travelers?
 \item The taxi driver can insert the number of passengers who have been picked up.
 \item After the user chooses to enable the sharing mode, the system has to specify, for every sharing ride, the location and the time.
 \end{enumerate}
