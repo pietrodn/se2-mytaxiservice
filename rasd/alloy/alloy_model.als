@@ -1,5 +1,10 @@
 // Alloy model for myTaxiService system.
 
+// Defines Bool, True, False
+open util/boolean
+
+// Dates are expressed as the number of seconds from 1970-01-01
+
 abstract sig User {
 	username: one String,
 	email: one String,
@@ -8,9 +13,11 @@ abstract sig User {
 	surname: one String,
 	address: lone String,
 	phoneNumber: lone String,
-	emailConfirmed: one Boolean,
-} {
-	no u1, u1: User | (u1 != u2 and
+	emailConfirmed: one Bool,
+}
+
+fact UniqueUsers {
+	no u1, u2: User | (u1 != u2 and
 		(u1.username = u2.username or u1.email = u2.email))
 }
 
@@ -19,26 +26,29 @@ sig Passenger extends User {
 }
 
 sig TaxiDriver extends User {
-	licenseID: one Integer,
+	licenseID: one Int,
 	taxiNumberPlate: one String,
-	address: one String,
-	phoneNumber: one String,
 	logs: set TaxiLog,
-	currentLog: one TaxiLog,
+	currentLog: lone TaxiLog,
 	numberOfSeats: one Int,
 }{
 	currentLog in logs
 	no log: logs | log.date > currentLog.date
 
-	no u1, u1: TaxiDriver | (u1 != u2 and
+	#address = 1
+	#phoneNumber = 1
+}
+
+fact UniqueTaxiDrivers {
+	no u1, u2: TaxiDriver | (u1 != u2 and
 		(u1.licenseID = u2.licenseID
 			or u1.taxiNumberPlate = u2.taxiNumberPlate))
 }
 
 // GPS position
 sig Position {
-	latitude: one Float,
-	longitude: one Float,
+	latitude: one Int,
+	longitude: one Int,
 }
 
 // Signature representing a generic ride
@@ -46,33 +56,37 @@ sig Position {
 // until he leaves the passenger on destination).
 sig Ride {
 	origin: lone Position,
-	destination: one Position,
-	beginDate: lone Date,
-	endDate: lone Date,
+	destination: some Position,
+	beginDate: lone Int,
+	endDate: lone Int,
 	taxiDriver: one TaxiDriver,
-	registeredPassenger: some Passenger,
-// the registered Passenger in a ride is only one, 
-//but in case of taxi sharing the number of registered Passenger increases.
+	
+	// passengers who booked a taxi
+	registeredPassengers: some Passenger,
 
+	// number of people in the taxi
 	numOfTravelers: one Int,
-//numOfTravelers represents the number of the 
-//clients on the taxi, registered or not.
-//minimum one passenger has to be registered as 
-//a Passenger in the system in order to rent a taxi
 
 	status: one RideStatus,
+	isShared: one Bool,
 } {
 	beginDate < endDate
 	numOfTravelers <= taxiDriver.numberOfSeats
-	#registeredPassenger<=numOfTravelers
+	#registeredPassengers<=numOfTravelers
+	(#registeredPassengers > 1) implies (isShared = True)
+	(#destination > 1) implies (isShared = True)
+	#destination <= #registeredPassengers
 }
 
 sig TaxiLog {
-	date: one Date,
+	date: one Int,
 	position: one Position,
 	status: one TaxiStatus,
-} {
-	// There should not be two taxi log for the same taxi driver in the same date.
+}
+
+fact UniqueTaxiLog {
+	// There should not be two taxi logs
+	// for the same taxi driver in the same date.
 	no tl1, tl2: TaxiLog, td: TaxiDriver |
 		tl1 in td.logs and tl2 in td.logs
 		and tl1.date = tl2.date and tl1 != tl2
@@ -89,9 +103,11 @@ sig ON_BOARD extends RideStatus {}
 sig COMPLETED extends RideStatus {}
 
 sig TaxiZone {
-	number: one Integer,
+	number: one Int,
 	queue: one TaxiQueue
-}{
+}
+
+fact UniqueTaxiZone {
 	no z1, z2: TaxiZone | z1 != z2 and z1.number = z2.number
 	queue = ~zone
 }
@@ -113,18 +129,18 @@ fact BusyDuringRide {
 
 // Two rides for the same passenger must not overlap.
 fact OneConcurrentRidePerPassenger {
-	all p: Passenger, r1, r2: Ride | (p in r1.passengers
-		and p in r2.passengers and r1 != r2)
+	all p: Passenger, r1, r2: Ride | (p in r1.registeredPassengers
+		and p in r2.registeredPassengers and r1 != r2)
 		implies
-		(r1.endDate < r2.startDate or r2.endDate < r1.startDate)
+		(r1.endDate < r2.beginDate or r2.endDate < r1.beginDate)
 }
 
 // Two rides for the same taxi driver must not overlap.
 fact OneConcurrentRidePerDriver {
 	all t: TaxiDriver, r1, r2: Ride | (t = r1.taxiDriver
-		and p = r2.taxiDriver and r1 != r2)
+		and t = r2.taxiDriver and r1 != r2)
 		implies
-		(r1.endDate < r2.startDate or r2.endDate < r1.startDate)
+		(r1.endDate < r2.beginDate or r2.endDate < r1.beginDate)
 }
 
 // If the taxi driver is available,
@@ -136,5 +152,11 @@ fact AvailableDriverInSomeQueue {
 
 // Each taxi driver must be inserted in at most one taxi queue.
 fact OneQueuePerDriver {
-	all t: TaxiDriver | (lone q: TaxiQueue | t in q)
+	all t: TaxiDriver | (lone q: TaxiQueue | t in q.drivers)
 }
+
+assert A {
+	all t: TaxiDriver | (lone q: TaxiQueue | t in q.drivers)
+}
+
+check A for 3
