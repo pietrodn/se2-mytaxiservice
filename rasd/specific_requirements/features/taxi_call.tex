@@ -95,7 +95,7 @@ The response sequence is illustrated in figures \ref{fig:sequence-taxicall} and 
 	\item When the system knows the passenger's position, it asks the number of seats required in the taxi.
 	\item Once the system knows the number of seats required, it presents the passenger the option to request a taxi.
 	\item The system must ask the passenger for confirmation before delivering the taxi request.
-	\item After the passenger's confirmation of a taxi request, the request is delivered to the first taxi with a sufficient number of seats in the queue for the taxi zone in which the user is located.
+	\item After the passenger's confirmation of a taxi request, the request is delivered to the first taxi with a sufficient number of seatss in the queue for the taxi zone in which the user is located.
 	\item Taxi requests are forwarded only to active taxi drivers which are located in the same taxi zone, who are not currently busy.
 	\item Taxi requests are processed in order of arrival.
 	\item If there's no taxi driver in the passenger's taxi zone, the request is refused and en error message is displayed to the passenger.
@@ -110,5 +110,5 @@ The response sequence is illustrated in figures \ref{fig:sequence-taxicall} and 
 	\item When the taxi is within 20 m from the passenger, the app asks the taxi driver to confirm that the passenger is aboard.
 	\item When the taxi driver confirms that the passenger is aboard, the taxi request is marked as fulfilled and the system stops showing the waiting time to the passenger.
 	\item The system must prevent the passenger to call a taxi while he/she is already waiting for one.
-	\item The system must prevent the passenger to call a taxi while he/she is already travelling in a taxi.
+	\item The system must prevent the passenger to call a taxi while he/she is already traveling in a taxi.
 \end{enumerate}
