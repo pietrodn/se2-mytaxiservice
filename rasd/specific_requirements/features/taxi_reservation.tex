@@ -1,10 +1,10 @@
 \label{taxi-reservation}
 \subsubsection{Purpose}
 
-Any subscribed passenger shall be able to reserve a taxi for a ride at a predefined time. The passenger has to specify in advance the origin and the destination of the ride, along with the starting date and time.
+Any subscribed passenger shall be able to reserve a taxi for a ride at a predefined time. The passenger has to specify in advance the origin and the destination of the ride, along with the starting date and time and the number of passengers.
 
 \subsubsection{Scenario 1}
-John McClane will need a taxi to get to the airport tomorrow morning. He opens the web application of myTaxiService and decides to book a taxi for 6:00 AM for a ride from his home to the airport. He confirms the request.
+John McClane will need a taxi to get to the airport tomorrow morning. He opens the web application of myTaxiService and decides to book a taxi for 6:00 AM for a ride from his home to the airport, for 1 person. He confirms the request.
 
 The morning after, at 5:50 AM, the first taxi driver in the queue gets McClane's request and accepts it. He comes to pick up McClane and brings him to the airport.
 
@@ -62,7 +62,8 @@ The response sequence is illustrated in figure~\ref{fig:sequence-taxireservation
 	\item The system asks the passenger the date and time of the ride.
 	\item The system lets the passenger enter only valid dates and times.
 	\item The system lets the passenger reserve a taxi from 48 hours to 2 hours before the actual ride time.
-	\item 10 minutes before the specified arriving time, the system allocates a taxi for the passenger by putting a request in the queue as described in subsection~\ref{standard-call}.
+	\item 20 minutes before the specified arriving time, the system allocates a taxi for the passenger by putting a request in the queue as described in subsection~\ref{standard-call}.
+	\item If no taxi is available at that time, the system keeps retrying until a taxi is available.
 	\item After the request is accepted, the passenger gets notified with the ETA of the incoming taxi along with its position.
 	\item The system must prevent the passenger from reserving more than one taxi per hour.
 \end{enumerate}
