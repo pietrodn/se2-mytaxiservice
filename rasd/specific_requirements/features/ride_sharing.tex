@@ -68,7 +68,6 @@ Exception & No taxi available in the area. \\
 \subsubsection{Response sequence}
 The response sequence is illustrated in~\autoref{fig:sequence-sharing}
 
-% TODO update sequence diagram for taxi fee splitting
 \begin{figure}
 	\includegraphics[width=\textwidth]{diagrams/sequence_ride_sharing.pdf}
 	\caption{Sequence diagram of a ride sharing.}
@@ -82,7 +81,8 @@ The response sequence is illustrated in~\autoref{fig:sequence-sharing}
 	\item The passenger can enable the sharing function both in the mobile app and in the web interface.
 	\item The passenger can choose between possible sharing solutions or a new taxi.
 	\item The system has to communicate to the taxi driver the presence of a new passenger.
-	\item The system must be able to analyse the current sharing situation. % TODO too generic
+	\item The system must be able to know if the taxi driver has already picked up the travelers or not.
+	\item The system must be able to know how many travelers are in the taxi and what is the next scheduled destination.
 	\item The total number of travelers must not exceed the number of seats available in each taxi.
 	\item The taxi driver can insert the number of passengers who have been picked up.
 	\item After the user chooses to enable the sharing mode, the system has to specify, for every sharing ride, the location and the time.
