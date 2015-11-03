@@ -86,7 +86,7 @@ The response sequence is illustrated in~\autoref{fig:sequence-sharing}
 	\item The total number of travelers must not exceed the number of seats available in each taxi.
 	\item The taxi driver can insert the number of passengers who have been picked up.
 	\item After the user chooses to enable the sharing mode, the system has to specify, for every sharing ride, the location and the time.
-	\item After the ride has ended, the system splits the ride costs among the passengers.
+	\item The system splits the ride costs among the passengers, considering the number of travelers linked to a passenger.
 	\begin{enumerate}
 		\item The fee for each passenger is reported by the system as a percentage, because the system knows nothing about the taxi fees in each city.
 		\item The fee for each traveler is computed as follows: for each traveler the system computes the total distance travelled, from the starting point to his or her destination. Then the system divides the distance traveled by each traveler by the sum of all the distances.
