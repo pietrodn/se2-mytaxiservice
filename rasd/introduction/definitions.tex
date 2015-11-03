@@ -4,8 +4,9 @@
 \item[Core or back-end:] the basic software part that offers application logic and APIs and communication interfaces to work with them. The core does not provide a graphical user interface, client code nor modules.
 \item[Module:] an optional software component which uses the core system APIs to provide additional features.
 \item[Client:] the web application component or the mobile app.
-\item[Passenger:] the registered user who uses the service for a taxi ride.
-\item[Traveler:] a person, registered or not, that gets on the requested taxi; one of the travelers on the taxi is the passenger who requested it via application.
+\item[Passenger:] the registered user who uses the service for a taxi ride. Only passengers can call or reserve a taxi.
+\item[Traveler:] any person, registered or not, that gets on a taxi. A passenger is himself a traveler and can bring with himself more travelers.
+For example, a man can call a taxi for 2 people, himself and his wife, using his account. The man is the only passenger; both he and his wife are travelers.
 \item[Taxi driver:] any taxi driver subscribed to the service.
 \item[User:] any user (passenger or taxi driver) subscribed to the service.
 \item[RDBMS:] Relational Data Base Management System.

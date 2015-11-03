@@ -7,7 +7,7 @@ After the request, the passenger is informed by the system about the waiting tim
 Requests shall be forwarded to available and active taxi drivers in the same zone of the passengers. Taxi drivers shall be able to accept or reject an incoming request.
 
 \subsubsection{Scenario 1}
-Alice needs a taxi. She opens the myTaxiService mobile app on her phone, and selects ``Call a taxi''. She authorizes the application to access her GPS data, checks on the map that her position is correct and confirms the request.
+Alice needs a taxi. She opens the myTaxiService mobile app on her phone, and selects ``Call a taxi''. She authorizes the application to access her GPS data, checks on the map that her position is correct, enters ``1 person'' as the number of travelers and confirms the request.
 
 The system forwards the request to Bob, the first taxi driver in Alice's taxi zone. Bob decides to accept the call: a map of Alice's position gets displayed on Bob's phone and the navigator starts.
 
@@ -16,12 +16,13 @@ Bob's position is transmitted from his phone to the system, which computes the E
 When the ride is over, Bob taps on ``Finish ride'' so that the system knows that Bob is ready for another ride.
 
 \subsubsection{Scenario 2}
-Luke needs a taxi. He requests it and the request is forwarded to the first taxi driver in queue, Chewbacca. Chewbacca decides to reject the incoming request, so the system puts him at the bottom of the queue.
+Luke Skywalker needs a taxi to his favourite pub, ``The Death Star''.
+Luke requests a taxi for 1 person and the request is forwarded to the first taxi driver in queue, Chewbacca. Chewbacca decides to reject the incoming request, so the system puts him at the bottom of the queue.
 
 Luke's request gets forwarded to the new first taxi driver in queue, Han Solo. Han accepts the request and comes to pick up Luke.
 
 \subsubsection{Scenario 3}
-Luke, Leila and Obi-Wan need a taxi. Luke has the myTaxiService app on his phone so he opens it and selects ``Call a taxi''. He checks that the position is correct, he enters three as the number of seats required and confirms the request.
+Luke, Leia and Obi-Wan need a taxi. Luke has the myTaxiService app on his phone so he opens it and selects ``Call a taxi''. He checks that the position is correct, he enters three as the number of seats required and confirms the request.
 
 Luke's request gets forwarded to the first taxi driver in queue, Han Solo, that accepts the request and comes to pick up the group of friends.
 
@@ -48,7 +49,7 @@ Goal & Goal~\ref{g-taxicall}
 Input condition & Passenger is already logged in and requests a taxi.  \\
 \hline
 Event Flow & \begin{enumerate}
-	\item The passenger requests a taxi through the client.
+	\item The passenger requests a taxi through the client, specifying the number of travelers and the position.
 	\item The request gets forwarded to the first taxi in the queue of the same taxi zone of the user.
 	\item The taxi driver can either accept or deny the request; if he denies it, the request is forwarded to the next taxi driver in the queue, and so on.
 	\item Finally the request gets accepted by a taxi driver.
@@ -87,8 +88,9 @@ The response sequence is illustrated in figures \ref{fig:sequence-taxicall} and 
 	\item The system must localize the passenger before he or she makes a taxi request.
 	\begin{enumerate}
 		\item (App) If GPS info is available and the passenger can be tracked within a radius of 50 m, then the passenger is presented with the option of using the current GPS position.
-		\item (App) If GPS info is not available or the precision is less than 50 m, then the app requests the passenger to insert a valid address. Then the address is shown on a map and the passenger can confirm its position.
-		\item (Web) In the web application the user is always requested to insert a valid address. Then the address is shown on a map and the user can confirm its position.
+		\item (App) If GPS info is not available or the precision is less than 50 m, then the app requests the passenger to insert a valid address inside the city. Then the address is shown on a map and the passenger can confirm its position.
+		\item (Web) In the web application the user is always requested to insert a valid address inside the city. Then the address is shown on a map and the user can confirm its position.
+		\item The passenger needs to be inside a taxi zone in order to use the system. If the passenger is not in any taxi zone, the system does not allow any taxi call.
 	\end{enumerate}
 
 	\item When the system knows the passenger's position, it asks the number of travelers and then it presents the passenger the option to request a taxi.
@@ -96,7 +98,7 @@ The response sequence is illustrated in figures \ref{fig:sequence-taxicall} and 
 	\item After the passenger's confirmation of a taxi request, the request is delivered to the first taxi with a sufficient number of seats in the queue for the taxi zone in which the user is located.
 	\item Taxi requests are forwarded only to active taxi drivers which are located in the same taxi zone, who are not currently busy.
 	\item Taxi requests are processed in order of arrival.
-	\item If there's no taxi driver in the passenger's taxi zone, the request is refused and en error message is displayed to the passenger.
+	\item If there's no available taxi driver in the passenger's taxi zone, or if all of available taxi drivers have refused the request, an error message is displayed to the passenger and the request is aborted.
 	\item When a taxi driver receives a request, the mobile application shows a notification and emits a sound.
 	\item When receiving a request, the taxi driver is presented with the possibility of accepting or denying it.
 	\item After having accepted a request, the taxi driver is automatically marked as ``busy''.

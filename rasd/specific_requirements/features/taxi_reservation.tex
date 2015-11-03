@@ -4,7 +4,7 @@
 Any subscribed passenger shall be able to reserve a taxi for a ride at a predefined time. The passenger has to specify in advance the origin and the destination of the ride, along with the starting date and time and the number of travelers.
 
 The passenger can also enable the sharing mode for the ride.
-In that case, also the requirement in~\autoref{ride-sharing} apply.
+In that case, also the requirements in~\autoref{ride-sharing} apply.
 
 \begin{figure}
 	\begin{center}
@@ -15,7 +15,7 @@ In that case, also the requirement in~\autoref{ride-sharing} apply.
 \end{figure}
 
 \subsubsection{Scenario 1}
-John McClane will need a taxi to get to the airport tomorrow morning. He opens the web application of myTaxiService and decides to book a taxi for 6:00 AM for a ride from his home to the airport, for 1 person. He confirms the request.
+John McClane will need a taxi to get to the airport tomorrow morning. He opens the web application of myTaxiService and decides to book a taxi for 6:00 AM for a ride from his home to the airport, for one person. He confirms the request.
 
 The morning after, at 5:50 AM, the first taxi driver in the queue gets McClane's request and accepts it. He comes to pick up McClane and brings him to the airport.
 
@@ -86,7 +86,8 @@ The statechart of a taxi reservation with ride sharing is shown in~\autoref{fig:
 	\item The system presents the passenger with the option to reserve a taxi.
 	\item The system asks the passenger the origin and the destination of the ride.
 	\item The system asks the passenger the total number of travelers.
-	\item Origin and destination must be valid addresses.
+	\item The system asks the passenger if he wants to share the ride.
+	\item Origin and destination must be valid addresses inside the city.
 	\item If GPS info is present and accurate within 50 m, the passenger can specify ``current position'' as the destination of the ride.
 	\item The system asks the passenger the date and time of the ride.
 	\item The system lets the passenger enter only valid dates and times.
