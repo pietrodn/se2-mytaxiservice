@@ -17,7 +17,7 @@ In that case, also the requirement in~\autoref{ride-sharing} apply.
 \subsubsection{Scenario 1}
 John McClane will need a taxi to get to the airport tomorrow morning. He opens the web application of myTaxiService and decides to book a taxi for 6:00 AM for a ride from his home to the airport, for 1 person. He confirms the request.
 
-The morning after, at 5:40 AM, the first taxi driver in the queue gets McClane's request and accepts it. He comes to pick up McClane and brings him to the airport.
+The morning after, at 5:50 AM, the first taxi driver in the queue gets McClane's request and accepts it. He comes to pick up McClane and brings him to the airport.
 
 \subsubsection{Scenario 2}
 Cordell Walker needs to get to the Texas Rangers police station tomorrow morning.
@@ -27,7 +27,7 @@ No one wants to go to the Texas Rangers in the same zone at the same hour for no
 Trivette, who doesn't have a car, also needs to go to the Texas Rangers station, and tries to reserve a taxi with the sharing option.
 The systems informs him that a shared ride with his colleague Walker is available. He accepts.
 
-In the morning, the taxi driver gets called at 7:10 AM and goes to Walker's place.
+In the morning, the taxi driver gets called at 7:20 AM and goes to Walker's place.
 Trivette reaches the starting point, where the taxi driver picks up Walker and Trivette and leaves them by the Texas Rangers.
 
 \subsubsection{Use case}
@@ -91,7 +91,7 @@ The statechart of a taxi reservation with ride sharing is shown in~\autoref{fig:
 	\item The system asks the passenger the date and time of the ride.
 	\item The system lets the passenger enter only valid dates and times.
 	\item The system lets the passenger reserve a taxi from 48 hours to 2 hours before the actual ride time.
-	\item 20 minutes before the specified arriving time, the system allocates a taxi for the passenger by putting a request in the queue as described in subsection~\ref{standard-call}.
+	\item 10 minutes before the specified arriving time, the system allocates a taxi for the passenger by putting a request in the queue as described in subsection~\ref{standard-call}.
 	\item If no taxi is available at that time, the system keeps retrying until a taxi is available.
 	\item After the request is accepted, the passenger gets notified with the ETA of the incoming taxi along with its position.
 	\item The system must prevent the passenger from reserving more than one taxi per hour.

@@ -14,6 +14,8 @@ In the first case the system informs the owner of the ride. The new passenger an
 In the second case the system allocates the taxi (\ref{taxi-availability}) and applies the standard procedure (\ref{standard-call}).  The user becomes the owner of the ride.
 If there is another passenger willing to share the same ride, the system allows it and redirects this last user to the meeting point with the owner, who is informed as well as the taxi driver.
 
+At the end of the ride, the system splits the taxi fee among all the passenger proportionally with the distance traveled.
+
 \subsubsection{Scenario 1}
 Batman needs a taxi and decides to enable the sharing mode on his cell phone. The app also asks Batman for the destination of his travel and the number of seats (one).
 
@@ -48,10 +50,12 @@ Event Flow &
 	\item The system computes the feasible shared rides and proposes them to the passenger.
 	\item The passenger can accept one of the sharing options or refuse all of them.
 	\item If the passenger refuses, the system executes the standard taxi call \ref{standard-call}, otherwise it notifies the owner of the ride and the taxi driver.
+	\item The taxi driver picks up all the passenger at the starting point and starts the ride.
+	\item When the ride is finished, the system reports the percentages of the taxi fee that each passenger has to pay.
 \end{enumerate}
 \\
 \hline
-Output condition & The system informs the owner of the ride and the taxi driver that the ride will be shared. \\
+Output condition & The ride ends. \\
 \hline
 Exception & No taxi available in the area. \\
 \hline
@@ -64,6 +68,7 @@ Exception & No taxi available in the area. \\
 \subsubsection{Response sequence}
 The response sequence is illustrated in~\autoref{fig:sequence-sharing}
 
+% TODO update sequence diagram for taxi fee splitting
 \begin{figure}
 	\includegraphics[width=\textwidth]{diagrams/sequence_ride_sharing.pdf}
 	\caption{Sequence diagram of a ride sharing.}
@@ -72,13 +77,20 @@ The response sequence is illustrated in~\autoref{fig:sequence-sharing}
 
 \subsubsection{Associated functional requirements}
 \begin{enumerate}
-\item The system has to know the starting point of the new passenger in order to provide feasible sharing solutions.
-It has to compute the estimated walking time to reach the meeting location and compare it with the estimated taxi arrival time.
-\item The passenger can enable the sharing function both in the mobile app and in the web interface.
-\item The passenger can choose between possible sharing solutions or a new taxi.
-\item The system has to communicate to the taxi driver the presence of a new passenger.
-\item The system must be able to analyse the current sharing situation. % TODO too generic
-\item The total number of passengers must not exceed the number of seats available in each taxi.
-\item The taxi driver can insert the number of passengers who have been picked up.
-\item After the user chooses to enable the sharing mode, the system has to specify, for every sharing ride, the location and the time.
+	\item The system has to know the starting point of the new passenger in order to provide feasible sharing solutions.
+	It has to compute the estimated walking time to reach the meeting location and compare it with the estimated taxi arrival time.
+	\item The passenger can enable the sharing function both in the mobile app and in the web interface.
+	\item The passenger can choose between possible sharing solutions or a new taxi.
+	\item The system has to communicate to the taxi driver the presence of a new passenger.
+	\item The system must be able to analyse the current sharing situation. % TODO too generic
+	\item The total number of passengers must not exceed the number of seats available in each taxi.
+	\item The taxi driver can insert the number of passengers who have been picked up.
+	\item After the user chooses to enable the sharing mode, the system has to specify, for every sharing ride, the location and the time.
+	\item After the ride has ended, the system splits the ride costs among the passengers.
+	\begin{enumerate}
+		\item The fee for each passenger is reported by the system as a percentage, because the system knows nothing about the taxi fees in each city.
+		\item The fee for each traveler is computed as follows: for each traveler the system computes the total distance travelled, from the starting point to his or her destination. Then the system divides the distance traveled by each traveler by the sum of all the distances.
+		\item Each passenger has to pay for himself/herself and for all his/her travelers.
+	\end{enumerate}
+	\item The system reports all the percentages of the fees to the taxi driver and to all the passengers.
 \end{enumerate}
