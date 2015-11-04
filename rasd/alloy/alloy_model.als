@@ -3,7 +3,9 @@
 // Defines Bool, True, False
 open util/boolean
 
-// Dates are expressed as the number of seconds from 1970-01-01
+// Dates are expressed as the number of seconds from 1970-01-01,
+// because Alloy doesn't have date object and other signatures
+// aren't comparable.
 
 // ---- SIGNATURES ----
 
@@ -27,18 +29,18 @@ sig Passenger extends User {
 sig TaxiDriver extends User {
 	licenseID: one Int,
 	taxiNumberPlate: one Stringa,
-	logs: set TaxiLog,
-	currentLog: lone TaxiLog,
+	logs: some TaxiLog,
+	currentLog: some TaxiLog,
 	numberOfSeats: one Int,
 }{
 	currentLog in logs
 	no log: logs | log.date > currentLog.date
 
-	#address = 1
-	#phoneNumber = 1
+	one address
+	one phoneNumber
 
-	licenseID > 0
-	numberOfSeats > 0
+	some licenseID
+	some numberOfSeats
 }
 
 sig Float {}
@@ -55,7 +57,7 @@ sig Position {
 sig Ride {
 	origin: lone Position,
 	destination: some Position,
-	beginDate: lone Int,
+	beginDate: one Int,
 	endDate: lone Int,
 	taxiDriver: lone TaxiDriver,
 
@@ -70,48 +72,42 @@ sig Ride {
 	isReserved: one Bool,
 	reservationDate: lone Int,
 } {
-	beginDate > 0
-	reservationDate > 0
-	reservationDate< beginDate
+	reservationDate < beginDate
 	beginDate < endDate
 	numOfTravelers <= taxiDriver.numberOfSeats
 	#registeredPassengers <= numOfTravelers
 	(#registeredPassengers > 1) implies (isShared = True)
 	(#destination > 1) implies (isShared = True)
 	#destination <= #registeredPassengers
-	#taxiDriver <=1
 }
-
 
 sig TaxiLog {
 	date: one Int,
 	position: one Position,
 	status: one TaxiStatus,
+	taxiDriver: one TaxiDriver,
 } {
 	date > 0
+	this in taxiDriver.logs
+	no t: TaxiDriver | t != taxiDriver and this in t.logs
 }
 
 abstract sig TaxiStatus {}
-sig AVAILABLE extends TaxiStatus {}
-sig BUSY extends TaxiStatus {}
-sig OFFLINE extends TaxiStatus {}
+one sig AVAILABLE extends TaxiStatus {}
+one sig BUSY extends TaxiStatus {}
+one sig OFFLINE extends TaxiStatus {}
 
 abstract sig RideStatus {}
-sig RESERVED_NOT_ALLOCATED extends RideStatus {}
-sig WAITING extends RideStatus {}
-sig ON_BOARD extends RideStatus {}
-sig COMPLETED extends RideStatus {}
+one sig RESERVED_NOT_ALLOCATED extends RideStatus {}
+one sig WAITING extends RideStatus {}
+one sig ON_BOARD extends RideStatus {}
+one sig COMPLETED extends RideStatus {}
 
 sig TaxiZone {
 	number: one Int,
-	queue: one TaxiQueue
+	queue: set TaxiDriver
 } {
 	number > 0
-}
-
-sig TaxiQueue {
-	zone: one TaxiZone,
-	drivers: set TaxiDriver,
 }
 
 // ---- FACTS ----
@@ -132,7 +128,6 @@ fact UniqueTaxiLog {
 
 fact UniqueTaxiZone {
 	no z1, z2: TaxiZone | z1 != z2 and z1.number = z2.number
-	queue = ~zone
 }
 
 fact UniqueUsers {
@@ -140,39 +135,36 @@ fact UniqueUsers {
 		(u1.username = u2.username or u1.email = u2.email))
 }
 
-
 fact reservedButNotAllocatedRide{
-all r:Ride| (r.status=RESERVED_NOT_ALLOCATED
- implies (#beginDate=1 and #r.origin=1 and #r.destination>=1 and r.isReserved=True))
+	all r:Ride | (r.status=RESERVED_NOT_ALLOCATED
+		implies
+		(one beginDate and one r.origin and some r.destination
+		and r.isReserved=True and no r.taxiDriver))
 }
 
 fact reservedAndAllocatedRide{
-all r:Ride| (r.status=WAITING and r.isReserved=True)
- implies (#beginDate=1 and #r.origin=1 and #r.destination>=1 and #r.taxiDriver=1 )
+	all r:Ride | (r.status=WAITING and r.isReserved=True)
+		 implies (one beginDate and one r.origin and one r.destination
+		 and one r.taxiDriver )
 }
 
 fact waitingRide{
-all r:Ride| (r.status=WAITING
- implies (#beginDate=1 and #r.origin=1 and #r.taxiDriver=1) )
+	all r: Ride | (r.status=WAITING
+		 implies (one beginDate and one r.origin and one r.taxiDriver) )
 }
 
-//If the ride is prenoted there must be a beginDate
-
-fact beginningRide{
-all r:Ride| (r.status=ON_BOARD
- implies (#beginDate=1 and #r.origin=1 and #r.taxiDriver=1) )
+fact beginningRide {
+	// When the ride is started the beginDate is recorded
+	all r: Ride| (r.status=ON_BOARD
+		implies (one beginDate and one r.origin and one r.taxiDriver) )
 }
-//When the ride is started the beginDate is recorded
 
-fact endingRide{
-all r:Ride| (r.status=COMPLETED 
- implies (#beginDate=1 and #endDate=1 and #r.origin=1
- and #r.destination>=1 and #r.taxiDriver=1) )
+fact endingRide {
+	// When the ride ends the endDate is recorded
+	all r: Ride | (r.status=COMPLETED
+		implies (one beginDate and one endDate and one r.origin
+		and one r.destination and one r.taxiDriver) )
 }
-//When the ride ends the endDate is recorded
-
-
-
 
 // If a taxi driver participates is a ride,
 // he should be busy for the entire duration of the ride.
@@ -186,7 +178,8 @@ fact BusyDuringRide {
 
 // Two rides for the same passenger must not overlap.
 fact OneConcurrentRidePerPassenger {
-	all p: Passenger, r1, r2: Ride | (p in r1.registeredPassengers
+	all p: Passenger, r1, r2: Ride |
+		(p in r1.registeredPassengers
 		and p in r2.registeredPassengers and r1 != r2)
 		implies
 		(r1.endDate < r2.beginDate or r2.endDate < r1.beginDate)
@@ -204,12 +197,12 @@ fact OneConcurrentRidePerDriver {
 // he must be inserted in at least a taxi queue.
 fact AvailableDriverInSomeQueue {
 	all t: TaxiDriver | (t.currentLog.status = AVAILABLE)
-		<=> (some q: TaxiQueue | t in q.drivers)
+		<=> (some z: TaxiZone | t in z.queue)
 }
 
 // Each taxi driver must be inserted in at most one taxi queue.
 fact OneQueuePerDriver {
-	all t: TaxiDriver | (lone q: TaxiQueue | t in q.drivers)
+	all t: TaxiDriver | (lone z: TaxiZone | t in z.queue)
 }
 
 // ---- ASSERTIONS ----
@@ -217,15 +210,15 @@ fact OneQueuePerDriver {
 
 assert noTwoPassengersOnNoSharedTaxi{
 	no r:Ride | (#r.registeredPassengers>1 and (r.isShared=False))
-}	
-//check  noTwoPassengersOnNoSharedTaxi
+}
+//check noTwoPassengersOnNoSharedTaxi
 //OK
 
 
 assert AllTaxiInQueue {
-	all t: TaxiDriver | (lone q: TaxiQueue | t in q.drivers)
+	all t: TaxiDriver | (lone z: TaxiZone | t in z.queue)
 }
-//check  AllTaxiInQueue
+//check AllTaxiInQueue
 //OK
 
 
@@ -234,35 +227,38 @@ assert noNewRideIfTaxiDriverOnRoad {
 		implies
 		(r1.endDate < r2.beginDate or r2.endDate < r1.beginDate)
 }
-//check  noNewRideIfTaxiDriverOnRoad
+//check noNewRideIfTaxiDriverOnRoad
 //OK
 
-assert noPrenotationInThePast{
-all r:Ride|( r.isReserved= True implies r.beginDate > r.reservationDate)
+assert noReservationInThePast{
+	all r:Ride |
+	(r.isReserved= True implies r.beginDate > r.reservationDate)
 }
 
-//check  noPrenotationInThePast
+//check noReservationInThePast
 //OK
 
-assert prenotingRide{
-all r:Ride| (r.status=WAITING and r.isReserved=True
- implies 
- (#r.beginDate=1 and #r.origin=1 and #r.destination>=1))
+assert reservingRide{
+	all r:Ride| (r.status=WAITING and r.isReserved=True
+		implies
+		(one r.beginDate and one r.origin and one r.destination))
 }
 
-//check  prenotingRide
+//check reservingRide
 //OK
 
 assert beginningRide{
-all r:Ride| (r.status=ON_BOARD implies (#beginDate=1 and #r.origin=1))
+	all r:Ride| (r.status=ON_BOARD
+		implies (one beginDate and one r.origin))
 }
 
 //check beginningRide
 //OK
 
 assert endingRide{
-all r:Ride| (r.status=COMPLETED implies  (#beginDate=1 and #endDate=1
- and #r.origin=1 and #r.destination>=1))
+	all r:Ride| (r.status=COMPLETED
+		implies  (one beginDate and one endDate
+		and one r.origin and one r.destination))
 }
 //check endingRide
 //OK
@@ -270,11 +266,13 @@ all r:Ride| (r.status=COMPLETED implies  (#beginDate=1 and #endDate=1
 // ---- PREDICATES ----
 
 pred show(){
-	#Passenger > 1
-	#Ride > 1
-	#TaxiDriver > 1
-	#Position > 1
-	#{x: Ride | x.isShared = True} > 1
+	#Passenger >= 2
+	#Ride >= 1
+	#TaxiDriver >= 2
+	#TaxiLog >= 3
+	#{x: Ride | x.isShared = True} >= 1
+	#{t: TaxiZone | #t.queue >=1 } >= 1
+	all p: Passenger | (some r: Ride | p in r.registeredPassengers)
 }
 
-run show for 4
+run show for 10
