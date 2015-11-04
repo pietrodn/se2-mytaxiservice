@@ -67,8 +67,12 @@ sig Ride {
 
 	status: one RideStatus,
 	isShared: one Bool,
+	isPrenoted: one Bool,
+	reservationDate: lone Int,
 } {
 	beginDate > 0
+	reservationDate > 0
+	reservationDate< beginDate
 	beginDate < endDate
 	numOfTravelers <= taxiDriver.numberOfSeats
 	#registeredPassengers <= numOfTravelers
@@ -76,6 +80,7 @@ sig Ride {
 	(#destination > 1) implies (isShared = True)
 	#destination <= #registeredPassengers
 }
+
 
 sig TaxiLog {
 	date: one Int,
@@ -132,6 +137,29 @@ fact UniqueUsers {
 	no u1, u2: User | (u1 != u2 and
 		(u1.username = u2.username or u1.email = u2.email))
 }
+
+
+fact prenotingRide{
+all r:Ride| (r.status=WAITING and r.isPrenoted=True
+ implies (#beginDate=1 and #r.origin=1 and #r.destination>=1))
+}
+//If the ride is prenoted there must be a beginDate
+
+fact beginningRide{
+all r:Ride| (r.status=ON_BOARD
+ implies (#beginDate=1 and #r.origin=1) )
+}
+//When the ride is started the beginDate is recorded
+
+fact endingRide{
+all r:Ride| (r.status=COMPLETED 
+ implies (#beginDate=1 and #endDate=1 and #r.origin=1
+ and #r.destination>=1) )
+}
+//When the ride ends the endDate is recorded
+
+
+
 
 // If a taxi driver participates is a ride,
 // he should be busy for the entire duration of the ride.
@@ -196,6 +224,35 @@ assert noNewRideIfTaxiDriverOnRoad {
 //check  noNewRideIfTaxiDriverOnRoad
 //OK
 
+assert noPrenotationInThePast{
+all r:Ride|( r.isPrenoted= True implies r.beginDate > r.reservationDate)
+}
+
+//check  noPrenotationInThePast
+//OK
+
+assert prenotingRide{
+all r:Ride| (r.status=WAITING and r.isPrenoted=True
+ implies 
+ (#r.beginDate=1 and #r.origin=1 and #r.destination>=1))
+}
+
+//check  prenotingRide
+//OK
+
+assert beginningRide{
+all r:Ride| (r.status=ON_BOARD implies (#beginDate=1 and #r.origin=1))
+}
+
+//check beginningRide
+//OK
+
+assert endingRide{
+all r:Ride| (r.status=COMPLETED implies  (#beginDate=1 and #endDate=1
+ and #r.origin=1 and #r.destination>=1))
+}
+//check endingRide
+//OK
 
 // ---- PREDICATES ----
 
