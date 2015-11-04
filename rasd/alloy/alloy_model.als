@@ -173,10 +173,29 @@ fact OneQueuePerDriver {
 
 // ---- ASSERTIONS ----
 
-assert A {
+
+assert noTwoPassengersOnNoSharedTaxi{
+	no r:Ride | (#r.registeredPassengers>1 and (r.isShared=False))
+}	
+//check  noTwoPassengersOnNoSharedTaxi
+//OK
+
+
+assert AllTaxiInQueue {
 	all t: TaxiDriver | (lone q: TaxiQueue | t in q.drivers)
 }
-//check A
+//check  AllTaxiInQueue
+//OK
+
+
+assert noNewRideIfTaxiDriverOnRoad {
+	all  r1, r2: Ride | (r1.taxiDriver=r2.taxiDriver and r1 != r2)
+		implies
+		(r1.endDate < r2.beginDate or r2.endDate < r1.beginDate)
+}
+//check  noNewRideIfTaxiDriverOnRoad
+//OK
+
 
 // ---- PREDICATES ----
 
@@ -188,4 +207,4 @@ pred show(){
 	#{x: Ride | x.isShared = True} > 1
 }
 
-run show for 4
+//run show for 4
