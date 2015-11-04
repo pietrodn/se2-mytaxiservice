@@ -57,7 +57,7 @@ sig Ride {
 	destination: some Position,
 	beginDate: lone Int,
 	endDate: lone Int,
-	taxiDriver: one TaxiDriver,
+	taxiDriver: lone TaxiDriver,
 
 	// passengers who booked a taxi
 	registeredPassengers: some Passenger,
@@ -67,7 +67,7 @@ sig Ride {
 
 	status: one RideStatus,
 	isShared: one Bool,
-	isPrenoted: one Bool,
+	isReserved: one Bool,
 	reservationDate: lone Int,
 } {
 	beginDate > 0
@@ -79,6 +79,7 @@ sig Ride {
 	(#registeredPassengers > 1) implies (isShared = True)
 	(#destination > 1) implies (isShared = True)
 	#destination <= #registeredPassengers
+	#taxiDriver <=1
 }
 
 
@@ -96,6 +97,7 @@ sig BUSY extends TaxiStatus {}
 sig OFFLINE extends TaxiStatus {}
 
 abstract sig RideStatus {}
+sig RESERVED_NOT_ALLOCATED extends RideStatus {}
 sig WAITING extends RideStatus {}
 sig ON_BOARD extends RideStatus {}
 sig COMPLETED extends RideStatus {}
@@ -139,22 +141,33 @@ fact UniqueUsers {
 }
 
 
-fact prenotingRide{
-all r:Ride| (r.status=WAITING and r.isPrenoted=True
- implies (#beginDate=1 and #r.origin=1 and #r.destination>=1))
+fact reservedButNotAllocatedRide{
+all r:Ride| (r.status=RESERVED_NOT_ALLOCATED
+ implies (#beginDate=1 and #r.origin=1 and #r.destination>=1 and r.isReserved=True))
 }
+
+fact reservedAndAllocatedRide{
+all r:Ride| (r.status=WAITING and r.isReserved=True)
+ implies (#beginDate=1 and #r.origin=1 and #r.destination>=1 and #r.taxiDriver=1 )
+}
+
+fact waitingRide{
+all r:Ride| (r.status=WAITING
+ implies (#beginDate=1 and #r.origin=1 and #r.taxiDriver=1) )
+}
+
 //If the ride is prenoted there must be a beginDate
 
 fact beginningRide{
 all r:Ride| (r.status=ON_BOARD
- implies (#beginDate=1 and #r.origin=1) )
+ implies (#beginDate=1 and #r.origin=1 and #r.taxiDriver=1) )
 }
 //When the ride is started the beginDate is recorded
 
 fact endingRide{
 all r:Ride| (r.status=COMPLETED 
  implies (#beginDate=1 and #endDate=1 and #r.origin=1
- and #r.destination>=1) )
+ and #r.destination>=1 and #r.taxiDriver=1) )
 }
 //When the ride ends the endDate is recorded
 
@@ -225,14 +238,14 @@ assert noNewRideIfTaxiDriverOnRoad {
 //OK
 
 assert noPrenotationInThePast{
-all r:Ride|( r.isPrenoted= True implies r.beginDate > r.reservationDate)
+all r:Ride|( r.isReserved= True implies r.beginDate > r.reservationDate)
 }
 
 //check  noPrenotationInThePast
 //OK
 
 assert prenotingRide{
-all r:Ride| (r.status=WAITING and r.isPrenoted=True
+all r:Ride| (r.status=WAITING and r.isReserved=True
  implies 
  (#r.beginDate=1 and #r.origin=1 and #r.destination>=1))
 }
@@ -264,4 +277,4 @@ pred show(){
 	#{x: Ride | x.isShared = True} > 1
 }
 
-//run show for 4
+run show for 4
