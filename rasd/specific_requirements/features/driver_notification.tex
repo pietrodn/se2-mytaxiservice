@@ -2,7 +2,7 @@
 \subsubsection{Purpose}
 
 After a taxi driver has informed the system about his/her availability (section~\ref{taxi-availability})
-he/she will be able to receive ride request notifications. The taxi driver receives the notification on his/her cell phone and has one minute to accept or reject the request. If after one minute the request is not answered, the system will consider the request as refused.
+he/she will be able to receive ride request notifications. The taxi driver receives the notifications on his/her cell phone and has one minute to accept or reject the request. If after one minute the request is not answered, the system will consider the request as refused.
 
 \subsubsection{Scenario 1}
 Travis, who suffers from chronic insomnia, every night waits in his taxi for an incoming request. When a user requests a taxi, the system processes the request and decides which taxi driver to send.
@@ -42,15 +42,19 @@ Input condition & The system informs the taxi driver about a new request.  \\
 Event Flow & \begin{enumerate}
 	\item The system informs the taxi driver about a new request, specifying time and location of the ride.
 	\item The taxi driver sees the information on his cell phone and chooses whether to accept or to refuse the request.
-	\item If after a minute the taxi driver has not sent the response, the system considers the request refused.
 	\item If the request is accepted, the system dequeues the taxi and marks it as busy, otherwise it sends the request to the next taxi.
 	\item When someone has accepted, the system notifies it to the passenger specifying the arrival time of the taxi.
 	\end{enumerate}
 \\
 \hline
-Output condition & The system informs the passenger about the estimated time arrival of the taxi. \\
+Output condition & The system informs the passenger about the estimated time of arrival of the taxi. \\
 \hline
-Exception & No taxi replies the request. \\
+Exception &
+\begin{enumerate}
+	\item No taxi replies to the request: an error message is displayed to the user.
+	\item If after a minute the taxi driver has not sent any response, the system considers the request refused and moves on to the next taxi driver in queue.
+\end{enumerate}
+\\
 \hline
 \end{tabular}
 \end{center}
@@ -63,10 +67,9 @@ The use case associated to the response sequence is shown in~\autoref{fig:sequen
 
 \subsubsection{Associated functional requirements}
 \begin{enumerate}
-\item The app must show the request notification to the taxi driver.
+\item The app must show any incoming request notification to first taxi driver in the queue of the same zone of the passenger.
 \item The system allows the taxi driver to accept or decline the request using the app.
 \item The app must produce sounds or visual notifications as the taxi driver has chosen.
-\item The system must use timeouts in order to prevent infinite pending requests.
 \item The system has to provide the taxi driver with information about the time and place of the meeting with the passenger.
 \item The system gives to the taxi driver one minute to reply. Else, the request is automatically refused.
 \item The request notification shall contain the following information:
@@ -74,6 +77,6 @@ The use case associated to the response sequence is shown in~\autoref{fig:sequen
 	\item number of travelers;
 	\item location of the passenger;
 	\item username of the passenger;
-	\item estimated time of the meeting with the .
+	\item estimated time of the meeting with the passenger.
 \end{enumerate}
 \end{enumerate}

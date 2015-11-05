@@ -1,23 +1,21 @@
 \label{user-login}
 \subsubsection{Purpose}
-Any subscribed user can login to use myTaxiService services.
-The system requires the user to provide nickname and password, or e-mail and password, to log in correctly.
+Any subscribed user can login to myTaxiService.
+The system requires the user to provide username and password, or e-mail and password, to log in correctly.
 
-If the user doesn't remember his password, a new one is sent to the user's e-mail address. If the user clicks on the link in the e-mail, the password is reset and, as soon as he logs in, the system asks him to choose a new one.
-
-
+When the user clicks on ``forgot password'', a new one is sent to the user's e-mail address. If the user clicks on the link in the e-mail, the password is reset and, as soon as he logs in, the system asks him to choose a new one.
 
 \subsubsection{Scenario 1}
 Bob opens the home page of myTaxiService on the web and clicks on ``login''.
-he's asked to enter the nickname or the e-mail and the password. He doesn't recall his nickname, so he enters the registration e-mail and the password. He clicks on ``enter''.
+He's asked to enter the username or the e-mail, and the password. He doesn't recall his username, so he enters the registration e-mail and the password. He clicks on ``enter''.
 Everything is correct so he can access to the services as a logged user.
 
 \subsubsection{Scenario 2}
 Alice opens the home of myTaxiService page on web and clicks on ``login''.
-She is asked to enter the nickname or e-mail and the password.
-She enters nickname and password and selects ``enter''. However, the entered password isn't correct so the system asks her to re-enter it.
-After some failed attempts she selects ``password forgot''.
-The system sends her a new password via e-mail. She enters that one and the access is permitted, but before successfully ending, the login the system requires her to change the password immediately.
+She is asked to enter the username or e-mail, and the password.
+She enters username and password and selects ``enter''. However, the entered password isn't correct so the system asks her to re-enter it.
+After some failed attempts she selects ``forgot password''.
+The system sends her a new password via e-mail. She enters that one and the access is granted, but before successfully ending, the system requires her to change the password immediately.
 Alice changes her password and finally logs in to the services.
 
 \begin{figure}
@@ -37,7 +35,7 @@ The use case for user login is shown in~\autoref{usecase-login}.
 \hline
 Actor & Registered passenger or taxi driver \\
 \hline
-Goal & Goal ~\ref{g-login}
+Goal & Goal~\ref{g-login}
 \\
 \hline
 Input condition & The user, already registered, chooses to login.  \\
@@ -50,7 +48,7 @@ Event Flow & \begin{enumerate}
 \\
 \hline
 Output condition & The system tells the user that he/she has been successfully logged in.
-It is loaded the main page where the user can choose one of the myTaxiService options. \\
+Then, the home page is loaded. \\
 \hline
 
 Exception & If the username/e-mail or password entered are wrong, the system notifies the user and the login page is reloaded (step~\ref{load-login} of Event Flow): the login has failed.
@@ -72,14 +70,18 @@ The response sequence is illustrated in~\autoref{fig:sequence-login}.
 
 \subsubsection{Associated functional requirements}
 \begin{enumerate}
-    \item In order to log in, the user must insert either a nickname, or the registration e-mail, but not both.
+    \item In order to log in, the user must insert either a username, or the registration e-mail, but not both.
     \item On login, the system must grant the user access to his/her account if and only if the following conditions are met:
     \begin{enumerate}
-    	\item The inserted nickname corresponds to a username of an existing user, or the inserted e-mail corresponds to the registration e-mail of an existing user.
+    	\item The inserted username corresponds to a username of an existing user, or the inserted e-mail corresponds to the registration e-mail of an existing user.
 	\item The inserted password is the same of that of the user identified above.
     \end{enumerate}
-    \item The system sends an e-mail after the ``password forgot'' button is selected.
-    \item The system resets the user's password only after the link on e-mail is clicked.
-    \item If the entered password is wrong a new attempt can be made only 10 seconds later.
+	\item Password reset:
+	\begin{enumerate}
+		\item The system sends an e-mail containing a new temporary password after the ``forgot password'' button is selected.
+	    \item The system resets the user's password only after the link on e-mail is clicked.
+		\item The system requires the user to immediately change the temporary password sent by email.
+	\end{enumerate}
+    \item If the entered password is wrong, a new attempt can be made only 10 seconds later.
 
 \end{enumerate}
