@@ -50,13 +50,8 @@ Event Flow &
 	\item The system computes the feasible shared rides and proposes them to the passenger.
 	\item The passenger can accept one of the sharing options or refuse all of them.
 	\item If the passenger refuses, the system executes the standard taxi call \ref{standard-call}, otherwise it notifies the owner of the ride and the taxi driver.
-<<<<<<< Updated upstream
-	\item The taxi driver picks up all the passenger at the starting point and starts the ride.
-	\item The system reports the percentages of the taxi fee that each passenger has to pay.
-=======
 	\item The taxi driver picks up all the passengers at the starting point and starts the ride.
-	\item When the ride is finished, the system reports the percentages of the taxi fee that each passenger has to pay.
->>>>>>> Stashed changes
+	\item The system reports the percentages of the taxi fee that each passenger has to pay.
 \end{enumerate}
 \\
 \hline
@@ -74,9 +69,11 @@ Exception & No taxi available in the area. \\
 The response sequence is illustrated in~\autoref{fig:sequence-sharing}
 
 \begin{figure}
+	\begin{center}
 	\includegraphics[width=0.9\textwidth]{diagrams/sequence_ride_sharing.pdf}
 	\caption{Sequence diagram of a ride sharing with 2 passengers.}
 	\label{fig:sequence-sharing}
+	\end{center}
 \end{figure}
 
 \subsubsection{Associated functional requirements}
@@ -86,21 +83,12 @@ The response sequence is illustrated in~\autoref{fig:sequence-sharing}
 	\item The passenger can enable the sharing function both in the mobile app and in the web interface.
 	\item The passenger can choose between possible sharing solutions or a new taxi.
 	\item The system has to communicate to the taxi driver the presence of a new passenger.
-<<<<<<< Updated upstream
-	\item The system must be able to know if the taxi driver has already picked up the travelers or not.
-	\item The system must be able to know how many travelers are currently in the taxi and what is the next scheduled destination.
-	\item The total number of travelers must not exceed the number of seats available in each taxi.
+	\item The system must be able to know if the taxi driver has already picked up the travellers or not.
+	\item The system must be able to know how many travellers are currently in the taxi and what is the next scheduled destination.
+	\item The total number of travellers must not exceed the number of seats available in each taxi.
 	\item The taxi driver has to insert the number of passengers who have been picked up.
 	\item After the user chooses to enable the sharing mode, the system has to list all the locations and times of the feasible shared rides.
-	\item The system splits the ride costs among the passengers, considering the number of travelers linked to a passenger.
-=======
-	\item The system must be able to know if the taxi driver has already picked up the travellers or not.
-	\item The system must be able to know how many travellers are in the taxi and what is the next scheduled destination.
-	\item The total number of travellers must not exceed the number of seats available in each taxi.
-	\item The taxi driver can insert the number of passengers who have been picked up.
-	\item After the user chooses to enable the sharing mode, the system has to specify, for every sharing ride, the location and the time.
 	\item The system splits the ride costs among the passengers, considering the number of travellers linked to a passenger.
->>>>>>> Stashed changes
 	\begin{enumerate}
 		\item The fee for each passenger is reported by the system as a percentage, because the system knows nothing about the taxi fees in each city.
 		\item The fee for each traveller is computed as follows: for each traveller the system computes the total distance travelled, from the starting point to his or her destination. Then the system divides the distance travelled by each traveller by the sum of all the distances.
