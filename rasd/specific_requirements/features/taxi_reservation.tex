@@ -48,7 +48,7 @@ Event Flow & \begin{enumerate}
 	\item The passenger chooses to reserve a taxi using his client.
 	\item The passenger chooses the origin and destination addresses, the number of travelers, and the time of pick-up.
 	\item The passenger confirms the reservation.
-	\item 10 minutes prior to the ride time, the request gets forwarded to the first taxi in the queue of the same taxi zone of the user.
+	\item 10 minutes before the ride time, the request gets forwarded to the first taxi in the queue of the same taxi zone of the user.
 	\item The taxi driver can either accept or deny the request; if he denies it, the request is forwarded to the next taxi driver in the queue, and so on.
 	\item Finally the request gets accepted by a taxi driver.
 	\item The passenger gets notified that a taxi driver accepted his request and is given the ETA of the incoming taxi.
@@ -88,8 +88,8 @@ The statechart of a taxi reservation with ride sharing is shown in~\autoref{fig:
 	\item The system asks the passenger the total number of travelers.
 	\item The system asks the passenger if he wants to share the ride.
 	\item Origin and destination must be valid addresses inside the city.
-	\item If GPS info is present and accurate within 50 m, the passenger can specify ``current position'' as the destination of the ride.
-	\item The system asks the passenger the date and time of the ride.
+	\item If GPS data is present and accurate within 50 m, the passenger can specify ``current position'' as the destination of the ride.
+	\item The system asks the passenger for the date and time of the ride.
 	\item The system lets the passenger enter only valid dates and times.
 	\item The system lets the passenger reserve a taxi from 48 hours to 2 hours before the actual ride time.
 	\item 10 minutes before the specified arriving time, the system allocates a taxi for the passenger by putting a request in the queue as described in subsection~\ref{standard-call}.

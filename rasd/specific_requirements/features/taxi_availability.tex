@@ -30,7 +30,7 @@ The use case for a taxi availability handling is shown in~\autoref{usecase-taxia
 
 \begin{table}
 \begin{center}
-\begin{tabular}{| l | p{0.7\textwidth} |}
+\begin{tabular}{| l | p{0.75\textwidth} |}
 \hline
 Actor & Taxi driver \\
 \hline
@@ -41,7 +41,7 @@ Input condition & Taxi drivers are logged in and change their status to ``in ser
 \hline
 Event Flow & \begin{enumerate}
 	\item The taxi driver changes his status to ``in service''.
-	\item The system enqueues the taxi in the right queue using GPS information.
+	\item The system enqueues the taxi in the right queue using GPS data.
 	\item A new request incomes.
 	\item The system chooses the first taxi in the queue and sends the ride request.
 	\item The taxi driver can either accept or deny the request; if he denies it, the request is forwarded to the next taxi driver in the queue, and so on.

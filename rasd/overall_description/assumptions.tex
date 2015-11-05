@@ -13,10 +13,12 @@ We assume that:
     \item The passenger specifies the correct number of travelers.
     \item The taxi driver is able to see notifications of new passengers during shared rides.
     \item The passenger specifies the correct destination when ride sharing is enabled.
-    \item The passenger is ready to modify his route, though not greatly, in order to allow ride sharing.
+    \item The passenger is ready to modify his route, though not dramatically, in order to allow ride sharing.
     \item Each taxi driver owns and uses only one taxi.
     \item The number of seats in the taxi is fixed and never changes.
     \item The taxi drivers charge the passengers directly. The system has no role in the payments.
-    \item The system does not know the taxi costs.
+    \item The system does knows nothing about the absolute taxi costs in each cities.
+    \item Each passenger has to pay for him/herself and for all his/her passengers.
+    \item If multiple persons (travelers) share a ride on the taxi, the costs are split proportionally to the person-km traveled. That means that 2 passengers who travel for 10 km shall pay the same of one passenger that travels for 20 km.
     \item The number of taxis is sufficient to satisfy the demand in each area.
 \end{itemize}
