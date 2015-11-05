@@ -7,7 +7,7 @@ After the request, the passenger is informed by the system about the waiting tim
 Requests shall be forwarded to available and active taxi drivers in the same zone of the passengers. Taxi drivers shall be able to accept or reject an incoming request.
 
 \subsubsection{Scenario 1}
-Alice needs a taxi. She opens the myTaxiService mobile app on her phone, and selects ``Call a taxi''. She authorizes the application to access her GPS data, checks on the map that her position is correct, enters ``1 person'' as the number of travelers and confirms the request.
+Alice needs a taxi. She opens the myTaxiService mobile app on her phone, and selects ``Call a taxi''. She authorizes the application to access her GPS data, checks on the map that her position is correct, enters ``1 person'' as the number of travellers and confirms the request.
 
 The system forwards the request to Bob, the first taxi driver in Alice's taxi zone. Bob decides to accept the call: a map showing Alice's position gets displayed on Bob's phone and the navigator starts.
 
@@ -89,16 +89,16 @@ The response sequence is illustrated in figures \ref{fig:sequence-taxicall} and 
 	\item The system must localize the passenger before he or she makes a taxi request.
 	\begin{enumerate}
 		\item (App) If GPS data is available and the passenger can be tracked within a radius of 50 m, then the passenger is presented with the option of using the current GPS position.
-		\item (App) If GPS data is not available or the precision is less than 50 m, then the app requests the passenger to insert a valid address inside the city. Then the address is shown on a map and the passenger can confirm its position.
+		\item (App) If GPS data is not available or the precision is less than 50 m, then the app requests the passenger to insert a valid address inside the city. Then the address is shown on a map and the passenger can confirm his/her position.
 		\item (Web) In the web application the user is always requested to insert a valid address inside the city. Then the address is shown on a map and the user can confirm its position.
 	\end{enumerate}
 	\item The passenger needs to be inside a taxi zone in order to use the system. If the passenger is not in any taxi zone, the system does not allow any taxi call.
-	\item When the system knows the passenger's position, it asks him/her for the number of travelers and then it presents the passenger the option to request a taxi.
+	\item When the system knows the passenger's position, it asks him/her for the number of travellers and then it presents the passenger the option to request a taxi.
 	\item The system must ask the passenger for confirmation before delivering the taxi request.
 	\item After the passenger's confirmation of a taxi request, the request is delivered to the first taxi with a sufficient number of seats in the queue for the taxi zone in which the user is located.
 	\item Taxi requests are forwarded only to available taxi drivers which are located in the same taxi zone, who are not currently busy.
 	\item Taxi requests are processed in order of arrival.
-	\item If there's no available taxi driver in the passenger's taxi zone, or if all available taxi drivers have refused the request, an error message is displayed to the passenger and the request is aborted.
+	\item If there is no available taxi driver in the passenger's taxi zone, or if all available taxi drivers have refused the request, an error message is displayed to the passenger and the request is aborted.
 	\item When a taxi driver receives a request, the mobile application shows a notification and emits a sound.
 	\item When receiving a request, the taxi driver is presented with the possibility of accepting or denying it.
 	\item After having accepted a request, the taxi driver is automatically marked as ``busy''.

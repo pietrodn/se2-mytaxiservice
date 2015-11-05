@@ -65,7 +65,7 @@ sig Ride {
 	registeredPassengers: some Passenger,
 
 	// number of people in the taxi
-	numOfTravelers: one Int,
+	numOfTravellers: one Int,
 
 	status: one RideStatus,
 	isShared: one Bool,
@@ -74,8 +74,8 @@ sig Ride {
 } {
 	reservationDate < beginDate
 	beginDate < endDate
-	numOfTravelers <= taxiDriver.numberOfSeats
-	#registeredPassengers <= numOfTravelers
+	numOfTravellers <= taxiDriver.numberOfSeats
+	#registeredPassengers <= numOfTravellers
 	(#registeredPassengers > 1) implies (isShared = True)
 	(#destination > 1) implies (isShared = True)
 	#destination <= #registeredPassengers

@@ -1,7 +1,7 @@
 \label{taxi-reservation}
 \subsubsection{Purpose}
 
-Any subscribed passenger shall be able to reserve a taxi for a ride at a predefined time. The passenger has to specify in advance the origin and the destination of the ride, along with the starting date and time and the number of travelers.
+Any subscribed passenger shall be able to reserve a taxi for a ride at a predefined time. The passenger has to specify in advance the origin and the destination of the ride, along with the starting date and time and the number of travellers.
 
 The passenger can also enable the sharing mode for the ride.
 In that case, also the requirements in~\autoref{ride-sharing} apply.
@@ -46,7 +46,7 @@ Input condition & Passenger is already logged in and chooses to reserve a taxi. 
 \hline
 Event Flow & \begin{enumerate}
 	\item The passenger chooses to reserve a taxi using his client.
-	\item The passenger chooses the origin and destination addresses, the number of travelers, and the time of pick-up.
+	\item The passenger chooses the origin and destination addresses, the number of travellers, and the time of pick-up.
 	\item The passenger confirms the reservation.
 	\item 10 minutes before the ride time, the request gets forwarded to the first taxi in the queue of the same taxi zone of the user.
 	\item The taxi driver can either accept or deny the request; if he denies it, the request is forwarded to the next taxi driver in the queue, and so on.
@@ -85,7 +85,7 @@ The statechart of a taxi reservation with ride sharing is shown in~\autoref{fig:
 \begin{enumerate}
 	\item The system presents the passenger with the option to reserve a taxi.
 	\item The system asks the passenger the origin and the destination of the ride.
-	\item The system asks the passenger the total number of travelers.
+	\item The system asks the passenger the total number of travellers.
 	\item The system asks the passenger if he wants to share the ride.
 	\item Origin and destination must be valid addresses inside the city.
 	\item If GPS data is present and accurate within 50 m, the passenger can specify ``current position'' as the destination of the ride.
@@ -97,6 +97,6 @@ The statechart of a taxi reservation with ride sharing is shown in~\autoref{fig:
 	\item After the request is accepted, the passenger gets notified with the ETA of the incoming taxi along with its position.
 	\item The system must prevent the passenger from reserving more than one taxi per hour.
 	\item A reserved ride can be shared.
-	\item If the ride is shared, other passengers (with their travelers) can join the ride since it is submitted to the system.
+	\item If the ride is shared, other passengers (with their travellers) can join the ride since it is submitted to the system.
 	\item If the ride if shared, requirements in~\autoref{ride-sharing} apply.
 \end{enumerate}

@@ -3157,9 +3157,9 @@
 													"showShadow": true,
 													"containerChangeable": false,
 													"containerExtending": false,
-													"left": 106,
+													"left": 104,
 													"top": 668,
-													"width": 127,
+													"width": 130,
 													"height": 13,
 													"autoResize": false,
 													"alpha": 1.5707963267948966,
@@ -3169,7 +3169,7 @@
 													},
 													"edgePosition": 1,
 													"underline": false,
-													"text": "14 : travelersOnBoard",
+													"text": "14 : travellersOnBoard",
 													"horizontalAlignment": 2,
 													"verticalAlignment": 5
 												},
@@ -4701,7 +4701,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFQtcEnZsetg40="
 									},
-									"name": "travelersOnBoard",
+									"name": "travellersOnBoard",
 									"source": {
 										"$ref": "AAAAAAFQtcGcQ8fckWw="
 									},

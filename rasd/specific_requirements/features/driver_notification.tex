@@ -12,7 +12,7 @@ For a new incoming request, the system chooses Travis, who is on the top of the 
 The system acknowledges the decision and waits for Travis to notify that the passenger is on board (last part of~\ref{standard-call}).
 
 \subsubsection{Scenario 2}
-The system receives a new incoming request from a user and selects Frank Martin as designated taxi driver (section~\ref{taxi-availability}).
+The system receives a new incoming request from a passenger and selects Frank Martin as designated taxi driver (section~\ref{taxi-availability}).
 The system sends him a notification and waits for the reply.
 
 Frank has just finished a very demanding ride, so he decides to refuse the request using the interface of the app. The system receives Frank's decision and looks for another available taxi on the same taxi area.
@@ -74,7 +74,7 @@ The use case associated to the response sequence is shown in~\autoref{fig:sequen
 \item The system gives to the taxi driver one minute to reply. Else, the request is automatically refused.
 \item The request notification shall contain the following information:
 \begin{enumerate}
-	\item number of travelers;
+	\item number of travellers;
 	\item location of the passenger;
 	\item username of the passenger;
 	\item estimated time of the meeting with the passenger.
