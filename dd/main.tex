@@ -1,0 +1,69 @@
+\documentclass[12pt, a4paper]{report}
+\usepackage[utf8]{inputenc}
+
+% hyperref
+\usepackage[bookmarks, colorlinks, breaklinks]{hyperref}  % PDF hyperlinks, with coloured links
+\hypersetup{linkcolor=black, citecolor=black, filecolor=black, urlcolor=black} % black links, for printed output
+
+% Support for the inclusion of figures
+\usepackage{graphicx}
+
+% "Contents" and "bibliography" are included in the summary.
+\usepackage{tocbibind}
+
+% Packages and configuration for Alloy code listing
+\usepackage{listings}
+\usepackage{alloy}
+\usepackage{color}
+\definecolor{alloy-keyword}{rgb}{0.23, 0.23, 0.7}
+\definecolor{alloy-comment}{rgb}{0.18, 0.64, 0.18}
+\definecolor{alloy-string}{rgb}{0.71, 0.18, 0.71}
+
+\def\chapterautorefname{Chapter}
+
+\begin{document}
+\title{Software Engineering 2: myTaxiService \\ \vspace{1em} Design Document}
+\author{Chitti Eleonora, De Nicolao Pietro, Delbono Alex\\
+Politecnico di Milano}
+\date{December 4, 2015}
+\maketitle
+\tableofcontents
+
+% ------- INTRODUCTION -------
+\chapter{Introduction}
+\input{introduction/purpose.tex}
+\input{introduction/scope.tex}
+\input{introduction/definitions.tex}
+\input{introduction/reference.tex}
+\input{introduction/structure.tex}
+
+% ------- ARCHITECTURAL DESIGN -------
+\chapter{Architectural Design}
+\input{architectural_design/overview.tex}
+\input{architectural_design/high_level.tex}
+\input{architectural_design/component_view.tex}
+\input{architectural_design/deployment_view.tex}
+\input{architectural_design/runtime_view.tex}
+\input{architectural_design/component_interfaces.tex}
+\input{architectural_design/styles_patterns.tex}
+\input{architectural_design/other_design_decisions.tex}
+
+% ------- ALGORITHM DESIGN -------
+\chapter{Algorithm Design}
+
+% ------- USER INTERFACE DESIGN -------
+\chapter{User Interface Design}
+
+% ------- REQUIREMENTS TRACEABILITY -------
+\chapter{Requirements traceability}
+
+\appendix
+\chapter{Appendix}
+\section{Alloy}
+\input{alloy/alloy.tex}
+
+\input{appendix.tex}
+
+\input{bibliography.tex}
+
+\end{document}
