@@ -1,6 +1,12 @@
 \documentclass[12pt, a4paper]{report}
 \usepackage[utf8]{inputenc}
 
+% Some math symbols and commands
+\usepackage{amsmath}
+
+% Columns spanning multiple rows in tabulars
+\usepackage{multirow}
+
 % hyperref
 \usepackage[bookmarks, colorlinks, breaklinks]{hyperref}  % PDF hyperlinks, with coloured links
 \hypersetup{linkcolor=black, citecolor=black, filecolor=black, urlcolor=black} % black links, for printed output
@@ -31,14 +37,16 @@ Politecnico di Milano}
 
 % ------- INTRODUCTION -------
 \chapter{Introduction}
+\label{ch:introduction}
 \input{introduction/purpose.tex}
 \input{introduction/scope.tex}
 \input{introduction/definitions.tex}
-\input{introduction/reference.tex} 
+\input{introduction/reference.tex}
 \input{introduction/structure.tex}
 
 % ------- ARCHITECTURAL DESIGN -------
 \chapter{Architectural Design}
+\label{ch:architectural-design}
 \input{architectural_design/overview.tex}
 \input{architectural_design/high_level.tex}
 \input{architectural_design/component_view.tex}
@@ -50,14 +58,17 @@ Politecnico di Milano}
 
 % ------- ALGORITHM DESIGN -------
 \chapter{Algorithm Design}
+\label{ch:algorithm-design}
 \input{algorithm_design.tex}
 
 % ------- USER INTERFACE DESIGN -------
 \chapter{User Interface Design}
+\label{ch:ui-design}
 %TODO Eleonora
 
 % ------- REQUIREMENTS TRACEABILITY -------
 \chapter{Requirements traceability}
+\label{ch:requirements-traceability}
 
 \appendix
 \chapter{Appendix}
