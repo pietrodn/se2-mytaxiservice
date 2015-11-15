@@ -1,4 +1,12 @@
 \section{Scope}
 \label{sec:scope}
 
-%TODO Alex
+The system aims to offer a taxi calling and reservation service for a large city. It has to simplify the users' access and provide a reliable taxi queue management.
+
+The system is divided into three levels, which will be presented in the document. The architecture has to be easily extendible in order to provide new functionalities and a simpler maintenance service.
+ 
+ Every component must be conveniently thin and must incapsulate a single functionality. The dependency between them has to be unidirectional and coupling must be avoided in order to increase the reusability of the software.
+ 
+ Design patterns will be strongly used for solving architectural problems in order to simplify the system comprehension and avoid misunderstanding during the implementation phase.
+ 
+ The system functionalities will be caught by interfaces or abstract classes, which will be implemented in concrete classes. This will simplify eventual maintenance operations and project changes.
