@@ -11,11 +11,11 @@ According to the type of event, the algorithm updates the queues moving, deletin
 \end{enumerate}
 The input data are:
 \begin{itemize}
-	\item $Q_i$: list of FIFO queues, where $i$ is the zone of the correspondent queue 
-	\item $e$: event which will change the queues
-	\item $OOS$: list of taxi drivers out of service
-	\item $B$: list of busy taxi drivers
-	\item $P$: list of taxi drivers with a pending ride
+	\item $Q_i$: list of FIFO queues, where $i$ is the zone of the correspondent queue. 
+	\item $e$: event which will change the queues.
+	\item $OOS$: list of taxi drivers out of service.
+	\item $B$: list of busy taxi drivers.
+	\item $P$: list of taxi drivers with a pending ride.
 \end{itemize}  
 
 The algorithm works differently accordingly with the input event. The alternatives are explained in the following subsections.
@@ -39,12 +39,41 @@ If the taxi driver $t$ changes his/her status from “in service” to “not in
 
 
 \section{Taxi sharing matching}
-%TODO Alex
+The algorithm is run by the back-end when a new shared ride is requested and it computes the compatible shared rides with the new one.
+
+A ride can be compatible with a new one if its starting point is not further than $MaxBeginDistance$. $MaxBeginDistance$ is the variable which contains the value expressed in meters of the max accepted distance between the actual position of the passenger of a new ride and the starting point of another ride.
+
+Furthermore the eventual new passenger needs to have the time to reach the starting point.
+
+The last requirement, in order to be a compatible ride, is that once the rides are matched, the estimated travel time of the two rides does not increase of $ExtraPercentage$ of the previous estimated travel time, where $ExtraPercentage$ is the variable which contains the percentage of the max admissible increasing.
+
+The input data:
+\begin{itemize}
+	\item $MaxBeginDistance$: is the max distance which the passenger has to walk in order to reach the starting point of the shared ride.
+	\item $ExtraPercentage$: is the max increase of time travel for every ride, expressed in percentage.
+	\item $SR$: is the set containing only the shared rides not started yet.
+	\item $r$: is the new ride.
+	\item $wv$: is the feasible walking speed of a person.
+	\item $currentTime$: is the current time of the system.
+\end{itemize}
+
+Let $cr_i$ be an element of $SR$. $cr_i.startingPoint$ is the position of the beginning of the ride, $cr_i.duration$ is the estimated time needed for the ride and $cr_i.startingTime$ is the starting time of the ride.
+
+A new ride, formed by two matched rides $cr_1$ and $cr_2$ is denoted by $ cr_1 \star cr_2 $. The starting point of the matched rides is the starting point of the first allocated ride, and the duration of the matched rides is computed from the starting point to the destination of the last passenger which will get off the taxi. $ (cr_1 \star cr_2).startingTime $ is equal to $cr_1.startingTime$.
+
+A ride $cr_i$ is compatible if it fulfills every following condition:
+\begin{itemize}
+	\item $| cr_i.startingPoint - r.startingPoint | \leq MaxBeginDistance$
+	\item $(cr_i \star r).duration  \leq cr_i.duration( 1+ ExtraPercentage)$
+	\item $(cr_i \star r).duration  \leq r.duration( 1+ ExtraPercentage)$
+	\item $ | cr_i.startingPoint - r.startingPoint | wv +currentTime \leq cr_i.startingTime$
+\end{itemize}
+
 
 \section{Taxi fee splitting}
 This algorithm is run by the back-end in the case of shared rides to compute the percentages of the taxi fee that each passenger has to pay.
 
-The algorithm computes the fee percentages proportionally to the overall distance traveled by all the people (travelers) that each passenger on the taxi brings with himself.
+The algorithm computes the fee percentages proportionally to the overall distance traveled by all the people (travellers) that each passenger on the taxi brings with himself.
 
 The input data are:
 \begin{itemize}
