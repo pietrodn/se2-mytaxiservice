@@ -1,2 +1,53 @@
 \section{Selected architectural styles and patterns}
 \label{sec:styles-patterns}
+
+The following architectural styles have been used:
+
+\begin{description}
+\item[Client\&server]
+The client \& server style is used, in our design, at multiple levels:
+\begin{itemize}
+    \item the application server (client) queries the DB (server);
+    \item the web front-end (client) communicates with the application server;
+    \item the user's browser (client) communicates with the web server.
+\end{itemize}
+
+\item[Service-oriented Architecture]
+The SOA is used by the system for the communication between the application server and the front-ends.
+
+The SOA allows to think at a higher level of \emph{abstraction}, by looking at the component interfaces and not at their specific implementation.
+
+The SOA style also improves \emph{modularity}: by making service description, discovery and binding explicit, it's easier to build new plugins and test single modules independently.
+
+Also, SOA makes it easier to document and mantain the APIs, and simplifies the development of clients.
+
+\item[Plug-ins]
+The plug-in style is used to add functionalities to the application server.
+
+The advantage of this choice is modularity: the core application server can be stripped down to the bare minimum, and then new functionalities can be developed, tested and added separately, with no need to touch the core.
+
+Also, the plug-in architecture allows the system to conform to different needs in different installations: not all the features are always needed nor wanted.
+
+By not building additional features directly into the core, performance is improved when those features are not needed.
+
+The stability of the system is preserved by allowing the plug-ins to interact with the system only in specific extension points.
+
+\item[Thin client] The thin client paradigm is implemented with relation to the interaction between user's machine and the system.
+Having a thin client in our case is an advantage because all the application logic is on the application server, which has sufficient computing power and is able to manage concurrency issue efficiently.
+
+This architectural choice makes it possible for users with devices with limited processing power (i.e. mobile phones) to use our service with an acceptable performance.
+
+\item[Distributed presentation]
+Distributed presentation is the design choice for the web front-end.
+As mentioned before, the \emph{thin client} approach has been selected, so all the data and application logic are on the side of the system.
+
+The presentation layer is split among two tiers:
+\begin{enumerate}
+    \item the web server generates the web pages and serves all the needed resources (images, styles, scripts);
+    \item the user's browser interprets and renders the web page, also executing some client-side code (which does not implement application logic).
+\end{enumerate}
+
+\item[Model-View-Controller]
+The clients (web front-end + mobile application) are built following the Model-View-Controller design pattern.
+MVC is the design pattern of choice because it's the most common and the most convenient pattern used with object-oriented languages (including Java) dealing with complex application, and allows to design software with the \emph{separation of concerns} principle in mind.
+\end{description}

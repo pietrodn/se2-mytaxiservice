@@ -8,15 +8,17 @@ This is the project for the Software Engineering 2 course of M.Sc. course of Com
 * Pietro De Nicolao
 
 ## Deliverables
+
 1. **RASD**: [download the latest version here](https://github.com/pietrodn/se2-mytaxiservice/raw/master/Deliveries/RASD.pdf).
+1. **DD**: [download the latest version here](https://github.com/pietrodn/se2-mytaxiservice/raw/master/Deliveries/DD.pdf).
 
 ## Project schedule
 * ~~Group registration 14/10/2015~~
 * ~~RASD (Requirement Analysis Specification Document) and Design assignment 15/10/2015~~
 * ~~Open discussion on RASD during the project lab of 21/10/2015~~
-* RASD submission deadline 6/11/2015
-* Presentation of RASDs and peer review on 11/11/2015
-* Open discussion on Design Document 12/11/2015
+* ~~RASD submission deadline 6/11/2015~~
+* ~~Presentation of RASDs and peer review on 11/11/2015~~
+* ~~Open discussion on Design Document 12/11/2015~~
 * Design Document submission deadline 4/12/2015
 * Presentation of Design Documents and peer review 9/12/2015
 * Code inspection assignment 9/12/2015

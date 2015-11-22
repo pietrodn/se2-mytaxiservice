@@ -1,2 +1,21 @@
 \section{Component interfaces}
 \label{sec:component-interfaces}
+
+\subsection{Application server to database}
+The application server communicates to the DB via JDBC over standard network protocols. Thus, the DB and the application server layers can be deployed on different tiers, as well on the same one.
+
+\subsection{Application server to front-ends}
+The front-ends of the system (the web application and the mobile app) shall communicate with the application server using the same back-end programmatic inteface described in the RASD and implemented as a SOA over the HTTPS protocol.
+
+% TODO maybe the following paragraphs should go into "High level components and their interaction".
+This design choice makes it possible to deploy the application server and the web server on different tiers. It also improves scalability, since there may be many web servers talking to a single application server.
+
+Also, if the web server fails for any reason, the back-end interface will be accessible by the users by means of the mobile application.
+
+\subsection{Web server to browser}
+The users' browsers communicate with the web server via HTTPS requests.
+
+\subsection{Plug-in interface}
+The application server exposes extension points to be used by plug-ins: they're the only points in which the plug-ins can access the system. For example, they may not query the database layer directly.
+
+Plug-in declaration, discovery and activation are made explicit by means of manifest files and plug-in registry.

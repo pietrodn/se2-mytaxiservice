@@ -1,8 +1,11 @@
 all:
-	pdflatex main.tex
+	latexmk -pdf -pv main
 
+live:
+	latexmk -pdf -pvc main
+	
 clean:
-	rm -f *.pdf *.log *.aux *.out *.toc
+	latexmk -C
 
 pdf: all
 	cp main.pdf ../Deliveries/DD.pdf
