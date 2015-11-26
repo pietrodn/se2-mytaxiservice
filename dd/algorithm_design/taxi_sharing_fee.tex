@@ -1,0 +1,46 @@
+\section{Taxi fee splitting}
+This algorithm is run by the back-end in the case of shared rides to compute the percentages of the taxi fee that each passenger has to pay.
+
+The algorithm computes the fee percentages proportionally to the overall distance traveled by all the people (travellers) that each passenger on the taxi brings with himself.
+
+The input data are:
+\begin{itemize}
+    \item $P$: list of passengers;
+    \item $T_i$: list of travellers associated with passenger $i$;
+    \item $d(t)$: distance traveled by traveler $t$.
+\end{itemize}
+
+The algorithm computes $f_i$, that is the percentage of the fee that the passenger $i$ has to pay.
+$f_i$ is expressed as a decimal number, i.e. $0 \le f_i \le 1$.
+
+The algorithm works as follows:
+
+\begin{equation}
+    f_i = \dfrac
+        {\displaystyle \sum_{t \in T_i} d(t)}
+        {\displaystyle \sum_{p \in P} \sum_{t \in T_p} d(t)}
+\end{equation}
+
+An example of an application of this algorithm is shown in~\autoref{fee-splitting-ex}.
+
+\begin{table}
+\begin{center}
+\begin{tabular}{ l  l  l  l  l }
+    \hline
+    \textbf{Passenger} & \textbf{Traveler} & \multicolumn{2}{c}{\textbf{Distance}} & \textbf{Fee} \\
+    \hline
+    \multirow{3}{*}{Alice} & 1 & 90 & \multirow{3}{*}{115} & \multirow{3}{*}{64\%} \\
+    & 2 & 20 & & \\
+    & 3 & 5 & & \\
+    \hline
+    \multirow{3}{*}{Bob} & 1 & 25 & \multirow{3}{*}{65} & \multirow{3}{*}{36\%} \\
+    & 2 & 30 & & \\
+    & 3 & 10 & & \\
+    \hline
+    \textbf{Total} & & \textbf{180} & \textbf{180} & \textbf{100\%} \\
+    \hline
+\end{tabular}
+\caption{An example of the taxi fee splitting algorithm.}
+\label{fee-splitting-ex}
+\end{center}
+\end{table}

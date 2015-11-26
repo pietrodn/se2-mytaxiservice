@@ -1,0 +1,30 @@
+\section{Taxi sharing matching}
+The algorithm is run by the back-end when a new shared ride is requested and it computes the compatible shared rides with the new one.
+
+A ride can be compatible with a new one if its starting point is not further than $MaxBeginDistance$. $MaxBeginDistance$ is the variable which contains the value expressed in meters of the max accepted distance between the actual position of the passenger of a new ride and the starting point of another ride.
+
+Furthermore the eventual new passenger needs to have the time to reach the starting point.
+
+The last requirement, in order to be a compatible ride, is that once the rides are matched, the estimated travel time of the two rides does not increase of $ExtraPercentage$ of the previous estimated travel time, where $ExtraPercentage$ is the variable which contains the percentage of the max admissible increasing.
+
+The input data:
+\begin{itemize}
+	\item $MaxBeginDistance$: is the max distance which the passenger has to walk in order to reach the starting point of the shared ride.
+	\item $ExtraPercentage$: is the max increase of time travel for every ride, expressed in percentage.
+	\item $SR$: is the set containing only the shared rides not started yet.
+	\item $r$: is the new ride.
+	\item $wv$: is the feasible walking speed of a person.
+	\item $currentTime$: is the current time of the system.
+\end{itemize}
+
+Let $cr_i$ be an element of $SR$. $cr_i.startingPoint$ is the position of the beginning of the ride, $cr_i.duration$ is the estimated time needed for the ride and $cr_i.startingTime$ is the starting time of the ride.
+
+A new ride, formed by two matched rides $cr_1$ and $cr_2$ is denoted by $ cr_1 \star cr_2 $. The starting point of the matched rides is the starting point of the first allocated ride, and the duration of the matched rides is computed from the starting point to the destination of the last passenger which will get off the taxi. $ (cr_1 \star cr_2).startingTime $ is equal to $cr_1.startingTime$.
+
+A ride $cr_i$ is compatible if it fulfills every following condition:
+\begin{itemize}
+	\item $| cr_i.startingPoint - r.startingPoint | \leq MaxBeginDistance$
+	\item $(cr_i \star r).duration  \leq cr_i.duration( 1+ ExtraPercentage)$
+	\item $(cr_i \star r).duration  \leq r.duration( 1+ ExtraPercentage)$
+	\item $ | cr_i.startingPoint - r.startingPoint | wv +currentTime \leq cr_i.startingTime$
+\end{itemize}

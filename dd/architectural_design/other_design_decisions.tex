@@ -1,2 +1,11 @@
 \section{Other design decisions}
 \label{sec:other-design-decisions}
+
+The system uses an external service, \emph{Google Maps}, to offload all the geolocalization, distance calculation and map visualization processed. The reasons of this choice are the following:
+\begin{itemize}
+    \item manually developing maps for each city is not a viable solution due to the tremendous effort of coding and data collection required;
+    \item Google Maps is a well-established, tested and reliable software component already used by millions of people around the world;
+    \item Google Maps offers APIs, enabling programmatic access to its features (SOA approach);
+    \item Google Maps can be used both on the server side (calculation, shortest paths, traffic, incident reporting) and on the client side (map visualization);
+    \item the users feel comfortable with a software component they know and use everyday.
+\end{itemize}

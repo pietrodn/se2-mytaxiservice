@@ -1,0 +1,40 @@
+\section{Taxi queue management}
+As stated in the RASD, the taxi drivers are divided in city zones according to their current location. Each zone is served by a local queue of taxi driver which are enabled to pick the ride request and serve the clients. This section elaborates in detail how the queues are managed by the system.
+
+The algorithm is run every time there is a new event which changes the order or the number of the elements in one of the system queues.
+
+According to the type of event, the algorithm updates the queues moving, deleting or creating elements. There are several types of events:
+\begin{enumerate}
+	\item New request incomes \label{event:new_req}
+	\item Taxi Driver accepts a request \label{event:accepted_req}
+	\item Taxi Driver refuses a request \label{event:refuses_req}
+	\item Taxi Driver changes zone \label{event:changed_zone}
+	\item Taxi Driver changes his/her status \label{event:changed_status}
+\end{enumerate}
+The input data are:
+\begin{itemize}
+	\item $Q_i$: list of FIFO queues, where $i$ is the zone of the correspondent queue.
+	\item $e$: event which will change the queues.
+	\item $OOS$: list of taxi drivers out of service.
+	\item $B$: list of busy taxi drivers.
+	\item $P$: list of taxi drivers with a pending ride.
+\end{itemize}
+
+The algorithm works differently accordingly with the input event. The alternatives are explained in the following subsections.
+
+\subsection{Type \ref{event:new_req}, new request incomes}
+The algorithm extracts the zone $z$ of the new incoming request, pops the first element of the $Q_z$ and inserts this element in $P$ list.
+
+\subsection{Type \ref{event:accepted_req}, taxi driver accepts a request}
+The algorithm extracts the taxi driver $t$ from the event and removes him/her from $P$. After that it inserts $t$ into $B$.
+
+\subsection{Type \ref{event:refuses_req}, taxi driver refuses a request}
+The algorithm extracts the taxi driver $t$ from the event and it removes him/her from $P$. After that it retrieves the taxi driver's actual zone $z$ and it pushes $t$ in $Q_z$.
+
+\subsection{Type \ref{event:changed_zone}, taxi driver changes zone}
+The algorithm extracts the taxi driver $t$, the previous zone $pz$ and the next zone $nz$ from the event and removes $t$ from $Q_{pz}$ and pushes $t$ into $Q_{nz}$.
+
+\subsection{Type \ref{event:changed_status}, taxi driver changes status}
+If the taxi driver $t$ changes his/her status from “not in service” to “in service”, the algorithm extracts the zone $z$ from the event, it removes $t$ from $OOS$ and pushes $t$ into $Q_z$.
+
+If the taxi driver $t$ changes his/her status from “in service” to “not in service”, the algorithm extracts the zone $z$ from the event, it removes $t$ from $Q_z$ and pushes $t$ into $OOS$.
