@@ -5,10 +5,7 @@
 The application server communicates to the DB via JDBC over standard network protocols. Thus, the DB and the application server layers can be deployed on different tiers, as well on the same one.
 
 \subsection{Application server to front-ends}
-The front-ends of the system (the web application and the mobile app) shall communicate with the application server using the same back-end programmatic inteface described in the RASD and implemented as a SOA over the HTTPS protocol.
-
-% TODO maybe the following paragraphs should go into "High level components and their interaction".
-This design choice makes it possible to deploy the application server and the web server on different tiers. It also improves scalability, since there may be many web servers talking to a single application server.
+The front-ends of the system (the web application and the mobile app) shall communicate with the application server using the same back-end programmatic inteface described in the RASD and implemented as a RESTful interface over the HTTPS protocol.
 
 Also, if the web server fails for any reason, the back-end interface will be accessible by the users by means of the mobile application.
 

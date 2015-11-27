@@ -23,9 +23,11 @@ The main components are structured into four layers presented in figure \ref{fig
 	\item Client
 \end{enumerate}
 
+This design choice makes it possible to deploy the application server and the web server on different tiers. It also improves scalability, since there may be many web servers talking to a single application server.
+
 \begin{figure}[h]
 \centering
-\includegraphics[width=\textwidth]{diagrams/layers.pdf}
+\includegraphics[width=0.7\textwidth]{diagrams/layers.pdf}
 \caption{Layers of the system.}
 \label{fig:layers}
 \end{figure}
