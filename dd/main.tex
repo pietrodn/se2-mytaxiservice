@@ -17,18 +17,14 @@
 % "Contents" and "bibliography" are included in the summary.
 \usepackage{tocbibind}
 
-% Packages and configuration for Alloy code listing
-\usepackage{listings}
-\usepackage{alloy}
-\usepackage{color}
-\definecolor{alloy-keyword}{rgb}{0.23, 0.23, 0.7}
-\definecolor{alloy-comment}{rgb}{0.18, 0.64, 0.18}
-\definecolor{alloy-string}{rgb}{0.71, 0.18, 0.71}
-
 % Subfigures and subtables
 \usepackage{subcaption}
 
 \usepackage{placeins}
+
+% Colors for API specifications.
+\newcommand{\returns}[1]{\textcolor{red}{#1}}
+\newcommand{\plugin}[1]{\textcolor{blue}{#1}}
 
 \def\chapterautorefname{Chapter}
 

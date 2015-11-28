@@ -11,8 +11,97 @@ The RESTful interface is implemented in the application server using JAX-RS.
 
 Also, if the web server fails for any reason, the back-end interface will be accessible by the users by means of the mobile application.
 
+The detailed REST API implemented by the core application server is described in~\autoref{tab:rest-core}. The extensions implemented by the plugins to be developed are defined in~\autoref{tab:rest-plugins}.
+
+\begin{table}
+    \centering
+    \begin{small}
+    \begin{tabular}{l l p{0.5\textwidth}}
+        \textbf{Service} & \multicolumn{2}{l}{\textbf{Parameters and return values}} \\
+        \hline
+        % COMMON THINGS
+        \multirow{2}{*}{Common to all services} & \texttt{token} & The authentication token returned by \texttt{login}, used for mantaining the session of the users. \newline Not needed for \texttt{login} and \texttt{registration}. \\
+        & \texttt{\returns{errors}} & A dictionary (id $\Rightarrow$ message) of errors returned by the operation. If the operation is successful, it's empty.\\
+        \hline
+        % LOGIN
+        \multirow{3}{*}{\texttt{login}} & \texttt{user\_name} & The username of the registered user \\
+        & \texttt{password} & The password of the user. \\
+        & \texttt{\returns{token}} & The authentication token to be used in future requests.\\
+        \hline
+        % REGISTER
+        \multirow{4}{*}{\texttt{register}} & \texttt{user\_name} & The username to register. \\
+        & \texttt{password} & The password chosen by the user. \\
+        & \texttt{email} & The e-mail address chosen by the user. \\
+        & \texttt{type} & \texttt{passenger | driver} \\
+        \hline
+        % UPDATE_STATUS
+        \multirow{3}{*}{\texttt{update\_status}} & \texttt{longitude} & The longitude coordinate of the taxi driver.\\
+        & \texttt{latitude} & The latitude coordinate of the taxi driver.\\
+        & \texttt{status} & \texttt{unavailable | available}\\
+        \hline
+        % GET_RIDE_INFO
+        \multirow{8}{*}{\texttt{get\_ride\_info}} & \texttt{ride} & The ID of the ride returned by \texttt{request\_taxi}. \\
+        & \texttt{\returns{ride\_id}} & The ride ID.\\
+        & \texttt{\returns{origin}} & Dictionary containing the coordinates of the starting point.\\
+        & \texttt{\returns{destinations}} & List of dictionaries containing the coordinates of the destinations.\\
+        & \texttt{\returns{num\_travelers}} & The total number of travelers.\\
+        & \texttt{\plugin{num\_passengers}} & The total number of passengers (return value).\\
+        & \texttt{\returns{status}} & \texttt{reserved | waiting | running | done}\\
+        & \texttt{\returns{wait\_time}} & The estimate waiting time in seconds. Returns -1 if there's no taxi to wait for.\\
+        \hline
+        % REQUEST TAXI
+        \multirow{4}{*}{\texttt{request\_taxi}} & \texttt{longitude} & The longitude coordinate of the passenger.\\
+        & \texttt{latitude} & The latitude coordinate of the passenger.\\
+        & \texttt{travelers} & The number of travelers.\\
+        & \texttt{\plugin{sharing\_enabled}} & \texttt{true | false}\\
+        & \texttt{\returns{ride\_id}} & An ID number identifying the ride.\\
+        \hline
+    \end{tabular}
+    \end{small}
+    \caption{REST API implemented by the core application layer. \returns{Return values} are highlighted. \plugin{Extensions} by plugins are colored blue.}
+    \label{tab:rest-core}
+\end{table}
+
+\begin{table}
+    \centering
+    \begin{small}
+    \begin{tabular}{l l p{0.5\textwidth}}
+        \textbf{Service} & \multicolumn{2}{l}{\textbf{Parameters and return values}} \\
+        \hline
+        % COMMON THINGS
+        \multirow{2}{*}{Common to all services} & \texttt{token} & The authentication token returned by \texttt{login}, used for mantaining the session of the users. \newline Not needed for \texttt{login} and \texttt{registration}. \\
+        & \texttt{\returns{errors}} & A dictionary (id $\Rightarrow$ message) of errors returned by the operation. If the operation is successful, it's empty.\\
+        \hline
+        % RESERVE_TAXI
+        \multirow{6}{*}{\texttt{reserve\_taxi}} & \texttt{longitude} & The longitude coordinate of the passenger.\\
+        & \texttt{latitude} & The latitude coordinate of the passenger.\\
+        & \texttt{travelers} & The number of travelers.\\
+        & \texttt{time} & Time of arrival of the taxi (ISO 8601 format).\\
+        & \texttt{\plugin{sharing\_enabled}} & \texttt{true | false}\\
+        & \texttt{\returns{ride\_id}} & An ID number identifying the ride.\\
+        \hline
+        % LIST_SHARED_RIDES
+        \multirow{5}{*}{\texttt{list\_shared\_rides}} & \texttt{longitude} & The longitude coordinate of the passenger.\\
+        & \texttt{latitude} & The latitude coordinate of the passenger.\\
+        & \texttt{travelers} & The number of travelers.\\
+        & \texttt{time} & Time of arrival of the taxi (ISO 8601 format).\\
+        & \texttt{\returns{rides}} & A dictionary containing a list of feasible rides, with the same format of \texttt{get\_ride\_info}.\\
+        \hline
+        % JOIN_SHARED_RIDE
+        \multirow{5}{*}{\texttt{join\_shared\_ride}} & \texttt{ride\_id} & The ID of the ride.\\
+        & \texttt{longitude} & The longitude coordinate of the destination.\\
+        & \texttt{latitude} & The latitude coordinate of the destination.\\
+        & \texttt{\returns{ride\_info}} & If the request is successful, the output of \texttt{get\_ride\_info} for the ride \texttt{ride\_id}.\\
+        \hline
+    \end{tabular}
+    \end{small}
+    \caption{REST API implemented by the plugins \emph{taxi reservation} and \emph{taxi sharing}. \returns{Return values} are highlighted. \plugin{Extensions} by plugins are colored blue.}
+    \label{tab:rest-plugins}
+\end{table}
+
 \subsection{Web server to browser}
 The users' browsers communicate with the web server via HTTPS requests. Any unencrypted request will be denied, as stated in the RASD.
+
 
 \subsection{Plug-in interface}
 The application server exposes extension points to be used by plug-ins: they're the only points in which the plug-ins can access the system. For example, they may not query the database layer directly.
