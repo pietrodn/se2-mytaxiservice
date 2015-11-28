@@ -2,8 +2,8 @@ all:
 	latexmk -pdf -pv main
 
 live:
-	latexmk -pdf -pvc main
-	
+	latexmk -pdf -pvc -silent main
+
 clean:
 	latexmk -C
 

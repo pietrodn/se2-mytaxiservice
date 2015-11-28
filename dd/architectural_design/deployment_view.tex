@@ -2,6 +2,9 @@
 \label{sec:deployment-view}
 
 The deployment diagram for the system is shown in~\autoref{fig:deployment-diagram}.
+The web and the application layers can be allocated to the same physical machine (tier), but in the general case they are on different hosts.
+
+GlassFish Server is used as the Java EE application server for both the business logic and the web tier.
 \begin{figure}[h]
 \centering
 \includegraphics[width=\textwidth]{diagrams/deployment_diagram}
