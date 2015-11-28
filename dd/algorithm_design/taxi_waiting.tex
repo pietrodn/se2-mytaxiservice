@@ -1,2 +1,36 @@
 \section{Taxi waiting calculation}
-%TODO Eleonora
+When a user requests a taxi and his request is assigned to a taxi driver, the user receives the estimated time of arrival of the taxi. This delay is computed by using the Google Maps API. \cite{Google-Maps-Directions-API}
+\begin{enumerate}
+\item The user requests a taxi sending his current position to the application server
+\item The request is accepted by a taxi driver, who also sends his current position to the application server
+\item \label{point-a} The application server computes the waiting time sending a request to google maps, the format of the request is specified in \autoref{tab:gmaps-parameters} 
+\item \label{point-b}The application server sends to the passenger the estimated time.
+\item Points \ref{point-a} , \ref{point-b} are repeated every 90 seconds until the taxi notifies that it has picked up the passenger
+\end{enumerate}
+
+\begin{table}
+\begin{center}
+\begin{tabular}{l p{0.5\textwidth}}
+\hline
+URL & \url{http://maps.googleapis.com/maps/api/directions/xml}\\
+\hline
+\texttt{origin} & GPS coordinates of the taxi driver\\
+\hline
+\texttt{destination} & GPS coordinates of the passenger\\
+\hline
+\texttt{key} & API key\\
+\hline
+\texttt{mode} & \texttt{driving}\\
+\hline
+\texttt{departure\_time} & \texttt{now}\\
+\hline
+\texttt{traffic\_model} & \texttt{pessimistic}\\
+\hline
+\end{tabular}
+\caption{Parameters of the Google Maps API call for the estimation of the waiting time.}
+\label{tab:gmaps-parameters}
+\end{center}
+\end{table}
+
+
+
