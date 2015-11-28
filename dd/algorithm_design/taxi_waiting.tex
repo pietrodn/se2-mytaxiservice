@@ -1,36 +1,40 @@
 \section{Taxi waiting calculation}
-When a user requests a taxi and his request is assigned to a taxi driver, the user receives the estimated time of arrival of the taxi. This delay is computed by using the Google Maps API. \cite{Google-Maps-Directions-API}
+\label{sec:taxiwaiting}
+When a passenger requests a taxi and his request is assigned to a taxi driver, the system tells the user the estimated time of arrival (ETA) of the taxi. This delay is computed by using the Google Maps Directions API~\cite{Google-Maps-Directions-API}, called as a service from the business logic layer.
+
+The flow of events is as follows:
 \begin{enumerate}
-\item The user requests a taxi sending his current position to the application server
-\item The request is accepted by a taxi driver, who also sends his current position to the application server
-\item \label{point-a} The application server computes the waiting time sending a request to google maps, the format of the request is specified in \autoref{tab:gmaps-parameters} 
-\item \label{point-b}The application server sends to the passenger the estimated time.
-\item Points \ref{point-a} , \ref{point-b} are repeated every 90 seconds until the taxi notifies that it has picked up the passenger
+\item The passenger requests a taxi sending his current position to the system.
+\item The system looks for an available taxi driver in the same zone of the passenger.
+\item The request is accepted by one taxi driver, who sends his current position to the application server.
+\item \label{point-a} The application server computes the ETA by sending a request to Google Maps; the format of the request is specified in~\autoref{tab:gmaps-parameters}.
+\item \label{point-b}The application server sends to the passenger the ETA.
+\item Points \ref{point-a}, \ref{point-b} are repeated every 90 seconds until the taxi notifies that it has picked up the passenger.
 \end{enumerate}
 
+A detailed view of the sequential interaction among the components was shown in the runtime views, in~\autoref{fig:sequence-gmaps}.
+
+The detailed API call sent to the Google Maps Directions API is shown in~\autoref{tab:gmaps-parameters}. We chose to adopt the pessimistic traffic model because, although taxi driver often have reserved lanes, it's best to leave some safety margin of time.
+
 \begin{table}
-\begin{center}
-\begin{tabular}{l p{0.5\textwidth}}
-\hline
-URL & \url{http://maps.googleapis.com/maps/api/directions/xml}\\
-\hline
-\texttt{origin} & GPS coordinates of the taxi driver\\
-\hline
-\texttt{destination} & GPS coordinates of the passenger\\
-\hline
-\texttt{key} & API key\\
-\hline
-\texttt{mode} & \texttt{driving}\\
-\hline
-\texttt{departure\_time} & \texttt{now}\\
-\hline
-\texttt{traffic\_model} & \texttt{pessimistic}\\
-\hline
-\end{tabular}
-\caption{Parameters of the Google Maps API call for the estimation of the waiting time.}
-\label{tab:gmaps-parameters}
-\end{center}
+    \centering
+    \begin{tabular}{l p{0.5\textwidth}}
+        \hline
+        URL & \url{http://maps.googleapis.com/maps/api/directions/xml}\\
+        \hline
+        \texttt{origin} & GPS coordinates of the taxi driver\\
+        \hline
+        \texttt{destination} & GPS coordinates of the passenger\\
+        \hline
+        \texttt{key} & API key\\
+        \hline
+        \texttt{mode} & \texttt{driving}\\
+        \hline
+        \texttt{departure\_time} & \texttt{now}\\
+        \hline
+        \texttt{traffic\_model} & \texttt{pessimistic}\\
+        \hline
+    \end{tabular}
+    \caption{Parameters of the Google Maps API call for the estimation of the waiting time.}
+    \label{tab:gmaps-parameters}
 \end{table}
-
-
-
