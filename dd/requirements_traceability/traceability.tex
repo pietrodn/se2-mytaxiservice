@@ -1,45 +1,61 @@
 \section{External interface requirements}
-\subsection{User interface}
+All the decisions in the DD have been taken following functional and nonfunctional requirements written in the RASD, although some changes are explained in \autoref{tab:SWreq-Table}.
 
-\begin{table}
+In the following tables are enlightened the {\bf sections} where a specific requirement has been followed to write the DD. Every requirement appears in a generic explanation, more details would come with the implementation of the system.
+
+\subsection{User interfaces}
+The requirements are explained in \autoref{tab:UIreq-Table}
+\begin{table}[h]
 \begin{center}
 \begin{tabular}{|l|l|}
 \hline
-Web application  & --\\
+Web application  & \ref{sec:high-level}\\
 \hline
-Mobile application  & --\\
+Mobile application  & details in implementation\\
 \hline
 Server back-end  & --\\
 \hline
 \end{tabular}
 \caption{Requirements divided in web and mobile ones}
+\label{tab:UIreq-Table}
 \end{center}
 \end{table}
 
+The others requirements that are common to all clients interfaces aren't explained in this document, because they will be observed during the implementation part; although some of them, written in the following list, are shown in the UI Design \autoref{ch:ui-design}.
+\begin{itemize}
+\item The first screen must ask the user to login.
+\item The dashboard with links to every function shall be displayed in the home page.
+\item The top bar must show the last taxi service called.
+\item The possibility to choose the language at all times. %TODO correggi mockup!
+\end{itemize}
 
-\begin{table}
+
+\subsection{Hardware interfaces}
+%TODO GPS on the mobile app???
+
+\subsection{Software interfaces}
+
+The requirements followed in this subsection are explained in \autoref{tab:SWreq-Table}.
+
+\begin{table}[h]
 \begin{center}
-\begin{tabular}{|l|l|}
+\begin{tabular}{|p{0.5\textwidth}|p{0.5\textwidth}|}
 \hline
-UI accessible to disabled people & --\\
+Modularity: expose API to buit new interfaces and modules & \ref{sec:high-level}, \ref{sec:component-interfaces}\\
 \hline
-possibility to choose the language at all times  & --\\
+Use MySQL for DB  & \ref{sec:component-view}\\
 \hline
-The first screen must ask the user to login  & --\\
-\hline
-A dashboard with links to every function shall be displayed in the home page & --\\
-\hline
-must be linked in every screen & --\\
-\hline
-The top bar must show the last taxi service called, & --\\
-\hline
-UI controls and views must be suitable for the input interface and the screen size & --\\
+Use Java SE8 used back-end & \textcolor{red}{this requirement has been changed in Java EE as can be seen in sections} \ref{sec:component-view}, \ref{sec:deployment-view}\\
 \hline
 \end{tabular}
-\caption{Requirements common to all client interfaces }
+\caption{Software requirements}
+\label{tab:SWreq-Table}
 \end{center}
 \end{table}
 
+
+\subsection{Communication interfaces}
+The client communicates via HTTPS as shown in the Component Intefaces \autoref{sec:component-interfaces}
 
 
 
