@@ -6,102 +6,191 @@ The application server communicates to the DB via JPA and JDBC over standard net
 
 The low-level technicalities about the specific dialect of SQL for the selected DBMS are abstracted by the Java Persistence API, which also deals with the O/R mapping.
 
-\subsection{Application server to front-ends}
+\subsection{Application server to front-ends (REST API)}
 The front-ends of the system (the web application and the mobile app) shall communicate with the application server using the same back-end programmatic inteface described in the RASD and implemented as a RESTful interface over the HTTPS protocol.
 
 The RESTful interface is implemented in the application server using JAX-RS.
 
 Also, if the web server fails for any reason, the back-end interface will be accessible by the users by means of the mobile application.
 
-The detailed REST API implemented by the core application server is described in~\autoref{tab:rest-core}. The extensions implemented by the plugins to be developed are defined in~\autoref{tab:rest-plugins}.
+The detailed REST API implemented by the core system and by the plugins are described in the following pages.
+
+The conventions used for defining the REST API are the following:
+\begin{enumerate}
+    \item Each Session Bean can offer some functionalities as part of the public API.
+    \item Plugins can add other functionalities and extend the existing ones.
+    \item All the function can return one or more errors, as a list.
+    \item \returns{Return values} are highlighted in red.
+    \item \plugin{Extensions} by plugins are highlighted in blue.
+    \item Position data consists in an ordered tuple containing two floating point values (latitude and longitude).
+    \item The features only available to logged in users require a login token, provided by the \texttt{login} function.
+    \item Features can be available to all users (\textbf{A}), logged in users (\textbf{U}), passengers (\textbf{P}) or taxi drivers (\textbf{D}) only.
+\end{enumerate}
+
+\subsubsection{UserManager}
+Functions implemented by \textbf{UserManager} (\autoref{tab:rest-usermanager}):
+\begin{description}
+    \item[\texttt{login}] This function allows any registered user to log into the system using his username and password. If the credentials are correct, the function returns a token to be used in the future requests to identify the user. Otherwise, an error is returned.
+
+    \item[\texttt{register}] This function creates a new user in the system with the provided data. This function can create both passengers and taxi drivers. If the entered data is correct, an email is sent to the user address to confirm the email address.
+
+    \item[\texttt{confirm\_email}] This function confirms the email address of a newly registered user using the token sent by email after the registration.
+\end{description}
 
 \begin{table}
     \centering
     \begin{small}
-    \begin{tabular}{l l p{0.5\textwidth}}
-        \textbf{Service} & \multicolumn{2}{l}{\textbf{Parameters and return values}} \\
+    \begin{tabular}{l l l p{0.4\textwidth}}
+        \textbf{Service} & \textbf{Users} & \multicolumn{2}{l}{\textbf{Parameters and return values}} \\
         \hline
-        % COMMON THINGS
-        \multirow{2}{*}{Common to all services} & \texttt{token} & The authentication token returned by \texttt{login}, used for mantaining the session of the users. \newline Not needed for \texttt{login} and \texttt{registration}. \\
-        & \texttt{\returns{errors}} & A dictionary (id $\Rightarrow$ message) of errors returned by the operation. If the operation is successful, it's empty.\\
+        %% COMMON THINGS
+        \multirow{2}{*}{All services} & \multirow{2}{*}{A} & \texttt{token} & Authentication token. \\
+        & & \texttt{\returns{errors}} & List of errors.\\
         \hline
         % LOGIN
-        \multirow{3}{*}{\texttt{login}} & \texttt{user\_name} & The username of the registered user \\
-        & \texttt{password} & The password of the user. \\
-        & \texttt{\returns{token}} & The authentication token to be used in future requests.\\
+        \multirow{3}{*}{\texttt{login}} & \multirow{2}{*}{A} & \texttt{user\_name} & Username of the registered user \\
+        && \texttt{password} & Password of the user. \\
+        && \texttt{\returns{token}} & Authentication token to be used in future requests.\\
         \hline
         % REGISTER
-        \multirow{4}{*}{\texttt{register}} & \texttt{user\_name} & The username to register. \\
-        & \texttt{password} & The password chosen by the user. \\
-        & \texttt{email} & The e-mail address chosen by the user. \\
-        & \texttt{type} & \texttt{passenger | driver} \\
+        \multirow{4}{*}{\texttt{register}} & \multirow{4}{*}{A} & \texttt{user\_name} & Username to register. \\
+        && \texttt{password} & Password chosen by the user. \\
+        && \texttt{email} & E-mail address chosen by the user. \\
+        && \texttt{type} & \texttt{passenger | driver} \\
         \hline
-        % UPDATE_STATUS
-        \multirow{3}{*}{\texttt{update\_status}} & \texttt{longitude} & The longitude coordinate of the taxi driver.\\
-        & \texttt{latitude} & The latitude coordinate of the taxi driver.\\
-        & \texttt{status} & \texttt{unavailable | available}\\
-        \hline
-        % GET_RIDE_INFO
-        \multirow{8}{*}{\texttt{get\_ride\_info}} & \texttt{ride} & The ID of the ride returned by \texttt{request\_taxi}. \\
-        & \texttt{\returns{ride\_id}} & The ride ID.\\
-        & \texttt{\returns{origin}} & Dictionary containing the coordinates of the starting point.\\
-        & \texttt{\returns{destinations}} & List of dictionaries containing the coordinates of the destinations.\\
-        & \texttt{\returns{num\_travelers}} & The total number of travelers.\\
-        & \texttt{\plugin{num\_passengers}} & The total number of passengers (return value).\\
-        & \texttt{\returns{status}} & \texttt{reserved | waiting | running | done}\\
-        & \texttt{\returns{wait\_time}} & The estimate waiting time in seconds. Returns -1 if there's no taxi to wait for.\\
-        \hline
-        % REQUEST TAXI
-        \multirow{4}{*}{\texttt{request\_taxi}} & \texttt{longitude} & The longitude coordinate of the passenger.\\
-        & \texttt{latitude} & The latitude coordinate of the passenger.\\
-        & \texttt{travelers} & The number of travelers.\\
-        & \texttt{\plugin{sharing\_enabled}} & \texttt{true | false}\\
-        & \texttt{\returns{ride\_id}} & An ID number identifying the ride.\\
+        % CONFIRM_EMAIL
+        \multirow{2}{*}{\texttt{confirm\_email}} & \multirow{2}{*}{U} & \texttt{user\_name} & Username of the registered user \\
+        && \texttt{confirmation\_token} & Confirmation token sent by e-mail. \\
         \hline
     \end{tabular}
     \end{small}
-    \caption{REST API implemented by the core application layer. \returns{Return values} are highlighted. \plugin{Extensions} by plugins are colored blue.}
-    \label{tab:rest-core}
+    \caption{REST API implemented by the UserManager bean.}
+    \label{tab:rest-usermanager}
 \end{table}
+
+\subsubsection{RideManager}
+Functions implemented by \textbf{RideManager} (\autoref{tab:rest-ridemanager}):
+\begin{description}
+    \item[\texttt{get\_ride\_info}] This function returns all the information about a ride. An user can obtain information about a ride if and only if one of these conditions is met:
+    \begin{enumerate}
+        \item the user is one of the passengers of the ride;
+        \item the user is the taxi driver whom the ride is assigned;
+        \item the ride is shared and new passengers can join.
+    \end{enumerate}
+    An error is returned if the ride ID is invalid or if the user is not authorized to access the data.
+
+    \item[\texttt{request\_taxi}] This function allows a passenger to call a taxi. The passenger has to specify its position along with the number of travelers, and if he wants to share the ride. If the sharing feature is enabled, the passenger has to provide a destination. If the taxi call is successful, the function returns the ID of the newly created ride. An error is returned if the data is not valid or if the passenger is currently in a ride or waiting for a taxi.
+
+    \item[\texttt{update\_ride\_status}] This function is used by the taxi driver client to send messages about a ride. The taxi manager can signal that he has picked up all the passenger or that the ride are ended. If the message if inconsistent with the current status of the ride, an error is returned.
+\end{description}
 
 \begin{table}
     \centering
     \begin{small}
-    \begin{tabular}{l l p{0.5\textwidth}}
-        \textbf{Service} & \multicolumn{2}{l}{\textbf{Parameters and return values}} \\
+    \begin{tabular}{l l l p{0.4\textwidth}}
+        \textbf{Service} & \textbf{Users} & \multicolumn{2}{l}{\textbf{Parameters and return values}} \\
         \hline
         % COMMON THINGS
-        \multirow{2}{*}{Common to all services} & \texttt{token} & The authentication token returned by \texttt{login}, used for mantaining the session of the users. \newline Not needed for \texttt{login} and \texttt{registration}. \\
-        & \texttt{\returns{errors}} & A dictionary (id $\Rightarrow$ message) of errors returned by the operation. If the operation is successful, it's empty.\\
+        \multirow{2}{*}{All services} & \multirow{2}{*}{A} & \texttt{token} & Authentication token. \\
+        & & \texttt{\returns{errors}} & List of errors.\\
         \hline
-        % RESERVE_TAXI
-        \multirow{8}{*}{\texttt{reserve\_taxi}} & \texttt{origin\_longitude} & The longitude coordinate of the passenger.\\
-        & \texttt{origin\_latitude} & The latitude coordinate of the passenger.\\
-        & \texttt{destination\_longitude} & The longitude coordinate of the passenger's destination.\\
-        & \texttt{destination\_latitude} & The latitude coordinate of the passenger's destination.\\
-        & \texttt{travelers} & The number of travelers.\\
-        & \texttt{time} & Time of arrival of the taxi (ISO 8601 format).\\
-        & \texttt{\plugin{sharing\_enabled}} & \texttt{true | false}\\
-        & \texttt{\returns{ride\_id}} & An ID number identifying the ride.\\
+        % UPDATE_RIDE_STATUS
+        \multirow{3}{*}{\texttt{update\_ride\_status}} & \multirow{3}{*}{D} & \texttt{ride\_id} & ID of the ride.\\
+        & & \texttt{ride\_event} & \texttt{passengers\_on\_board | ride\_finished} \\
+        & & \texttt{\returns{ride\_info}} & The output of \texttt{get\_ride\_info} for the ride \texttt{ride\_id}.\\
         \hline
-        % LIST_SHARED_RIDES
-        \multirow{5}{*}{\texttt{list\_shared\_rides}} & \texttt{origin\_longitude} & The longitude coordinate of the passenger.\\
-        & \texttt{origin\_latitude} & The latitude coordinate of the passenger.\\
-        & \texttt{destination\_longitude} & The longitude coordinate of the passenger's destination.\\
-        & \texttt{destination\_latitude} & The latitude coordinate of the passenger's destination.\\
-        & \texttt{travelers} & The number of travelers.\\
-        & \texttt{time} & Time of arrival of the taxi (ISO 8601 format).\\
-        & \texttt{\returns{rides}} & A dictionary containing a list of feasible rides, with the same format of \texttt{get\_ride\_info}.\\
+        % GET_RIDE_INFO
+        \multirow{7}{*}{\texttt{get\_ride\_info}} & \multirow{7}{*}{U} & \texttt{ride\_id} & ID of the ride returned by \texttt{request\_taxi}. \\
+        & & \texttt{\returns{origin}} & Position of the starting point.\\
+        & & \texttt{\returns{destinations}} & Positions of the destinations.\\
+        & & \texttt{\returns{num\_travelers}} & Total number of travelers.\\
+        & & \texttt{\plugin{num\_passengers}} & Total number of passengers.\\
+        & & \texttt{\returns{status}} & \texttt{reserved | waiting | running | done}\\
+        & & \texttt{\returns{wait\_time}} & Estimated waiting time in seconds. Returns -1 if there's no taxi to wait for.\\
         \hline
-        % JOIN_SHARED_RIDE
-        \multirow{5}{*}{\texttt{join\_shared\_ride}} & \texttt{ride\_id} & The ID of the ride.\\
-        & \texttt{longitude} & The longitude coordinate of the destination.\\
-        & \texttt{latitude} & The latitude coordinate of the destination.\\
-        & \texttt{\returns{ride\_info}} & If the request is successful, the output of \texttt{get\_ride\_info} for the ride \texttt{ride\_id}.\\
+        % REQUEST TAXI
+        \multirow{5}{*}{\texttt{request\_taxi}} & \multirow{5}{*}{P} & \texttt{origin} & Position of the passenger.\\
+        & & \texttt{travelers} & The number of travelers.\\
+        & & \texttt{\plugin{destination}} & Destination of the ride. Only required if \texttt{sharing\_enabled=true}.\\
+        & & \texttt{\plugin{sharing\_enabled}} & \texttt{true | false}\\
+        & & \texttt{\returns{ride\_id}} & An ID number identifying the ride.\\
         \hline
     \end{tabular}
     \end{small}
-    \caption{REST API implemented by the plugins \emph{taxi reservation} and \emph{taxi sharing}. \returns{Return values} are highlighted. \plugin{Extensions} by plugins are colored blue.}
+    \caption{REST API implemented by the RideManager bean.}
+    \label{tab:rest-ridemanager}
+\end{table}
+
+\subsubsection{TaxiManager}
+Functions implemented by \textbf{TaxiManager} (\autoref{tab:rest-taximanager}):
+\begin{description}
+    \item[\texttt{update\_status}] This function is used by the mobile client of taxi drivers to update the status of the driver. The taxi driver can become unavailable only if he isn't currently assigned to a ride.
+    \item[\texttt{update\_position}] This function is used by the mobile client of taxi drivers to periodically update the position of the driver.
+\end{description}
+
+\begin{table}
+    \centering
+    \begin{small}
+    \begin{tabular}{l l l p{0.5\textwidth}}
+        \textbf{Service} &  \textbf{Users} & \multicolumn{2}{l}{\textbf{Parameters and return values}} \\
+        \hline
+        % COMMON THINGS
+        \multirow{2}{*}{All services} & \multirow{2}{*}{A} & \texttt{token} & Authentication token. \\
+        & & \texttt{\returns{errors}} & List of errors.\\
+        \hline
+        % UPDATE_STATUS
+        \multirow{1}{*}{\texttt{update\_status}} & \multirow{1}{*}{D} & \texttt{status} & \texttt{unavailable | available | busy}\\
+        \hline
+        % UPDATE_POSITION
+        \multirow{1}{*}{\texttt{update\_position}} & \multirow{1}{*}{D} & \texttt{position} & The position of the taxi driver.\\
+        \hline
+    \end{tabular}
+    \end{small}
+    \caption{REST API implemented by the TaxiManager bean.}
+    \label{tab:rest-taximanager}
+\end{table}
+
+\subsubsection{Plugins}
+Here are the functions implemented by the \textbf{plugins} (\autoref{tab:rest-plugins}):
+\begin{description}
+    \item[\texttt{reserve\_taxi}] This function is implemented by the \emph{ride reservation} plugin and allows any passenger to reserve a ride for a future time. The submitted timestamp must be between 2h and 48h after the current time. If the sharing feature is enabled, the passenger has to provide a destination.
+    \item[\texttt{list\_shared\_rides}] This function lists all the shared rides compatible with the chosen destination, date and time, and number of travelers. If the data is valid, the function outputs a list with the feasible ride information in the same format of the \texttt{get\_ride\_info} request. If no feasible ride is found, the function returns the empty list. If the data is invalid, an error is returned.
+    \item[\texttt{join\_shared\_ride}] This functions allows a passenger to join a shared ride, adding him to the ride list of passengers and adding his destination to the ride destinations. A passenger can join a ride only if the ride is ``feasible'' as defined by the algorithm described in~\autoref{sec:taxi-sharing-matching}. The passenger has to provide a destination, along with the number of passengers and the ID of the ride he wants to join. Feasible rides can be obtained by calling \texttt{join\_shared\_ride}. If the provided data is not valid or the ride is not feasible, an error is returned. If the request is successful, the function returns the ride information in the same format of \texttt{get\_ride\_info}.
+\end{description}
+
+\begin{table}
+    \centering
+    \begin{small}
+    \begin{tabular}{l l l p{0.4\textwidth}}
+        \textbf{Service} & \textbf{Users} & \multicolumn{2}{l}{\textbf{Parameters and return values}} \\
+        \hline
+        % COMMON THINGS
+        \multirow{2}{*}{All services} & \multirow{2}{*}{A} & \texttt{token} & Authentication token. \\
+        & & \texttt{\returns{errors}} & List of errors.\\
+        \hline
+        % RESERVE_TAXI
+        \multirow{6}{*}{\texttt{reserve\_taxi}} & \multirow{6}{*}{P} & \texttt{origin} & The position of the starting point of the ride.\\
+        && \texttt{destination} & The position of the passenger's destination.\\
+        && \texttt{travelers} & The number of travelers.\\
+        && \texttt{time} & Time of arrival of the taxi (ISO 8601 format).\\
+        && \texttt{\plugin{sharing\_enabled}} & \texttt{true | false}\\
+        && \texttt{\returns{ride\_id}} & An ID number identifying the ride.\\
+        \hline
+        % LIST_SHARED_RIDES
+        \multirow{5}{*}{\texttt{list\_shared\_rides}} & \multirow{5}{*}{P} & \texttt{origin} & The position of the starting point.\\
+        && \texttt{destination} & The position of the passenger's destination.\\
+        && \texttt{travelers} & The number of travelers.\\
+        && \texttt{time} & Time of arrival of the taxi (ISO 8601 format).\\
+        && \texttt{\returns{rides}} & A dictionary containing a list of feasible rides, with the same format of \texttt{get\_ride\_info}.\\
+        \hline
+        % JOIN_SHARED_RIDE
+        \multirow{4}{*}{\texttt{join\_shared\_ride}} & \multirow{4}{*}{P} & \texttt{ride\_id} & The ID of the ride.\\
+        && \texttt{destination} & The position of the passenger's destination.\\
+        && \texttt{\returns{ride\_info}} & The output of \texttt{get\_ride\_info} for the ride \texttt{ride\_id}.\\
+        \hline
+    \end{tabular}
+    \end{small}
+    \caption{REST API implemented by the plugins \emph{taxi reservation} and \emph{taxi sharing}.}
     \label{tab:rest-plugins}
 \end{table}
 
