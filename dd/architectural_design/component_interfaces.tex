@@ -75,16 +75,20 @@ The detailed REST API implemented by the core application server is described in
         & \texttt{\returns{errors}} & A dictionary (id $\Rightarrow$ message) of errors returned by the operation. If the operation is successful, it's empty.\\
         \hline
         % RESERVE_TAXI
-        \multirow{6}{*}{\texttt{reserve\_taxi}} & \texttt{longitude} & The longitude coordinate of the passenger.\\
-        & \texttt{latitude} & The latitude coordinate of the passenger.\\
+        \multirow{8}{*}{\texttt{reserve\_taxi}} & \texttt{origin\_longitude} & The longitude coordinate of the passenger.\\
+        & \texttt{origin\_latitude} & The latitude coordinate of the passenger.\\
+        & \texttt{destination\_longitude} & The longitude coordinate of the passenger's destination.\\
+        & \texttt{destination\_latitude} & The latitude coordinate of the passenger's destination.\\
         & \texttt{travelers} & The number of travelers.\\
         & \texttt{time} & Time of arrival of the taxi (ISO 8601 format).\\
         & \texttt{\plugin{sharing\_enabled}} & \texttt{true | false}\\
         & \texttt{\returns{ride\_id}} & An ID number identifying the ride.\\
         \hline
         % LIST_SHARED_RIDES
-        \multirow{5}{*}{\texttt{list\_shared\_rides}} & \texttt{longitude} & The longitude coordinate of the passenger.\\
-        & \texttt{latitude} & The latitude coordinate of the passenger.\\
+        \multirow{5}{*}{\texttt{list\_shared\_rides}} & \texttt{origin\_longitude} & The longitude coordinate of the passenger.\\
+        & \texttt{origin\_latitude} & The latitude coordinate of the passenger.\\
+        & \texttt{destination\_longitude} & The longitude coordinate of the passenger's destination.\\
+        & \texttt{destination\_latitude} & The latitude coordinate of the passenger's destination.\\
         & \texttt{travelers} & The number of travelers.\\
         & \texttt{time} & Time of arrival of the taxi (ISO 8601 format).\\
         & \texttt{\returns{rides}} & A dictionary containing a list of feasible rides, with the same format of \texttt{get\_ride\_info}.\\
