@@ -29,6 +29,14 @@ The business logic is handled by \textbf{stateless Enterprise JavaBeans (EJB)}.
 Our application indeed is rather simple and message-driven: the state of the users is stored in the DB, so we don't need stateful EJB which can be more expensive.
 Concurrency management and performance is a great deal for this application, so the reusal of EJBs for many request is a desirable behaviour.
 
+Session Beans used for the application server are shown in~\autoref{fig:session-beans}.
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{diagrams/class_sessionbeans}
+    \caption{The session beans used in the implementation of the business logic.}
+    \label{fig:session-beans}
+\end{figure}
+
 The application server implements a RESTful API using JAX-RS to allow the clients (web tier and mobile client) to use the services.
 
 \subsection{Web server}

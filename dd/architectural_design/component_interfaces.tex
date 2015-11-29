@@ -4,6 +4,8 @@
 \subsection{Application server to database}
 The application server communicates to the DB via JPA and JDBC over standard network protocols. Thus, the DB and the application server layers can be deployed on different tiers, as well on the same one.
 
+The low-level technicalities about the specific dialect of SQL for the selected DBMS are abstracted by the Java Persistence API, which also deals with the O/R mapping.
+
 \subsection{Application server to front-ends}
 The front-ends of the system (the web application and the mobile app) shall communicate with the application server using the same back-end programmatic inteface described in the RASD and implemented as a RESTful interface over the HTTPS protocol.
 
@@ -102,8 +104,8 @@ The detailed REST API implemented by the core application server is described in
 \subsection{Web server to browser}
 The users' browsers communicate with the web server via HTTPS requests. Any unencrypted request will be denied, as stated in the RASD.
 
-
 \subsection{Plug-in interface}
 The application server exposes extension points to be used by plug-ins: they're the only points in which the plug-ins can access the system. For example, they may not query the database layer directly.
+Plug-ins may add new services to the REST API of the application server.
 
 Plug-in declaration, discovery and activation are made explicit by means of manifest files and plug-in registry.
