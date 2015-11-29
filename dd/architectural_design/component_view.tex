@@ -15,7 +15,14 @@ The DBMS does not require specific design because it's an external component use
 The database can communicate only with the business logic tier using the standard network interface, described in \autoref{sec:component-interfaces}.
 Security restrictions will be implemented to protect the data from unauthorized access: the database must be physically protected and the communication has to be encrypted. Access to the data must be granted only to authorized users possessing the right credentials. Every software piece that needs to access the DBMS must do so with the minimum level of privilege needed to perform the operations.
 
-All the application data which needs to be persistent is stored in the database. The structure of the tables is illustrated by an E-R diagram. % TODO E-R
+All the application data which needs to be persistent is stored in the database. The structure of the tables is illustrated by the E-R diagram in~\autoref{fig:er-diagram}.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{diagrams/er_diagram}
+    \caption{The Entity-Relationship diagram of the database schema.}
+    \label{fig:er-diagram}
+\end{figure}
 
 Foreign key constraints are used to guarantee some level of data integrity among the tables.
 Triggers are not used: the dynamic behaviour of the data is handled entirely by the Java Persistence API in the Business Application tier.
@@ -25,15 +32,24 @@ The application server is implemented in the business logic tier, entirely writt
 
 Access to the database tier is not implemented with direct SQL queries: instead, it's completely wrapped by the \textbf{Java Persistence API (JPA)}. The object-relation mapping is done by entity beans.
 
+The Entity Beans representing the database entities are strictly related to the entities of the ER diagram (\autoref{fig:er-diagram}). They are shown in~\autoref{fig:entity-diagram}.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{diagrams/entity_diagram}
+    \caption{Java Entity Beans used to represent the entities in the database.}
+    \label{fig:entity-diagram}
+\end{figure}
+
 The business logic is handled by \textbf{stateless Enterprise JavaBeans (EJB)}.
-Our application indeed is rather simple and message-driven: the state of the users is stored in the DB, so we don't need stateful EJB which can be more expensive.
+Our application indeed is rather simple and message-driven: the state of the users is stored in the DB, so we don't generally need stateful EJB which can be more expensive.
 Concurrency management and performance is a great deal for this application, so the reusal of EJBs for many request is a desirable behaviour.
 
 Session Beans used for the application server are shown in~\autoref{fig:session-beans}.
 \begin{figure}
     \centering
     \includegraphics[width=\textwidth]{diagrams/class_sessionbeans}
-    \caption{The session beans used in the implementation of the business logic.}
+    \caption{The session beans used in the implementation of the business logic. The parameters of the methods aren't written here: the detailed interface of each bean is described in detail in~\autoref{sec:rest-api}}.
     \label{fig:session-beans}
 \end{figure}
 

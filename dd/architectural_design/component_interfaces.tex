@@ -7,6 +7,7 @@ The application server communicates to the DB via JPA and JDBC over standard net
 The low-level technicalities about the specific dialect of SQL for the selected DBMS are abstracted by the Java Persistence API, which also deals with the O/R mapping.
 
 \subsection{Application server to front-ends (REST API)}
+\label{sec:rest-api}
 The front-ends of the system (the web application and the mobile app) shall communicate with the application server using the same back-end programmatic inteface described in the RASD and implemented as a RESTful interface over the HTTPS protocol.
 
 The RESTful interface is implemented in the application server using JAX-RS.
@@ -35,6 +36,10 @@ Functions implemented by \textbf{UserManager} (\autoref{tab:rest-usermanager}):
     \item[\texttt{register}] This function creates a new user in the system with the provided data. This function can create both passengers and taxi drivers. If the entered data is correct, an email is sent to the user address to confirm the email address.
 
     \item[\texttt{confirm\_email}] This function confirms the email address of a newly registered user using the token sent by email after the registration.
+
+    \item[\texttt{delete\_user}] This function deletes the user account with all the related data. As an extra security measure, username and password are required even if the user is logged in.
+
+    % TODO: edit user profile function
 \end{description}
 
 \begin{table}
@@ -60,7 +65,11 @@ Functions implemented by \textbf{UserManager} (\autoref{tab:rest-usermanager}):
         \hline
         % CONFIRM_EMAIL
         \multirow{2}{*}{\texttt{confirm\_email}} & \multirow{2}{*}{U} & \texttt{user\_name} & Username of the registered user \\
-        && \texttt{confirmation\_token} & Confirmation token sent by e-mail. \\
+        && \texttt{email\_token} & Confirmation token sent by e-mail. \\
+        \hline
+        % CONFIRM_EMAIL
+        \multirow{2}{*}{\texttt{delete\_user}} & \multirow{2}{*}{U} & \texttt{user\_name} & Username of the registered user \\
+        && \texttt{password} & Password of the user. \\
         \hline
     \end{tabular}
     \end{small}
@@ -193,6 +202,8 @@ Here are the functions implemented by the \textbf{plugins} (\autoref{tab:rest-pl
     \caption{REST API implemented by the plugins \emph{taxi reservation} and \emph{taxi sharing}.}
     \label{tab:rest-plugins}
 \end{table}
+
+% TODO history manager
 
 \subsection{Web server to browser}
 The users' browsers communicate with the web server via HTTPS requests. Any unencrypted request will be denied, as stated in the RASD.
