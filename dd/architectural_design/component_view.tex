@@ -59,10 +59,21 @@ This bean creates new rides, assigns passengers and taxi driver to an existing r
 It also allows taxi driver to update the status of a ride, signaling when the passengers are on board and when the ride is finished.
 
 \subsubsection{TaxiManager}
-This bean handles the taxi zones, their queues and the availability status and the position of taxi drivers.
+This bean handles the availability status and the position of taxi drivers.
 Taxi drivers can mark themselves as available or unavailable, and they can change their position as well.
-
 This component also has a method to find the first taxi in the queue for a specific taxi zone.
+
+This component is stateless and can be instantiated multiple times. It calls TaxiQueueManager for data access.
+
+\subsubsection{TaxiQueueManager}
+This bean is a singleton and is in charge of keeping the taxi queue for each zone.
+Taxi queues are not persistent data, so they are not stored in the database: they are only present in main memory.
+This allows a quicker access since this data is changed often.
+
+The TaxiQueueManager keeps references to TaxiQueues and updates them when a taxi driver changes his status or his position.
+This component also has a method to find the first taxi in the queue for a specific taxi zone.
+
+This component takes responsibility to ensure a correct concurrent access to the queues.
 
 \subsubsection{HistoryManager}
 This bean allows users (passengers and taxi drivers) to fetch the history of their rides.
@@ -99,3 +110,5 @@ Thanks to JSF, the view is written as XML files and is completely separated from
 
 \subsection{Mobile client}
 % TODO mobile client design (Alex)
+
+\FloatBarrier

@@ -741,7 +741,7 @@
 													"_parent": {
 														"$ref": "AAAAAAFRUAbY+koTvWE="
 													},
-													"visible": false,
+													"visible": true,
 													"enabled": true,
 													"lineColor": "#000000",
 													"fillColor": "#ffffff",
@@ -750,12 +750,13 @@
 													"showShadow": true,
 													"containerChangeable": false,
 													"containerExtending": false,
-													"left": 605,
+													"left": 653,
 													"top": 45,
-													"width": 80.21826171875,
+													"width": 163,
 													"height": 13,
 													"autoResize": false,
 													"underline": false,
+													"text": "«Singleton, SessionBean»",
 													"horizontalAlignment": 2,
 													"verticalAlignment": 5
 												},
@@ -774,13 +775,13 @@
 													"showShadow": true,
 													"containerChangeable": false,
 													"containerExtending": false,
-													"left": 621,
-													"top": 47,
-													"width": 129,
+													"left": 653,
+													"top": 60,
+													"width": 163,
 													"height": 13,
 													"autoResize": false,
 													"underline": false,
-													"text": "TaxiQueueManager",
+													"text": ": TaxiQueueManager",
 													"horizontalAlignment": 2,
 													"verticalAlignment": 5
 												},
@@ -799,7 +800,7 @@
 													"showShadow": true,
 													"containerChangeable": false,
 													"containerExtending": false,
-													"left": 240,
+													"left": 336,
 													"top": 0,
 													"width": 106,
 													"height": 13,
@@ -824,7 +825,7 @@
 													"showShadow": true,
 													"containerChangeable": false,
 													"containerExtending": false,
-													"left": 240,
+													"left": 336,
 													"top": 0,
 													"width": 0,
 													"height": 13,
@@ -843,9 +844,9 @@
 											"showShadow": true,
 											"containerChangeable": false,
 											"containerExtending": false,
-											"left": 616,
+											"left": 648,
 											"top": 40,
-											"width": 139,
+											"width": 173,
 											"height": 40,
 											"autoResize": false,
 											"stereotypeLabel": {
@@ -879,7 +880,7 @@
 											"showShadow": true,
 											"containerChangeable": false,
 											"containerExtending": false,
-											"left": 686,
+											"left": 735,
 											"top": 80,
 											"width": 1,
 											"height": 513,
@@ -895,9 +896,9 @@
 									"showShadow": true,
 									"containerChangeable": false,
 									"containerExtending": false,
-									"left": 616,
+									"left": 648,
 									"top": 40,
-									"width": 139,
+									"width": 173,
 									"height": 553,
 									"autoResize": false,
 									"stereotypeDisplay": "label",
@@ -1642,9 +1643,9 @@
 											"showShadow": true,
 											"containerChangeable": false,
 											"containerExtending": false,
-											"left": 547,
+											"left": 525,
 											"top": 264,
-											"width": 88,
+											"width": 182,
 											"height": 13,
 											"autoResize": false,
 											"alpha": 1.5707963267948966,
@@ -1654,7 +1655,7 @@
 											},
 											"edgePosition": 1,
 											"underline": false,
-											"text": "4 : getFirstTaxi",
+											"text": "4 : getFirstTaxi(zone:TaxiZone)",
 											"horizontalAlignment": 2,
 											"verticalAlignment": 5
 										},
@@ -1676,7 +1677,7 @@
 											"showShadow": true,
 											"containerChangeable": false,
 											"containerExtending": false,
-											"left": 591,
+											"left": 616,
 											"top": 249,
 											"width": 0,
 											"height": 13,
@@ -1709,7 +1710,7 @@
 											"showShadow": true,
 											"containerChangeable": false,
 											"containerExtending": false,
-											"left": 591,
+											"left": 616,
 											"top": 284,
 											"width": 0,
 											"height": 13,
@@ -1742,7 +1743,7 @@
 											"showShadow": true,
 											"containerChangeable": false,
 											"containerExtending": false,
-											"left": 679,
+											"left": 728,
 											"top": 280,
 											"width": 14,
 											"height": 51,
@@ -1765,7 +1766,7 @@
 										"$ref": "AAAAAAFRUALvwUljb20="
 									},
 									"lineStyle": 0,
-									"points": "504:280;679:280",
+									"points": "504:280;728:280",
 									"nameLabel": {
 										"$ref": "AAAAAAFRUAiunkq9U38="
 									},
@@ -1809,7 +1810,7 @@
 											"showShadow": true,
 											"containerChangeable": false,
 											"containerExtending": false,
-											"left": 546,
+											"left": 571,
 											"top": 324,
 											"width": 88,
 											"height": 13,
@@ -1843,7 +1844,7 @@
 											"showShadow": true,
 											"containerChangeable": false,
 											"containerExtending": false,
-											"left": 590,
+											"left": 615,
 											"top": 339,
 											"width": 0,
 											"height": 13,
@@ -1876,7 +1877,7 @@
 											"showShadow": true,
 											"containerChangeable": false,
 											"containerExtending": false,
-											"left": 591,
+											"left": 616,
 											"top": 304,
 											"width": 0,
 											"height": 13,
@@ -1932,7 +1933,7 @@
 										"$ref": "AAAAAAFRUAbY+0oYxkE="
 									},
 									"lineStyle": 0,
-									"points": "679:320;504:320",
+									"points": "728:320;504:320",
 									"nameLabel": {
 										"$ref": "AAAAAAFRUAkQwkrUGfg="
 									},
@@ -2981,53 +2982,6 @@
 									},
 									"showProperty": true,
 									"showType": true
-								},
-								{
-									"_type": "UMLNoteView",
-									"_id": "AAAAAAFRWglfTN/cTUs=",
-									"_parent": {
-										"$ref": "AAAAAAFRUAI090kNJek="
-									},
-									"visible": true,
-									"enabled": true,
-									"lineColor": "#000000",
-									"fillColor": "#ffffff",
-									"fontColor": "#000000",
-									"font": "Arial;13;0",
-									"showShadow": true,
-									"containerChangeable": false,
-									"containerExtending": false,
-									"left": 528,
-									"top": 184,
-									"width": 78,
-									"height": 64,
-									"autoResize": false,
-									"text": "The TaxiZone is a parameter",
-									"wordWrap": true
-								},
-								{
-									"_type": "UMLNoteLinkView",
-									"_id": "AAAAAAFRWgnJ39/mMKg=",
-									"_parent": {
-										"$ref": "AAAAAAFRUAI090kNJek="
-									},
-									"visible": true,
-									"enabled": true,
-									"lineColor": "#000000",
-									"fillColor": "#ffffff",
-									"fontColor": "#000000",
-									"font": "Arial;13;0",
-									"showShadow": true,
-									"containerChangeable": false,
-									"containerExtending": false,
-									"head": {
-										"$ref": "AAAAAAFRUAiunUq8riE="
-									},
-									"tail": {
-										"$ref": "AAAAAAFRWglfTN/cTUs="
-									},
-									"lineStyle": 1,
-									"points": "579:248;591:280"
 								}
 							],
 							"showSequenceNumber": true,
@@ -3104,6 +3058,7 @@
 							},
 							"visibility": "public",
 							"messageSort": "synchCall",
+							"arguments": "zone:TaxiZone",
 							"isConcurrentIteration": false
 						},
 						{
@@ -3256,7 +3211,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFRUAI09kkM7ro="
 							},
-							"name": "TaxiQueueManager",
+							"name": ": TaxiQueueManager",
+							"stereotype": "Singleton, SessionBean",
 							"visibility": "public",
 							"represent": {
 								"$ref": "AAAAAAFRUAbY+UoQ1G8="
@@ -3384,6 +3340,7 @@
 					"visibility": "public",
 					"isStatic": false,
 					"isLeaf": false,
+					"type": "",
 					"isReadOnly": false,
 					"isOrdered": false,
 					"isUnique": false,
