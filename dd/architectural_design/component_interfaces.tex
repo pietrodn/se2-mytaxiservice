@@ -39,7 +39,7 @@ Functions implemented by \textbf{UserManager} (\autoref{tab:rest-usermanager}):
 
     \item[\texttt{delete\_user}] This function deletes the user account with all the related data. As an extra security measure, username and password are required even if the user is logged in.
 
-    % TODO: edit user profile function
+    \item[\texttt{edit\_profile}] This function allows users to edit their profile information. If a new email is entered, the same confirmation process of \texttt{register} will be followed.
 \end{description}
 
 \begin{table}
@@ -67,9 +67,15 @@ Functions implemented by \textbf{UserManager} (\autoref{tab:rest-usermanager}):
         \multirow{2}{*}{\texttt{confirm\_email}} & \multirow{2}{*}{U} & \texttt{user\_name} & Username of the registered user \\
         && \texttt{email\_token} & Confirmation token sent by e-mail. \\
         \hline
-        % CONFIRM_EMAIL
+        % DELETE_USER
         \multirow{2}{*}{\texttt{delete\_user}} & \multirow{2}{*}{U} & \texttt{user\_name} & Username of the registered user \\
         && \texttt{password} & Password of the user. \\
+        \hline
+        % EDIT_PROFILE
+        \multirow{4}{*}{\texttt{edit\_profile}} & \multirow{4}{*}{U} & \texttt{user\_name} & New username. \\
+        && \texttt{password} & New password. \\
+        && \texttt{email} & New email. \\
+        && \multicolumn{2}{c}{one parameter for each profile information}.\\
         \hline
     \end{tabular}
     \end{small}
@@ -159,6 +165,31 @@ Functions implemented by \textbf{TaxiManager} (\autoref{tab:rest-taximanager}):
     \label{tab:rest-taximanager}
 \end{table}
 
+\subsubsection{HistoryManager}
+Functions implemented by \textbf{HistoryManager} (\autoref{tab:rest-HistoryManager}):
+\begin{description}
+    \item[\texttt{get\_past\_rides}] This function the information (in the same format of \texttt{get\_ride\_info}) about the rides in which the user was involved (as a taxi driver or a passenger).
+\end{description}
+
+\begin{table}
+    \centering
+    \begin{small}
+    \begin{tabular}{l l l p{0.5\textwidth}}
+        \textbf{Service} &  \textbf{Users} & \multicolumn{2}{l}{\textbf{Parameters and return values}} \\
+        \hline
+        % COMMON THINGS
+        \multirow{2}{*}{All services} & \multirow{2}{*}{A} & \texttt{token} & Authentication token. \\
+        & & \texttt{\returns{errors}} & List of errors.\\
+        \hline
+        % GET_PAST_RIDES
+        \multirow{1}{*}{\texttt{get\_past\_rides}} & \multirow{1}{*}{U} & \texttt{\returns{rides}} & List of rides in the \texttt{get\_ride\_info} format.\\
+        \hline
+    \end{tabular}
+    \end{small}
+    \caption{REST API implemented by the HistoryManager bean.}
+    \label{tab:rest-HistoryManager}
+\end{table}
+
 \subsubsection{Plugins}
 Here are the functions implemented by the \textbf{plugins} (\autoref{tab:rest-plugins}):
 \begin{description}
@@ -202,8 +233,6 @@ Here are the functions implemented by the \textbf{plugins} (\autoref{tab:rest-pl
     \caption{REST API implemented by the plugins \emph{taxi reservation} and \emph{taxi sharing}.}
     \label{tab:rest-plugins}
 \end{table}
-
-% TODO history manager
 
 \subsection{Web server to browser}
 The users' browsers communicate with the web server via HTTPS requests. Any unencrypted request will be denied, as stated in the RASD.

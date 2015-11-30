@@ -46,6 +46,39 @@ Our application indeed is rather simple and message-driven: the state of the use
 Concurrency management and performance is a great deal for this application, so the reusal of EJBs for many request is a desirable behaviour.
 
 Session Beans used for the application server are shown in~\autoref{fig:session-beans}.
+
+\subsubsection{UserManager}
+This bean manages all the features related with user login, registration and profiles.
+It implements user login, user registration, user deletion and user profile editing.
+It also provides a function to confirm the email address provided by the user with the token sent by email.
+
+\subsubsection{RideManager}
+This bean creates new rides, assigns passengers and taxi driver to an existing ride and fetches information about rides.
+It also allows taxi driver to update the status of a ride, signaling when the passengers are on board and when the ride is finished.
+
+\subsubsection{TaxiManager}
+This bean handles the taxi zones, their queues and the availability status and the position of taxi drivers.
+Taxi drivers can mark themselves as available or unavailable, and they can change their position as well.
+
+This component also has a method to find the first taxi in the queue for a specific taxi zone.
+
+\subsubsection{HistoryManager}
+This bean allows users (passengers and taxi drivers) to fetch the history of their rides.
+It's able to store and retrieve the ended rides.
+
+\subsubsection{EmailSender}
+This bean is in charge of sending emails to users when needed. For now its only functionality is to send the e-mail confirmation token to the user e-mail address after the registration, but it could be extended to implement e-mail notifications.
+
+\subsubsection{SharedRidePlugin}
+This plugin implements all the functions related to the taxi sharing feature.
+It allows the passengers to look for feasible shared rides and join them.
+
+\subsubsection{ReservedRidePlugin}
+This plugin implements all the functions related to the ride reservation feature.
+Its function is to allow passenger to reserve a taxi for a future time.
+
+% TODO stateful queue manager (new component QueueManager?)
+
 \begin{figure}
     \centering
     \includegraphics[width=\textwidth]{diagrams/class_sessionbeans}
@@ -64,3 +97,4 @@ The web tier only handles the presentation layer: all the business logic is hand
 Thanks to JSF, the view is written as XML files and is completely separated from the ``application logic'' of the web server. This enables us to write a modular web service.
 
 \subsection{Mobile client}
+% TODO mobile client design (Alex)
