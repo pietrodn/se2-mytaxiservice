@@ -234,6 +234,17 @@ Here are the functions implemented by the \textbf{plugins} (\autoref{tab:rest-pl
     \label{tab:rest-plugins}
 \end{table}
 
+\subsection{Configuration file (application server)}
+The application server is configurable by means of a XML configuration file.
+The configuration file contains the following settings:
+\begin{itemize}
+    \item the boundaries of the taxi zones, expressed as polygons (list of coordinates);
+    \item the credentials of the user that can access database;
+    \item the name of the database;
+    \item the network settings of the application server (listening port, host, ...);
+    \item any other settings that will be useful in the implementation phase.
+\end{itemize}
+
 \subsection{Web server to browser}
 The users' browsers communicate with the web server via HTTPS requests. Any unencrypted request will be denied, as stated in the RASD.
 
