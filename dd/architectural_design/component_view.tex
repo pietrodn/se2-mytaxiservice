@@ -42,7 +42,7 @@ The Entity Beans representing the database entities are strictly related to the 
 \end{figure}
 
 The business logic is handled by \textbf{stateless Enterprise JavaBeans (EJB)}.
-Our application indeed is rather simple and message-driven: the state of the users is stored in the DB, so we don't generally need stateful EJB which can be more expensive.
+Our application indeed is rather simple and message-driven: the state of the users is stored in the DB, so we need stateful EJB only for queue managing in order to reduce the complexity.
 Concurrency management and performance is a great deal for this application, so the reusal of EJBs for many request is a desirable behaviour.
 
 Session Beans used for the application server are shown in~\autoref{fig:session-beans}.
@@ -57,10 +57,12 @@ This bean creates new rides, assigns passengers and taxi driver to an existing r
 It also allows taxi driver to update the status of a ride, signaling when the passengers are on board and when the ride is finished.
 
 \subsubsection{TaxiManager}
-This bean handles the taxi zones, their queues and the availability status and the position of taxi drivers.
+This stateful bean handles the taxi zones, their queues and the availability status and the position of taxi drivers.
 Taxi drivers can mark themselves as available or unavailable, and they can change their position as well.
 
 This component also has a method to find the first taxi in the queue for a specific taxi zone.
+
+The queues are stored in a list of queues inside the bean, because they are not persistent data. 
 
 \subsubsection{HistoryManager}
 This bean allows users (passengers and taxi drivers) to fetch the history of their rides.
