@@ -10,7 +10,7 @@
 
 \subsection{Database}
 The database tier runs MySQL Community Edition and uses InnoDB as the database engine: the DBMS has to support transactions and ensure ACID properties.
-The DBMS won't be internally designed because it's an external component used as a ``black box'' offering some services: it only needs to be configured and tuned in the implementation phase.
+The DBMS will not be internally designed because it is an external component used as a ``black box'' offering some services: it only needs to be configured and tuned in the implementation phase.
 
 The database can communicate only with the business logic tier using the standard network interface, described in \autoref{sec:component-interfaces}.
 Security restrictions will be implemented to protect the data from unauthorized access: the database must be physically protected and the communication has to be encrypted. Access to the data must be granted only to authorized users possessing the right credentials. Every software component that needs to access the DBMS must do so with the minimum level of privilege needed to perform the operations.
@@ -29,7 +29,7 @@ Foreign key constraints and triggers are not used: the dynamic behaviour of the 
 \subsection{Application server}
 The application server is implemented in the business logic tier using Java EE; it runs on GlassFish Server.
 
-The access to the DBMS is not implemented with direct SQL queries: instead, it's completely wrapped by the \textbf{Java Persistence API (JPA)}. The object-relation mapping is done by entity beans.
+The access to the DBMS is not implemented with direct SQL queries: instead, it is completely wrapped by the \textbf{Java Persistence API (JPA)}. The object-relation mapping is done by entity beans.
 
 The Entity Beans representing the database entities (\autoref{fig:entity-diagram}) are strictly related to the entities of the ER diagram (\autoref{fig:er-diagram}).
 
@@ -97,7 +97,7 @@ Other beans can ask for configuration options using the same keys used to define
 \begin{figure}
     \centering
     \includegraphics[width=\textwidth]{diagrams/class_sessionbeans}
-    \caption{The session beans used in the implementation of the business logic. The parameters of the methods aren't written here: the detailed interface of each bean is described in detail in~\autoref{sec:rest-api}}.
+    \caption{The session beans used in the implementation of the business logic. The parameters of the methods are not written here: the detailed interface of each bean is described in detail in~\autoref{sec:rest-api}}.
     \label{fig:session-beans}
 \end{figure}
 

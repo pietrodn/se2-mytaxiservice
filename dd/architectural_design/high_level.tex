@@ -3,16 +3,16 @@
 
 The main high level components of the system are the following:
 \begin{description}
-	\item[Database:] the data layer is responsible for the data storage and retrieval. It doesn't implement any application logic. This layer must guarantee ACID properties.
+	\item[Database:] the data layer is responsible for the data storage and retrieval. It does not implement any application logic. This layer must guarantee ACID properties.
 	\item[Application server:] this layer contains all the application logic of the system. All the policies, the algorithms and the computation are performed here. This layer offers a service-oriented interface.
 	\item[Server side plug-ins:] these are the plug-ins which can be used to extend the application server layer. In this document, two plugins will be designed:
 		\begin{itemize}
 		\item ride sharing
 		\item ride reservation
 		\end{itemize}
-	\item[Web server:] this presentation layer provides a web interface. This layer doesn't contain any application logic.
+	\item[Web server:] this presentation layer provides a web interface. This layer does not contain any application logic.
 	\item[Mobile application:] this presentation layer consists in the mobile client. It communicates directly with the application server.
-	\item[User's browser:] this presentation layer represents the user's browser; it's not under the control of the system and it accesses the web server.
+	\item[User's browser:] this presentation layer represents the user's browser; it is not under the control of the system and it accesses the web server.
 \end{description}
 
 These high-level components are structured into four layers, shown in figure \ref{fig:layers}.
