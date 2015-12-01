@@ -1,32 +1,48 @@
-\section{External interface requirements}
-All the decisions in the DD have been taken following functional and nonfunctional requirements written in the RASD, although some changes are explained in \autoref{tab:SWreq-Table}.
+\section{Components}
+All the decisions in the DD have been taken following functional and nonfunctional requirements written in the RASD, although some changes are explained in \autoref{}.
 
-In the following tables are enlightened the {\bf sections} where a specific requirement has been followed to write the DD. Every requirement appears in a generic explanation, more details would come with the implementation of the system.
-
+The following table \autoref{tab:Comp-Table} show the {\bf section} of the requirement fulfilled by a specific {\bf component}. 
 \subsection{User interfaces}
-The requirements are explained in \autoref{tab:UIreq-Table}
+The requirements are explained in \autoref{tab:Comp-Table}
 \begin{table}[h]
 \begin{center}
-\begin{tabular}{|l|l|}
+\begin{tabular}{|p{0.5\textwidth}|p{0.5\textwidth}|}
 \hline
-Web application  & \ref{sec:high-level}\\
+{\bf Component}  & {\bf requirements}\\
 \hline
-Mobile application  & details in implementation\\
+EmailSender & 3.2.1 the e-mail confirmation process in user registration \\
 \hline
-Server back-end  & --\\
+UserManager & 3.2.1 user registration, 3.2.2 user login, 3.2.8 user profile management.\\
+\hline
+HistoryManager & 3.2.8 rides history in user profile management.\\
+\hline
+TaxiManager & 3.2.4 ride request notification to the taxi driver, 3.2.5 taxi availability handling.\\
+\hline
+TaxiQueueManager & 3.2.5 taxi availability handling (taxi queue management) \\
+\hline
+TaxiQueue & 3.2.5 taxi availability handling (taxi queue)\\
+\hline
+RideManager & 3.2.3 standard taxi call.\\
+\hline 
+ReservedRidePlugin & 3.2.6 taxi reservation.\\
+\hline
+SharedRidePlugin & 3.2.7 ride sharing.\\
 \hline
 \end{tabular}
 \caption{Requirements divided in web and mobile ones}
-\label{tab:UIreq-Table}
+\label{tab:Comp-Table}
 \end{center}
 \end{table}
 
-The others requirements that are common to all clients interfaces aren't explained in this document, because they will be observed during the implementation part; although some of them, written in the following list, are shown in the UI Design \autoref{ch:ui-design}.
+
+
+
+The others user non-functional requirements that are common to all clients interfaces aren't explained in this document, because they will be observed during the implementation part; although some of them, written in the following list, are shown in the UI Design \autoref{ch:ui-design}.
 \begin{itemize}
 \item The first screen must ask the user to login.
 \item The dashboard with links to every function shall be displayed in the home page.
 \item The top bar must show the last taxi service called.
-\item The possibility to choose the language at all times. %TODO correggi mockup!
+\item The possibility to choose the language at all times.
 \end{itemize}
 
 
