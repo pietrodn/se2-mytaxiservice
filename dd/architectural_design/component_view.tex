@@ -106,7 +106,16 @@ The web server is run by GlassFish Server.
 
 The web tier only handles the presentation layer: all the business logic is handled by the application server tier. The web tier uses the RESTful interface of the application tier.
 
-Thanks to JSF, the view is written as XML files and is completely separated from the ``application logic'' of the web server. This enables us to write a modular web service.
+Using JSF, the view is written as XML files and is completely separated from the logic of the web server. This enables us to write a modular web service.
+
+The web server architecture is composed simply by JSF (as the view) and by a controller class that takes the user input and translates it in API requests (\autoref{fig:web-components}).
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{diagrams/class_webcomponents}
+    \caption{The components of the web tier.}
+    \label{fig:web-components}
+\end{figure}
 
 \subsection{Mobile client}
 % TODO mobile client design (Alex)
