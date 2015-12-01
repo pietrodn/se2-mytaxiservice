@@ -10,12 +10,12 @@
 
 \subsection{Database}
 The database tier runs MySQL Community Edition and uses InnoDB as the database engine: the DBMS has to support transactions and ensure ACID properties.
-The DBMS does not require specific design because it's an external component used as a ``black box'': the database only needs to be configured and tuned in the implementation phase.
+The DBMS won't be internally designed because it's an external component used as a ``black box'' offering some services: it only needs to be configured and tuned in the implementation phase.
 
 The database can communicate only with the business logic tier using the standard network interface, described in \autoref{sec:component-interfaces}.
-Security restrictions will be implemented to protect the data from unauthorized access: the database must be physically protected and the communication has to be encrypted. Access to the data must be granted only to authorized users possessing the right credentials. Every software piece that needs to access the DBMS must do so with the minimum level of privilege needed to perform the operations.
+Security restrictions will be implemented to protect the data from unauthorized access: the database must be physically protected and the communication has to be encrypted. Access to the data must be granted only to authorized users possessing the right credentials. Every software component that needs to access the DBMS must do so with the minimum level of privilege needed to perform the operations.
 
-All the application data which needs to be persistent is stored in the database. The structure of the tables is illustrated by the E-R diagram in~\autoref{fig:er-diagram}.
+All the persistent application data is stored in the database. The conceptual design of the database is illustrated by the E-R diagram in~\autoref{fig:er-diagram}.
 
 \begin{figure}
     \centering
@@ -24,15 +24,14 @@ All the application data which needs to be persistent is stored in the database.
     \label{fig:er-diagram}
 \end{figure}
 
-Foreign key constraints are used to guarantee some level of data integrity among the tables.
-Triggers are not used: the dynamic behaviour of the data is handled entirely by the Java Persistence API in the Business Application tier.
+Foreign key constraints and triggers are not used: the dynamic behaviour of the data is handled entirely by the Java Persistence API in the Business Application tier.
 
 \subsection{Application server}
-The application server is implemented in the business logic tier, entirely written in Java EE and run by GlassFish Server.
+The application server is implemented in the business logic tier using Java EE; it runs on GlassFish Server.
 
-Access to the database tier is not implemented with direct SQL queries: instead, it's completely wrapped by the \textbf{Java Persistence API (JPA)}. The object-relation mapping is done by entity beans.
+The access to the DBMS is not implemented with direct SQL queries: instead, it's completely wrapped by the \textbf{Java Persistence API (JPA)}. The object-relation mapping is done by entity beans.
 
-The Entity Beans representing the database entities are strictly related to the entities of the ER diagram (\autoref{fig:er-diagram}). They are shown in~\autoref{fig:entity-diagram}.
+The Entity Beans representing the database entities (\autoref{fig:entity-diagram}) are strictly related to the entities of the ER diagram (\autoref{fig:er-diagram}).
 
 \begin{figure}
     \centering
@@ -41,32 +40,31 @@ The Entity Beans representing the database entities are strictly related to the 
     \label{fig:entity-diagram}
 \end{figure}
 
-The business logic is handled by \textbf{stateless Enterprise JavaBeans (EJB)}.
-Our application indeed is rather simple and message-driven: the state of the users is stored in the DB, so we do not generally need stateful EJB which can be more expensive.
-Concurrency management and performance is a great deal for this application, so the reusal of EJBs for many request is a desirable behaviour.
+The business logic is implemented by custom-built \textbf{stateless Enterprise JavaBeans (EJB)}.
+Our application indeed is rather simple and message-driven: the state of the users is stored in the DB, so we do not generally need stateful EJBs which can be more expensive.
+Concurrency management and performance are fundamental, so the reusal of EJBs for many request is a desirable behaviour.
 
-The application server implements a RESTful API using JAX-RS to allow the clients (web tier and mobile client) to use the services offered by the EJBs.
+The application server implements a RESTful API using JAX-RS to allow the clients (web tier and mobile client) to use the services offered by the EJBs: this interface will be thoroughly discussed in~\autoref{sec:rest-api}.
 
 Session Beans used for the application server are shown in~\autoref{fig:session-beans}.
 
 \subsubsection{UserManager}
-This bean manages all the features related with user login, registration and profiles.
-It implements user login, user registration, user deletion and user profile editing.
+This bean manages all the user management features, namely: user login, user registration, user deletion, user profile editing.
 It also provides a function to confirm the email address provided by the user with the token sent by email.
 
 \subsubsection{RideManager}
-This bean creates new rides, assigns passengers and taxi driver to an existing ride and fetches information about rides.
-It also allows taxi driver to update the status of a ride, signaling when the passengers are on board and when the ride is finished.
+This bean creates new rides, assigns passengers and taxi driver to existing rides and fetches information about rides.
+It also allows taxi drivers to update the status of a ride, signaling when the passengers are on board and when the ride is finished.
 
 \subsubsection{TaxiManager}
-This bean handles the availability status and the position of taxi drivers.
+This bean handles the availability status and the position of each taxi driver.
 Taxi drivers can mark themselves as available or unavailable, and they can change their position as well.
 This component also has a method to find the first taxi in the queue for a specific taxi zone.
 
 This component is stateless and can be instantiated multiple times. It calls TaxiQueueManager for data access.
 
 \subsubsection{TaxiQueueManager}
-This bean is a singleton and is in charge of keeping the taxi queue for each zone.
+This bean is a singleton and is in charge of keeping track of the taxi queue for each taxi zone.
 Taxi queues are not persistent data, so they are not stored in the database: they are only present in main memory.
 This allows a quicker access since this data is changed often.
 
@@ -76,22 +74,25 @@ This component also has a method to find the first taxi in the queue for a speci
 This component takes responsibility to ensure a correct concurrent access to the queues.
 
 \subsubsection{HistoryManager}
-This bean allows users (passengers and taxi drivers) to fetch the history of their rides.
-It's able to store and retrieve the ended rides.
+This bean allows users (passengers and taxi drivers) to fetch the history of their past rides.
+This component is accessed by the RideManager and is able to store the rides which have ended.
 
 \subsubsection{EmailSender}
-This bean is in charge of sending emails to users when needed. For now its only functionality is to send the e-mail confirmation token to the user e-mail address after the registration, but it could be extended to implement e-mail notifications.
+This bean is in charge of sending emails to users when needed.
+For now its only functionality is to send the e-mail confirmation token to the user e-mail address after the registration, but in future implementations it could be extended to implement e-mail notifications.
 
 \subsubsection{SharedRidePlugin}
 This plugin implements all the functions related to the taxi sharing feature.
-It allows the passengers to look for feasible shared rides and join them.
+It allows the passengers to find feasible shared rides and join them.
 
 \subsubsection{ReservedRidePlugin}
 This plugin implements all the functions related to the ride reservation feature.
-Its function is to allow passenger to reserve a taxi for a future time.
+This component allows passengers to reserve a taxi for a future time.
 
 \subsubsection{ConfiguratorBean}
-This bean is a singleton and its only duty is to read the server configuration file and provide the value of configuration options. Other beans can ask for configuration options using the same keys used to define the settings in the configuration file.
+This bean is a singleton and its only duty is to read the server configuration file and provide the value of configuration options to other components.
+Settings are stored as a set of key-value pairs.
+Other beans can ask for configuration options using the same keys used to define the settings in the configuration file.
 
 \begin{figure}
     \centering
@@ -101,10 +102,10 @@ This bean is a singleton and its only duty is to read the server configuration f
 \end{figure}
 
 \subsection{Web server}
-The web server is implemented using Java EE web components to handle the presentation layer, namely JavaServer Faces (JSF), which is a server-side framework based on MVC.
+The web server is implemented using Java EE web components, namely JavaServer Faces (JSF), which is a server-side framework based on MVC.
 The web server is run by GlassFish Server.
 
-The web tier only handles the presentation layer: all the business logic is handled by the application server tier. The web tier uses the RESTful interface of the application tier.
+The web tier only implements the presentation layer: all the business logic is handled by the application server tier. The web tier uses the RESTful interface of the application tier.
 
 Using JSF, the view is written as XML files and is completely separated from the logic of the web server. This enables us to write a modular web service.
 
