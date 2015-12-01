@@ -235,6 +235,7 @@ Here there are the functions implemented by the \textbf{plugins} (\autoref{tab:r
 \end{table}
 
 \subsection{Configuration file (application server)}
+\label{sec:config-file}
 The application server is configurable by means of a XML configuration file.
 The configuration file contains the following settings:
 \begin{itemize}
@@ -246,9 +247,11 @@ The configuration file contains the following settings:
 \end{itemize}
 
 \subsection{Web server to browser}
+\label{sec:server-to-browser}
 The users' browsers communicate with the web server via HTTPS requests. Any unencrypted request will be denied, as stated in the RASD.
 
 \subsection{Plug-in interface}
+\label{sec:plug-in-interface}
 The application server exposes extension points to be used by plug-ins: they are the only points in which the plug-ins can access the system. For example, they may not query the database layer directly.
 Plug-ins may add new services to the REST API of the application server.
 

@@ -1,79 +1,83 @@
-\section{Components}
-All the decisions in the DD have been taken following functional and nonfunctional requirements written in the RASD, although some changes are explained in \autoref{}. %TODO
+\section{Components and functional requirements}
+All the decisions in the DD have been taken following functional and nonfunctional requirements written in the RASD, although some changes are explained in \autoref{RASD-changes}.
 
 The following table \autoref{tab:Comp-Table} show the {\bf section} of the requirement fulfilled by a specific {\bf component}. 
-\subsection{User interfaces}
+
 The requirements are explained in \autoref{tab:Comp-Table}
 \begin{table}[h]
 \begin{center}
 \begin{tabular}{|p{0.5\textwidth}|p{0.5\textwidth}|}
 \hline
-{\bf Component}  & {\bf requirements}\\
+{\bf Component}  & {\bf Requirements}\\
 \hline
-EmailSender & 3.2.1 the e-mail confirmation process in user registration \\
+EmailSender & 3.2.1 the e-mail confirmation process in User registration \\
 \hline
-UserManager & 3.2.1 user registration, 3.2.2 user login, 3.2.8 user profile management.\\
+UserManager & 3.2.1 User registration, 3.2.2 User login, 3.2.8 User profile management.\\
 \hline
-HistoryManager & 3.2.8 rides history in user profile management.\\
+HistoryManager & 3.2.8 rides history in User profile management.\\
 \hline
-TaxiManager & 3.2.4 ride request notification to the taxi driver, 3.2.5 taxi availability handling.\\
+TaxiManager & 3.2.4 Ride request notification to the taxi driver, 3.2.5 Taxi availability handling.\\
 \hline
-TaxiQueueManager & 3.2.5 taxi availability handling (taxi queue management) \\
+TaxiQueueManager & 3.2.5 Taxi availability handling (taxi queue management) \\
 \hline
-TaxiQueue & 3.2.5 taxi availability handling (taxi queue)\\
+TaxiQueue & 3.2.5 Taxi availability handling (taxi queue)\\
 \hline
-RideManager & 3.2.3 standard taxi call.\\
+RideManager & 3.2.3 Standard taxi call.\\
 \hline 
-ReservedRidePlugin & 3.2.6 taxi reservation.\\
+ReservedRidePlugin & 3.2.6 Taxi reservation.\\
 \hline
-SharedRidePlugin & 3.2.7 ride sharing.\\
+SharedRidePlugin & 3.2.7 Ride sharing.\\
 \hline
 \end{tabular}
-\caption{Requirements divided in web and mobile ones}
+\caption{Table that links components to functional requirements}
 \label{tab:Comp-Table}
 \end{center}
 \end{table}
 
-
+\section{Non-functional requirements}
 
 
 The others user non-functional requirements that are common to all clients interfaces are not explained in this document, because they will be observed during the implementation part; although some of them, written in the following list, are shown in the UI Design \autoref{ch:ui-design}.
+
 \begin{itemize}
 \item The first screen must ask the user to login.
 \item The dashboard with links to every function shall be displayed in the home page.
 \item The top bar must show the last taxi service called.
 \item The possibility to choose the language at all times.
 \end{itemize}
+The other non-functional {\bf requirements} fulfilled by a {\bf DD section} are shown in table \autoref{non-func-req}
 
 
-\subsection{Hardware interfaces}
 %TODO GPS on the mobile app???
 
-\subsection{Software interfaces}
-
-The requirements followed in this subsection are explained in \autoref{tab:SWreq-Table}.
 
 \begin{table}[h]
 \begin{center}
 \begin{tabular}{|p{0.5\textwidth}|p{0.5\textwidth}|}
 \hline
-Modularity: expose API to buit new interfaces and modules & \ref{sec:high-level}, \ref{sec:component-interfaces}\\
+{\bf Section}  & {\bf Requirements}\\
 \hline
-Use MySQL for DB  & \ref{sec:component-view}\\
+\autoref{sec:component-database} Component view: Database & 
+3.1.3 Software interfaces\\
 \hline
-Use Java SE8 used back-end & \textcolor{red}{this requirement has been changed in Java EE as can be seen in sections} \ref{sec:component-view}, \ref{sec:deployment-view}\\
+\autoref{sec:rest-api} Application server to front-ends (REST API) & 3.2.9 Programmatic interface \\
+\hline
+\autoref{sec:config-file} Configuration file (application server) & 3.1.1 User interfaces: Server back-end \\
+\hline
+\autoref{sec:server-to-browser} & 3.1.4 communications interfaces \\
+\hline
+\autoref{sec:plug-in-interface} Plug-in interface & 3.1.3 Software interfaces: modularity, 3.2.9 Programmatic interface \\
 \hline
 \end{tabular}
-\caption{Software requirements}
-\label{tab:SWreq-Table}
+\caption{Table that links sections to non-functional requirements}
+\label{non-func-req}
 \end{center}
 \end{table}
 
+\section{RASD modifications}
+\label{RASD-changes}
 
-\subsection{Communication interfaces}
-The client communicates via HTTPS as shown in the Component Intefaces \autoref{sec:component-interfaces}
-
-
+Use Java SE8 used back-end has been changed into \textcolor{red}{Java EE} as can be seen in sections: \ref{sec:component-view}, \ref{sec:deployment-view}.
 
 
 
