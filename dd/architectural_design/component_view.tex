@@ -121,6 +121,20 @@ The web server architecture is composed simply by JSF (as the view) and by a con
 \end{figure}
 
 \subsection{Mobile client}
-% TODO mobile client design (Alex)
+The mobile client implementation depends on the specific platform. 
+The iOS application is implemented in Swift and mainly uses \textbf{CoreGraphics} framework to manage the UI interface.
+Instead, the Android application is implemented in Java and mainly uses \textbf{android.graphics} package for graphical management.
+
+The application core is composed by a controller which translates the inputs from the UI into remote functions calls via  RESTful APIs. The controller also manages the interaction with the GPS component using  \textbf{CoreLocation} framework in iOS app and \textbf{LocationListener} interface in the Android one.
+
+The main structure of the mobile application is shown in figure \autoref{fig:mobile-app}.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{diagrams/class_mobileapp}
+    \caption{The components of the mobile app.}
+    \label{fig:mobile-app}
+\end{figure}
+
 
 \FloatBarrier
