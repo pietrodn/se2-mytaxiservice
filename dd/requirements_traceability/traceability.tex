@@ -1,30 +1,30 @@
-All the decisions in the DD have been taken following functional and nonfunctional requirements written in the RASD, although some changes are explained in \autoref{sec:RASD-changes}.
+All the decisions in the DD have been taken following functional and nonfunctional requirements written in the RASD.
+In the making of the Design Document, some changes were made to the RASD. They are explained in \autoref{sec:RASD-changes}.
 
-\section{Components and functional requirements}
+\section{Functional requirements and components}
 
-The following table \autoref{tab:Comp-Table} show the {\bf section in the RASD of the requirement} fulfilled by a specific {\bf component in DD}. 
-
+\autoref{tab:Comp-Table} maps the functional requirements contained in \textbf{specific sections} of the RASD to the \textbf{components} in the Design Document that fulfil them.
 
 \begin{table}[h]
 \begin{center}
-\begin{tabular}{|p{0.5\textwidth}|p{0.5\textwidth}|}
+\begin{tabular}{|l|p{0.7\textwidth}|}
 \hline
-{\bf Component}  & {\bf Requirements}\\
+{\bf Component (DD)}  & {\bf Requirements (RASD)}\\
 \hline
-EmailSender & 3.2.1 the e-mail confirmation process in User registration \\
+EmailSender & 3.2.1 e-mail confirmation process in User registration \\
 \hline
-UserManager & 3.2.1 User registration, 3.2.2 User login, 3.2.8 User profile management.\\
+UserManager & 3.2.1 User registration \newline 3.2.2 User login \newline 3.2.8 User profile management.\\
 \hline
 HistoryManager & 3.2.8 rides history in User profile management.\\
 \hline
-TaxiManager & 3.2.4 Ride request notification to the taxi driver, 3.2.5 Taxi availability handling.\\
+TaxiManager & 3.2.4 Ride request notification to the taxi driver \newline 3.2.5 Taxi availability handling.\\
 \hline
 TaxiQueueManager & 3.2.5 Taxi availability handling (taxi queue management) \\
 \hline
 TaxiQueue & 3.2.5 Taxi availability handling (taxi queue)\\
 \hline
 RideManager & 3.2.3 Standard taxi call.\\
-\hline 
+\hline
 ReservedRidePlugin & 3.2.6 Taxi reservation.\\
 \hline
 SharedRidePlugin & 3.2.7 Ride sharing.\\
@@ -35,10 +35,9 @@ SharedRidePlugin & 3.2.7 Ride sharing.\\
 \end{center}
 \end{table}
 
-\section{Other requirements}
-
-
-The user non-functional requirements that are common to all clients interfaces are not explained in this document, because they will be observed during the implementation part; although some of them, written in the following list, are shown in the UI Design \autoref{ch:ui-design}.
+\section{Non-functional requirements}
+The non-functional UI requirements that are common to all client interfaces will be mainly followed during the implementation part.
+Some of them, though, are shown in \autoref{ch:ui-design} (UI Design):
 
 \begin{itemize}
 \item The first screen must ask the user to login.
@@ -47,36 +46,42 @@ The user non-functional requirements that are common to all clients interfaces a
 \item The possibility to choose the language at all times.
 \end{itemize}
 
-The other functional (programmatic interface) and non-functional {\bf requirements in RASD} fulfilled by a {\bf DD section} are shown in table \autoref{non-func-req}
-
+The other functional (programmatic interface) and non-functional {\bf requirements in RASD} fulfilled by the Design Document are shown in \autoref{non-func-req}.
 
 %TODO GPS on the mobile app???
-
 
 \begin{table}[h]
 \begin{center}
 \begin{tabular}{|p{0.5\textwidth}|p{0.5\textwidth}|}
 \hline
-{\bf Section}  & {\bf Requirements}\\
+{\bf Section (DD)}  & {\bf Requirements (RASD)}\\
 \hline
-\autoref{sec:component-database} Component view: Database & 
+Component view: Database (\ref{sec:component-database}) &
 3.1.3 Software interfaces: MySQL \\
 \hline
-\autoref{sec:comp-view-web-server} Web server & 3.1.3 Software interfaces, 3.4.4 Maintainability: MVC pattern, 3.4.5 Portability, see \autoref{sec:RASD-changes} \\
+Web server (\ref{sec:comp-view-web-server}) & 3.1.3 Software interfaces \newline
+3.4.4 Maintainability: MVC pattern \newline
+3.4.5 Portability, see \autoref{sec:RASD-changes} \\
 \hline
-\autoref{sec:styles-patterns} Selected architectural styles and patterns &  3.4.4 Maintainability: MVC pattern, 3.1.3 Software interfaces: modularity \\
+Selected architectural styles and patterns (\ref{sec:styles-patterns}) &  3.4.4 Maintainability: MVC pattern \newline
+3.1.3 Software interfaces: modularity \\
 \hline
-\autoref{sec:rest-api} Application server to front-ends (REST API) &  \textcolor{blue}{3.2.9 Programmatic interface}, 3.1.4 Communications interfaces, 3.4.3 Security: HTTPS \\
+Application server to front-ends (REST API) (\ref{sec:rest-api}) &  \textcolor{blue}{3.2.9 Programmatic interface} \newline
+3.1.4 Communications interfaces \newline
+3.4.3 Security: HTTPS \\
 \hline
-\autoref{sec:config-file} Configuration file (application server) & 3.1.1 User interfaces: Server back-end \\
+Configuration file (application server) (\ref{sec:config-file}) & 3.1.1 User interfaces: Server back-end \\
 \hline
-\autoref{sec:server-to-browser} Web server to browser & 3.1.4 Communications interfaces, 3.4.3 Security: HTTPS \\
+Web server to browser (\ref{sec:server-to-browser}) & 3.1.4 Communications interfaces \newline
+3.4.3 Security: HTTPS \\
 \hline
-\autoref{sec:plug-in-interface} Plug-in interface & \textcolor{blue}{3.2.9 Programmatic interface}, 3.1.3 Software interfaces: modularity \\
+Plug-in interface (\ref{sec:plug-in-interface}) & \textcolor{blue}{3.2.9 Programmatic interface} \newline
+3.1.3 Software interfaces: modularity \\
 \hline
-\autoref{sec:other-design-decisions} Other design decisions & 3.4.2 Availability, 3.4.3  Security: user's password in DB hashed and salted \\
+Other design decisions (\ref{sec:other-design-decisions}) & 3.4.2 Availability \newline
+3.4.3  Security: user's password in DB hashed and salted \\
 \hline
-\autoref{fig:er-diagram} Application server: ER diagram & 3.4.3 Security: user's password in DB hashed and salted \\
+Application server: ER diagram (\ref{fig:er-diagram}) & 3.4.3 Security: user's password in DB hashed and salted \\
 \hline
 
 \end{tabular}
@@ -85,23 +90,14 @@ The other functional (programmatic interface) and non-functional {\bf requiremen
 \end{center}
 \end{table}
 
-\section{RASD modifications}
+\section{Modifications to the RASD}
 \label{sec:RASD-changes}
 
-Java SE8 used back-end has been changed into \textcolor{red}{Java EE} as can be seen in sections: \ref{sec:component-view}, \ref{sec:deployment-view}.
+The RASD incorrectly stated that the back-end would be written using the Java SE 8 framework; it has been changed into \textcolor{red}{Java EE 7} as can be seen in sections \ref{sec:component-view}, \ref{sec:deployment-view}.
 
-The following requirements have been {\bf removed from RASD} as they are deemed unnecessary.
+The following requirements have been {\bf removed from the RASD} as they are deemed unnecessary.
 \begin{itemize}
 \item Web application point 2 in 3.1.1 User interfaces: the web pages must be accessible also by text-only browsers.
 \item Point 4 in 3.4.3 Security: The system must log all login attempts with IP addresses for at least 7 days.
 \item Point 5 in 3.4.3 Security: The modules must state clearly which data they will need to read and write.
 \end{itemize}
-
-
-
-
-
-
-
-
-
