@@ -4,11 +4,11 @@ When a passenger requests a taxi and his request is assigned to a taxi driver, t
 
 The flow of events is as follows:
 \begin{enumerate}
-\item The passenger requests a taxi sending his current position to the system.
+\item The passenger requests a taxi and sends his current position to the system.
 \item The system looks for an available taxi driver in the same zone of the passenger.
 \item The request is accepted by one taxi driver, who sends his current position to the application server.
 \item \label{point-a} The application server computes the ETA by sending a request to Google Maps; the format of the request is specified in~\autoref{tab:gmaps-parameters}.
-\item \label{point-b}The application server sends to the passenger the ETA.
+\item \label{point-b}The application server sends to the passenger the ETA, when required by the client.
 \item Points \ref{point-a}, \ref{point-b} are repeated every 90 seconds until the taxi notifies that it has picked up the passenger.
 \end{enumerate}
 

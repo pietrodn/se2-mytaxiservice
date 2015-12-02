@@ -2,11 +2,11 @@
 \label{sec:taxi-sharing-matching}
 The algorithm is run by the back-end when a new shared ride is requested and it computes the compatible shared rides with the new one.
 
-A ride can be compatible with a new one if its starting point is not further than $MaxBeginDistance$. $MaxBeginDistance$ is the variable which contains the value expressed in meters of the max accepted distance between the actual position of the passenger of a new ride and the starting point of another ride.
+A ride can be compatible with a new one if its starting point is not further than $MaxBeginDistance$. $MaxBeginDistance$ is the parameter which contains the value expressed in meters of the max accepted distance between the actual position of the passenger of a new ride and the starting point of another ride.
 
 Furthermore the eventual new passenger needs to have the time to reach the starting point.
 
-The last requirement, in order to be a compatible ride, is that once the rides are matched, the estimated travel time of the two rides does not increase of $ExtraPercentage$ of the previous estimated travel time, where $ExtraPercentage$ is the variable which contains the percentage of the max admissible increasing.
+The last requirement, in order to be a compatible ride, is that once the rides are matched, the estimated travel time of the two rides does not increase of $ExtraPercentage$ of the previous estimated travel time, where $ExtraPercentage$ is the parameter which contains the percentage of the max admissible increasing.
 
 The input data:
 \begin{itemize}

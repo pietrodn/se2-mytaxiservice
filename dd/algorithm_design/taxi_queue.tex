@@ -1,15 +1,15 @@
 \section{Taxi queue management}
-As stated in the RASD~\cite{rasd}, the taxi drivers are divided in city zones according to their current location. Each zone is served by a local queue of taxi driver which are enabled to pick the ride request and serve the clients. This section elaborates in detail how the queues are managed by the system.
+As stated in the RASD~\cite{rasd}, the taxi drivers are divided in city zones according to their current location. Each zone is served by a local queue of taxi drivers which are enabled to acceps ride requests and serve the passengers. This section elaborates in detail how the queues are managed by the system.
 
-The algorithm is run every time there is a new event which changes the order or the number of the elements in one of the system queues.
+The algorithm is run every time there is a new event which changes the order or the number of the elements in one of the taxi queues.
 
 According to the type of event, the algorithm updates the queues moving, deleting or creating elements. There are several types of events:
 \begin{enumerate}
 	\item new request incomes; \label{event:new_req}
-	\item taxi Driver accepts a request; \label{event:accepted_req}
-	\item taxi Driver refuses a request; \label{event:refuses_req}
-	\item taxi Driver changes zone; \label{event:changed_zone}
-	\item taxi Driver changes his/her status. \label{event:changed_status}
+	\item taxi driver accepts a request; \label{event:accepted_req}
+	\item taxi driver refuses a request; \label{event:refuses_req}
+	\item taxi driver changes zone; \label{event:changed_zone}
+	\item taxi driver changes his/her status. \label{event:changed_status}
 \end{enumerate}
 The input data are:
 \begin{itemize}

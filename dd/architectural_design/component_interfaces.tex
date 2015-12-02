@@ -171,7 +171,7 @@ Functions implemented by \textbf{TaxiManager} (\autoref{tab:rest-taximanager}):
 \subsubsection{HistoryManager}
 Functions implemented by \textbf{HistoryManager} (\autoref{tab:rest-HistoryManager}):
 \begin{description}
-    \item[\texttt{get\_past\_rides}] This function the information (in the same format of \texttt{get\_ride\_info}) about the rides in which the user was involved (as a taxi driver or a passenger).
+    \item[\texttt{get\_past\_rides}] This function returns the information (in the same format of \texttt{get\_ride\_info}) about the rides in which the user was involved (as a taxi driver or a passenger).
 \end{description}
 
 \begin{table}
@@ -194,13 +194,13 @@ Functions implemented by \textbf{HistoryManager} (\autoref{tab:rest-HistoryManag
 \end{table}
 
 \subsubsection{Plugins}
-Here there are the functions implemented by the \textbf{plugins} (\autoref{tab:rest-plugins}):
+Functions implemented by the \textbf{plugins} \emph{ride sharing} and \emph{ride reservation} (\autoref{tab:rest-plugins}):
 \begin{description}
     \item[\texttt{reserve\_taxi}] This function is implemented by the \emph{ride reservation} plugin and allows any passenger to reserve a ride for a future time. The submitted timestamp must be between 2h and 48h after the current time. If the sharing feature is enabled, the passenger has to provide a destination.
-    \item[\texttt{list\_shared\_rides}] This function lists all the shared rides compatible with the chosen destination, date and time, and number of travellers. If the data is valid, the function outputs a list with the feasible ride information in the same format of the \texttt{get\_ride\_info} request. If no feasible ride is found, the function returns the empty list. If the data is invalid, an error is returned.
-    \item[\texttt{join\_shared\_ride}] This functions allows a passenger to join a shared ride, adding him to the ride list of passengers and adding his destination to the ride destinations. A passenger can join a ride only if the ride is ``feasible'' as defined by the algorithm described in~\autoref{sec:taxi-sharing-matching}. The passenger has to provide a destination, along with the number of passengers and the ID of the ride he wants to join. Feasible rides can be obtained by calling \texttt{join\_shared\_ride}. If the provided data is not valid or the ride is not feasible, an error is returned. If the request is successful, the function returns the ride information in the same format of \texttt{get\_ride\_info}.
+    \item[\texttt{list\_shared\_rides}] This function is implemented by the \emph{ride sharing} plugin and lists all the shared rides compatible with the chosen destination, date and time, and number of travellers. If the data is valid, the function outputs a list with the feasible ride information in the same format of the \texttt{get\_ride\_info} request. If no feasible ride is found, the function returns the empty list. If the data is invalid, an error is returned.
+    \item[\texttt{join\_shared\_ride}] This functions is implemented by the \emph{ride sharing} plugin and allows a passenger to join a shared ride, adding him to the list of passengers of the ride and adding his destination to the ride destinations. A passenger can join a ride only if the ride is ``feasible'' as defined by the algorithm described in~\autoref{sec:taxi-sharing-matching}. The passenger has to provide a destination, along with the number of passengers and the ID of the ride he wants to join. Feasible rides can be obtained by calling \texttt{list\_shared\_rides}. If the provided data is not valid or the ride is not feasible, an error is returned. If the request is successful, the function returns the ride information in the same format of \texttt{get\_ride\_info}.
 
-    \item[\texttt{get\_ride\_fee}] This function allows the taxi driver and the passengers of the ride to know the percentage of the taxi fee that each passenger has to pay, according to the algorithm described in~\autoref{sec:taxi-fee-splitting}.
+    \item[\texttt{get\_ride\_fee}] This function is implemented by the \emph{ride sharing} plugin and allows the taxi driver and the passengers of the ride to know the percentage of the taxi fee that each passenger has to pay, according to the algorithm described in~\autoref{sec:taxi-fee-splitting}.
 
     The function returns a dictionary containing as keys the passengers' usernames and as values the percentage of the fee that each one has to pay, expressed as a floating point number from 0 to 1. If the function is called on a ride that has only one passenger, the fee percentage for that passenger will be 1.
 
@@ -253,8 +253,8 @@ The application server is configurable by means of a XML configuration file.
 The configuration file contains the following settings:
 \begin{itemize}
     \item the boundaries of the taxi zones, expressed as polygons (list of coordinates);
-    \item the credentials of the user that can access database;
-    \item the name of the database;
+    \item the credentials of the user that can access the database;
+    \item the host, port and name of the database;
     \item the network settings of the application server (listening port, host, ...);
     \item any other settings that will be useful in the implementation phase.
 \end{itemize}
