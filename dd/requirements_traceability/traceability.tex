@@ -1,9 +1,10 @@
-\section{Components and functional requirements}
 All the decisions in the DD have been taken following functional and nonfunctional requirements written in the RASD, although some changes are explained in \autoref{RASD-changes}.
 
-The following table \autoref{tab:Comp-Table} show the {\bf section} of the requirement fulfilled by a specific {\bf component}. 
+\section{Components and functional requirements}
 
-The requirements are explained in \autoref{tab:Comp-Table}
+The following table \autoref{tab:Comp-Table} show the {\bf section in the RASD of the requirement} fulfilled by a specific {\bf component in DD}. 
+
+
 \begin{table}[h]
 \begin{center}
 \begin{tabular}{|p{0.5\textwidth}|p{0.5\textwidth}|}
@@ -46,7 +47,7 @@ The user non-functional requirements that are common to all clients interfaces a
 \item The possibility to choose the language at all times.
 \end{itemize}
 
-The other {\bf requirements} fulfilled by a {\bf DD section} are shown in table \autoref{non-func-req}
+The other {\bf requirements in RASD} fulfilled by a {\bf DD section} are shown in table \autoref{non-func-req}
 
 
 %TODO GPS on the mobile app???
@@ -61,14 +62,19 @@ The other {\bf requirements} fulfilled by a {\bf DD section} are shown in table 
 \autoref{sec:component-database} Component view: Database & 
 3.1.3 Software interfaces\\
 \hline
+\autoref{sec:comp-view-web-server} Web server & 3.4.4 Maintainability: MVC pattern \\
+\hline
+\autoref{sec:styles-patterns} Selected architectural styles and patterns &  3.4.4 Maintainability: MVC pattern, 3.1.3 Software interfaces: modularity \\
+\hline
 \autoref{sec:rest-api} Application server to front-ends (REST API) & 3.2.9 Programmatic interface \\
 \hline
 \autoref{sec:config-file} Configuration file (application server) & 3.1.1 User interfaces: Server back-end \\
 \hline
-\autoref{sec:server-to-browser} & 3.1.4 communications interfaces \\
+\autoref{sec:server-to-browser} Web server to browser & 3.1.4 communications interfaces \\
 \hline
 \autoref{sec:plug-in-interface} Plug-in interface & 3.1.3 Software interfaces: modularity, 3.2.9 Programmatic interface \\
 \hline
+
 \end{tabular}
 \caption{Table that links sections to non-functional requirements}
 \label{non-func-req}
@@ -77,8 +83,9 @@ The other {\bf requirements} fulfilled by a {\bf DD section} are shown in table 
 
 \section{RASD modifications}
 \label{RASD-changes}
+Java SE8 used back-end has been changed into \textcolor{red}{Java EE} as can be seen in sections: \ref{sec:component-view}, \ref{sec:deployment-view}.
 
-Use Java SE8 used back-end has been changed into \textcolor{red}{Java EE} as can be seen in sections: \ref{sec:component-view}, \ref{sec:deployment-view}.
+
 
 
 
