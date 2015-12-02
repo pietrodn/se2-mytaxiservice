@@ -2,30 +2,27 @@
 \label{sec:component-interfaces}
 
 \subsection{Application server to database}
-The application server communicates to the DB via JPA and JDBC over standard network protocols. Thus, the DB and the application server layers can be deployed on different tiers, as well on the same one.
+The application server communicates with the DBMS via the Java Persistence API over standard network protocols. Thus, the DB and the application server layers can be deployed on different tiers, as well on the same one.
 
 The low-level technicalities about the specific dialect of SQL for the selected DBMS are abstracted by the Java Persistence API, which also deals with the O/R mapping.
 
 \subsection{Application server to front-ends (REST API)}
 \label{sec:rest-api}
-The front-ends of the system (the web application and the mobile app) shall communicate with the application server using the same back-end programmatic inteface described in the RASD and implemented as a RESTful interface over the HTTPS protocol.
+The front-ends of the system (the web application and the mobile app) shall communicate with the application server using the back-end programmatic inteface described in the RASD~\cite{rasd} and implemented as a RESTful interface over the HTTPS protocol.
+The RESTful interface is implemented in the application server using JAX-RS and uses XML as the data representation language.
 
-The RESTful interface is implemented in the application server using JAX-RS.
-
-Also, if the web server fails for any reason, the back-end interface will be accessible by the users by means of the mobile application.
-
-The detailed REST API implemented by the core system and by the plugins are described in the following pages.
+The detailed REST API implemented by the core system and by the plugins is described in the following pages.
 
 The conventions used for defining the REST API are the following:
 \begin{enumerate}
     \item Each Session Bean can offer some functionalities as part of the public API.
     \item Plugins can add other functionalities and extend the existing ones.
-    \item All the function can return one or more errors, as a list.
+    \item Functions can return values and one or more errors.
     \item \returns{Return values} are highlighted in red.
     \item \plugin{Extensions} by plugins are highlighted in blue.
     \item Position data consists in an ordered tuple containing two floating point values (latitude and longitude).
-    \item The features only available to logged in users require a login token, provided by the \texttt{login} function.
     \item Features can be available to all users (\textbf{A}), logged in users (\textbf{U}), passengers (\textbf{P}) or taxi drivers (\textbf{D}) only.
+    \item The features only available to logged in users require a login token, provided by the \texttt{login} function.
 \end{enumerate}
 
 \subsubsection{UserManager}
@@ -86,7 +83,7 @@ Functions implemented by \textbf{UserManager} (\autoref{tab:rest-usermanager}):
 \subsubsection{RideManager}
 Functions implemented by \textbf{RideManager} (\autoref{tab:rest-ridemanager}):
 \begin{description}
-    \item[\texttt{get\_ride\_info}] This function returns all the information about a ride. An user can obtain information about a ride if and only if one of these conditions is met:
+    \item[\texttt{get\_ride\_info}] This function returns all the information about a ride. A user can obtain information about a ride if and only if one of these conditions is met:
     \begin{enumerate}
         \item the user is one of the passengers of the ride;
         \item the user is the taxi driver whom the ride is assigned;
@@ -94,9 +91,15 @@ Functions implemented by \textbf{RideManager} (\autoref{tab:rest-ridemanager}):
     \end{enumerate}
     An error is returned if the ride ID is invalid or if the user is not authorized to access the data.
 
+    The function fetches the following information for a ride: the number of passengers, the number of travelers, the origin and destination of the ride (if availabile) and the ride status. The status of the ride can be: reserved (the ride has been reserved but there is not yeat any taxi driver allocated to it), waiting (the taxi driver is going to meet the passenger), running (passengers on board), done (the ride ended).
+
     \item[\texttt{request\_taxi}] This function allows a passenger to call a taxi. The passenger has to specify its position along with the number of travelers, and if he wants to share the ride. If the sharing feature is enabled, the passenger has to provide a destination. If the taxi call is successful, the function returns the ID of the newly created ride. An error is returned if the data is not valid or if the passenger is currently in a ride or waiting for a taxi.
 
+    The taxi sharing feature is added by the ride sharing plugin.
+
     \item[\texttt{update\_ride\_status}] This function is used by the taxi driver client to send messages about a ride. The taxi manager can signal that he has picked up all the passenger or that the ride is ended. If the message if inconsistent with the current status of the ride, an error is returned.
+
+    This function can be extended with other types of messages or events that can be sent by the taxi driver.
 \end{description}
 
 \begin{table}
@@ -196,6 +199,12 @@ Here there are the functions implemented by the \textbf{plugins} (\autoref{tab:r
     \item[\texttt{reserve\_taxi}] This function is implemented by the \emph{ride reservation} plugin and allows any passenger to reserve a ride for a future time. The submitted timestamp must be between 2h and 48h after the current time. If the sharing feature is enabled, the passenger has to provide a destination.
     \item[\texttt{list\_shared\_rides}] This function lists all the shared rides compatible with the chosen destination, date and time, and number of travellers. If the data is valid, the function outputs a list with the feasible ride information in the same format of the \texttt{get\_ride\_info} request. If no feasible ride is found, the function returns the empty list. If the data is invalid, an error is returned.
     \item[\texttt{join\_shared\_ride}] This functions allows a passenger to join a shared ride, adding him to the ride list of passengers and adding his destination to the ride destinations. A passenger can join a ride only if the ride is ``feasible'' as defined by the algorithm described in~\autoref{sec:taxi-sharing-matching}. The passenger has to provide a destination, along with the number of passengers and the ID of the ride he wants to join. Feasible rides can be obtained by calling \texttt{join\_shared\_ride}. If the provided data is not valid or the ride is not feasible, an error is returned. If the request is successful, the function returns the ride information in the same format of \texttt{get\_ride\_info}.
+
+    \item[\texttt{get\_ride\_fee}] This function allows the taxi driver and the passengers of the ride to know the percentage of the taxi fee that each passenger has to pay, according to the algorithm described in~\autoref{sec:taxi-fee-splitting}.
+
+    The function returns a dictionary containing as keys the passengers' usernames and as values the percentage of the fee that each one has to pay, expressed as a floating point number from 0 to 1. If the function is called on a ride that has only one passenger, the fee percentage for that passenger will be 1.
+
+    This information is only available to the taxi driver and to the passengers of the ride.
 \end{description}
 
 \begin{table}
@@ -228,6 +237,10 @@ Here there are the functions implemented by the \textbf{plugins} (\autoref{tab:r
         && \texttt{destination} & The position of the passenger's destination.\\
         && \texttt{\returns{ride\_info}} & The output of \texttt{get\_ride\_info} for the ride \texttt{ride\_id}.\\
         \hline
+        % GET_RIDE_FEE
+        \multirow{2}{*}{\texttt{get\_ride\_fee}} & \multirow{2}{*}{U} & \texttt{ride\_id} & The ID of the ride.\\
+        && \texttt{\returns{fees}} & Fee percentage for each user, as a dictionary \texttt{\{username $\Rightarrow$ Float\}}.\\
+        \hline
     \end{tabular}
     \end{small}
     \caption{REST API implemented by the plugins \emph{taxi reservation} and \emph{taxi sharing}.}
@@ -248,7 +261,7 @@ The configuration file contains the following settings:
 
 \subsection{Web server to browser}
 \label{sec:server-to-browser}
-The users' browsers communicate with the web server via HTTPS requests. Any unencrypted request will be denied, as stated in the RASD.
+The users' browsers communicate with the web server via HTTPS requests. Any unencrypted request will be denied, as stated in the RASD~\cite{rasd}.
 
 \subsection{Plug-in interface}
 \label{sec:plug-in-interface}

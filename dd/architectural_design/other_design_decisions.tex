@@ -1,6 +1,8 @@
 \section{Other design decisions}
 \label{sec:other-design-decisions}
 
+Users' password are not stored in plaintext, but they are hashed and salted with cryptographic hash functions. This provides a last line of defense in case of data theft.
+
 The system uses an external service, \emph{Google Maps}, to offload all the geolocalization, distance calculation and map visualization processed. The reasons of this choice are the following:
 \begin{itemize}
     \item manually developing maps for each city is not a viable solution due to the tremendous effort of coding and data collection required;
@@ -9,3 +11,7 @@ The system uses an external service, \emph{Google Maps}, to offload all the geol
     \item Google Maps can be used both on the server side (calculation, shortest paths, traffic, incident reporting) and on the client side (map visualization);
     \item the users feel comfortable with a software component they know and use everyday.
 \end{itemize}
+
+In the RASD (section 3.4.2) we stated that we had to ensure an availabilityof 98\%, i.e. 7,3 days of downtime a year.
+We did not specify a greater availability because the architecture we designed is not redundant: the tiers are not replicated at any level.
+In future implementations, replication can be added (for example, at the database and web tiers), improving the availability.
