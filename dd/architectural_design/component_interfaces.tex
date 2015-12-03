@@ -8,7 +8,7 @@ The low-level technicalities about the specific dialect of SQL for the selected 
 
 \subsection{Application server to front-ends (REST API)}
 \label{sec:rest-api}
-The front-ends of the system (the web application and the mobile app) shall communicate with the application server using the back-end programmatic inteface described in the RASD~\cite{rasd} and implemented as a RESTful interface over the HTTPS protocol.
+The front-ends of the system (the web application and the mobile app) shall communicate with the application server using the back-end programmatic interface described in the RASD~\cite{rasd} and implemented as a RESTful interface over the HTTPS protocol.
 The RESTful interface is implemented in the application server using JAX-RS and uses XML as the data representation language.
 
 The detailed REST API implemented by the core system and by the plugins is described in the following pages.
@@ -91,7 +91,7 @@ Functions implemented by \textbf{RideManager} (\autoref{tab:rest-ridemanager}):
     \end{enumerate}
     An error is returned if the ride ID is invalid or if the user is not authorized to access the data.
 
-    The function fetches the following information for a ride: the number of passengers, the number of travelers, the origin and destination of the ride (if availabile) and the ride status. The status of the ride can be: reserved (the ride has been reserved but there is not yeat any taxi driver allocated to it), waiting (the taxi driver is going to meet the passenger), running (passengers on board), done (the ride ended).
+    The function fetches the following information for a ride: the number of passengers, the number of travelers, the origin and destination of the ride (if available) and the ride status. The status of the ride can be: reserved (the ride has been reserved but there is not yet any taxi driver allocated to it), waiting (the taxi driver is going to meet the passenger), running (passengers on board), done (the ride ended).
 
     \item[\texttt{request\_taxi}] This function allows a passenger to call a taxi. The passenger has to specify its position along with the number of travelers, and if he wants to share the ride. If the sharing feature is enabled, the passenger has to provide a destination. If the taxi call is successful, the function returns the ID of the newly created ride. An error is returned if the data is not valid or if the passenger is currently in a ride or waiting for a taxi.
 
