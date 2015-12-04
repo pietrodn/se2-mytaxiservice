@@ -43,7 +43,7 @@ The Entity Beans representing the database entities (\autoref{fig:entity-diagram
 
 The business logic is implemented by custom-built \textbf{stateless Enterprise JavaBeans (EJB)}.
 Our application indeed is rather simple and message-driven: the state of the users is stored in the DB, so we do not generally need stateful EJBs which can be more expensive.
-Concurrency management and performance are fundamental, so the reuse of EJBs for many request is a desirable behaviour.
+Concurrency management and performance are fundamental, so the reuse of EJBs for many requests is a desirable behaviour.
 
 The application server implements a RESTful API using JAX-RS to allow the clients (web tier and mobile client) to use the services offered by the EJBs: this interface will be thoroughly discussed in~\autoref{sec:rest-api}.
 

@@ -3,7 +3,7 @@ As stated in the RASD~\cite{rasd}, the taxi drivers are divided in city zones ac
 
 The algorithm is run every time there is a new event which changes the order or the number of the elements in one of the taxi queues.
 
-According to the type of event, the algorithm updates the queues moving, deleting or creating elements. There are several types of events:
+According to the type of the event, the algorithm updates the queues moving, deleting or creating elements. There are several types of events:
 \begin{enumerate}
 	\item new request incomes; \label{event:new_req}
 	\item taxi driver accepts a request; \label{event:accepted_req}
@@ -23,7 +23,7 @@ The input data are:
 The algorithm works differently accordingly with the input event. The alternatives are explained in the following subsections.
 
 \subsection{Type \ref{event:new_req}, new request incomes}
-The algorithm extracts the zone $z$ of the new incoming request, pops the first element of the $Q_z$ and inserts this element in $P$ list.
+The algorithm extracts the zone $z$ of the new incoming request, pops the first element of the $Q_z$ and inserts this element in the $P$ list.
 
 \subsection{Type \ref{event:accepted_req}, taxi driver accepts a request}
 The algorithm extracts the taxi driver $t$ from the event and removes him/her from $P$. After that it inserts $t$ into $B$.

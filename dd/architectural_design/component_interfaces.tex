@@ -91,9 +91,9 @@ Functions implemented by \textbf{RideManager} (\autoref{tab:rest-ridemanager}):
     \end{enumerate}
     An error is returned if the ride ID is invalid or if the user is not authorized to access the data.
 
-    The function fetches the following information for a ride: the number of passengers, the number of travelers, the origin and destination of the ride (if available) and the ride status. The status of the ride can be: reserved (the ride has been reserved but there is not yet any taxi driver allocated to it), waiting (the taxi driver is going to meet the passenger), running (passengers on board), done (the ride ended).
+    The function fetches the following information for a ride: the number of passengers, the number of travellers, the origin and destination of the ride (if available) and the ride status. The status of the ride can be: reserved (the ride has been reserved but there is not yet any taxi driver allocated to it), waiting (the taxi driver is going to meet the passenger), running (passengers on board), done (the ride ended).
 
-    \item[\texttt{request\_taxi}] This function allows a passenger to call a taxi. The passenger has to specify its position along with the number of travelers, and if he wants to share the ride. If the sharing feature is enabled, the passenger has to provide a destination. If the taxi call is successful, the function returns the ID of the newly created ride. An error is returned if the data is not valid or if the passenger is currently in a ride or waiting for a taxi.
+    \item[\texttt{request\_taxi}] This function allows a passenger to call a taxi. The passenger has to specify its position along with the number of travellers, and if he wants to share the ride. If the sharing feature is enabled, the passenger has to provide a destination. If the taxi call is successful, the function returns the ID of the newly created ride. An error is returned if the data is not valid or if the passenger is currently in a ride or waiting for a taxi.
 
     The taxi sharing feature is added by the ride sharing plugin.
 
@@ -121,14 +121,14 @@ Functions implemented by \textbf{RideManager} (\autoref{tab:rest-ridemanager}):
         \multirow{7}{*}{\texttt{get\_ride\_info}} & \multirow{7}{*}{U} & \texttt{ride\_id} & ID of the ride returned by \texttt{request\_taxi}. \\
         & & \texttt{\returns{origin}} & Position of the starting point.\\
         & & \texttt{\returns{destinations}} & Positions of the destinations.\\
-        & & \texttt{\returns{num\_travelers}} & Total number of travellers.\\
+        & & \texttt{\returns{num\_travellers}} & Total number of travellers.\\
         & & \texttt{\plugin{num\_passengers}} & Total number of passengers.\\
         & & \texttt{\returns{status}} & \texttt{reserved | waiting | running | done}\\
         & & \texttt{\returns{wait\_time}} & Estimated waiting time in seconds. Returns -1 if there is no taxi to wait for.\\
         \hline
         % REQUEST TAXI
         \multirow{5}{*}{\texttt{request\_taxi}} & \multirow{5}{*}{P} & \texttt{origin} & Position of the passenger.\\
-        & & \texttt{travelers} & The number of travelers.\\
+        & & \texttt{travellers} & The number of travellers.\\
         & & \texttt{\plugin{destination}} & Destination of the ride. Only required if \texttt{sharing\_enabled=true}.\\
         & & \texttt{\plugin{sharing\_enabled}} & \texttt{true | false}\\
         & & \texttt{\returns{ride\_id}} & An ID number identifying the ride.\\
@@ -198,7 +198,7 @@ Functions implemented by the \textbf{plugins} \emph{ride sharing} and \emph{ride
 \begin{description}
     \item[\texttt{reserve\_taxi}] This function is implemented by the \emph{ride reservation} plugin and allows any passenger to reserve a ride for a future time. The submitted timestamp must be between 2h and 48h after the current time. If the sharing feature is enabled, the passenger has to provide a destination.
     \item[\texttt{list\_shared\_rides}] This function is implemented by the \emph{ride sharing} plugin and lists all the shared rides compatible with the chosen destination, date and time, and number of travellers. If the data is valid, the function outputs a list with the feasible ride information in the same format of the \texttt{get\_ride\_info} request. If no feasible ride is found, the function returns the empty list. If the data is invalid, an error is returned.
-    \item[\texttt{join\_shared\_ride}] This functions is implemented by the \emph{ride sharing} plugin and allows a passenger to join a shared ride, adding him to the list of passengers of the ride and adding his destination to the ride destinations. A passenger can join a ride only if the ride is ``feasible'' as defined by the algorithm described in~\autoref{sec:taxi-sharing-matching}. The passenger has to provide a destination, along with the number of passengers and the ID of the ride he wants to join. Feasible rides can be obtained by calling \texttt{list\_shared\_rides}. If the provided data is not valid or the ride is not feasible, an error is returned. If the request is successful, the function returns the ride information in the same format of \texttt{get\_ride\_info}.
+    \item[\texttt{join\_shared\_ride}] This function is implemented by the \emph{ride sharing} plugin and allows a passenger to join a shared ride, adding him to the list of passengers of the ride and adding his destination to the ride destinations. A passenger can join a ride only if the ride is ``feasible'' as defined by the algorithm described in~\autoref{sec:taxi-sharing-matching}. The passenger has to provide a destination, along with the number of passengers and the ID of the ride he wants to join. Feasible rides can be obtained by calling \texttt{list\_shared\_rides}. If the provided data is not valid or the ride is not feasible, an error is returned. If the request is successful, the function returns the ride information in the same format of \texttt{get\_ride\_info}.
 
     \item[\texttt{get\_ride\_fee}] This function is implemented by the \emph{ride sharing} plugin and allows the taxi driver and the passengers of the ride to know the percentage of the taxi fee that each passenger has to pay, according to the algorithm described in~\autoref{sec:taxi-fee-splitting}.
 
@@ -220,7 +220,7 @@ Functions implemented by the \textbf{plugins} \emph{ride sharing} and \emph{ride
         % RESERVE_TAXI
         \multirow{6}{*}{\texttt{reserve\_taxi}} & \multirow{6}{*}{P} & \texttt{origin} & The position of the starting point of the ride.\\
         && \texttt{destination} & The position of the passenger's destination.\\
-        && \texttt{travelers} & The number of travellers.\\
+        && \texttt{travellers} & The number of travellers.\\
         && \texttt{time} & Time of arrival of the taxi (ISO 8601 format).\\
         && \texttt{\plugin{sharing\_enabled}} & \texttt{true | false}\\
         && \texttt{\returns{ride\_id}} & An ID number identifying the ride.\\
@@ -228,7 +228,7 @@ Functions implemented by the \textbf{plugins} \emph{ride sharing} and \emph{ride
         % LIST_SHARED_RIDES
         \multirow{5}{*}{\texttt{list\_shared\_rides}} & \multirow{5}{*}{P} & \texttt{origin} & The position of the starting point.\\
         && \texttt{destination} & The position of the passenger's destination.\\
-        && \texttt{travelers} & The number of travellers.\\
+        && \texttt{travellers} & The number of travellers.\\
         && \texttt{time} & Time of arrival of the taxi (ISO 8601 format).\\
         && \texttt{\returns{rides}} & A dictionary containing a list of feasible rides, with the same format of \texttt{get\_ride\_info}.\\
         \hline
