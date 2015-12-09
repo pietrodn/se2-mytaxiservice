@@ -1,0 +1,46 @@
+\documentclass[12pt, a4paper]{report}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+% Some math symbols and commands
+\usepackage{amsmath}
+
+% Columns spanning multiple rows in tabulars
+\usepackage{multirow}
+
+% hyperref
+\usepackage[bookmarks, colorlinks, breaklinks]{hyperref}  % PDF hyperlinks, with coloured links
+\hypersetup{linkcolor=black, citecolor=black, filecolor=black, urlcolor=black} % black links, for printed output
+
+% Support for the inclusion of figures
+\usepackage{graphicx}
+
+% "Contents" and "bibliography" are included in the summary.
+\usepackage{tocbibind}
+
+\def\chapterautorefname{Chapter}
+
+\begin{document}
+\title{Software Engineering 2: Code Inspection \\ version 1}
+\author{Chitti Eleonora, De Nicolao Pietro, Delbono Alex\\
+Politecnico di Milano}
+\date{January 5, 2015}
+\maketitle
+\tableofcontents
+
+\chapter{Description of the code}
+\input{classes.tex}
+\input{functional_role.tex}
+
+\chapter{Results of inspection}
+\input{issues.tex}
+\input{other_problems.tex}
+
+\appendix
+\chapter{Appendix}
+
+\input{appendix.tex}
+
+\input{bibliography.tex}
+
+\end{document}
