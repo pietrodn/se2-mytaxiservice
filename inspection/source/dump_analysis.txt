@@ -1,0 +1,80 @@
+CODE INSPECTION CHECK LIST
+Points marked as DONE are completely analyzed.
+
+Naming convention
+
+1. What does the function do??
+2. DONE not found
+3. DONE not found
+4. DONE not found
+5. DONE (not so wrong)      line 1979, 1992, 2007, 2022, 2037
+                            used .elements() instead for instance .getElements()
+                            in Enumeration structure
+
+                            line 1981, 1994, 2009, 2024, 2039
+                            used .nextElements() instead for instance .getNextElements()
+                            in Enumeration structure
+
+                            THIS ARE NOT PROPERLY ERRORS
+
+6. DONE all attributes do not begin with "_" but have lowercase first letter
+        and all the next words have capitalized first letters
+7. DONE not found in function, but in class line 110 constant does not respect the convention
+
+
+Indentation
+
+8. DONE space are all corrects
+9. DONE no tabs found
+
+
+Braces
+
+10. DONE all in "Allman" style
+11. DONE all control statements respect this
+
+
+File Organization
+
+12. DONE blank lines usage is optimal
+13. DONE without considering indentation, the longest line length is 78 characters
+        otherwise it is 94 characters. Line 1981.
+14. DONE respected
+
+
+Wrapping Lines
+
+15. DONE no line break
+16. DONE
+17. DONE every line ok
+
+
+Comments
+
+18. DONE comments clear
+19. DONE code commented: line 1968, date non present nor explained
+
+
+Java source file
+
+20. DONE not public class in this file
+21. DONE not public class in this file
+22. DONE not public interface, the description of the function is general, but it does nothing...
+23. DONE java doc incomplete because the specification in generic and the function does nothing
+
+Package and Import Statements
+
+24. DONE the package is the first non commented line and the imports follow it
+
+
+Class and Interface Declaration
+
+25. DONE
+      A. DONE correct order
+      B. DONE correct order
+      C. DONE not present
+      D. DONE static and non static attributes are mixed
+      E. DONE private instance variables before the package level one line 143,144
+
+26. DONE the methods are grouped generally by functionality
+27. DONE massive duplications (in our functions)
