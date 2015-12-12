@@ -1,3 +1,5 @@
+12-14: TODO
+
 20: CoordinatorLog.java contains 4 classes, all package-private
 21: No public classes in the file
 22. OK: all the classes declared in the file are package-private, so there aren't any external program interfaces

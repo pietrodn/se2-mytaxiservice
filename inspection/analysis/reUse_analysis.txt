@@ -1,0 +1,54 @@
+1. OK
+2. OK: no one-char variables
+3. OK
+4. OK
+5. OK
+6. OK
+7. OK: no constants
+
+8. Wrong indentation @ 2163. Inconsistent alignment @ 2159.
+9. Tab @ 2163
+
+10. OK: K&R style
+11. Problems @ 2147, 2150, 2153, 2156
+
+12-14: see file analysis
+
+15. OK
+16. OK
+17. Problem @ 2163
+
+18. Missing comments in method body
+19. OK
+
+20-27: see file analysis
+
+28-33. OK: no declarations
+
+34. OK
+35. OK
+36. OK
+
+37. OK: no indexing
+38. OK
+39. OK
+
+40. OK
+
+41-43. OK: no output
+
+44. OK
+45. OK
+46. OK
+47. OK
+48. OK
+49. OK
+50. OK
+51. OK
+
+52. OK
+53. OK
+
+54-56. OK: no switch nor loops
+
+57-60. OK: no files
