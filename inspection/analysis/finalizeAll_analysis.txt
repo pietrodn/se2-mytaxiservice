@@ -1,0 +1,63 @@
+CoordinatorLog.finalizeAll() checklist
+
+"synchronized static void finalizeAll()" and "synchronized static void finalizeAll(String logPath)" are almost duplicate except for the first line, so they will be examined together.
+
+1. OK: names are meaningful
+2. OK: no single-char names
+3. OK
+4. OK
+5. OK
+6. OK
+7. OK: no constants
+
+8. 4 spaces everywhere, except @ 1721, 1760
+9. OK
+
+10. OK: K&R style
+11. No braces @ 1736, 1742, 1747, 1775, 1781, 1786
+
+12. Blank lines at the beginning and at the end of method bodies are not consistent in the class.
+13. Line length over 80 chars @ 1733, 1742, 1772, 1781
+14. OK
+
+15. OK
+16. OK
+17. Problems @ 1721, 1760 (see issue 8)
+
+18. OK: comments are adequate
+19. OK: no commented code
+
+20-24: see CoordinatorLog.java file analysis
+
+25-27: see class analysis
+
+28: variables are OK
+29. OK
+30. OK: no object creations
+31. OK: no object creations
+32. OK
+33. OK
+34. OK
+35. OK
+36. @ 1742, 1781: LogFile.close() boolean return value is discarded
+
+37-39. OK: no arrays are used
+40. OK: the only comparisons are with null
+
+41-43. OK: no output
+
+44. OK
+45. OK
+46. OK: no precedence problems
+47. OK: no divisions
+48. OK: no arithmetic operations
+49. OK
+50. OK: no throw-catch
+51. OK
+
+52. OK: no checked exceptions are thrown
+53. OK: no catch blocks
+
+54-56. OK: no switch nor loops
+
+57-60. OK: no file handling

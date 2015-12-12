@@ -1,0 +1,18 @@
+25. Commented-out code @ 112-
+Static and non-static vars are interleaved in CoordinatorLog declaration (lines 107-150).
+Also, visibility order is not respected.
+There is a constructor between normal methods (@ 324).
+"static" group for initialization @1104, in the middle of other code.
+Static and nonstatic methods are mixed.
+
+26. TODO
+27. This class is full of duplicated code from couple of methods that differ only for the presence of the "logPath" parameter:
+	reUse() @ 264, 288
+	setLocalTID() @ 865, 879
+	openLog() @ 1127, 1188
+	getLogged() @ 1248, 1317
+	addLog() @ 1388, 1399
+	removeLog() @ 1418, 1465
+	keypoint() @ 1525, 1607
+	finalizeAll() @ 1720, 1759
+	startKeypoint() @ 1807, 1874

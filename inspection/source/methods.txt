@@ -1,25 +1,33 @@
 Methods:
 
 Name:finalizeAll( )
+Start Line:1720
 Location:appserver/transaction/jts/src/main/java/com/sun/jts/CosTransactions/CoordinatorLog.java
 
 Name:finalizeAll( String logPath )
+Start Line:1759
 Location:appserver/transaction/jts/src/main/java/com/sun/jts/CosTransactions/CoordinatorLog.java
 
 Name:startKeypoint( LogLSN keypointStartLSN )
+Start Line:1807
 Location:appserver/transaction/jts/src/main/java/com/sun/jts/CosTransactions/CoordinatorLog.java
 
 Name:startKeypoint( LogLSN keypointStartLSN , String logPath )
+Start Line:1874
 Location:appserver/transaction/jts/src/main/java/com/sun/jts/CosTransactions/CoordinatorLog.java
 
 Name:dump( )
+Start Line:1967
 Location:appserver/transaction/jts/src/main/java/com/sun/jts/CosTransactions/CoordinatorLog.java
 
 Name:doFinalize( )
+Start Line:2107
 Location:appserver/transaction/jts/src/main/java/com/sun/jts/CosTransactions/CoordinatorLog.java
 
 Name:reUse( )
+Start Line:2145
 Location:appserver/transaction/jts/src/main/java/com/sun/jts/CosTransactions/CoordinatorLog.java
 
 Name:initialise( )
+Start Line:181
 Location:appserver/transaction/jts/src/main/java/com/sun/jts/CosTransactions/RecoveryManager.java
