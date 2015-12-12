@@ -7,7 +7,7 @@ Naming convention
 2. DONE not found
 3. DONE not found
 4. DONE not found
-5. DONE (not so wrong)      line 1979, 1992, 2007, 2022, 2037
+5. DONE (not so wrong Java library)  line 1979, 1992, 2007, 2022, 2037
                             used .elements() instead for instance .getElements()
                             in Enumeration structure
 
@@ -77,4 +77,66 @@ Class and Interface Declaration
       E. DONE private instance variables before the package level one line 143,144
 
 26. DONE the methods are grouped generally by functionality
-27. DONE massive duplications (in our functions)
+27. DONE massive duplications (not specific in this function)
+
+Initialization and declaration
+
+28. DONE all private methods are correct but line 139 _logger has to be private
+    line 143 localTID has to be private
+29. DONE in function all ok
+30. DONE in function all ok
+31. DONE in function
+32. DONE in function
+33. DONE in function all ok
+
+Method calls
+
+34. DONE in function all ok
+35. DONE in function all ok
+36. DONE possible errors in in casts but all package checked
+
+Arrays
+
+37. DONE no classical arrays, all objects accessed using hasMoreElements and nextElements
+38. DONE
+39. DONE
+
+Object Compariosons
+
+40. DONE no object comparisons
+
+Output Format
+
+41. DONE no displayed output
+42. DONE no error messages
+43. DONE no output
+
+Computation, Comparisons and Assignments
+
+44. DONE no brutish programming, all checked
+45. DONE no complex expression, the function does nothing
+    (only correct precedence in function is . respect (cast) )
+46. DONE no precedence problems
+47. DONE no divisions
+48. DONE no divisions, no operations, no truncations
+49. DONE all null checked are done, all comparisons are correct
+50. DONE no throw exception
+51. DONE all the casts are explicit
+
+Exceptions
+
+52. DONE no exceptions required
+53. DONE no exceptions required
+
+Flow control
+
+54. DONE no switch
+55. DONE no switch
+56. DONE all while cycles are done correctly on elements in Enumeration
+
+Files
+
+57. DONE no files in function
+58. DONE no files in function
+59. DONE no files in function
+60. DONE no files in function
