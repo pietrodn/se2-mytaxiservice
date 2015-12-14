@@ -1,2 +1,79 @@
+\section{Notation}
+\begin{itemize}
+    \item The items of the code inspection checklist~\cite{se-assignment} will be referred as follows: \checklist{1}, \checklist{2}, \ldots
+    \item A specific line of code will be referred as follows: \codeline{1234}.
+    \item An interval of lines of code will be referred as follows: \codelines{1234}{1289}.
+\end{itemize}
+
 \section{Issues}
 \label{sec:issues}
+
+\subsection{CoordinatorLog class}
+\label{sec:coordinatorlog-class}
+\begin{enumerate}
+    \item \checklist{12} Blank lines at the beginning and at the end of method bodies are not consistent throughout the class.
+    \item \checklist{25} There are several problems in the class declaration.
+    \begin{itemize}
+        \item  Commented out code at \codeline{112}.
+        \item Static and nonstatic attributes are interleaved in the CoordinatorLog declaration (\codelines{107}{150}).
+        \item The visibility order of attributes is not respected.
+        \item A constructor is declared in the middle of normal methods (\codeline{324}).
+        \item There is a static block used for initialization at \codeline{1104}.
+        \item Static and nonstatic methods are mixed.
+    \end{itemize}
+
+    \item \checklist{27} The class is full of duplicated code. There are couples of methods that differ only for the presence of the \texttt{logPath} parameter:
+    \begin{enumerate}
+        \item \texttt{reUse()} at \codeline{264}, \codeline{288}
+    	\item \texttt{setLocalTID()} at \codeline{865}, \codeline{879}
+    	\item \texttt{openLog()} at \codeline{1127}, \codeline{1188}
+    	\item \texttt{getLogged()} at \codeline{1248}, \codeline{1317}
+    	\item \texttt{addLog()} at \codeline{1388}, \codeline{1399}
+    	\item \texttt{removeLog()} at \codeline{1418}, \codeline{1465}
+    	\item \texttt{keypoint()} at \codeline{1525}, \codeline{1607}
+    	\item \texttt{finalizeAll()} at \codeline{1720}, \codeline{1759}
+    	\item \texttt{startKeypoint()} at \codeline{1807}, \codeline{1874}
+    \end{enumerate}
+\end{enumerate}
+\subsubsection{finalizeAll()}
+Two similar functions are assigned:
+\begin{enumerate}
+    \item \texttt{\footnotesize synchronized static void finalizeAll()}
+    \item \texttt{\footnotesize synchronized static void finalizeAll(String logPath)}
+\end{enumerate}
+
+As stated in~\autoref{sec:coordinatorlog-class}, these two methods are almost identical except for the first line of code, so they will be analyzed together.
+
+\begin{enumerate}
+    \item \checklist{8} Indentation with 4 spaces is used everywhere except for \codeline{1721}, \codeline{1760}.
+    \item \checklist{11} No braces for single-statement blocks at \codeline{1736}, \codeline{1742}, \codeline{1747}, \codeline{1775}, \codeline{1781}, \codeline{1786}.
+    \item \checklist{17} Indentation is wrong (\codeline{1721}, \codeline{1760}).
+    \item \checklist{36} \texttt{LogFile.close()} boolean return value is discarded (\codeline{1742}, \codeline{1781}).
+\end{enumerate}
+
+\subsubsection{startKeypoint()}
+Two similar functions are assigned:
+\begin{enumerate}
+    \item \texttt{\footnotesize synchronized static boolean startKeypoint( LogLSN keypointStartLSN )}
+    \item \texttt{\footnotesize synchronized static boolean startKeypoint( LogLSN keypointStartLSN, String logPath )}
+\end{enumerate}
+
+As stated in~\autoref{sec:coordinatorlog-class}, these two methods are almost identical except for the first line of code, so they will be analyzed together.
+
+\subsubsection{dump()}
+
+\subsubsection{doFinalize()}
+
+\subsubsection{reUse()}
+\begin{enumerate}
+    \item \checklist{8} Wrong indentation at \codeline{2163}. Inconsistent alignment at \codeline{2159}.
+    \item \checklist{9} Tabs are used for indentation at \codeline{2163}.
+    \item \checklist{11} Braces are not used around the following one-statement blocks: \codeline{2147}, \codeline{2150}, \codeline{2153}, \codeline{2156}.
+    \item \checklist{17} Inconsistent alignment before the equality sign at \codeline{2163}.
+    \item \checklist{18} Missing comments in method body.
+\end{enumerate}
+
+
+\subsection{RecoveryManager class}
+
+\subsubsection{initialise()}

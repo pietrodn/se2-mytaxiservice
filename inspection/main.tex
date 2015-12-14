@@ -2,12 +2,6 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 
-% Some math symbols and commands
-\usepackage{amsmath}
-
-% Columns spanning multiple rows in tabulars
-\usepackage{multirow}
-
 % hyperref
 \usepackage[bookmarks, colorlinks, breaklinks]{hyperref}  % PDF hyperlinks, with coloured links
 \hypersetup{linkcolor=black, citecolor=black, filecolor=black, urlcolor=black} % black links, for printed output
@@ -18,7 +12,9 @@
 % "Contents" and "bibliography" are included in the summary.
 \usepackage{tocbibind}
 
-\def\chapterautorefname{Chapter}
+\newcommand{\checklist}[1]{\textbf{C#1}}
+\newcommand{\codeline}[1]{L.#1}
+\newcommand{\codelines}[2]{L.#1-#2}
 
 \begin{document}
 \title{Software Engineering 2: Code Inspection \\ version 1}
