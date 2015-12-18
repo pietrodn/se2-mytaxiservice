@@ -38,7 +38,7 @@ File Organization
 
 12. DONE blank lines usage is optimal
 13. DONE without considering indentation, the longest line length is 78 characters
-        otherwise it is 94 characters. Line 1981.
+        otherwise it is 94 characters. Line 1981 and 1968.
 14. DONE respected
 
 

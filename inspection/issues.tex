@@ -11,12 +11,13 @@
 \subsection{CoordinatorLog class}
 \label{sec:coordinatorlog-class}
 \begin{enumerate}
+	\item \checklist{7} There is a constant in the class which does not follow naming convention at \codeline{110}.
     \item \checklist{12} Blank lines at the beginning and at the end of method bodies are not consistent throughout the class.
     \item \checklist{25} There are several problems in the class declaration.
     \begin{itemize}
         \item  Commented out code at \codeline{112}.
         \item Static and nonstatic attributes are interleaved in the CoordinatorLog declaration (\codelines{107}{150}).
-        \item The visibility order of attributes is not respected.
+        \item The visibility order of attributes is not respected (for instance \codelines{143}{144}).
         \item A constructor is declared in the middle of normal methods (\codeline{324}).
         \item There is a static block used for initialization at \codeline{1104}.
         \item Static and nonstatic methods are mixed.
@@ -61,6 +62,12 @@ Two similar functions are assigned:
 As stated in~\autoref{sec:coordinatorlog-class}, these two methods are almost identical except for the first line of code, so they will be analyzed together.
 
 \subsubsection{dump()}
+The main problem of this function is it does nothing. Actions are replaced with comments which shortly explain what should be done.
+\begin{enumerate}
+	\item \checklist{13} Line length exceeded 80 characters at \codeline{1968} with 86 characters and at \codeline{1981} with 94 characters 
+	\item \checklist{19} Code commented at \codeline{1968} without date and with trivial motivation
+	\item \checklist{23} The Java code is incomplete and the specification is generic, although the function does nothing
+\end{enumerate}
 
 \subsubsection{doFinalize()}
 
