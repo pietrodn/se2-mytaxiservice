@@ -62,11 +62,20 @@ Two similar functions are assigned:
 As stated in~\autoref{sec:coordinatorlog-class}, these two methods are almost identical except for the first line of code, so they will be analyzed together.
 
 \subsubsection{dump()}
-The main problem of this function is it does nothing. Actions are replaced with comments which shortly explain what should be done.
+The main problem of this method is that it does nothing.
+Indeed:
 \begin{enumerate}
-	\item \checklist{13} Line length exceeded 80 characters at \codeline{1968} with 86 characters and at \codeline{1981} with 94 characters 
-	\item \checklist{19} Code commented at \codeline{1968} without date and with trivial motivation
-	\item \checklist{23} The Java code is incomplete and the specification is generic, although the function does nothing
+    \item the method has no return value;
+    \item the method only sets some local variables;
+    \item all the called methods have no side-effects;
+    \item the method is not required by any interfaces implemented by the CoordinatorLog class.
+\end{enumerate}
+Actions are replaced with comments which shortly explain what should be done.
+This method should be either removed or modified.
+\begin{enumerate}
+	\item \checklist{13} Line length exceeds 80 characters at \codeline{1968} with 86 characters and at \codeline{1981} with 94 characters.
+	\item \checklist{19} Code commented at \codeline{1968} without date and with trivial motivation.
+	\item \checklist{23} The Java code is incomplete and the specification is generic, although the function does nothing.
 \end{enumerate}
 
 \subsubsection{doFinalize()}

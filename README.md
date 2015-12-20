@@ -19,10 +19,10 @@ This is the project for the Software Engineering 2 course of M.Sc. course of Com
 * ~~RASD submission deadline 6/11/2015~~
 * ~~Presentation of RASDs and peer review on 11/11/2015~~
 * ~~Open discussion on Design Document 12/11/2015~~
-* Design Document submission deadline 4/12/2015
-* Presentation of Design Documents and peer review 9/12/2015
-* Code inspection assignment 9/12/2015
-* Open discussion on inspection 16/12/2015
+* ~~Design Document submission deadline 4/12/2015~~
+* ~~Presentation of Design Documents and peer review 9/12/2015~~
+* ~~Code inspection assignment 9/12/2015~~
+* ~~Open discussion on inspection 16/12/2015~~
 * Inspection document submission deadline 05/01/2016
 * Presentation of inspection documents and peer review 07/01/2016
 * Testing assignment 07/01/2016
