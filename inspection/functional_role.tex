@@ -3,7 +3,7 @@
 
 \subsection{Java Transaction Service}
 The two classes which are assigned to us are part of the Java Transaction Service (JTS) implementation by Sun.
-By Wikipedia\footnote{\url{https://en.wikipedia.org/wiki/Java_transaction_service}}:
+The Wikipedia page about the Java Transaction Service\footnote{\url{https://en.wikipedia.org/wiki/Java_transaction_service}} says:
 \begin{quote}
 The \textbf{Java Transaction Service (JTS)} is a specification for building a transaction manager that maps onto the Object Management Group (OMG) Object Transaction Service (OTS) used in the Common Object Request Broker Architecture (CORBA) architecture. It uses General Inter-ORB Protocol (IIOP) to propagate the transactions between multiple JTS transaction managers.
 \end{quote}
@@ -23,17 +23,36 @@ permits the use of other API over the IIOP transport mechanism to be used; for
 example, RMI over IIOP is allowed.
 \end{quotation}
 
-\begin{figure}[h]
+In short, we are analyzing the Sun's implementation of the JTS specification, which is the Java mapping of the CORBA Object Transaction Service Specification~\cite{omg-ots}.
+
+\begin{figure}
 \centering
-\includegraphics[width=\textwidth]{figures/JTSDiagram}
+\includegraphics[width=0.8\textwidth]{figures/JTSDiagram}
 \caption{This figure is taken from the JTS specification and shows the implementation of a JTS Transaction Manager.}
+\label{fig:jts-diagram}
 \end{figure}
 
+The JTS specification also provides a component diagram (\autoref{fig:jts-diagram}) describing the structure of a possible implementation of a Transaction Manager.
+
 \subsection{CosTransactions package}
-% TODO
+The CosTransaction package is the Java implementation of the CosTransaction component defined in the Transaction Service Specification of the Object Management Group~\cite{omg-ots}.
 
 \subsection{CoordinatorLog class}
-% TODO
+The CoordinatorLog class is contained in the CosTransactions package and is package-private. From the JavaDoc for the class, \codeline{79}:
+\begin{quote}
+    The CoordinatorLog interface provides operations to record transaction-specific information that needs to be persistently stored at a particular point in time, and subsequently restored.
+\end{quote}
+
+CoordinatorLog implements the \emph{LogUpcallTarget} interface that resides in the same package and is also package-private. Its JavaDoc reads:
+\begin{quote}
+    The LogUpcallTarget interface provides an operation that the log will call in the event it goes short-on-storage. This class must be sub-classed in order to implement the method that will handle the situation.
+\end{quote}
+The LogUpcallTarget provides the signature for the \texttt{upcall()} method.
 
 \subsection{RecoveryManager class}
-% TODO
+The RecoveryManager class is contained in the CosTransactions package, is public and does not implement any interface. From the JavaDoc for the class, \codeline{85}:
+\begin{quote}
+    This class manages information required for recovery, and also general state regarding transactions in a process.
+\end{quote}
+
+This class may be the implementation of the \emph{RecoveryCoordinator} interface defined in the OMG OTS specification~\cite[p. 47]{omg-ots}.
