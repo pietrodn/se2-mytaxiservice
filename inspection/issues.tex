@@ -22,6 +22,7 @@
         \item There is a static block used for initialization at \codeline{1104}.
         \item Static and nonstatic methods are mixed.
     \end{itemize}
+    \item \checklist{28} Two attributes are of generic type \texttt{Hashtable}. Generics could be used to ensure type safety and to clarify the code.
 
     \item \checklist{27} The class is full of duplicated code. There are couples of methods that differ only for the presence of the \texttt{logPath} parameter:
     \begin{enumerate}
@@ -82,8 +83,17 @@ This method should be either removed or modified.
 	\item \checklist{23} The Java code is incomplete and the specification is generic, although the function does nothing.
 \end{enumerate}
 
+\subsection{CoordinatorLogSection class}
+\label{sec:coordinatorlogsection-class}
+% TODO class issues
+
+\begin{enumerate}
+    \item The clause \texttt{extends java.lang.Object} in the class declaration is superfluous and should be eliminated.
+    \item \checklist{28} Four attributes are of generic type \texttt{Vector}. Generics could be used to ensure type safety and to clarify the code.
+\end{enumerate}
+
 \subsubsection{doFinalize()}
-All the if statements are identical to the ones in the method \texttt{\footnotesize synchronized void reUse()}.
+All the if statements are identical to the ones in the method \texttt{\footnotesize synchronized void reUse()} at \codeline{2145}.
 \begin{enumerate}
     \item \checklist{11} Braces are not used around the following one-statement blocks: \codeline{2108}, \codeline{2111}, \codeline{2114}, \codeline{2117}.
     \item \checklist{17} Inconsistent alignment before the equality sign at \codeline{2120}.
@@ -99,13 +109,14 @@ All the if statements are identical to the ones in the method \texttt{\footnotes
     \item \checklist{18} Missing comments in method body.
 \end{enumerate}
 
-
 \subsection{RecoveryManager class}
+\label{sec:recoverymanager-class}
+% TODO class issues
 
 \subsubsection{initialise()}
 \begin{enumerate}
-    \item \checklist{9} Tabs are used for indentation from \codeline{195} to \codeline{199} and at \codeline{210}.
-    \item \checklist{10} Braces are used following “Kernighan and Ritchie” style, but at \codeline{196} it is followed “Allman” style.
+    \item \checklist{9} Tabs are used for indentation at \codelines{195}{199}, \codeline{210}.
+    \item \checklist{10} Braces are used with the ``Kernighan and Ritchie'' style, but at \codeline{196} ``Allman style'' is followed.
     \item \checklist{19} Commented out code is not motivated and doesn't contain a date \codeline{200}.
     \item \checklist{23} The Java code is incomplete and the specification is generic.
 \end{enumerate}

@@ -49,6 +49,15 @@ CoordinatorLog implements the \emph{LogUpcallTarget} interface that resides in t
 \end{quote}
 The LogUpcallTarget provides the signature for the \texttt{upcall()} method.
 
+\subsection{CoordinatorLogSection class}
+The CoordinatorLogSection class is package-private and does not implement any interface.
+This class stores the data about the section of a CoordinatorLog.
+The CoordinatorLog keeps track of the sections through an Hashtable (\texttt{sectionMapping} attribute).
+From the JavaDoc for the class:
+\begin{quote}
+The CoordinatorLogSection class stores information relevant to a section.
+\end{quote}
+
 \subsection{RecoveryManager class}
 The RecoveryManager class is contained in the CosTransactions package, is public and does not implement any interface. From the JavaDoc for the class, \codeline{85}:
 \begin{quote}
