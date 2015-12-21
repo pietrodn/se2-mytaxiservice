@@ -1,0 +1,16 @@
+RecoveryManager
+
+12.ok
+13.ok
+18.no: comments explains the code
+19. no: code commented
+commented method report() line 1759
+20.ok
+21.ok
+22.TODO
+23.covers all the classes but doesn't explain well
+24.ok
+25.TODO check line 171
+26.check getCoordinators is lost from others
+line 376: getCoordinator
+line 1360 getCoordinators
