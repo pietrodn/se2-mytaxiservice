@@ -68,7 +68,7 @@ As stated in~\autoref{sec:coordinatorlog-class}, these two methods are almost id
 
 \begin{enumerate}
     \item \checklist{11} No braces for single-statement blocks at \codeline{1830}, \codeline{1897}.
-    \item \checklist{44} Brutish programming at (\codeline{1858}, \codeline{1925}).
+    \item \checklist{44} Brutish programming at (\codelines{1858}{1865}, \codelines{1925}{1932}). The array is initialized putting every character with an explicit cast to byte.
     \item \checklist{27} Duplicated code into the two startKeyPoint methods.
 \end{enumerate}
 
@@ -104,7 +104,7 @@ This method should be either removed or modified.
     \item \checklist{11} Braces are not used around the following one-statement blocks: \codeline{2108}, \codeline{2111}, \codeline{2114}, \codeline{2117}.
     \item \checklist{17} Inconsistent alignment before the equality sign at \codeline{2120}.
     \item \checklist{18} Missing comments in method body.
-    \item \checlist{27} All the if statements are identical to the ones in the method \texttt{\footnotesize synchronized void reUse()} at \codeline{2145}.
+    \item \checklist{27} All the if statements are identical to the ones in the method \texttt{\footnotesize synchronized void reUse()} at \codeline{2145}.
 \end{enumerate}
 
 \subsubsection{reUse()}
@@ -120,11 +120,22 @@ This method should be either removed or modified.
 \label{sec:recoverymanager-class}
 % TODO class issues
 
+\begin{enumerate}
+	\item \checklist{19} There is a lot of commented code without any explanation, for example at \codeline{774}. There are also some methods entirely commented out:
+	\begin{itemize}
+		\item \codelines{1305}{1349}
+		\item \codelines{1759}{1816}
+	\end{itemize}
+	\item \checklist{28} Four attributes are of generic type \texttt{Hashtable}. Generics could be used to ensure type safety and to clarify the code.
+	     
+\end{enumerate}
+
+
 \subsubsection{initialise()}
 \begin{enumerate}
     \item \checklist{9} Tabs are used for indentation at \codelines{195}{199}, \codeline{210}.
     \item \checklist{10} Braces are used with the ``Kernighan and Ritchie'' style, but at \codeline{196} ``Allman style'' is followed.
     \item \checklist{19} Commented out code is not motivated and doesn't contain a date \codeline{200}.
     \item \checklist{23} The Java code is incomplete and the specification is generic.
-    \item \checklist{53} At \codelines{222} the catch of the exception executes the \texttt{exc.printStackTrace();} istruction; printing all the stackTrace is not a very appropriate action.
+    \item \checklist{53} At \codeline{222} the catch of the exception executes the \texttt{exc.printStackTrace();} istruction; printing all the stackTrace is not a very appropriate action.
 \end{enumerate}

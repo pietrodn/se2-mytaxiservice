@@ -2,9 +2,12 @@ RecoveryManager
 
 12.ok
 13.ok
-18.no: comments explains the code
+18.no: how comments explains the code
 19. no: code commented
-commented method report() line 1759
+commented method report() line 1759-1816 also has javadoc
+recoverXA() line 1305-1349 also has javadoc
+line 774("not needed anymore")
+
 20.ok
 21.ok
 22.TODO
