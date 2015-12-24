@@ -1,3 +1,5 @@
+This chapter contains the results of the code inspection that we did on the assigned classes and methods. All the points of the checklist~\cite{se-assignment} were checked, and we also found other bad practices not listed in the checklist.
+
 \section{Notation}
 \begin{itemize}
     \item The items of the code inspection checklist~\cite{se-assignment} will be referred as follows: \checklist{1}, \checklist{2}, \ldots
@@ -16,15 +18,15 @@
     \item \checklist{25} There are several problems in the class declaration.
     \begin{itemize}
         \item  Commented out code at \codeline{112}.
-        \item Static and nonstatic attributes are interleaved in the CoordinatorLog declaration (\codelines{107}{150}).
+        \item Static and non-static attributes are interleaved in the CoordinatorLog declaration (\codelines{107}{150}).
         \item The visibility order of attributes is not respected (for instance \codelines{143}{144}).
         \item A constructor is declared in the middle of normal methods (\codeline{324}).
         \item There is a static block used for initialization at \codeline{1104}.
-        \item Static and nonstatic methods are mixed.
+        \item Static and non-static methods are mixed.
     \end{itemize}
     \item \checklist{28} Two attributes are of generic type \texttt{Hashtable}. Generics could be used to ensure type safety and to clarify the code.
 
-    \item \checklist{27} The class is full of duplicated code. There are couples of methods that differ only for the presence of the \texttt{logPath} parameter:
+    \item \checklist{27} The class is full of duplicated code, which is very bad for maintainability. There are couples of methods that differ only for the presence of the \texttt{logPath} parameter:
     \begin{enumerate}
         \item \texttt{reUse()} at \codeline{264}, \codeline{288}
     	\item \texttt{setLocalTID()} at \codeline{865}, \codeline{879}
@@ -40,6 +42,17 @@
     \begin{quote}
         All the methods which take "String logPath" as parameter are same as the ones with out that parameter. These methods are added for delegated recovery support
     \end{quote}
+    The couples of methods respectively differ for a single line; where the \texttt{logPath} argument is not present, then we have:
+    \begin{quote}
+        \small\texttt{CoordinatorLogStateHolder logStateHolder = defaultLogStateHolder;}
+    \end{quote}
+    When the \texttt{logPath} argument is present, instead we have:
+    \begin{quote}
+        \small\texttt{CoordinatorLogStateHolder logStateHolder = getStateHolder(logPath);}
+    \end{quote}
+    A feasible solution to remove this ugly duplication would be to edit the methods without the additional argument, making them call the other method with \texttt{logPath} equal to null. There, a simple conditional would handle both the cases.
+
+    \item In the CoordinatorLog class, the name \texttt{logPath} is used both for a private attribute for the class (\codeline{134}) and as an argument in many methods which are clearly not setters (see above). This is a bad practice and generates confusion.
 \end{enumerate}
 \subsubsection{finalizeAll()}
 Two similar functions are assigned:
@@ -68,8 +81,8 @@ As stated in~\autoref{sec:coordinatorlog-class}, these two methods are almost id
 
 \begin{enumerate}
     \item \checklist{11} No braces for single-statement blocks at \codeline{1830}, \codeline{1897}.
-    \item \checklist{44} Brutish programming at (\codelines{1858}{1865}, \codelines{1925}{1932}). The array is initialized putting every character with an explicit cast to byte.
-    \item \checklist{27} Duplicated code into the two startKeyPoint methods.
+    \item \checklist{44} Brutish programming at \codelines{1858}{1865}, \codelines{1925}{1932}: a sequence of characters is assigned using an array of bytes. A better solution would use the native Java method \texttt{String.getBytes()}.
+    \item \checklist{27} Duplicated code into the two \texttt{startKeyPoint} methods.
 \end{enumerate}
 
 
@@ -92,11 +105,10 @@ This method should be either removed or modified.
 
 \subsection{CoordinatorLogSection class}
 \label{sec:coordinatorlogsection-class}
-% TODO class issues
 
 \begin{enumerate}
-    \item The clause \texttt{extends java.lang.Object} in the class declaration is superfluous and should be eliminated.
-    \item \checklist{28} Four attributes are of generic type \texttt{Vector}. Generics could be used to ensure type safety and to clarify the code.
+    \item The clause \texttt{extends java.lang.Object} (\codeline{2078}) in the class declaration is superfluous and should be eliminated.
+    \item \checklist{28} Four attributes are of raw type \texttt{Vector}. Java Generics could be used to ensure type safety and to clarify the code.
 \end{enumerate}
 
 \subsubsection{doFinalize()}
@@ -104,7 +116,7 @@ This method should be either removed or modified.
     \item \checklist{11} Braces are not used around the following one-statement blocks: \codeline{2108}, \codeline{2111}, \codeline{2114}, \codeline{2117}.
     \item \checklist{17} Inconsistent alignment before the equality sign at \codeline{2120}.
     \item \checklist{18} Missing comments in method body.
-    \item \checklist{27} All the if statements are identical to the ones in the method \texttt{\footnotesize synchronized void reUse()} at \codeline{2145}.
+    \item \checklist{27} All the if statements are identical to the ones in the method \texttt{synchronized void reUse()} at \codeline{2145}.
 \end{enumerate}
 
 \subsubsection{reUse()}
@@ -112,30 +124,29 @@ This method should be either removed or modified.
     \item \checklist{8} Wrong indentation at \codeline{2163}. Inconsistent alignment at \codeline{2159}.
     \item \checklist{9} Tabs are used for indentation at \codeline{2163}.
     \item \checklist{11} Braces are not used around the following one-statement blocks: \codeline{2147}, \codeline{2150}, \codeline{2153}, \codeline{2156}.
-    \item \checklist{17} Inconsistent alignment before the equality sign at \codeline{2163}.
+    \item \checklist{17} Inconsistent alignment before the equality sign at \codeline{2159}.
     \item \checklist{18} Missing comments in method body.
 \end{enumerate}
 
 \subsection{RecoveryManager class}
 \label{sec:recoverymanager-class}
-% TODO class issues
 
 \begin{enumerate}
-	\item \checklist{19} There is a lot of commented code without any explanation, for example at \codeline{774}. There are also some methods entirely commented out:
+	\item \checklist{19} There is a lot of commented code for example in the body of the \texttt{shutdown} method at \codeline{746}. There are also some methods entirely commented out:
 	\begin{itemize}
 		\item \codelines{1305}{1349}
 		\item \codelines{1759}{1816}
 	\end{itemize}
-	\item \checklist{28} Four attributes are of generic type \texttt{Hashtable}. Generics could be used to ensure type safety and to clarify the code.
-	     
-\end{enumerate}
+	\item \checklist{28} Four attributes (\codelines{145}{157}) are of raw type \texttt{Hashtable}. Generics could be used to ensure type safety and to clarify the code.
+    \item There is a static attribute \texttt{lockObject} (\codeline{167}) used as a lock object for the entire class. This is not really necessary since a lock can be acquired on the Class object.\footnote{The Java™ Tutorials: Intrinsic Locks and Synchronization (\url{https://docs.oracle.com/javase/tutorial/essential/concurrency/locksync.html})}
 
+\end{enumerate}
 
 \subsubsection{initialise()}
 \begin{enumerate}
     \item \checklist{9} Tabs are used for indentation at \codelines{195}{199}, \codeline{210}.
     \item \checklist{10} Braces are used with the ``Kernighan and Ritchie'' style, but at \codeline{196} ``Allman style'' is followed.
-    \item \checklist{19} Commented out code is not motivated and doesn't contain a date \codeline{200}.
-    \item \checklist{23} The Java code is incomplete and the specification is generic.
-    \item \checklist{53} At \codeline{222} the catch of the exception executes the \texttt{exc.printStackTrace();} istruction; printing all the stackTrace is not a very appropriate action.
+    \item \checklist{19} Commented out code is not motivated and doesn't contain a date (\codeline{200}).
+    \item \checklist{23} JavaDoc for this method is too generic.
+    \item \checklist{53} At \codeline{222} the catch of the exception executes the \texttt{exc.printStackTrace();} instruction: probably this is not the most appropriate behaviour.
 \end{enumerate}
