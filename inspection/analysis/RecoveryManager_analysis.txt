@@ -13,7 +13,7 @@ line 774("not needed anymore")
 22.TODO
 23.covers all the classes but doesn't explain well
 24.ok
-25.TODO check line 171
+25.ok
 26.check getCoordinators is lost from others
 line 376: getCoordinator
 line 1360 getCoordinators

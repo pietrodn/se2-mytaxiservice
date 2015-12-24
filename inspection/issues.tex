@@ -145,8 +145,10 @@ This method should be either removed or modified.
 \subsubsection{initialise()}
 \begin{enumerate}
     \item \checklist{9} Tabs are used for indentation at \codelines{195}{199}, \codeline{210}.
+    \item \checklist{13} If tabs are considered as one character every line respects it, but if a tab is considered as 4 characters (like 4 spaces)  it is not respected at \codeline{210}.
     \item \checklist{10} Braces are used with the ``Kernighan and Ritchie'' style, but at \codeline{196} ``Allman style'' is followed.
     \item \checklist{19} Commented out code is not motivated and doesn't contain a date (\codeline{200}).
     \item \checklist{23} JavaDoc for this method is too generic.
+    The comments don't explain well the code: for exaple at \codeline{191} it is not clear what the comment is referred to and why there is the the commented out code at line \codeline{200}.
     \item \checklist{53} At \codeline{222} the catch of the exception executes the \texttt{exc.printStackTrace();} instruction: probably this is not the most appropriate behaviour.
 \end{enumerate}
