@@ -37,11 +37,17 @@ The JTS specification also provides a component diagram (\autoref{fig:jts-diagra
 \subsection{CosTransactions package}
 The CosTransactions package is the Java implementation of the CosTransactions component defined in the Transaction Service Specification of the Object Management Group~\cite{omg-ots}.
 
+In particular, the subset of class assigned to us implement part of the \emph{Reliability control system}~\cite[p.~311]{ceri-dbbook} of the transaction manager, which ensures consistency and persistency of the data in case of failure.
+
 \subsection{CoordinatorLog class}
 The CoordinatorLog class is contained in the CosTransactions package and is package-private. From the JavaDoc for the class, \codeline{79}:
 \begin{quote}
     The CoordinatorLog interface provides operations to record transaction-specific information that needs to be persistently stored at a particular point in time, and subsequently restored.
 \end{quote}
+
+The CoordinatorLog class keeps the \textbf{transaction log} and writes it to persistent storage when needed. In transaction managers and database systems, the log is a fundamental component which, together with the recovery manager, ensures consistency (i.e. the data must not stay in an inconsistent state) and durability (i.e. the committed transactions' data must be preserved), especially in case of failures.
+In particular, from the log it's possible to determine which transactions have committed, which ones have aborted and which are still running.
+Details about log structure and reliability management are well explained in database theory books~\cite{ceri-dbbook}.
 
 CoordinatorLog implements the \emph{LogUpcallTarget} interface that resides in the same package and is also package-private. Its JavaDoc reads:
 \begin{quote}
@@ -50,7 +56,7 @@ CoordinatorLog implements the \emph{LogUpcallTarget} interface that resides in t
 The LogUpcallTarget provides the signature for the \texttt{upcall()} method.
 
 \subsection{CoordinatorLogSection class}
-The CoordinatorLogSection class is package-private and does not implement any interface.
+The CoordinatorLogSection class contained in the CosTransactions package, is package-private and does not implement any interface.
 This class stores the data about the section of a CoordinatorLog.
 The CoordinatorLog keeps track of the sections through an Hashtable (\texttt{sectionMapping} attribute).
 From the JavaDoc for the class:
@@ -65,3 +71,5 @@ The RecoveryManager class is contained in the CosTransactions package, is public
 \end{quote}
 
 This class may be the implementation of the \emph{RecoveryCoordinator} interface defined in the OMG OTS specification~\cite[p. 47]{omg-ots}.
+
+Much like in database theory, the RecoveryManager class is the component responsible to ensure consistency and durability in case of a fault, by redoing committed transactions and undoing uncommitted (or aborted) ones, like in the \emph{warm restart} protocol in database systems~\cite[p.~319]{ceri-dbbook}.
