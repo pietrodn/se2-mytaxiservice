@@ -101,7 +101,7 @@ Arrays
 38. DONE
 39. DONE
 
-Object Compariosons
+Object Comparisons
 
 40. DONE no object comparisons
 

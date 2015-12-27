@@ -15,6 +15,9 @@ This chapter contains the results of the code inspection that we did on the assi
 \begin{enumerate}
 	\item \checklist{7} There is a constant in the class which does not follow naming convention at \codeline{110}.
     \item \checklist{12} Blank lines at the beginning and at the end of method bodies are not consistent throughout the class.
+    Missing blank line after ending of method block after \checklist{1606}.
+    \item \checklist{23} The CoordinatorLog constructor at \codeline{206} is missing the JavaDoc.
+    All the duplicated methods with the \texttt{logPath} parameter (see \checklist{27}) are missing the JavaDoc.
     \item \checklist{25} There are several problems in the class declaration.
     \begin{itemize}
         \item  Commented out code at \codeline{112}.
@@ -24,7 +27,7 @@ This chapter contains the results of the code inspection that we did on the assi
         \item There is a static block used for initialization at \codeline{1104}.
         \item Static and non-static methods are mixed.
     \end{itemize}
-    \item \checklist{28} Two attributes are of generic type \texttt{Hashtable}. Generics could be used to ensure type safety and to clarify the code.
+    \item \checklist{28} Two attributes are of raw type \texttt{Hashtable}. Generics could be used to ensure type safety and to clarify the code.
 
     \item \checklist{27} The class is full of duplicated code, which is very bad for maintainability. There are couples of methods that differ only for the presence of the \texttt{logPath} parameter:
     \begin{enumerate}
@@ -53,6 +56,7 @@ This chapter contains the results of the code inspection that we did on the assi
     A feasible solution to remove this ugly duplication would be to edit the methods without the additional argument, making them call the other method with \texttt{logPath} equal to null. There, a simple conditional would handle both the cases.
 
     \item In the CoordinatorLog class, the name \texttt{logPath} is used both for a private attribute for the class (\codeline{134}) and as an argument in many methods which are clearly not setters (see above). This is a bad practice and generates confusion.
+    \item The \texttt{CoordinatorLog.java} file contains 4 classes (CoordinatorLog, CoordinatorLogStateHolder, CoordinatorLogSection, SectionPool): they should be split in separate files.
 \end{enumerate}
 \subsubsection{finalizeAll()}
 Two similar functions are assigned:
@@ -139,7 +143,7 @@ This method should be either removed or modified.
 	\end{itemize}
 	\item \checklist{28} Four attributes (\codelines{145}{157}) are of raw type \texttt{Hashtable}. Generics could be used to ensure type safety and to clarify the code.
     \item There is a static attribute \texttt{lockObject} (\codeline{167}) used as a lock object for the entire class. This is not really necessary since a lock can be acquired on the Class object.\footnote{The Java™ Tutorials: Intrinsic Locks and Synchronization (\url{https://docs.oracle.com/javase/tutorial/essential/concurrency/locksync.html})}
-
+    \item There is a \emph{TODO} within a commented code block at \codeline{930} which should be checked.
 \end{enumerate}
 
 \subsubsection{initialise()}

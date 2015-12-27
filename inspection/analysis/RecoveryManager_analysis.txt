@@ -1,19 +1,19 @@
 RecoveryManager
 
-12.ok
-13.ok
-18.no: how comments explains the code
+12. ok
+13. ok
+18. no: how comments explains the code
 19. no: code commented
 commented method report() line 1759-1816 also has javadoc
 recoverXA() line 1305-1349 also has javadoc
 line 774("not needed anymore")
 
-20.ok
-21.ok
-22.TODO
-23.covers all the classes but doesn't explain well
-24.ok
-25.ok
-26.check getCoordinators is lost from others
+20. ok
+21. ok
+22. ok: the only method assigned (initialise()) is package-private and doesn't define any external interface
+23. covers all the classes but doesn't explain well
+24. ok
+25. ok
+26. check getCoordinators is lost from others
 line 376: getCoordinator
 line 1360 getCoordinators

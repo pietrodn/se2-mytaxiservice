@@ -37,7 +37,7 @@ The JTS specification also provides a component diagram (\autoref{fig:jts-diagra
 \subsection{CosTransactions package}
 The CosTransactions package is the Java implementation of the CosTransactions component defined in the Transaction Service Specification of the Object Management Group~\cite{omg-ots}.
 
-In particular, the subset of class assigned to us implement part of the \emph{Reliability control system}~\cite[p.~311]{ceri-dbbook} of the transaction manager, which ensures consistency and persistency of the data in case of failure.
+In particular, the subset of class assigned to us implement part of the \emph{Reliability control system}~\cite[p.~311]{ceri-dbbook} of the transaction manager, which ensures consistency and durability of the data in case of failure.
 
 \subsection{CoordinatorLog class}
 The CoordinatorLog class is contained in the CosTransactions package and is package-private. From the JavaDoc for the class, \codeline{79}:

@@ -5,7 +5,7 @@ There is a constructor between normal methods (@ 324).
 "static" group for initialization @1104, in the middle of other code.
 Static and nonstatic methods are mixed.
 
-26. TODO
+26. OK
 27. This class is full of duplicated code from couple of methods that differ only for the presence of the "logPath" parameter:
 	reUse() @ 264, 288
 	setLocalTID() @ 865, 879
