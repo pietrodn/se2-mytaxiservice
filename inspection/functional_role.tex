@@ -3,10 +3,6 @@
 
 \subsection{Java Transaction Service}
 The two classes which are assigned to us are part of the Java Transaction Service (JTS) implementation by Sun.
-The Wikipedia page about the Java Transaction Service\footnote{\url{https://en.wikipedia.org/wiki/Java_transaction_service}} says:
-\begin{quote}
-The \textbf{Java Transaction Service (JTS)} is a specification for building a transaction manager that maps onto the Object Management Group (OMG) Object Transaction Service (OTS) used in the Common Object Request Broker Architecture (CORBA) architecture. It uses General Inter-ORB Protocol (IIOP) to propagate the transactions between multiple JTS transaction managers.
-\end{quote}
 
 The complete specification of Java Transaction Service is available on Oracle's website~\cite{jts-specification} and defines JTS as follows:
 \begin{quotation}
@@ -23,7 +19,12 @@ permits the use of other API over the IIOP transport mechanism to be used; for
 example, RMI over IIOP is allowed.
 \end{quotation}
 
-In short, we are analyzing the Sun's implementation of the JTS specification, which is the Java mapping of the CORBA Object Transaction Service Specification~\cite{omg-ots}.
+The Wikipedia page about the Java Transaction Service\footnote{\url{https://en.wikipedia.org/wiki/Java_transaction_service}} also gives us very useful informations:
+\begin{quote}
+The \textbf{Java Transaction Service (JTS)} is a specification for building a transaction manager that maps onto the Object Management Group (OMG) Object Transaction Service (OTS) used in the Common Object Request Broker Architecture (CORBA) architecture. It uses General Inter-ORB Protocol (IIOP) to propagate the transactions between multiple JTS transaction managers.
+\end{quote}
+
+Summing up we are analyzing the Sun's implementation of the JTS specification, which is the Java mapping of the CORBA Object Transaction Service Specification~\cite{omg-ots}.
 
 \begin{figure}
 \centering
@@ -35,9 +36,10 @@ In short, we are analyzing the Sun's implementation of the JTS specification, wh
 The JTS specification also provides a component diagram (\autoref{fig:jts-diagram}) describing the structure of a possible implementation of a Transaction Manager.
 
 \subsection{CosTransactions package}
-The CosTransactions package is the Java implementation of the CosTransactions component defined in the Transaction Service Specification of the Object Management Group~\cite{omg-ots}.
+The CosTransactions package is the Java implementation of the CosTransactions component. The component is defined in the Transaction Service Specification of the Object Management Group~\cite{omg-ots}.
 
-In particular, the subset of class assigned to us implement part of the \emph{Reliability control system}~\cite[p.~311]{ceri-dbbook} of the transaction manager, which ensures consistency and durability of the data in case of failure.
+The particular subset of class assigned to us implement part of the \emph{Reliability control system}~\cite[p.~311]{ceri-dbbook} of the transaction manager. 
+It ensures consistency and durability of the data in case of failure.
 
 \subsection{CoordinatorLog class}
 The CoordinatorLog class is contained in the CosTransactions package and is package-private. From the JavaDoc for the class, \codeline{79}:
@@ -45,8 +47,8 @@ The CoordinatorLog class is contained in the CosTransactions package and is pack
     The CoordinatorLog interface provides operations to record transaction-specific information that needs to be persistently stored at a particular point in time, and subsequently restored.
 \end{quote}
 
-The CoordinatorLog class keeps the \textbf{transaction log} and writes it to persistent storage when needed. In transaction managers and database systems, the log is a fundamental component which, together with the recovery manager, ensures consistency (i.e. the data must not stay in an inconsistent state) and durability (i.e. the committed transactions' data must be preserved), especially in case of failures.
-In particular, from the log it's possible to determine which transactions have committed, which ones have aborted and which are still running.
+The CoordinatorLog class keeps the \textbf{transaction log} and writes it to persistent storage when needed. The log is a fundamental component in transaction managers and database systems. The log and the recovery manager ensure together consistency (i.e. the data must not stay in an inconsistent state) and durability (i.e. the committed transactions' data must be preserved) especially in case of failures.
+The log allows to determine which transactions ended with a commit, which ones aborted and which ones are still running.
 Details about log structure and reliability management are well explained in database theory books~\cite{ceri-dbbook}.
 
 CoordinatorLog implements the \emph{LogUpcallTarget} interface that resides in the same package and is also package-private. Its JavaDoc reads:
@@ -72,4 +74,5 @@ The RecoveryManager class is contained in the CosTransactions package, is public
 
 This class may be the implementation of the \emph{RecoveryCoordinator} interface defined in the OMG OTS specification~\cite[p. 47]{omg-ots}.
 
-Much like in database theory, the RecoveryManager class is the component responsible to ensure consistency and durability in case of a fault, by redoing committed transactions and undoing uncommitted (or aborted) ones, like in the \emph{warm restart} protocol in database systems~\cite[p.~319]{ceri-dbbook}.
+The RecoveryManager class is the component responsible to ensure consistency and durability in case of a fault, just like database theory. 
+It is done via redoing committed transactions and undoing uncommitted (or aborted) ones, like in the \emph{warm restart} protocol in database systems~\cite[p.~319]{ceri-dbbook}.
