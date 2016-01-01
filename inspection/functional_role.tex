@@ -19,7 +19,7 @@ permits the use of other API over the IIOP transport mechanism to be used; for
 example, RMI over IIOP is allowed.
 \end{quotation}
 
-The Wikipedia page about the Java Transaction Service\footnote{\url{https://en.wikipedia.org/wiki/Java_transaction_service}} also gives us very useful informations:
+The Wikipedia page about the Java Transaction Service\footnote{\url{https://en.wikipedia.org/wiki/Java_transaction_service}} also gives us very useful information:
 \begin{quote}
 The \textbf{Java Transaction Service (JTS)} is a specification for building a transaction manager that maps onto the Object Management Group (OMG) Object Transaction Service (OTS) used in the Common Object Request Broker Architecture (CORBA) architecture. It uses General Inter-ORB Protocol (IIOP) to propagate the transactions between multiple JTS transaction managers.
 \end{quote}
@@ -38,7 +38,7 @@ The JTS specification also provides a component diagram (\autoref{fig:jts-diagra
 \subsection{CosTransactions package}
 The CosTransactions package is the Java implementation of the CosTransactions component. The component is defined in the Transaction Service Specification of the Object Management Group~\cite{omg-ots}.
 
-The particular subset of class assigned to us implement part of the \emph{Reliability control system}~\cite[p.~311]{ceri-dbbook} of the transaction manager. 
+The particular subset of classes assigned to us implement part of the \emph{Reliability control system}~\cite[p.~311]{ceri-dbbook} of the transaction manager. 
 It ensures consistency and durability of the data in case of failure.
 
 \subsection{CoordinatorLog class}
@@ -67,7 +67,7 @@ The CoordinatorLogSection class stores information relevant to a section.
 \end{quote}
 
 \subsection{RecoveryManager class}
-The RecoveryManager class is contained in the CosTransactions package, is public and does not implement any interface. From the JavaDoc for the class, \codeline{85}:
+The RecoveryManager class is contained in the CosTransactions package, it is public and does not implement any interface. From the JavaDoc for the class, \codeline{85}:
 \begin{quote}
     This class manages information required for recovery, and also general state regarding transactions in a process.
 \end{quote}

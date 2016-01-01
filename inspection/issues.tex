@@ -15,7 +15,7 @@ This chapter contains the results of the code inspection that we did on the assi
 \begin{enumerate}
 	\item \checklist{7} There is a constant in the class which does not follow naming convention at \codeline{110}.
     \item \checklist{12} Blank lines at the beginning and at the end of method bodies are not consistent throughout the class.
-    Missing blank line after ending of method block after \checklist{1606}.
+    Missing blank line after ending of method block after \codeline{1606}.
     \item \checklist{23} The CoordinatorLog constructor at \codeline{206} is missing the JavaDoc.
     All the duplicated methods with the \texttt{logPath} parameter (see \checklist{27}) are missing the JavaDoc.
     \item \checklist{25} There are several problems in the class declaration.
@@ -97,7 +97,7 @@ Indeed:
     \item the method has no return value;
     \item the method only sets some local variables;
     \item all the called methods have no side-effects;
-    \item the method is not required by any interfaces implemented by the CoordinatorLog class.
+    \item the method is not required by any interface implemented by the CoordinatorLog class.
 \end{enumerate}
 Actions are replaced with comments which shortly explain what should be done.
 This method should be either removed or modified.
@@ -151,8 +151,8 @@ This method should be either removed or modified.
     \item \checklist{9} Tabs are used for indentation at \codelines{195}{199}, \codeline{210}.
     \item \checklist{13} If tabs are considered as one character every line respects it, but if a tab is considered as 4 characters (like 4 spaces)  it is not respected at \codeline{210}.
     \item \checklist{10} Braces are used with the ``Kernighan and Ritchie'' style, but at \codeline{196} ``Allman style'' is followed.
-    \item \checklist{19} Commented out code is not motivated and doesn't contain a date (\codeline{200}).
+    \item \checklist{19} Commented out code is not motivated and does not contain a date (\codeline{200}).
     \item \checklist{23} JavaDoc for this method is too generic.
-    The comments don't explain well the code: for exaple at \codeline{191} it is not clear what the comment is referred to and why there is the the commented out code at line \codeline{200}.
+    The comments do not explain the code well: for example at \codeline{191} it is not clear what the comment is referred to and why there is the commented out code at line \codeline{200}.
     \item \checklist{53} At \codeline{222} the catch of the exception executes the \texttt{exc.printStackTrace();} instruction: probably this is not the most appropriate behaviour.
 \end{enumerate}
