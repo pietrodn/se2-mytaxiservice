@@ -138,6 +138,7 @@ This method should be either removed or modified.
 
 \begin{enumerate}
     \item \checklist{17} Wrong alignment at \codeline{171}.
+    \item \checklist{18} The JavaDoc is too generic and some private methods are not documented well, for example the parameters given to the methods are not explain in the comments at \codelines{789}{791} , \codelines{860}{861}. %TODO check methods
 	\item \checklist{19} There is a lot of commented code for example in the body of the \texttt{shutdown} method at \codeline{746}. There are also some methods entirely commented out:
 	\begin{itemize}
 		\item \codelines{1305}{1349}
@@ -156,7 +157,6 @@ This method should be either removed or modified.
     \item \checklist{13} If tabs are considered as one character every line stays within 80 characters, but if a tab is considered as 4 characters (like 4 spaces), \codeline{210} is too long.
     \item \checklist{10} Braces are used with the ``Kernighan and Ritchie'' style, but at \codeline{196} ``Allman style'' is followed.
     \item \checklist{19} Commented out code is not motivated and does not contain a date (\codeline{200}).
-    \item \checklist{23} JavaDoc for this method is too generic.
-    The comments do not explain the code well: for example at \codeline{191} it is not clear what the comment refers to and why there is commented out code at line \codeline{200}.
+    \item \checklist{23} The comments do not explain the code well: for example at \codeline{191} it is not clear what the comment refers to and why there is commented out code at line \codeline{200}.
     \item \checklist{53} At \codeline{222} the \texttt{catch} block simply prints the stack trace: probably this is not the most appropriate behaviour.
 \end{enumerate}
