@@ -137,8 +137,14 @@ This method should be either removed or modified.
 \label{sec:recoverymanager-class}
 
 \begin{enumerate}
+    \item \checklist{1} Methods \texttt{getUniqueRMSet()} (\codeline{792}) and \texttt{getInDoubtXids()} (\codeline{864}) start with ``get'', but they are not getters of any attribute of the class:
+    their name is misleading and should be changed.
     \item \checklist{17} Wrong alignment at \codeline{171}.
-    \item \checklist{18} The JavaDoc is too generic and some private methods are not documented well, for example the parameters given to the methods are not explain in the comments at \codelines{789}{791} , \codelines{860}{861}. %TODO check methods
+    \item \checklist{18} JavaDoc is missing for the parameters of methods:
+    \begin{enumerate}
+        \item \texttt{getUniqueRMSet(Enumeration xaResourceList)} (\codelines{789}{791})
+        \item \texttt{getInDoubtXids(XAResource xaResource)} (\codelines{860}{861})
+    \end{enumerate}
 	\item \checklist{19} There is a lot of commented code for example in the body of the \texttt{shutdown} method at \codeline{746}. There are also some methods entirely commented out:
 	\begin{itemize}
 		\item \codelines{1305}{1349}
