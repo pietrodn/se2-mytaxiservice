@@ -1,6 +1,8 @@
 \section{Entry Criteria}
 \label{sec:entry-criteria}
 
-All the classes and functions must pass severe unity tests which should reasonably discover main issues in the classes structure or in the algorithms coding. 
-Furthermore all the software has to be accurately inspected in order to preserve the maintainability and find possible issues which can increase the testers' effort in next testing phases. 
-Finally the documentation of all classes and functions has to be complete and up-to-date in order to be used as reference for integration testing development.
+All the classes and functions must pass thorough \textbf{unit tests} which should reasonably discover major issues in the classes structure or in the algorithms implementation. Unit testing is not in the scope of this document and will not be specified further.
+
+Furthermore, \textbf{code inspection} has to be performed on all the code in order to ensure maintainability, conventions and find possible issues which can increase the testers' effort in next testing phases. Code inspection must be performed using automated tools as much as possible: manual testing should reserved for the most difficult features to test.
+
+Finally, the \textbf{documentation} of all classes and functions, written using JavaDoc, has to be complete and up-to-date in order to be used as a reference for integration testing development. In particular, the public interfaces of each class and module should be well specified. Where necessary, a formal specificationlanguage can be used.
