@@ -1,2 +1,37 @@
 \section{Sequence of Component/Function Integration}
 \label{sec:sequence-integration}
+
+\subsection{Software Integration Sequence}
+
+\subsection{Subsystem Integration Sequence}
+The integration sequence of the subsystems is described in~\autoref{tab:subsystem-integration} and in~\autoref{fig:subsystem-integration}.
+
+A choice was made to proceed with the integration process from the server side towards the client applications, integrating the mobile app before the web tier.
+The reason to do so is that in order to have a functioning client you need to have a working business tier.
+The business tier, instead, can be tested without any client, by making API calls also in an automated fashion.
+
+By integrating the mobile application before the web tier, we aim to obtain a fully operational client-server system as soon as possible, since taxi drivers can't work without the mobile app.
+The web tier is less essential and can be integrated after the app.
+
+\begin{table}
+    \centering
+    \begin{tabular}{| l | l | l |}
+        \hline
+        N. & Subsystem & Integrates with \\
+        \hline
+        1 & Business tier & Database tier\\
+        2 & Mobile application & Business tier\\
+        3 & Web tier & Business tier\\
+        4 & Client browser & Web tier\\
+        \hline
+    \end{tabular}
+    \caption{Integration order of the subsystems described in~\autoref{sec:elements}.}
+    \label{tab:subsystem-integration}
+\end{table}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{figures/subsystems_integration_dag.pdf}
+    \caption{Directed Acyclic Graph representing the order of integration of the subsystems. See~\autoref{tab:subsystem-integration}.}\label{fig:subsystem-integration}
+    \label{fig:subsystem-integration}
+\end{figure}
