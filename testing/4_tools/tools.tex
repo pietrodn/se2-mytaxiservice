@@ -7,8 +7,7 @@ The software tools used to automate the integration testing are the following:
     ]
     JMeter\footnote{\url{http://jmeter.apache.org/}} is a powerful tool which may be used to test the performance of a variety of subsystems:
     \begin{description}
-        \item[Web tier:] simulate a heavy load on the web tier in order to check if the requirements on the maximum number of simultaneously connected users and on the response times stated in the RASD % TODO cite RASD
-        are respected.
+        \item[Web tier:] simulate a heavy load on the web tier in order to check if the requirements on the maximum number of simultaneously connected users and on the response times stated in the RASD~\cite[p.~57]{mytaxi-rasd} are respected.
         \item[Business tier:] simulate a heavy load on the REST API. Please note that a stress test on the web tier as described before can also overload the business tier; tests on both sides are useful to identify the bottlenecks.
         \item[Database tier:] check the performance of critical database queries on the test database, in order to know which indexes to add and compare the performance of different equivalent query formulations.
     \end{description}

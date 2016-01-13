@@ -1,13 +1,13 @@
 \section{Elements to be Integrated}
 \label{sec:elements}
 
-In the Design Document~\cite{mytaxi-dd} we outlined four major high-level components, corresponding to the tiers of the system, which from now on will be referred as \textbf{subsystems}:
-\begin{itemize}
-    \item The database tier, which consists in the DBMS (not part of the software to be developed, but has to be integrated).
-    \item Business tier, containing the server logic.
-    \item Web tier, implementing the web interface.
-    \item Client tier, which consists of desktop web browsers and our mobile application.
-\end{itemize}
+In the Design Document~\cite[p.~6]{mytaxi-dd} we outlined four major high-level components, corresponding to the tiers of the system, which from now on will be referred as \textbf{subsystems}:
+\begin{description}
+    \item[Database tier.] This is the DBMS; it's not part of the software to be developed, but has to be integrated.
+    \item[Business tier.] This subsystem implements all the application logic and communicates with the front-ends.
+    \item[Web tier.] The web tier implements the web interface and communicates with the business tier and the client browsers.
+    \item[Client tier.] The client tier consists of desktop web browsers and of our mobile application.
+\end{description}
 
 The integration process of our software is performed on two levels.
 \begin{enumerate}

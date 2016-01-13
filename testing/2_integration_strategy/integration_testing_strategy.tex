@@ -1,2 +1,8 @@
 \section{Integration Testing Strategy}
 \label{sec:integration-testing-strategy}
+
+The integration strategy of choice is the \textbf{bottom-up approach}.
+This choice comes natural since we assume to already have the unit tests for the smallest components, so we can proceed from the bottom.
+
+Moreover, the higher-level subsystems outlined in~\autoref{sec:elements} are well separated and loosely coupled since they correspond to different tiers;
+they also communicate through well-defined interfaces (REST API, HTTP), so they won't be hard to integrate at a later time.
