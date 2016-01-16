@@ -1,20 +1,223 @@
 \chapter{Individual Steps and Test Description}
 \label{chap:individual-steps}
 
-\section{Integration test case I1}
+\section{Integration test case SI2}
 
 \begin{tabular}{l p{0.7\textwidth}}
     \hline
-    \textbf{Test Case Identifier} & I1T1\\
+    \textbf{Test Case Identifier} & SI2T1\\
     \hline
-    \textbf{Test Item(s)} & Component A $\rightarrow$ Component B\\
+    \textbf{Test Item(s)} & Mobile application $\rightarrow$ Business Tier\\
     \hline
-    \textbf{Input Specification} & lorem\\
+    \textbf{Input Specification} & Typical API calls (both correct and intentionally invalid ones) to the business tier (REST API).\\
     \hline
-    \textbf{Output Specification} & ipsum\\
+    \textbf{Output Specification} & The business tier shall respond accordingly to the API specification. Also, it must also react correctly if the requests are malformed or maliciously crafted.\\
     \hline
-    \textbf{Environmental Needs} & dolor\\
+    \textbf{Environmental Needs} & Complete implementation of the Business tier; REST API client (driver)\\
     \hline
-    \textbf{Test Description} & sit amet.\\
+    \textbf{Test Description} & The clients should make typical API calls to the business tier; the response are then evaluated and checked against the expected output. The driver of this test is a standard REST API client that runs on Java.\\
+    \hline
+    \textbf{Testing Method} & Automated with jUnit \\
+    \hline
+\end{tabular}
+
+\section{Integration test case SI4}
+
+\begin{tabular}{l p{0.7\textwidth}}
+    \hline
+    \textbf{Test Case Identifier} & SI4T1\\
+    \hline
+    \textbf{Test Item(s)} & Client browser $\rightarrow$ Web tier\\
+    \hline
+    \textbf{Input Specification} & Typical and well-formed HTTPS requests from client browser; incomplete, malformed and maliciously crafted requests.\\
+    \hline
+    \textbf{Output Specification} & The web tier shall display the requested pages if the requests are valid; if the requests are invalid it shall display a generic error message. \\
+    \hline
+    \textbf{Environmental Needs} & Glassfish Server, fully developed web tier, HTTP client (driver)\\
+    \hline
+    \textbf{Test Description} & This test should emulate HTTP requests from typical users of the service and also incorrect requests.\\
+    \hline
+    \textbf{Testing Method} & Automated with jUnit \\
+    \hline
+\end{tabular}
+
+\section{Integration test case I15}
+
+\begin{tabular}{l p{0.7\textwidth}}
+    \hline
+    \textbf{Test Case Identifier} & I15T1\\
+    \hline
+    \textbf{Test Item(s)} & UIManager $\rightarrow$ UIKit \\
+    \hline
+    \textbf{Input Specification} & Methods call from UIManager to the UI elements, to display output data and change their status.\\
+    \hline
+    \textbf{Output Specification} & The view shall change accordingly and display the output data.\\
+    \hline
+    \textbf{Environmental Needs} & Xcode, iOS Simulator\\
+    \hline
+    \textbf{Test Description} & Verify that the bindings of the view items are correctly set in the controller and that the view actually changes and responds to method calls. Check that the output is displayed correctly.\\
+    \hline
+    \textbf{Testing Method} & Automated (iOS testing suite), manual testing on physical devices \\
+    \hline
+\end{tabular}
+
+\vspace{2em}
+
+\noindent\begin{tabular}{l p{0.7\textwidth}}
+    \hline
+    \textbf{Test Case Identifier} & I15T2\\
+    \hline
+    \textbf{Test Item(s)} & UIManager $\rightarrow$ UIKit \\
+    \hline
+    \textbf{Input Specification} & Perform (or simulate) gestures on the UI elements.\\
+    \hline
+    \textbf{Output Specification} & The controller shall receive the actions and log them. \\
+    \hline
+    \textbf{Environmental Needs} & Xcode, iOS Simulator\\
+    \hline
+    \textbf{Test Description} & Check that the gestures perform the correct actions on the controller.\\
+    \hline
+    \textbf{Testing Method} & Automated (iOS testing suite), manual testing on physical devices \\
+    \hline
+\end{tabular}
+
+\section{Integration test case I16}
+
+\begin{tabular}{l p{0.7\textwidth}}
+    \hline
+    \textbf{Test Case Identifier} & I16T1\\
+    \hline
+    \textbf{Test Item(s)} & UIManager $\rightarrow$ android.view \\
+    \hline
+    \textbf{Input Specification} & Methods call from UIManager to the UI elements, to display output data and change their status.\\
+    \hline
+    \textbf{Output Specification} & The view shall change accordingly and display the output data.\\
+    \hline
+    \textbf{Environmental Needs} & Android Emulator \\
+    \hline
+    \textbf{Test Description} & Verify that the bindings of the view items are correctly set in the controller and that the view actually changes and responds to method calls. Check that the output is displayed correctly.\\
+    \hline
+    \textbf{Testing Method} & Automated (Android testing suite), manual testing on physical devices \\
+    \hline
+\end{tabular}
+
+\vspace{2em}
+
+\noindent\begin{tabular}{l p{0.7\textwidth}}
+    \hline
+    \textbf{Test Case Identifier} & I16T2\\
+    \hline
+    \textbf{Test Item(s)} & UIManager $\rightarrow$ android.view \\
+    \hline
+    \textbf{Input Specification} & Perform (or simulate) gestures on the UI elements.\\
+    \hline
+    \textbf{Output Specification} & The controller shall receive the actions and log them. \\
+    \hline
+    \textbf{Environmental Needs} & Android Emulator \\
+    \hline
+    \textbf{Test Description} & Check that the gestures perform the correct actions on the controller.\\
+    \hline
+    \textbf{Testing Method} & Automated (Android testing suite), manual testing on physical devices \\
+    \hline
+\end{tabular}
+
+\section{Integration test case I17}
+
+\begin{tabular}{l p{0.7\textwidth}}
+    \hline
+    \textbf{Test Case Identifier} & I17T1\\
+    \hline
+    \textbf{Test Item(s)} & GPSManager $\rightarrow$ CoreLocation \\
+    \hline
+    \textbf{Input Specification} & Calls to the CoreLocation framework methods to get location data of the user. \\
+    \hline
+    \textbf{Output Specification} & User location data shall be returned, or a meaningful error status. \\
+    \hline
+    \textbf{Environmental Needs} & Xcode, iOS Simulator \\
+    \hline
+    \textbf{Test Description} & The purpose of the test is to check that our controller (GPSManager) can correctly get the position from the corresponding iOS API. Error statuses shall also be checked. \\
+    \hline
+    \textbf{Testing Method} & Automated (iOS testing suite) \\
+    \hline
+\end{tabular}
+
+\section{Integration test case I18}
+
+\begin{tabular}{l p{0.7\textwidth}}
+    \hline
+    \textbf{Test Case Identifier} & I18T1\\
+    \hline
+    \textbf{Test Item(s)} & GPSManager $\rightarrow$ LocationListener \\
+    \hline
+    \textbf{Input Specification} & Calls to the Android Location framework methods to get location data of the user. \\
+    \hline
+    \textbf{Output Specification} & User location data shall be returned, or a meaningful error status. \\
+    \hline
+    \textbf{Environmental Needs} & Android Emulator \\
+    \hline
+    \textbf{Test Description} & The purpose of the test is to check that our controller (GPSManager) can correctly get the position from the corresponding Android API. Error statuses shall also be checked. \\
+    \hline
+    \textbf{Testing Method} & Automated (Android testing suite) \\
+    \hline
+\end{tabular}
+
+\section{Integration test case I19}
+
+\begin{tabular}{l p{0.7\textwidth}}
+    % TODO ResourceManager (?)
+    \hline
+    \textbf{Test Case Identifier} & I19T1\\
+    \hline
+    \textbf{Test Item(s)} & UIManager $\rightarrow$ GPSManager, ResourceLoader \\
+    \hline
+    \textbf{Input Specification} & Calls to GPSManager methods to get the user's location. \\
+    \hline
+    \textbf{Output Specification} & The location data shall be returned from GPSManager in a suitable format, or an exception shall be raised if the location data is not available. \\
+    \hline
+    \textbf{Environmental Needs} & Xcode, iOS Simulator, Android Emulator\\
+    \hline
+    \textbf{Test Description} & GPSManager should be able to return the correct GPS data in an universal and consistent format independently from the architecture (iOS or Android).\\
+    \hline
+    \textbf{Testing Method} & Automated (Android and iOS testing suites) \\
+    \hline
+\end{tabular}
+
+\section{Integration test case I20}
+
+\begin{tabular}{l p{0.7\textwidth}}
+    \hline
+    \textbf{Test Case Identifier} & I20T1\\
+    \hline
+    \textbf{Test Item(s)} & WebController $\rightarrow$ JavaServerFaces \\
+    \hline
+    \textbf{Input Specification} & WebController is given the typical output to be displayed on the web page.\\
+    \hline
+    \textbf{Output Specification} & JavaServerFaces shall display the required output in a correct way.\\
+    \hline
+    \textbf{Environmental Needs} & Glassfish Server, Stub of the Business Tier to provide the output data. \\
+    \hline
+    \textbf{Test Description} & The purpose of this test case is to check if JSF can communicate correctly with the WebController bean.\\
+    \hline
+    \textbf{Testing Method} & Automated with jUnit \\
+    \hline
+\end{tabular}
+
+\section{Integration test case I21}
+
+\begin{tabular}{l p{0.7\textwidth}}
+    \hline
+    \textbf{Test Case Identifier} & I21T1\\
+    \hline
+    \textbf{Test Item(s)} & WebContainer $\rightarrow$ WebController \\
+    \hline
+    \textbf{Input Specification} & Run the web application.\\
+    \hline
+    \textbf{Output Specification} & WebContainer injects the WebController bean, using JSF.\\
+    \hline
+    \textbf{Environmental Needs} & GlassFish Server\\
+    \hline
+    \textbf{Test Description} & This test verifies if the correct component is injected into JSF.\\
+    \hline
+    \textbf{Testing Method} & Automated with jUnit \\
     \hline
 \end{tabular}
