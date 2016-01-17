@@ -1,6 +1,28 @@
 \chapter{Individual Steps and Test Description}
 \label{chap:individual-steps}
 
+\section{Integration test case SI1}
+
+\begin{tabular}{l p{0.7\textwidth}}
+    \hline
+    \textbf{Test Case Identifier} & SI1T1\\
+    \hline
+    \textbf{Test Item(s)} & Business tier $\rightarrow$ Database Tier\\
+    \hline
+    \textbf{Input Specification} & Typical call to JPI via entities mapped with tables in the Database tier.\\
+    \hline
+    \textbf{Output Specification} & The Database tier shall respond accordingly to the API specification. It must also react in the right way whether the requests are made correctly or if they comes from unauthorized sources that are trying to access the data.\\
+    \hline
+    \textbf{Environmental Needs} & Complete implementation of the Business tier, Java Persistence API, Test Database \\
+    \hline
+    \textbf{Test Description} & The response will be compared with the expected output.\\
+    \hline
+    \textbf{Testing Method} & Automated with jUnit \\
+    \hline
+\end{tabular}
+
+\vspace{2em}
+
 \section{Integration test case SI2}
 
 \begin{tabular}{l p{0.7\textwidth}}
@@ -84,6 +106,58 @@
 \end{tabular}
 
 \vspace{2em}
+
+\section{Integration test cases I01, I02, I03, I04, I05: components that integrates with DBMS}
+
+\begin{tabular}{l p{0.7\textwidth}}
+    \hline
+    \textbf{Test Case Identifier} & I01T1\\
+    \hline
+    \textbf{Test Item(s)} & TaxiLog $\rightarrow$ DBMS \\
+    \hline
+    \textbf{Input Specification} & typical queries on table TaxiLog \\
+    \hline
+    \hline
+    \textbf{Test Case Identifier} & I02T1\\
+    \hline
+    \textbf{Test Item(s)} & Ride $\rightarrow$ DBMS \\
+    \hline
+    \textbf{Input Specification} & typical queries on table Ride \\
+    \hline
+    \hline
+    \textbf{Test Case Identifier} & I03T1\\
+    \hline
+    \textbf{Test Item(s)} & User $\rightarrow$ DBMS \\
+    \hline
+    \textbf{Input Specification} & typical queries on table User \\
+    \hline
+    \hline
+    \textbf{Test Case Identifier} & I04T1\\
+    \hline
+    \textbf{Test Item(s)} & Passenger $\rightarrow$ DBMS \\
+    \hline
+    \textbf{Input Specification} & typical queries on table Passenger \\
+    \hline
+    \hline
+    \textbf{Test Case Identifier} & I05T1\\
+    \hline
+    \textbf{Test Item(s)} & TaxiDriver $\rightarrow$ DBMS \\
+    \hline
+    \textbf{Input Specification} & typical queries on table TaxiDriver \\
+    \hline
+    \hline
+    \textbf{Output Specification} & Correct results picked up\\
+    \hline
+    \textbf{Environmental Needs} & Glassfish server, Test Database \\
+    \hline
+    \textbf{Test Description} & The purpose of the test is to check that the right methods are called and the well working of queries to do typical actions like insert or select tuples.  \\
+    \hline
+    \textbf{Testing Method} & Automated with jUnit \\
+    \hline
+\end{tabular}
+
+\vspace{2em}
+
 
 \section{Integration test case I15}
 
