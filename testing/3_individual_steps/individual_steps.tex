@@ -21,6 +21,28 @@
     \hline
 \end{tabular}
 
+\vspace{2em}
+
+\noindent\begin{tabular}{l p{0.7\textwidth}}
+    \hline
+    \textbf{Test Case Identifier} & SI2T2\\
+    \hline
+    \textbf{Test Item(s)} & Mobile application $\rightarrow$ Business Tier\\
+    \hline
+    \textbf{Input Specification} & Multiple concurrent (typical, correct) requests to the REST API of the business tier.\\
+    \hline
+    \textbf{Output Specification} & The business tier must answer the requests under a reasonable time with the applied load. \\
+    \hline
+    \textbf{Environmental Needs} & Glassfish Server, fully developed business tier, Apache JMeter\\
+    \hline
+    \textbf{Test Description} & This test case assesses whether the business tier fullfills the performance requirement stated in the RASD~\cite{mytaxi-rasd} (section 3.3, \emph{Performance requirements}). In particular, the server has to support at least 1000 connected passengers at once, 95\% of requests shall be processed in less than 5 s and 100\% of requests shall be processed in less than 10 s.\\
+    \hline
+    \textbf{Testing Method} & Automated with Apache JMeter \\
+    \hline
+\end{tabular}
+
+\vspace{2em}
+
 \section{Integration test case SI4}
 
 \begin{tabular}{l p{0.7\textwidth}}
@@ -40,6 +62,28 @@
     \textbf{Testing Method} & Automated with jUnit \\
     \hline
 \end{tabular}
+
+\vspace{2em}
+
+\noindent\begin{tabular}{l p{0.7\textwidth}}
+    \hline
+    \textbf{Test Case Identifier} & SI4T1\\
+    \hline
+    \textbf{Test Item(s)} & Client browser $\rightarrow$ Web tier\\
+    \hline
+    \textbf{Input Specification} & Multiple concurrent requests to the web server.\\
+    \hline
+    \textbf{Output Specification} & Web pages should be served without problems when a reasonable load is applied on the web server. \\
+    \hline
+    \textbf{Environmental Needs} & Glassfish Server, fully developed web tier, Apache JMeter\\
+    \hline
+    \textbf{Test Description} & This test case assesses whether the web tier fullfills the performance requirement stated in the RASD~\cite{mytaxi-rasd} (section 3.3, \emph{Performance requirements}). In particular, the web tier has to support at least 1000 connected passengers at once, 95\% of requests shall be processed in less than 5 s and 100\% of requests shall be processed in less than 10 s.\\
+    \hline
+    \textbf{Testing Method} & Automated with Apache JMeter \\
+    \hline
+\end{tabular}
+
+\vspace{2em}
 
 \section{Integration test case I15}
 
@@ -81,6 +125,8 @@
     \hline
 \end{tabular}
 
+\vspace{2em}
+
 \section{Integration test case I16}
 
 \begin{tabular}{l p{0.7\textwidth}}
@@ -121,6 +167,8 @@
     \hline
 \end{tabular}
 
+\vspace{2em}
+
 \section{Integration test case I17}
 
 \begin{tabular}{l p{0.7\textwidth}}
@@ -140,6 +188,8 @@
     \textbf{Testing Method} & Automated (iOS testing suite) \\
     \hline
 \end{tabular}
+
+\vspace{2em}
 
 \section{Integration test case I18}
 
@@ -161,14 +211,15 @@
     \hline
 \end{tabular}
 
+\vspace{2em}
+
 \section{Integration test case I19}
 
 \begin{tabular}{l p{0.7\textwidth}}
-    % TODO ResourceManager (?)
     \hline
     \textbf{Test Case Identifier} & I19T1\\
     \hline
-    \textbf{Test Item(s)} & UIManager $\rightarrow$ GPSManager, ResourceLoader \\
+    \textbf{Test Item(s)} & UIManager $\rightarrow$ GPSManager \\
     \hline
     \textbf{Input Specification} & Calls to GPSManager methods to get the user's location. \\
     \hline
@@ -181,6 +232,29 @@
     \textbf{Testing Method} & Automated (Android and iOS testing suites) \\
     \hline
 \end{tabular}
+
+\vspace{2em}
+
+\noindent\begin{tabular}{l p{0.7\textwidth}}
+    \hline
+    \textbf{Test Case Identifier} & I19T2\\
+    \hline
+    \textbf{Test Item(s)} & UIManager $\rightarrow$ ResourceLoader \\
+    \hline
+    \textbf{Input Specification} & Load application resources (images, sounds, data) from ResourceManager. \\
+    \hline
+    \textbf{Output Specification} & ResourceManager should provide the required resources without errors. \\
+    \hline
+    \textbf{Environmental Needs} & Xcode, iOS Simulator, Android Emulator\\
+    \hline
+    \textbf{Test Description} & ResourceLoader is responsible for the retrieval of the resources stored into the application bundle.
+    This test is aimed at assessing that all the resources can be accessed without errors by the mobile application. \\
+    \hline
+    \textbf{Testing Method} & Automated (Android and iOS testing suites) \\
+    \hline
+\end{tabular}
+
+\vspace{2em}
 
 \section{Integration test case I20}
 
@@ -201,6 +275,8 @@
     \textbf{Testing Method} & Automated with jUnit \\
     \hline
 \end{tabular}
+
+\vspace{2em}
 
 \section{Integration test case I21}
 
