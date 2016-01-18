@@ -9,13 +9,13 @@
     \hline
     \textbf{Test Item(s)} & Business tier $\rightarrow$ Database Tier\\
     \hline
-    \textbf{Input Specification} & Typical call to JPI via entities mapped with tables in the Database tier.\\
+    \textbf{Input Specification} & Typical calls to JPA Entities, mapped with tables in the Database tier.\\
     \hline
-    \textbf{Output Specification} & The Database tier shall respond accordingly to the API specification. It must also react in the right way whether the requests are made correctly or if they comes from unauthorized sources that are trying to access the data.\\
+    \textbf{Output Specification} & The Database tier shall respond by doing the correct queries on the test database. It must also react in the right way both if the requests are made correctly and if they comes from unauthorized sources that are trying to access the data.\\
     \hline
-    \textbf{Environmental Needs} & Complete implementation of the Business tier, Java Persistence API, Test Database \\
+    \textbf{Environmental Needs} & Complete implementation of the Java Entity Beans, Java Persistence API, Test Database, driver that calls the Java Entity Beans. \\
     \hline
-    \textbf{Test Description} & The response will be compared with the expected output.\\
+    \textbf{Test Description} & The response will be compared with the expected output of the queries.\\
     \hline
     \textbf{Testing Method} & Automated with jUnit \\
     \hline
@@ -109,48 +109,51 @@
 
 \section{Integration test cases I01, I02, I03, I04, I05: components that integrates with DBMS}
 
+The following test cases refer to the integration between the Java Entity Beans and the underlying Database tier.
+Since the test cases are very similar, they are grouped together.
+
 \begin{tabular}{l p{0.7\textwidth}}
     \hline
     \textbf{Test Case Identifier} & I01T1\\
     \hline
     \textbf{Test Item(s)} & TaxiLog $\rightarrow$ DBMS \\
     \hline
-    \textbf{Input Specification} & typical queries on table TaxiLog \\
+    \textbf{Input Specification} & Typical queries on table TaxiLog \\
     \hline
     \hline
     \textbf{Test Case Identifier} & I02T1\\
     \hline
     \textbf{Test Item(s)} & Ride $\rightarrow$ DBMS \\
     \hline
-    \textbf{Input Specification} & typical queries on table Ride \\
+    \textbf{Input Specification} & Typical queries on table Ride \\
     \hline
     \hline
     \textbf{Test Case Identifier} & I03T1\\
     \hline
     \textbf{Test Item(s)} & User $\rightarrow$ DBMS \\
     \hline
-    \textbf{Input Specification} & typical queries on table User \\
+    \textbf{Input Specification} & Typical queries on table User \\
     \hline
     \hline
     \textbf{Test Case Identifier} & I04T1\\
     \hline
     \textbf{Test Item(s)} & Passenger $\rightarrow$ DBMS \\
     \hline
-    \textbf{Input Specification} & typical queries on table Passenger \\
+    \textbf{Input Specification} & Typical queries on table Passenger \\
     \hline
     \hline
     \textbf{Test Case Identifier} & I05T1\\
     \hline
     \textbf{Test Item(s)} & TaxiDriver $\rightarrow$ DBMS \\
     \hline
-    \textbf{Input Specification} & typical queries on table TaxiDriver \\
+    \textbf{Input Specification} & Typical queries on table TaxiDriver \\
     \hline
     \hline
-    \textbf{Output Specification} & Correct results picked up\\
+    \textbf{Output Specification} & The queries return the correct results. \\
     \hline
-    \textbf{Environmental Needs} & Glassfish server, Test Database \\
+    \textbf{Environmental Needs} & Glassfish server, Test Database, driver for the Java Entity Beans \\
     \hline
-    \textbf{Test Description} & The purpose of the test is to check that the right methods are called and the well working of queries to do typical actions like insert or select tuples.  \\
+    \textbf{Test Description} & The purpose of these tests is to check that the correct methods of the Entity Beans are called, and they execute the correct queries to the DBMS.  \\
     \hline
     \textbf{Testing Method} & Automated with jUnit \\
     \hline
