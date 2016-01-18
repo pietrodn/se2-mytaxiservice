@@ -14,47 +14,47 @@ The components are integrated within their classes in order to create an integra
     \hline
     \textbf{N.} & \textbf{Subsystem} & \textbf{Component} & \textbf{Integrates with} \\
     \hline
-    1 & Database, Business & (JEB) TaxiLog & DBMS\\
+    I1 & Database, Business & (JEB) TaxiLog & DBMS\\
     \hline
-    2 & Database, Business & (JEB)  Ride & DBMS\\
+    I2 & Database, Business & (JEB)  Ride & DBMS\\
     \hline
-    3 & Database, Business & (JEB) User & DBMS\\
+    I3 & Database, Business & (JEB) User & DBMS\\
     \hline
-    4 & Database, Business & (JEB) Passenger & DBMS\\
+    I4 & Database, Business & (JEB) Passenger & DBMS\\
     \hline
-    5 & Database, Business & (JEB) TaxiDriver & DBMS\\
+    I5 & Database, Business & (JEB) TaxiDriver & DBMS\\
     \hline
-    6 & Business & (SB) TaxiManager & TaxiQueueManager \newline TaxiDriver\\
+    I6 & Business & (SB) TaxiManager & TaxiQueueManager \newline TaxiDriver\\
     \hline
-    7 & Business & (SB) RideManager & HistoryManager \newline User \newline Passenger \newline TaxiLog \newline Ride\\
+    I7 & Business & (SB) RideManager & HistoryManager \newline User \newline Passenger \newline TaxiLog \newline Ride\\
     \hline
-    8 & Business & (SB) RideManager & ReservedRidePlugin\\
+    I8 & Business & (SB) RideManager & ReservedRidePlugin\\
     \hline
-    9 & Business & (SB) RideManager & SharedRidePlugin\\
+    I9 & Business & (SB) RideManager & SharedRidePlugin\\
     \hline
-    10  & Business & (SB) UserManager & EmailSender \newline User\\
+    I10  & Business & (SB) UserManager & EmailSender \newline User\\
     \hline
-    11  & Business & (EJB container) TaxiManagerContainer & TaxiManager\\
+    I11  & Business & (EJB container) TaxiManagerContainer & TaxiManager\\
     \hline
-    12  & Business & (EJB container) RideManagerContainer & RideManager \newline HistoryManager\\
+    I12  & Business & (EJB container) RideManagerContainer & RideManager \newline HistoryManager\\
     \hline
-    13  & Business & (EJB container) UserManagerContainer & UserManager \newline EmailSender\\
+    I13  & Business & (EJB container) UserManagerContainer & UserManager \newline EmailSender\\
     \hline
-    14  & Business & Controller & TaxiManagerContainer \newline RideManagerContainer \newline UserManagerContainer \newline ConfiguratorBean\\
+    I14  & Business & Controller & TaxiManagerContainer \newline RideManagerContainer \newline UserManagerContainer \newline ConfiguratorBean\\
     \hline
-    15  & Mobile & UIManager & UIKit\\
+    I15  & Mobile & UIManager & UIKit\\
     \hline
-    16  & Mobile & UIManager & android.view\\
+    I16  & Mobile & UIManager & android.view\\
     \hline
-    17  & Mobile & GPSManager & CoreLocation\\
+    I17  & Mobile & GPSManager & CoreLocation\\
     \hline
-    18  & Mobile & GPSManager & LocationListener\\
+    I18  & Mobile & GPSManager & LocationListener\\
     \hline
-    19  & Mobile & Controller & UIManager \newline GPSManager \newline ResourceLoader\\
+    I19  & Mobile & Controller & UIManager \newline GPSManager \newline ResourceLoader\\
     \hline
-    20  & Web & WebController & JavaServerFaces\\
+    I20  & Web & WebController & JavaServerFaces\\
     \hline
-    21 & Web & WebContainer & WebController\\
+    I21 & Web & WebContainer & WebController\\
     \hline
     \end{tabular}
     \end{small}
@@ -85,10 +85,10 @@ The web tier is less essential and can be integrated after the app.
         \hline
         \textbf{N.} & \textbf{Subsystem} & \textbf{Integrates with} \\
         \hline
-        1 & Business tier & Database tier\\
-        2 & Mobile application & Business tier\\
-        3 & Web tier & Business tier\\
-        4 & Client browser & Web tier\\
+        SI1 & Business tier & Database tier\\
+        SI2 & Mobile application & Business tier\\
+        SI3 & Web tier & Business tier\\
+        SI4 & Client browser & Web tier\\
         \hline
     \end{tabular}
     \caption{Integration order of the subsystems described in~\autoref{sec:elements}.}

@@ -1,6 +1,9 @@
 \chapter{Individual Steps and Test Description}
 \label{chap:individual-steps}
 
+This chapter describes the individual test cases to be executed.
+Each test case is identified with a code and is directly mapped with \autoref{tab:components-integration} for the integration between components and with \autoref{tab:subsystem-integration} for the integration between subsystems.
+
 \section{Integration test case SI1}
 
 \begin{tabular}{l p{0.7\textwidth}}
@@ -73,7 +76,7 @@
     \hline
     \textbf{Test Item(s)} & Web tier $\rightarrow$ Business tier\\
     \hline
-    \textbf{Input Specification} & Requests for service offered by business tier, also invalid ones.\\
+    \textbf{Input Specification} & Requests for services offered by business tier, also invalid ones.\\
     \hline
     \textbf{Output Specification} & The web tier must call the proper REST APIs or report an error. \\
     \hline
@@ -147,12 +150,14 @@
     \hline
 \end{tabular}
 
-\vspace{2em}
+\newpage
 
-\section{Integration test cases I01, I02, I03, I04, I05: components that integrates with DBMS}
+\section{Integration test cases I01, I02, I03, I04, I05: components that integrate with the DBMS}
 
 The following test cases refer to the integration between the Java Entity Beans and the underlying Database tier.
 Since the test cases are very similar, they are grouped together.
+
+\vspace{2em}
 
 \begin{tabular}{l p{0.7\textwidth}}
     \hline
