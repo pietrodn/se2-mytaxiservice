@@ -43,6 +43,48 @@
 
 \vspace{2em}
 
+\section{Integration test case SI3}
+
+\begin{tabular}{l p{0.7\textwidth}}
+    \hline
+    \textbf{Test Case Identifier} & SI3T1\\
+    \hline
+    \textbf{Test Item(s)} & Web tier $\rightarrow$ Business tier\\
+    \hline
+    \textbf{Input Specification} & Requests for service offered by business tier, also invalid ones.\\
+    \hline
+    \textbf{Output Specification} & The web tier must call the proper REST APIs or report an error. \\
+    \hline
+    \textbf{Environmental Needs} & GlassFish Server, Web tier\\
+    \hline
+    \textbf{Test Description} & This test has to ensure the right translation from HTTPS requests into REST APIs calls, reporting errors when needed.\\
+    \hline
+    \textbf{Testing Method} & Automated with jUnit \\
+    \hline
+\end{tabular}
+
+\vspace{2em}
+
+\noindent\begin{tabular}{l p{0.7\textwidth}}
+    \hline
+    \textbf{Test Case Identifier} & SI3T2\\
+    \hline
+    \textbf{Test Item(s)} & Web tier $\rightarrow$ Business tier\\
+    \hline
+    \textbf{Input Specification} & Multiple concurrent API calls to the Business tier.\\
+    \hline
+    \textbf{Output Specification} & Web requests should be served without problems when a reasonable load is applied on the Business tier. \\
+    \hline
+    \textbf{Environmental Needs} & Glassfish Server, Web tier, Apache JMeter\\
+    \hline
+    \textbf{Test Description} & This test case assesses whether the business tier fullfills the performance requirement stated in the RASD~\cite{mytaxi-rasd} (section 3.3, \emph{Performance requirements}). In particular, the system has to support at least 1000 connected passengers at once, 95\% of requests shall be processed in less than 5 s and 100\% of requests shall be processed in less than 10 s.\\
+    \hline
+    \textbf{Testing Method} & Automated with Apache JMeter \\
+    \hline
+\end{tabular}
+
+\vspace{2em}
+
 \section{Integration test case SI4}
 
 \begin{tabular}{l p{0.7\textwidth}}
@@ -80,6 +122,204 @@
     \textbf{Test Description} & This test case assesses whether the web tier fullfills the performance requirement stated in the RASD~\cite{mytaxi-rasd} (section 3.3, \emph{Performance requirements}). In particular, the web tier has to support at least 1000 connected passengers at once, 95\% of requests shall be processed in less than 5 s and 100\% of requests shall be processed in less than 10 s.\\
     \hline
     \textbf{Testing Method} & Automated with Apache JMeter \\
+    \hline
+\end{tabular}
+
+\vspace{2em}
+
+\section{Integration test case I6}
+
+\begin{tabular}{l p{0.7\textwidth}}
+    \hline
+    \textbf{Test Case Identifier} & I6T1\\
+    \hline
+    \textbf{Test Item(s)} & TaxiManager $\rightarrow$ TaxiQueueManager, TaxiDriver \\
+    \hline
+    \textbf{Input Specification} & Methods call from TaxiManager to TaxiQueueManager, to update driver's status and position and to find an available taxi in a specified TaxiZone.\\
+    \hline
+    \textbf{Output Specification} & The driver's position must be correctly updated without duplicating elements and the correct first available taxi must be returned and removed from the queue. The management of the driver's status must be properly handled.\\
+    \hline
+    \textbf{Environmental Needs} & GlassFish Server\\
+    \hline
+    \textbf{Test Description} & The test aims to verify that the TaxiManager requests are correctly satisfied by TaxiQueueManager.\\
+    \hline
+    \textbf{Testing Method} & Automated with jUnit\\
+    \hline
+\end{tabular}
+
+\vspace{2em}
+
+\section{Integration test case I7}
+
+\begin{tabular}{l p{0.7\textwidth}}
+    \hline
+    \textbf{Test Case Identifier} & I7T1\\
+    \hline
+    \textbf{Test Item(s)} & RideManager $\rightarrow$ HistoryManager, User, Passenger, TaxiLog, Ride \\
+    \hline
+    \textbf{Input Specification} & Methods call from RideManager to HistoryManager, to manage and update the information of the rides.\\
+    \hline
+    \textbf{Output Specification} & The rides information must be correct and up-to-date.\\
+    \hline
+    \textbf{Environmental Needs} & GlassFish Server\\
+    \hline
+    \textbf{Test Description} & Verify that the information is correctly updated and that it refers to the correct ride. Control that the rides information is persistently updated.\\
+    \hline
+    \textbf{Testing Method} & Automated with jUnit \\
+    \hline
+\end{tabular}
+
+\vspace{2em}
+
+\section{Integration test case I8}
+
+\begin{tabular}{l p{0.7\textwidth}}
+    \hline
+    \textbf{Test Case Identifier} & I8T1\\
+    \hline
+    \textbf{Test Item(s)} & RideManager $\rightarrow$ ReservedRidePlugin\\
+    \hline
+    \textbf{Input Specification} & Calls to plugin methods to assure correct integration of the plugin.\\
+    \hline
+    \textbf{Output Specification} & The new functionalities of the plugin must be properly offered.\\
+    \hline
+    \textbf{Environmental Needs} & GlassFish Server\\
+    \hline
+    \textbf{Test Description} & Assure that a ride can be reserved for a future time.\\
+    \hline
+    \textbf{Testing Method} & Automated with jUnit \\
+    \hline
+\end{tabular}
+
+\vspace{2em}
+
+\section{Integration test case I9}
+
+\begin{tabular}{l p{0.7\textwidth}}
+    \hline
+    \textbf{Test Case Identifier} & I9T1\\
+    \hline
+    \textbf{Test Item(s)} & RideManager $\rightarrow$ SharedRidePlugin\\
+    \hline
+    \textbf{Input Specification} & Calls to plugin methods to assure correct integration of the plugin.\\
+    \hline
+    \textbf{Output Specification} & The new functionalities of the plugin must be properly offered.\\
+    \hline
+    \textbf{Environmental Needs} & GlassFish Server\\
+    \hline
+    \textbf{Test Description} & Assure that a ride can be shared between multiple users and that a split fee is correctly computed.\\
+    \hline
+    \textbf{Testing Method} & Automated with jUnit \\
+    \hline
+\end{tabular}
+
+\vspace{2em}
+
+\section{Integration test case I10}
+
+\begin{tabular}{l p{0.7\textwidth}}
+    \hline
+    \textbf{Test Case Identifier} & I10T1\\
+    \hline
+    \textbf{Test Item(s)} & UserManager $\rightarrow$ EmailSender, User \\
+    \hline
+    \textbf{Input Specification} & Methods call from UserManager to the EmailSender in order to guarantee a right email authentication process.\\
+    \hline
+    \textbf{Output Specification} & The email authentication process must be correctly handled.\\
+    \hline
+    \textbf{Environmental Needs} & GlassFish Server\\
+    \hline
+    \textbf{Test Description} & Assure that a user can properly verify his/her email address in order to start using the system functionalities.\\
+    \hline
+    \textbf{Testing Method} & Automated with jUnit \\
+    \hline
+\end{tabular}
+
+\vspace{2em}
+
+\section{Integration test case I11}
+
+\begin{tabular}{l p{0.7\textwidth}}
+    \hline
+    \textbf{Test Case Identifier} & I11T1\\
+    \hline
+    \textbf{Test Item(s)} & TaxiManagerContainer $\rightarrow$ TaxiManager \\
+    \hline
+    \textbf{Input Specification} & Requests for the TaxiManager SessionBeans.\\
+    \hline
+    \textbf{Output Specification} & The SessionBeans must be correctly assigned and  the concurrency between the request must be properly managed.\\
+    \hline
+    \textbf{Environmental Needs} & GlassFish Server\\
+    \hline
+    \textbf{Test Description} & Multiple requests for the TaxiManager SessionBeans have to be simultaneously carried out, in order to ensure that the users have no concurrency trouble.\\
+    \hline
+    \textbf{Testing Method} & Automated with jUnit \\
+    \hline
+\end{tabular}
+
+\vspace{2em}
+
+\section{Integration test case I12}
+
+\begin{tabular}{l p{0.7\textwidth}}
+    \hline
+    \textbf{Test Case Identifier} & I12T1\\
+    \hline
+    \textbf{Test Item(s)} & RideManagerContainer $\rightarrow$ RideManager \\
+    \hline
+    \textbf{Input Specification} & Requests for the RideManager SessionBeans.\\
+    \hline
+    \textbf{Output Specification} & The SessionBeans must be correctly assigned and  the concurrency between the request must be properly managed.\\
+    \hline
+    \textbf{Environmental Needs} & GlassFish Server\\
+    \hline
+    \textbf{Test Description} & Multiple requests for the RideManager SessionBeans have to be simultaneously carried out, in order to ensure that the users have no concurrency trouble.\\
+    \hline
+    \textbf{Testing Method} & Automated with jUnit \\
+    \hline
+\end{tabular}
+
+\vspace{2em}
+
+\section{Integration test case I13}
+
+\begin{tabular}{l p{0.7\textwidth}}
+    \hline
+    \textbf{Test Case Identifier} & I13T1\\
+    \hline
+    \textbf{Test Item(s)} & UserManagerContainer $\rightarrow$ UserManager \\
+    \hline
+    \textbf{Input Specification} & Requests for the UserManager SessionBeans.\\
+    \hline
+    \textbf{Output Specification} & The SessionBeans must be correctly assigned and  the concurrency between the request must be properly managed.\\
+    \hline
+    \textbf{Environmental Needs} & GlassFish Server\\
+    \hline
+    \textbf{Test Description} & Multiple requests for the UserManager SessionBeans have to be simultaneously carried out, in order to ensure that the users have no concurrency trouble.\\
+    \hline
+    \textbf{Testing Method} & Automated with jUnit \\
+    \hline
+\end{tabular}
+
+\vspace{2em}
+
+\section{Integration test case I14}
+
+\begin{tabular}{l p{0.7\textwidth}}
+    \hline
+    \textbf{Test Case Identifier} & I14T1\\
+    \hline
+    \textbf{Test Item(s)} & Controller $\rightarrow$ TaxiManagerContainer, RideManagerContainer, UserManagerContainer \\
+    \hline
+    \textbf{Input Specification} & Requests from Controller to the containers for the functionalities offered by SessionBeans within containers.\\
+    \hline
+    \textbf{Output Specification} & The controller has to be able to provide the right functionality carrying out the proper request to the containers.\\
+    \hline
+    \textbf{Environmental Needs} & GlassFish Server\\
+    \hline
+    \textbf{Test Description} & Ensure that the controller is able to provide the functionalities of the system offered by the containers.\\
+    \hline
+    \textbf{Testing Method} & Automated with jUnit \\
     \hline
 \end{tabular}
 
