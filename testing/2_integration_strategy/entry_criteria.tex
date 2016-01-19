@@ -1,9 +1,11 @@
 \section{Entry Criteria}
 \label{sec:entry-criteria}
 
-All the classes and functions must pass thorough \textbf{unit tests} which should reasonably discover major issues in the classes structure or in the algorithms implementation. Unit tests should have a minimum coverage of 90\% of the lines of code and should be performed automatically at each build using JUnit. Unit testing is not in the scope of this document and will not be specified further.
+This section describes the prerequisites that need to be met \emph{before} integration testing can be started.
 
-Moreover, \textbf{code inspection} has to be performed on all the code in order to ensure maintainability, conventions and find possible issues which can increase the testers' effort in next testing phases. Code inspection must be performed using automated tools as much as possible: manual testing should reserved for the most difficult features to test.
+All the classes and methods must pass thorough \textbf{unit tests} which should reasonably discover major issues in the structure of the classes or in the implementation of the algorithms. Unit tests should have a minimum coverage of 90\% of the lines of code and should be run automatically at each build using JUnit. Unit testing is not in the scope of this document and will not be specified in further detail.
+
+Moreover, \textbf{code inspection} has to be performed on all the code in order to ensure maintainability, respect of conventions and find possible issues which could increase the testers' effort in next testing phases. Code inspection must be performed using automated tools as much as possible: manual testing should reserved for the most difficult features to test.
 
 Finally, the \textbf{documentation} of all classes and functions, written using JavaDoc, has to be complete and up-to-date in order to be used as a reference for integration testing development. In particular, the public interfaces of each class and module should be well specified. Where necessary, a formal specification language can be used.
 
@@ -13,4 +15,3 @@ The following documents must be delivered before integration testing can begin:
     \item Design Document of myTaxiService
     \item Integration Testing Plan Document (this document)
 \end{itemize}
-% TODO items to deliver before integration of SPECIFIC components

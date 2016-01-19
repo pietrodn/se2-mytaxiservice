@@ -4,6 +4,8 @@
 This chapter describes the individual test cases to be executed.
 Each test case is identified with a code and is directly mapped with \autoref{tab:components-integration} for the integration between components and with \autoref{tab:subsystem-integration} for the integration between subsystems.
 
+Test cases whose code starts with \textbf{SI} are integration tests between subsystems; test cases whose code starts with \textbf{I} are integration tests between components.
+
 \section{Integration test case SI1}
 
 \begin{tabular}{l p{0.7\textwidth}}
@@ -12,7 +14,7 @@ Each test case is identified with a code and is directly mapped with \autoref{ta
     \hline
     \textbf{Test Item(s)} & Business tier $\rightarrow$ Database Tier\\
     \hline
-    \textbf{Input Specification} & Typical calls to JPA Entities, mapped with tables in the Database tier.\\
+    \textbf{Input Specification} & Typical calls to the methods of the JPA Entities, mapped with tables in the Database tier.\\
     \hline
     \textbf{Output Specification} & The Database tier shall respond by doing the correct queries on the test database. It must also react in the right way both if the requests are made correctly and if they comes from unauthorized sources that are trying to access the data.\\
     \hline
@@ -38,9 +40,9 @@ Each test case is identified with a code and is directly mapped with \autoref{ta
     \hline
     \textbf{Output Specification} & The business tier shall respond accordingly to the API specification. Also, it must also react correctly if the requests are malformed or maliciously crafted.\\
     \hline
-    \textbf{Environmental Needs} & Complete implementation of the Business tier; REST API client (driver)\\
+    \textbf{Environmental Needs} & Complete implementation of the Business tier; REST API client (driver) that mocks the actual mobile client. \\
     \hline
-    \textbf{Test Description} & The clients should make typical API calls to the business tier; the response are then evaluated and checked against the expected output. The driver of this test is a standard REST API client that runs on Java.\\
+    \textbf{Test Description} & The clients should make typical API calls to the business tier; the responses are then evaluated and checked against the expected output. The driver of this test is a standard REST API client that runs on Java.\\
     \hline
     \textbf{Testing Method} & Automated with jUnit \\
     \hline
@@ -76,7 +78,7 @@ Each test case is identified with a code and is directly mapped with \autoref{ta
     \hline
     \textbf{Test Item(s)} & Web tier $\rightarrow$ Business tier\\
     \hline
-    \textbf{Input Specification} & Requests for services offered by business tier, also invalid ones.\\
+    \textbf{Input Specification} & Requests for services offered by the business tier, also invalid ones.\\
     \hline
     \textbf{Output Specification} & The web tier must call the proper REST APIs or report an error. \\
     \hline
