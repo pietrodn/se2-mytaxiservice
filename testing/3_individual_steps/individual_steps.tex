@@ -16,13 +16,13 @@ Test cases whose code starts with \textbf{SI} are integration tests between subs
     \hline
     \textbf{Input Specification} & Typical calls to the methods of the JPA Entities, mapped with tables in the Database tier.\\
     \hline
-    \textbf{Output Specification} & The Database tier shall respond by doing the correct queries on the test database. It must also react in the right way both if the requests are made correctly and if they comes from unauthorized sources that are trying to access the data.\\
+    \textbf{Output Specification} & The Database tier shall respond by doing the correct queries on the test database. It must also react in the right way both if the requests are made correctly and if they come from unauthorized sources that are trying to access the data.\\
     \hline
     \textbf{Environmental Needs} & Complete implementation of the Java Entity Beans, Java Persistence API, Test Database, driver that calls the Java Entity Beans. \\
     \hline
     \textbf{Test Description} & The response will be compared with the expected output of the queries.\\
     \hline
-    \textbf{Testing Method} & Automated with jUnit \\
+    \textbf{Testing Method} & Automated with jUnit. \\
     \hline
 \end{tabular}
 
@@ -38,13 +38,13 @@ Test cases whose code starts with \textbf{SI} are integration tests between subs
     \hline
     \textbf{Input Specification} & Typical API calls (both correct and intentionally invalid ones) to the business tier (REST API).\\
     \hline
-    \textbf{Output Specification} & The business tier shall respond accordingly to the API specification. Also, it must also react correctly if the requests are malformed or maliciously crafted.\\
+    \textbf{Output Specification} & The business tier shall respond accordingly to the API specification. Also, it must react correctly if the requests are malformed or maliciously crafted.\\
     \hline
     \textbf{Environmental Needs} & Complete implementation of the Business tier; REST API client (driver) that mocks the actual mobile client. \\
     \hline
     \textbf{Test Description} & The clients should make typical API calls to the business tier; the responses are then evaluated and checked against the expected output. The driver of this test is a standard REST API client that runs on Java.\\
     \hline
-    \textbf{Testing Method} & Automated with jUnit \\
+    \textbf{Testing Method} & Automated with jUnit. \\
     \hline
 \end{tabular}
 
@@ -58,13 +58,13 @@ Test cases whose code starts with \textbf{SI} are integration tests between subs
     \hline
     \textbf{Input Specification} & Multiple concurrent (typical, correct) requests to the REST API of the business tier.\\
     \hline
-    \textbf{Output Specification} & The business tier must answer the requests under a reasonable time with the applied load. \\
+    \textbf{Output Specification} & The business tier must answer the requests in a reasonable time with the applied load. \\
     \hline
-    \textbf{Environmental Needs} & Glassfish Server, fully developed business tier, Apache JMeter\\
+    \textbf{Environmental Needs} & Glassfish Server, fully developed business tier, Apache JMeter.\\
     \hline
     \textbf{Test Description} & This test case assesses whether the business tier fullfills the performance requirement stated in the RASD~\cite{mytaxi-rasd} (section 3.3, \emph{Performance requirements}). In particular, the server has to support at least 1000 connected passengers at once, 95\% of requests shall be processed in less than 5 s and 100\% of requests shall be processed in less than 10 s.\\
     \hline
-    \textbf{Testing Method} & Automated with Apache JMeter \\
+    \textbf{Testing Method} & Automated with Apache JMeter. \\
     \hline
 \end{tabular}
 
@@ -82,11 +82,11 @@ Test cases whose code starts with \textbf{SI} are integration tests between subs
     \hline
     \textbf{Output Specification} & The web tier must call the proper REST APIs or report an error. \\
     \hline
-    \textbf{Environmental Needs} & GlassFish Server, Web tier\\
+    \textbf{Environmental Needs} & GlassFish Server, Web tier.\\
     \hline
     \textbf{Test Description} & This test has to ensure the right translation from HTTPS requests into REST APIs calls, reporting errors when needed.\\
     \hline
-    \textbf{Testing Method} & Automated with jUnit \\
+    \textbf{Testing Method} & Automated with jUnit. \\
     \hline
 \end{tabular}
 
@@ -102,11 +102,11 @@ Test cases whose code starts with \textbf{SI} are integration tests between subs
     \hline
     \textbf{Output Specification} & Web requests should be served without problems when a reasonable load is applied on the Business tier. \\
     \hline
-    \textbf{Environmental Needs} & Glassfish Server, Web tier, Apache JMeter\\
+    \textbf{Environmental Needs} & Glassfish Server, Web tier, Apache JMeter.\\
     \hline
     \textbf{Test Description} & This test case assesses whether the business tier fullfills the performance requirement stated in the RASD~\cite{mytaxi-rasd} (section 3.3, \emph{Performance requirements}). In particular, the system has to support at least 1000 connected passengers at once, 95\% of requests shall be processed in less than 5 s and 100\% of requests shall be processed in less than 10 s.\\
     \hline
-    \textbf{Testing Method} & Automated with Apache JMeter \\
+    \textbf{Testing Method} & Automated with Apache JMeter. \\
     \hline
 \end{tabular}
 
@@ -124,11 +124,11 @@ Test cases whose code starts with \textbf{SI} are integration tests between subs
     \hline
     \textbf{Output Specification} & The web tier shall display the requested pages if the requests are valid; if the requests are invalid it shall display a generic error message. \\
     \hline
-    \textbf{Environmental Needs} & Glassfish Server, fully developed web tier, HTTP client (driver)\\
+    \textbf{Environmental Needs} & Glassfish Server, fully developed web tier, HTTP client (driver).\\
     \hline
     \textbf{Test Description} & This test should emulate HTTP requests from typical users of the service and also incorrect requests.\\
     \hline
-    \textbf{Testing Method} & Automated with jUnit \\
+    \textbf{Testing Method} & Automated with jUnit. \\
     \hline
 \end{tabular}
 
@@ -144,11 +144,11 @@ Test cases whose code starts with \textbf{SI} are integration tests between subs
     \hline
     \textbf{Output Specification} & Web pages should be served without problems when a reasonable load is applied on the web server. \\
     \hline
-    \textbf{Environmental Needs} & Glassfish Server, fully developed web tier, Apache JMeter\\
+    \textbf{Environmental Needs} & Glassfish Server, fully developed web tier, Apache JMeter.\\
     \hline
     \textbf{Test Description} & This test case assesses whether the web tier fullfills the performance requirement stated in the RASD~\cite{mytaxi-rasd} (section 3.3, \emph{Performance requirements}). In particular, the web tier has to support at least 1000 connected passengers at once, 95\% of requests shall be processed in less than 5 s and 100\% of requests shall be processed in less than 10 s.\\
     \hline
-    \textbf{Testing Method} & Automated with Apache JMeter \\
+    \textbf{Testing Method} & Automated with Apache JMeter. \\
     \hline
 \end{tabular}
 
@@ -167,44 +167,44 @@ Since the test cases are very similar, they are grouped together.
     \hline
     \textbf{Test Item(s)} & TaxiLog $\rightarrow$ DBMS \\
     \hline
-    \textbf{Input Specification} & Typical queries on table TaxiLog \\
+    \textbf{Input Specification} & Typical queries on table TaxiLog. \\
     \hline
     \hline
     \textbf{Test Case Identifier} & I02T1\\
     \hline
     \textbf{Test Item(s)} & Ride $\rightarrow$ DBMS \\
     \hline
-    \textbf{Input Specification} & Typical queries on table Ride \\
+    \textbf{Input Specification} & Typical queries on table Ride. \\
     \hline
     \hline
     \textbf{Test Case Identifier} & I03T1\\
     \hline
     \textbf{Test Item(s)} & User $\rightarrow$ DBMS \\
     \hline
-    \textbf{Input Specification} & Typical queries on table User \\
+    \textbf{Input Specification} & Typical queries on table User. \\
     \hline
     \hline
     \textbf{Test Case Identifier} & I04T1\\
     \hline
     \textbf{Test Item(s)} & Passenger $\rightarrow$ DBMS \\
     \hline
-    \textbf{Input Specification} & Typical queries on table Passenger \\
+    \textbf{Input Specification} & Typical queries on table Passenger. \\
     \hline
     \hline
     \textbf{Test Case Identifier} & I05T1\\
     \hline
     \textbf{Test Item(s)} & TaxiDriver $\rightarrow$ DBMS \\
     \hline
-    \textbf{Input Specification} & Typical queries on table TaxiDriver \\
+    \textbf{Input Specification} & Typical queries on table TaxiDriver. \\
     \hline
     \hline
     \textbf{Output Specification} & The queries return the correct results. \\
     \hline
-    \textbf{Environmental Needs} & Glassfish server, Test Database, driver for the Java Entity Beans \\
+    \textbf{Environmental Needs} & Glassfish server, Test Database, driver for the Java Entity Beans. \\
     \hline
-    \textbf{Test Description} & The purpose of these tests is to check that the correct methods of the Entity Beans are called, and they execute the correct queries to the DBMS.  \\
+    \textbf{Test Description} & The purpose of these tests is to check that the correct methods of the Entity Beans are called, and that they execute the correct queries to the DBMS.  \\
     \hline
-    \textbf{Testing Method} & Automated with jUnit \\
+    \textbf{Testing Method} & Automated with jUnit. \\
     \hline
 \end{tabular}
 
@@ -222,11 +222,11 @@ Since the test cases are very similar, they are grouped together.
     \hline
     \textbf{Output Specification} & The driver's position must be correctly updated without duplicating elements and the correct first available taxi must be returned and removed from the queue. The management of the driver's status must be properly handled.\\
     \hline
-    \textbf{Environmental Needs} & GlassFish Server\\
+    \textbf{Environmental Needs} & GlassFish Server.\\
     \hline
     \textbf{Test Description} & The test aims to verify that the TaxiManager requests are correctly satisfied by TaxiQueueManager.\\
     \hline
-    \textbf{Testing Method} & Automated with jUnit\\
+    \textbf{Testing Method} & Automated with jUnit.\\
     \hline
 \end{tabular}
 
@@ -244,11 +244,11 @@ Since the test cases are very similar, they are grouped together.
     \hline
     \textbf{Output Specification} & The rides information must be correct and up-to-date.\\
     \hline
-    \textbf{Environmental Needs} & GlassFish Server\\
+    \textbf{Environmental Needs} & GlassFish Server.\\
     \hline
-    \textbf{Test Description} & Verify that the information is correctly updated and that it refers to the correct ride. Control that the rides information is persistently updated.\\
+    \textbf{Test Description} & Verify that the information is correctly updated and that it refers to the correct ride. Control that the rides' information is persistently updated.\\
     \hline
-    \textbf{Testing Method} & Automated with jUnit \\
+    \textbf{Testing Method} & Automated with jUnit.\\
     \hline
 \end{tabular}
 
@@ -266,11 +266,11 @@ Since the test cases are very similar, they are grouped together.
     \hline
     \textbf{Output Specification} & The new functionalities of the plugin must be properly offered.\\
     \hline
-    \textbf{Environmental Needs} & GlassFish Server\\
+    \textbf{Environmental Needs} & GlassFish Server.\\
     \hline
     \textbf{Test Description} & Assure that a ride can be reserved for a future time.\\
     \hline
-    \textbf{Testing Method} & Automated with jUnit \\
+    \textbf{Testing Method} & Automated with jUnit. \\
     \hline
 \end{tabular}
 
@@ -288,11 +288,11 @@ Since the test cases are very similar, they are grouped together.
     \hline
     \textbf{Output Specification} & The new functionalities of the plugin must be properly offered.\\
     \hline
-    \textbf{Environmental Needs} & GlassFish Server\\
+    \textbf{Environmental Needs} & GlassFish Server.\\
     \hline
     \textbf{Test Description} & Assure that a ride can be shared between multiple users and that a split fee is correctly computed.\\
     \hline
-    \textbf{Testing Method} & Automated with jUnit \\
+    \textbf{Testing Method} & Automated with jUnit.\\
     \hline
 \end{tabular}
 
@@ -310,11 +310,11 @@ Since the test cases are very similar, they are grouped together.
     \hline
     \textbf{Output Specification} & The email authentication process must be correctly handled.\\
     \hline
-    \textbf{Environmental Needs} & GlassFish Server\\
+    \textbf{Environmental Needs} & GlassFish Server.\\
     \hline
-    \textbf{Test Description} & Assure that a user can properly verify his/her email address in order to start using the system functionalities.\\
+    \textbf{Test Description} & Assure that a user can properly verify his/her email address in order to start using the system functionalities. In order to do that, a mock email address manager which simulates the user behaviour is needed.\\
     \hline
-    \textbf{Testing Method} & Automated with jUnit \\
+    \textbf{Testing Method} & Automated with jUnit and Mockito.\\
     \hline
 \end{tabular}
 
@@ -332,11 +332,11 @@ Since the test cases are very similar, they are grouped together.
     \hline
     \textbf{Output Specification} & The SessionBeans must be correctly assigned and  the concurrency between the request must be properly managed.\\
     \hline
-    \textbf{Environmental Needs} & GlassFish Server\\
+    \textbf{Environmental Needs} & GlassFish Server.\\
     \hline
     \textbf{Test Description} & Multiple requests for the TaxiManager SessionBeans have to be simultaneously carried out, in order to ensure that the users have no concurrency trouble.\\
     \hline
-    \textbf{Testing Method} & Automated with jUnit \\
+    \textbf{Testing Method} & Automated with jUnit and Arquillian.\\
     \hline
 \end{tabular}
 
@@ -354,11 +354,11 @@ Since the test cases are very similar, they are grouped together.
     \hline
     \textbf{Output Specification} & The SessionBeans must be correctly assigned and  the concurrency between the request must be properly managed.\\
     \hline
-    \textbf{Environmental Needs} & GlassFish Server\\
+    \textbf{Environmental Needs} & GlassFish Server.\\
     \hline
     \textbf{Test Description} & Multiple requests for the RideManager SessionBeans have to be simultaneously carried out, in order to ensure that the users have no concurrency trouble.\\
     \hline
-    \textbf{Testing Method} & Automated with jUnit \\
+    \textbf{Testing Method} & Automated with jUnit and Arquillian.\\
     \hline
 \end{tabular}
 
@@ -376,11 +376,11 @@ Since the test cases are very similar, they are grouped together.
     \hline
     \textbf{Output Specification} & The SessionBeans must be correctly assigned and  the concurrency between the request must be properly managed.\\
     \hline
-    \textbf{Environmental Needs} & GlassFish Server\\
+    \textbf{Environmental Needs} & GlassFish Server.\\
     \hline
     \textbf{Test Description} & Multiple requests for the UserManager SessionBeans have to be simultaneously carried out, in order to ensure that the users have no concurrency trouble.\\
     \hline
-    \textbf{Testing Method} & Automated with jUnit \\
+    \textbf{Testing Method} & Automated with jUnit and Arquillian.\\
     \hline
 \end{tabular}
 
@@ -398,11 +398,11 @@ Since the test cases are very similar, they are grouped together.
     \hline
     \textbf{Output Specification} & The controller has to be able to provide the right functionality carrying out the proper request to the containers.\\
     \hline
-    \textbf{Environmental Needs} & GlassFish Server\\
+    \textbf{Environmental Needs} & GlassFish Server.\\
     \hline
     \textbf{Test Description} & Ensure that the controller is able to provide the functionalities of the system offered by the containers.\\
     \hline
-    \textbf{Testing Method} & Automated with jUnit \\
+    \textbf{Testing Method} & Automated with jUnit and Arquillian.\\
     \hline
 \end{tabular}
 
@@ -420,11 +420,11 @@ Since the test cases are very similar, they are grouped together.
     \hline
     \textbf{Output Specification} & The view shall change accordingly and display the output data.\\
     \hline
-    \textbf{Environmental Needs} & Xcode, iOS Simulator\\
+    \textbf{Environmental Needs} & Xcode, iOS Simulator.\\
     \hline
     \textbf{Test Description} & Verify that the bindings of the view items are correctly set in the controller and that the view actually changes and responds to method calls. Check that the output is displayed correctly.\\
     \hline
-    \textbf{Testing Method} & Automated (iOS testing suite), manual testing on physical devices \\
+    \textbf{Testing Method} & Automated (iOS testing suite), manual testing on physical devices. \\
     \hline
 \end{tabular}
 
@@ -440,11 +440,11 @@ Since the test cases are very similar, they are grouped together.
     \hline
     \textbf{Output Specification} & The controller shall receive the actions and log them. \\
     \hline
-    \textbf{Environmental Needs} & Xcode, iOS Simulator\\
+    \textbf{Environmental Needs} & Xcode, iOS Simulator.\\
     \hline
     \textbf{Test Description} & Check that the gestures perform the correct actions on the controller.\\
     \hline
-    \textbf{Testing Method} & Automated (iOS testing suite), manual testing on physical devices \\
+    \textbf{Testing Method} & Automated (iOS testing suite), manual testing on physical devices. \\
     \hline
 \end{tabular}
 
@@ -462,11 +462,11 @@ Since the test cases are very similar, they are grouped together.
     \hline
     \textbf{Output Specification} & The view shall change accordingly and display the output data.\\
     \hline
-    \textbf{Environmental Needs} & Android Emulator \\
+    \textbf{Environmental Needs} & Android Emulator. \\
     \hline
     \textbf{Test Description} & Verify that the bindings of the view items are correctly set in the controller and that the view actually changes and responds to method calls. Check that the output is displayed correctly.\\
     \hline
-    \textbf{Testing Method} & Automated (Android testing suite), manual testing on physical devices \\
+    \textbf{Testing Method} & Automated (Android testing suite), manual testing on physical devices. \\
     \hline
 \end{tabular}
 
@@ -482,11 +482,11 @@ Since the test cases are very similar, they are grouped together.
     \hline
     \textbf{Output Specification} & The controller shall receive the actions and log them. \\
     \hline
-    \textbf{Environmental Needs} & Android Emulator \\
+    \textbf{Environmental Needs} & Android Emulator. \\
     \hline
     \textbf{Test Description} & Check that the gestures perform the correct actions on the controller.\\
     \hline
-    \textbf{Testing Method} & Automated (Android testing suite), manual testing on physical devices \\
+    \textbf{Testing Method} & Automated (Android testing suite), manual testing on physical devices. \\
     \hline
 \end{tabular}
 
@@ -502,13 +502,13 @@ Since the test cases are very similar, they are grouped together.
     \hline
     \textbf{Input Specification} & Calls to the CoreLocation framework methods to get location data of the user. \\
     \hline
-    \textbf{Output Specification} & User location data shall be returned, or a meaningful error status. \\
+    \textbf{Output Specification} & User location data or a meaningful error status shall be returned. \\
     \hline
-    \textbf{Environmental Needs} & Xcode, iOS Simulator \\
+    \textbf{Environmental Needs} & Xcode, iOS Simulator. \\
     \hline
     \textbf{Test Description} & The purpose of the test is to check that our controller (GPSManager) can correctly get the position from the corresponding iOS API. Error statuses shall also be checked. \\
     \hline
-    \textbf{Testing Method} & Automated (iOS testing suite) \\
+    \textbf{Testing Method} & Automated (iOS testing suite). \\
     \hline
 \end{tabular}
 
@@ -526,11 +526,11 @@ Since the test cases are very similar, they are grouped together.
     \hline
     \textbf{Output Specification} & User location data shall be returned, or a meaningful error status. \\
     \hline
-    \textbf{Environmental Needs} & Android Emulator \\
+    \textbf{Environmental Needs} & Android Emulator. \\
     \hline
     \textbf{Test Description} & The purpose of the test is to check that our controller (GPSManager) can correctly get the position from the corresponding Android API. Error statuses shall also be checked. \\
     \hline
-    \textbf{Testing Method} & Automated (Android testing suite) \\
+    \textbf{Testing Method} & Automated (Android testing suite). \\
     \hline
 \end{tabular}
 
@@ -548,11 +548,11 @@ Since the test cases are very similar, they are grouped together.
     \hline
     \textbf{Output Specification} & The location data shall be returned from GPSManager in a suitable format, or an exception shall be raised if the location data is not available. \\
     \hline
-    \textbf{Environmental Needs} & Xcode, iOS Simulator, Android Emulator\\
+    \textbf{Environmental Needs} & Xcode, iOS Simulator, Android Emulator.\\
     \hline
-    \textbf{Test Description} & GPSManager should be able to return the correct GPS data in an universal and consistent format independently from the architecture (iOS or Android).\\
+    \textbf{Test Description} & GPSManager should be able to return the correct GPS data in a universal and consistent format independently from the architecture (iOS or Android).\\
     \hline
-    \textbf{Testing Method} & Automated (Android and iOS testing suites) \\
+    \textbf{Testing Method} & Automated (Android and iOS testing suites). \\
     \hline
 \end{tabular}
 
@@ -568,12 +568,12 @@ Since the test cases are very similar, they are grouped together.
     \hline
     \textbf{Output Specification} & ResourceManager should provide the required resources without errors. \\
     \hline
-    \textbf{Environmental Needs} & Xcode, iOS Simulator, Android Emulator\\
+    \textbf{Environmental Needs} & Xcode, iOS Simulator, Android Emulator.\\
     \hline
     \textbf{Test Description} & ResourceLoader is responsible for the retrieval of the resources stored into the application bundle.
-    This test is aimed at assessing that all the resources can be accessed without errors by the mobile application. \\
+    This test aims to assessing that all the resources can be accessed without errors by the mobile application. \\
     \hline
-    \textbf{Testing Method} & Automated (Android and iOS testing suites) \\
+    \textbf{Testing Method} & Automated (Android and iOS testing suites).\\
     \hline
 \end{tabular}
 
@@ -595,7 +595,7 @@ Since the test cases are very similar, they are grouped together.
     \hline
     \textbf{Test Description} & The purpose of this test case is to check if JSF can communicate correctly with the WebController bean.\\
     \hline
-    \textbf{Testing Method} & Automated with jUnit \\
+    \textbf{Testing Method} & Automated with jUnit. \\
     \hline
 \end{tabular}
 
@@ -613,10 +613,10 @@ Since the test cases are very similar, they are grouped together.
     \hline
     \textbf{Output Specification} & WebContainer injects the WebController bean, using JSF.\\
     \hline
-    \textbf{Environmental Needs} & GlassFish Server\\
+    \textbf{Environmental Needs} & GlassFish Server.\\
     \hline
     \textbf{Test Description} & This test verifies if the correct component is injected into JSF.\\
     \hline
-    \textbf{Testing Method} & Automated with jUnit \\
+    \textbf{Testing Method} & Automated with jUnit. \\
     \hline
 \end{tabular}

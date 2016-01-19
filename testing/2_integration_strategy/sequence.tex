@@ -4,7 +4,7 @@
 \subsection{Software Integration Sequence}
 The integration sequence of the components is described in~\autoref{tab:components-integration} and in~\autoref{fig:components-integration}.
 
-The components are tested from the most independent to the less one. This gives the opportunity to avoid the implementation of useless stubs, because, when less independent components are tested, the components which they rely on have already been integrated.
+The components are tested starting from the most independent to the less one. This gives the opportunity to avoid the implementation of useless stubs, because when less independent components are tested, the components which they rely on have already been integrated.
 The components are integrated within their classes in order to create an integrated subsystem which is ready for subsystem integration.
 
 \begin{table}
@@ -76,7 +76,7 @@ A choice was made to proceed with the integration process from the server side t
 The reason to do so is that in order to have a functioning client you need to have a working business tier.
 The business tier, instead, can be tested without any client, by making API calls also in an automated fashion.
 
-By integrating the mobile application before the web tier, we aim to obtain a fully operational client-server system as soon as possible, since taxi drivers can't work without the mobile app.
+By integrating the mobile application before the web tier, we aim to obtain a fully operational client-server system as soon as possible, since taxi drivers can not work without the mobile app.
 The web tier is less essential and can be integrated after the app.
 
 \begin{table}
