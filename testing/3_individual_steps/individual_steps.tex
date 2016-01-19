@@ -22,13 +22,14 @@ Test cases whose code starts with \textbf{SI} are integration tests between subs
     \hline
     \textbf{Test Description} & The response will be compared with the expected output of the queries.\\
     \hline
-    \textbf{Testing Method} & Automated with jUnit. \\
+    \textbf{Testing Method} & Automated with JUnit. \\
     \hline
 \end{tabular}
 
 \vspace{2em}
 
 \section{Integration test case SI2}
+\label{sec:performance-business}
 
 \begin{tabular}{l p{0.7\textwidth}}
     \hline
@@ -44,7 +45,7 @@ Test cases whose code starts with \textbf{SI} are integration tests between subs
     \hline
     \textbf{Test Description} & The clients should make typical API calls to the business tier; the responses are then evaluated and checked against the expected output. The driver of this test is a standard REST API client that runs on Java.\\
     \hline
-    \textbf{Testing Method} & Automated with jUnit. \\
+    \textbf{Testing Method} & Automated with JUnit. \\
     \hline
 \end{tabular}
 
@@ -60,9 +61,9 @@ Test cases whose code starts with \textbf{SI} are integration tests between subs
     \hline
     \textbf{Output Specification} & The business tier must answer the requests in a reasonable time with the applied load. \\
     \hline
-    \textbf{Environmental Needs} & Glassfish Server, fully developed business tier, Apache JMeter.\\
+    \textbf{Environmental Needs} & GlassFish Server, fully developed business tier, Apache JMeter.\\
     \hline
-    \textbf{Test Description} & This test case assesses whether the business tier fullfills the performance requirement stated in the RASD~\cite{mytaxi-rasd} (section 3.3, \emph{Performance requirements}). In particular, the server has to support at least 1000 connected passengers at once, 95\% of requests shall be processed in less than 5 s and 100\% of requests shall be processed in less than 10 s.\\
+    \textbf{Test Description} & This test case assesses whether the business tier fulfills the performance requirement stated in the RASD~\cite{mytaxi-rasd} (section 3.3, \emph{Performance requirements}). In particular, the server has to support at least 1000 connected passengers at once, 95\% of requests shall be processed in less than 5 s and 100\% of requests shall be processed in less than 10 s.\\
     \hline
     \textbf{Testing Method} & Automated with Apache JMeter. \\
     \hline
@@ -71,6 +72,7 @@ Test cases whose code starts with \textbf{SI} are integration tests between subs
 \vspace{2em}
 
 \section{Integration test case SI3}
+\label{sec:performance-web}
 
 \begin{tabular}{l p{0.7\textwidth}}
     \hline
@@ -86,7 +88,7 @@ Test cases whose code starts with \textbf{SI} are integration tests between subs
     \hline
     \textbf{Test Description} & This test has to ensure the right translation from HTTPS requests into REST APIs calls, reporting errors when needed.\\
     \hline
-    \textbf{Testing Method} & Automated with jUnit. \\
+    \textbf{Testing Method} & Automated with JUnit. \\
     \hline
 \end{tabular}
 
@@ -102,9 +104,9 @@ Test cases whose code starts with \textbf{SI} are integration tests between subs
     \hline
     \textbf{Output Specification} & Web requests should be served without problems when a reasonable load is applied on the Business tier. \\
     \hline
-    \textbf{Environmental Needs} & Glassfish Server, Web tier, Apache JMeter.\\
+    \textbf{Environmental Needs} & GlassFish Server, Web tier, Apache JMeter.\\
     \hline
-    \textbf{Test Description} & This test case assesses whether the business tier fullfills the performance requirement stated in the RASD~\cite{mytaxi-rasd} (section 3.3, \emph{Performance requirements}). In particular, the system has to support at least 1000 connected passengers at once, 95\% of requests shall be processed in less than 5 s and 100\% of requests shall be processed in less than 10 s.\\
+    \textbf{Test Description} & This test case assesses whether the business tier fulfills the performance requirement stated in the RASD~\cite{mytaxi-rasd} (section 3.3, \emph{Performance requirements}). In particular, the system has to support at least 1000 connected passengers at once, 95\% of requests shall be processed in less than 5 s and 100\% of requests shall be processed in less than 10 s.\\
     \hline
     \textbf{Testing Method} & Automated with Apache JMeter. \\
     \hline
@@ -124,11 +126,11 @@ Test cases whose code starts with \textbf{SI} are integration tests between subs
     \hline
     \textbf{Output Specification} & The web tier shall display the requested pages if the requests are valid; if the requests are invalid it shall display a generic error message. \\
     \hline
-    \textbf{Environmental Needs} & Glassfish Server, fully developed web tier, HTTP client (driver).\\
+    \textbf{Environmental Needs} & GlassFish Server, fully developed web tier, HTTP client (driver).\\
     \hline
     \textbf{Test Description} & This test should emulate HTTP requests from typical users of the service and also incorrect requests.\\
     \hline
-    \textbf{Testing Method} & Automated with jUnit. \\
+    \textbf{Testing Method} & Automated with JUnit. \\
     \hline
 \end{tabular}
 
@@ -144,9 +146,9 @@ Test cases whose code starts with \textbf{SI} are integration tests between subs
     \hline
     \textbf{Output Specification} & Web pages should be served without problems when a reasonable load is applied on the web server. \\
     \hline
-    \textbf{Environmental Needs} & Glassfish Server, fully developed web tier, Apache JMeter.\\
+    \textbf{Environmental Needs} & GlassFish Server, fully developed web tier, Apache JMeter.\\
     \hline
-    \textbf{Test Description} & This test case assesses whether the web tier fullfills the performance requirement stated in the RASD~\cite{mytaxi-rasd} (section 3.3, \emph{Performance requirements}). In particular, the web tier has to support at least 1000 connected passengers at once, 95\% of requests shall be processed in less than 5 s and 100\% of requests shall be processed in less than 10 s.\\
+    \textbf{Test Description} & This test case assesses whether the web tier fulfills the performance requirement stated in the RASD~\cite{mytaxi-rasd} (section 3.3, \emph{Performance requirements}). In particular, the web tier has to support at least 1000 connected passengers at once, 95\% of requests shall be processed in less than 5 s and 100\% of requests shall be processed in less than 10 s.\\
     \hline
     \textbf{Testing Method} & Automated with Apache JMeter. \\
     \hline
@@ -200,11 +202,11 @@ Since the test cases are very similar, they are grouped together.
     \hline
     \textbf{Output Specification} & The queries return the correct results. \\
     \hline
-    \textbf{Environmental Needs} & Glassfish server, Test Database, driver for the Java Entity Beans. \\
+    \textbf{Environmental Needs} & GlassFish server, Test Database, driver for the Java Entity Beans. \\
     \hline
     \textbf{Test Description} & The purpose of these tests is to check that the correct methods of the Entity Beans are called, and that they execute the correct queries to the DBMS.  \\
     \hline
-    \textbf{Testing Method} & Automated with jUnit. \\
+    \textbf{Testing Method} & Automated with JUnit. \\
     \hline
 \end{tabular}
 
@@ -226,7 +228,7 @@ Since the test cases are very similar, they are grouped together.
     \hline
     \textbf{Test Description} & The test aims to verify that the TaxiManager requests are correctly satisfied by TaxiQueueManager.\\
     \hline
-    \textbf{Testing Method} & Automated with jUnit.\\
+    \textbf{Testing Method} & Automated with JUnit.\\
     \hline
 \end{tabular}
 
@@ -248,7 +250,7 @@ Since the test cases are very similar, they are grouped together.
     \hline
     \textbf{Test Description} & Verify that the information is correctly updated and that it refers to the correct ride. Control that the rides' information is persistently updated.\\
     \hline
-    \textbf{Testing Method} & Automated with jUnit.\\
+    \textbf{Testing Method} & Automated with JUnit.\\
     \hline
 \end{tabular}
 
@@ -270,7 +272,7 @@ Since the test cases are very similar, they are grouped together.
     \hline
     \textbf{Test Description} & Assure that a ride can be reserved for a future time.\\
     \hline
-    \textbf{Testing Method} & Automated with jUnit. \\
+    \textbf{Testing Method} & Automated with JUnit. \\
     \hline
 \end{tabular}
 
@@ -292,7 +294,7 @@ Since the test cases are very similar, they are grouped together.
     \hline
     \textbf{Test Description} & Assure that a ride can be shared between multiple users and that a split fee is correctly computed.\\
     \hline
-    \textbf{Testing Method} & Automated with jUnit.\\
+    \textbf{Testing Method} & Automated with JUnit.\\
     \hline
 \end{tabular}
 
@@ -310,11 +312,11 @@ Since the test cases are very similar, they are grouped together.
     \hline
     \textbf{Output Specification} & The email authentication process must be correctly handled.\\
     \hline
-    \textbf{Environmental Needs} & GlassFish Server.\\
+    \textbf{Environmental Needs} & GlassFish Server, mocked e-mail sender and receiver.\\
     \hline
     \textbf{Test Description} & Assure that a user can properly verify his/her email address in order to start using the system functionalities. In order to do that, a mock email address manager which simulates the user behaviour is needed.\\
     \hline
-    \textbf{Testing Method} & Automated with jUnit and Mockito.\\
+    \textbf{Testing Method} & Automated with JUnit and Mockito.\\
     \hline
 \end{tabular}
 
@@ -336,7 +338,7 @@ Since the test cases are very similar, they are grouped together.
     \hline
     \textbf{Test Description} & Multiple requests for the TaxiManager SessionBeans have to be simultaneously carried out, in order to ensure that the users have no concurrency trouble.\\
     \hline
-    \textbf{Testing Method} & Automated with jUnit and Arquillian.\\
+    \textbf{Testing Method} & Automated with JUnit and Arquillian.\\
     \hline
 \end{tabular}
 
@@ -358,7 +360,7 @@ Since the test cases are very similar, they are grouped together.
     \hline
     \textbf{Test Description} & Multiple requests for the RideManager SessionBeans have to be simultaneously carried out, in order to ensure that the users have no concurrency trouble.\\
     \hline
-    \textbf{Testing Method} & Automated with jUnit and Arquillian.\\
+    \textbf{Testing Method} & Automated with JUnit and Arquillian.\\
     \hline
 \end{tabular}
 
@@ -380,7 +382,7 @@ Since the test cases are very similar, they are grouped together.
     \hline
     \textbf{Test Description} & Multiple requests for the UserManager SessionBeans have to be simultaneously carried out, in order to ensure that the users have no concurrency trouble.\\
     \hline
-    \textbf{Testing Method} & Automated with jUnit and Arquillian.\\
+    \textbf{Testing Method} & Automated with JUnit and Arquillian.\\
     \hline
 \end{tabular}
 
@@ -402,7 +404,7 @@ Since the test cases are very similar, they are grouped together.
     \hline
     \textbf{Test Description} & Ensure that the controller is able to provide the functionalities of the system offered by the containers.\\
     \hline
-    \textbf{Testing Method} & Automated with jUnit and Arquillian.\\
+    \textbf{Testing Method} & Automated with JUnit and Arquillian.\\
     \hline
 \end{tabular}
 
@@ -591,11 +593,11 @@ Since the test cases are very similar, they are grouped together.
     \hline
     \textbf{Output Specification} & JavaServerFaces shall display the required output in a correct way.\\
     \hline
-    \textbf{Environmental Needs} & Glassfish Server, Stub of the Business Tier to provide the output data. \\
+    \textbf{Environmental Needs} & GlassFish Server, Stub of the Business Tier to provide the output data. \\
     \hline
     \textbf{Test Description} & The purpose of this test case is to check if JSF can communicate correctly with the WebController bean.\\
     \hline
-    \textbf{Testing Method} & Automated with jUnit. \\
+    \textbf{Testing Method} & Automated with JUnit. \\
     \hline
 \end{tabular}
 
@@ -617,6 +619,6 @@ Since the test cases are very similar, they are grouped together.
     \hline
     \textbf{Test Description} & This test verifies if the correct component is injected into JSF.\\
     \hline
-    \textbf{Testing Method} & Automated with jUnit. \\
+    \textbf{Testing Method} & Automated with JUnit. \\
     \hline
 \end{tabular}

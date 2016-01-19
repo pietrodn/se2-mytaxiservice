@@ -5,18 +5,18 @@ The software tools used to automate the integration testing are the following:
 \begin{description}
     \item[Apache JMeter
     ]
-    JMeter\footnote{\url{http://jmeter.apache.org/}} is a powerful tool which may be used to test the performance of a variety of subsystems:
+    JMeter\footnote{\url{http://jmeter.apache.org/}} is a powerful tool which may be used to test the performance of subsystems:
     \begin{description}
-        \item[Web tier:] simulate a heavy load on the web tier in order to check if the requirements on the maximum number of simultaneously connected users and on the response times stated in the RASD~\cite[p.~57]{mytaxi-rasd} are respected.
-        \item[Business tier:] simulate a heavy load on the REST API. Please note that a stress test on the web tier as described before can also overload the business tier; tests on both sides are useful to identify the bottlenecks.
-        \item[Database tier:] check the performance of critical database queries on the test database, in order to know which indexes to add and compare the performance of different equivalent query formulations.
+        \item[Web tier:] simulate a heavy load on the web tier in order to check if the requirements on the maximum number of simultaneously connected users and on the response times stated in the RASD~\cite[p.~57]{mytaxi-rasd} are respected. Performance testing on the web tier is described in~\autoref{sec:performance-web}.
+        \item[Business tier:] simulate a heavy load on the REST API. Please note that a stress test on the web tier as described before can also overload the business tier; tests on both sides are useful to identify the bottlenecks. Performance testing on the business tier is described in~\autoref{sec:performance-business}.
+        %\item[Database tier:] check the performance of critical database queries on the test database, in order to know which indexes to add and compare the performance of different equivalent query formulations.
     \end{description}
 
-    \item[jUnit] jUnit\footnote{\url{http://junit.org/}} is the most used framework for unit testing in Java. We plan to use it for unit tests of the single components (not covered by this document), but it is also used to do integration testing together with Mockito and Arquillian.
-    
-    \item[Arquillian] Arquillian\footnote{\url{http://arquillian.org/}} is a test framework which can also manage the test of the containers and their integration. We mainly use it for that purpose.
+    \item[JUnit] JUnit\footnote{\url{http://junit.org/}} is the most used framework for unit testing in Java. We plan to use it for unit tests of the single components (not covered by this document), but it is also used to do integration testing together with Mockito and Arquillian.
+
+    \item[Arquillian] Arquillian\footnote{\url{http://arquillian.org/}} is a test framework which can also manage the test of the containers and their integration with JavaBeans (dependency injection). We mainly use it for that purpose.
 
     \item[Mockito] Mockito\footnote{\url{https://en.wikipedia.org/wiki/Mockito}} is an open-source test framework useful to generate mock objects, stubs and drivers.
-    % TODO write section
+    We use it in several test cases to mock stubs and drivers for the components to test.
 
 \end{description}
