@@ -1,0 +1,36 @@
+\documentclass[12pt, a4paper]{report}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+% hyperref
+\usepackage[bookmarks, colorlinks, breaklinks]{hyperref}  % PDF hyperlinks, with coloured links
+\hypersetup{linkcolor=black, citecolor=black, filecolor=black, urlcolor=black} % black links, for printed output
+
+% Support for the inclusion of figures
+\usepackage{graphicx}
+
+% "Contents" and "bibliography" are included in the summary.
+\usepackage{tocbibind}
+
+\begin{document}
+\title{Software Engineering 2: myTaxiService \\ \vspace{1em} Project Plan}
+\author{Chitti Eleonora, De Nicolao Pietro, Delbono Alex\\
+Politecnico di Milano}
+\date{February 2, 2016}
+\maketitle
+\tableofcontents
+
+\input{chapters/function_points.tex}
+\input{chapters/cocomo.tex}
+\input{chapters/tasks.tex}
+\input{chapters/resource_allocation.tex}
+\input{chapters/risks.tex}
+
+\appendix
+\chapter{Appendix}
+
+\input{appendix.tex}
+
+\input{bibliography.tex}
+
+\end{document}
