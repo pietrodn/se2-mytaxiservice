@@ -12,6 +12,7 @@ This is the project for the Software Engineering 2 course of M.Sc. course of Com
 1. **RASD**: [download the latest version here](https://github.com/pietrodn/se2-mytaxiservice/raw/master/Deliveries/RASD.pdf).
 1. **DD**: [download the latest version here](https://github.com/pietrodn/se2-mytaxiservice/raw/master/Deliveries/DD.pdf).
 1. **Inspection**: [download the latest version here](https://github.com/pietrodn/se2-mytaxiservice/raw/master/Deliveries/Inspection.pdf).
+1. **Testing**: [download the latest version here](https://github.com/pietrodn/se2-mytaxiservice/raw/master/Deliveries/Testing.pdf).
 
 ## Project schedule
 * ~~Group registration 14/10/2015~~
@@ -28,7 +29,7 @@ This is the project for the Software Engineering 2 course of M.Sc. course of Com
 * ~~Presentation of inspection documents and peer review 07/01/2016~~
 * ~~Testing assignment 07/01/2016~~
 * ~~Open discussion on testing assignment 08/01/2016~~
-* Testing document submission deadline 21/01/2016
+* ~~Testing document submission deadline 21/01/2016~~
 * Presentation of testing document and peer review 22/01/2016
 * Function points assignment 22/01/2016
 * Open discussion on function points 28/01/2016
