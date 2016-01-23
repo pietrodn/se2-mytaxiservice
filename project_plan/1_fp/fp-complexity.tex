@@ -1,0 +1,59 @@
+\section{Complexity levels of Function Points}
+\autoref{tab:weight-estimation} shows the estimation of weights of Function Points, based on the number of data elements. The tables are taken from~\cite{cocomo-manual}.
+
+\begin{table}[h]
+\centering
+\begin{subtable}{\textwidth}
+    \centering
+    \begin{tabular}{| c | l | l | l |}
+        \hline
+         & \multicolumn{3}{c|}{\textbf{Data Elements}} \\
+        \hline
+        \textbf{Record Elements} & 1-19 & 20-50 & 51+ \\
+        \hline
+        1       & Low     & Low     & Avg.     \\
+        2-5     & Low     & Avg.    & High     \\
+        6+      & Avg.    & High    & High     \\
+        \hline
+    \end{tabular}
+    \caption{Weight estimation for ILFs and EIFs.}
+\end{subtable}
+
+\vspace{2em}
+
+\begin{subtable}{\textwidth}
+    \centering
+    \begin{tabular}{| c | l | l | l |}
+        \hline
+         & \multicolumn{3}{c|}{\textbf{Data Elements}} \\
+        \hline
+        \textbf{Record Elements} & 1-5 & 6-19 & 20+ \\
+        \hline
+        0-1     & Low     & Low     & Avg.     \\
+        2-3     & Low     & Avg.    & High     \\
+        4+      & Avg.    & High    & High     \\
+        \hline
+    \end{tabular}
+    \caption{Weight estimation for EOs and EQs}
+\end{subtable}
+
+\vspace{2em}
+
+\begin{subtable}{\textwidth}
+    \centering
+    \begin{tabular}{| c | l | l | l |}
+        \hline
+         & \multicolumn{3}{c|}{\textbf{Data Elements}} \\
+        \hline
+        \textbf{Record Elements} & 1-4 & 5-15 & 16+ \\
+        \hline
+        1       & Low     & Low     & Avg.     \\
+        2-3     & Low     & Avg.    & High     \\
+        3+      & Avg.    & High    & High     \\
+        \hline
+    \end{tabular}
+    \caption{Weight estimation for EIs}
+\end{subtable}
+\caption{Estimation of weights for different types of Function Points.}
+\label{tab:weight-estimation}
+\end{table}
