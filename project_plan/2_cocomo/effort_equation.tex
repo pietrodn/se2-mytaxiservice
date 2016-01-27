@@ -1,1 +1,15 @@
 \section{Effort Equation}
+
+\[
+Effort = A \times EAF \times KSLOC^E
+\]
+
+Where:
+\begin{itemize}
+    \item $EAF = \prod_i C_i$: product of all cost drivers
+    \item $E=0.91 + 0.01 \times \prod_{i}SF_i$: depends on the scale drivers.
+    \item $KSLOC$: Kilo-Source Lines of Code, as estimated in~\ref{chap:function-points}.
+    \item $A=2.94$
+\end{itemize}
+
+Result: Effort = 280.5 person-months.

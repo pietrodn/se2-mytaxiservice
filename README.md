@@ -30,8 +30,8 @@ This is the project for the Software Engineering 2 course of M.Sc. course of Com
 * ~~Testing assignment 07/01/2016~~
 * ~~Open discussion on testing assignment 08/01/2016~~
 * ~~Testing document submission deadline 21/01/2016~~
-* Presentation of testing document and peer review 22/01/2016
-* Function points assignment 22/01/2016
-* Open discussion on function points 28/01/2016
-* Function points document submission deadline 30/01/2016
+* ~~Presentation of testing document and peer review 22/01/2016~~
+* ~~Function points assignment 22/01/2016~~
+* ~~Open discussion on function points 28/01/2016~~
+* Function points document submission deadline 02/02/2016
 * Final presentation (to be scheduled)
