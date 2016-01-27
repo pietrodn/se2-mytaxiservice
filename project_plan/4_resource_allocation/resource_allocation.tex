@@ -1,2 +1,139 @@
 \chapter{Resource allocation to tasks}
 \label{chap:resource-allocation}
+
+This chapter has the purpose to show how the resource is allocated for the project. It does not aim to be specific, in fact the tasks are grouped with a high level of abstraction and resources are assigned to this generic tasks.
+The methodology used to schedule the tasks gives to all three people a general overview on the whole project. 
+Despite this enlarges the time needed for the completion of the project, it provides a greater awareness of all the members of the team and a more accurate control in order to limit the number of bugs and misunderstandings, due to inefficient communication. 
+
+The documents related to the project which have to be written are divided into arguments which mainly reflects the division in chapter, will be assigned to two people and the third will have the duty to revision it. 
+The code will be divided into tiers which reflect the package division of the code itself. Every tier will be assigned to two people and the third will write and execute unity tests on it.
+
+The division of the work is shown  according to the schedule \autoref{tab:schedule} and \autoref{fig:gantt}
+
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{| l | l | l | l | l |}
+        \hline
+        \multirow{2}{*}{\textbf{Resource}} & \multicolumn{4}{c|}{\textbf{2015-10-15 to 2015-11-06}} \\
+        \cline{2-5}
+        & $1_{st}$ week & $2_{nd}$ week & $3_{rd} $ week & $4_{th}$ week\\
+        \hline
+        Pietro        & Intro    & Overall desc     & System features & Revision Spec req    \\
+        Alex         & Overall desc     & Spec Req     & System features & Revision Intro   \\
+        Eleonora        & Spec req     & Intro     & Revision Overall desc &    Revision System features  \\
+        \hline
+    \end{tabular}
+    \caption{Resource allocation for RASD.}
+    \label{tab:rasd-alloc}
+\end{table}
+
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{| l | l | l | l | l |}
+        \hline
+        \multirow{2}{*}{\textbf{Resource}} & \multicolumn{4}{c|}{\textbf{2015-11-11 to 2015-12-04}} \\
+        \cline{2-5}
+        & $1_{st}$ week & $2_{nd}$ week & $3_{rd} $ week & $4_{th}$ week\\
+        \hline
+        Pietro        & Arch design    & Algorithm design     & UI design & Rev intro - req trac    \\
+        Alex         & Algorithms     & Intro - Req trac     & Revision Arch design & Rev UI design   \\
+        Eleonora        & Intro - Req trac    & Arch design     & UI design &    Rev Algorithms  \\
+        \hline
+    \end{tabular}
+    \caption{Resource allocation for DD.}
+    \label{tab:dd-alloc}
+\end{table}
+
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{| l | l | l |}
+        \hline
+        \multirow{2}{*}{\textbf{Resource}} & \multicolumn{2}{c|}{\textbf{2016-01-07 to 2016-01-21}} \\
+        \cline{2-3}
+        & $1_{st}$ week & $2_{nd}$ week \\
+        \hline
+        Pietro        & Integration strategy    & Individual steps       \\
+        Alex         & Introduction - minor chapters     & Individual steps    \\
+        Eleonora        & Individual steps    & Rev individual steps    \\
+        \hline
+    \end{tabular}
+    \caption{Resource allocation for ITPD.}
+    \label{tab:itpd-alloc}
+\end{table}
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{| l | l | l |}
+        \hline
+        \multirow{2}{*}{\textbf{Resource}} & \multicolumn{2}{c|}{\textbf{2016-01-21 to 2016-02-02}} \\
+        \cline{2-3}
+        & $1_{st}$ week & $2_{nd}$ week \\
+        \hline
+        Pietro        & Cocomo II    & Risk      \\
+        Alex         & Functions points     & Resource allocation    \\
+        Eleonora        & Cocomo II    & Task and schedule    \\
+        \hline
+    \end{tabular}
+    \caption{Resource allocation for Planning.}
+    \label{tab:planning-alloc}
+\end{table}
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{| l | l | l |}
+        \hline
+        \multirow{2}{*}{\textbf{Resource}} & \multicolumn{2}{c|}{\textbf{2016-01-21 to 2016-02-09}} \\
+        \cline{2-3}
+        & $1_{st}$ week & $2_{nd}$ week \\
+        \hline
+        Pietro        &     & Slide      \\
+        Alex         &     & Slide    \\
+        Eleonora        &     & Slide    \\
+        \hline
+    \end{tabular}
+    \caption{Resource allocation for Presentation.}
+    \label{tab:presentation-alloc}
+\end{table}
+
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{| l | l | l | l | l |}
+        \hline
+        \multirow{2}{*}{\textbf{Resource}} & \multicolumn{4}{c|}{\textbf{2015-11-11 to 2015-12-04}} \\
+        \cline{2-5}
+        & $1_{st}$ month & $2_{nd}$ month & $3_{rd} $ month & $4_{th}$ month\\
+        \hline
+        Pietro        & Web tier    & Database     & Mobile client & Test Business    \\
+        Alex         & Business tier     & Mobile client     & Test Database & Test Web   \\
+        Eleonora        & Database    & Web tier     & Business tier &    Test Mobile  \\
+        \hline
+    \end{tabular}
+    \caption{Resource allocation for Implementation.}
+    \label{tab:implementation-alloc}
+\end{table}
+
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{| l | l | l |}
+        \hline
+        \multirow{2}{*}{\textbf{Resource}} & \multicolumn{2}{c|}{\textbf{2016-01-21 to 2016-02-09}} \\
+        \cline{2-3}
+        & $1_{st}$ week & $2_{nd}$ week \\
+        \hline
+        Pietro        &   Business - Data  & Mobile - Business     \\
+        Alex         &   Business - Data  & Client - Web    \\
+        Eleonora        &   Business - Web  & Mobile - Business    \\
+        \hline
+    \end{tabular}
+    \caption{Resource allocation for Integration.}
+    \label{tab:int-test-alloc}
+\end{table}
+
+
+
+
