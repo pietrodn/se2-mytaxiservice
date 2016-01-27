@@ -17,8 +17,7 @@ Please note that, as new requirements can emerge, new choices are made and the d
 The first five tasks for the project are already defined by the document about the project rules~\cite{se-project-rules}, together with the deadlines for the delivery of the RASD, the Design Document and the ITPD.
 So, those activities are already scheduled.
 
-There are no fixed deadlines, instead, for the development of the software. From the COCOMO estimation, we expect the development to last X months, so it will be presumably finished by MM 2016.
-% TODO insert dates based on COCOMO estimation
+There are no fixed deadlines, instead, for the development of the software. From the COCOMO estimation performed in~\autoref{chap:cocomo}, we expect the entire project to last 8 months, so it will be presumably finished by June 2016.
 
 The schedule for our project is outlined in~\autoref{tab:schedule}. The Gantt chart for the project is shown in~\autoref{fig:gantt}.
 
@@ -40,8 +39,8 @@ The schedule for our project is outlined in~\autoref{tab:schedule}. The Gantt ch
         ITPD                & 2016-01-07            & 2016-01-21        \\
         Project Plan        & 2016-01-21            & 2016-02-02        \\
         Presentation        & 2016-01-21            & 2016-02-09        \\
-        Implementation      & 2016-?-?              & 2016-?-?          \\
-        Integration Testing & 2016-?-?              & 2016-?-?          \\
+        Implementation      & 2016-02-15            & 2016-06-01        \\
+        Integration Testing & 2016-06-01            & 2016-06-15        \\
         \hline
     \end{tabular}
     \caption{Schedule for project tasks.}
@@ -60,15 +59,15 @@ The schedule for our project is outlined in~\autoref{tab:schedule}. The Gantt ch
         link bulge=6, link tolerance=5,
         bar inline label node/.style={font=\scriptsize},
         inline
-        ]{2015-10-10}{2016-05-31}
+        ]{2015-10-10}{2016-06-20}
         \gantttitlecalendar{year, month} \\
         \ganttbar[name=rasd]{RASD}{2015-10-15}{2015-11-06} \\
         \ganttbar[name=dd]{DD}{2015-11-11}{2015-12-04} \\
         \ganttbar[name=itpd]{ITPD}{2016-01-07}{2016-01-21} \\
         \ganttbar[name=pplan]{Plan}{2016-01-21}{2016-02-02} \\
         \ganttbar[name=pres]{Present.}{2016-01-21}{2016-02-09} \\
-        \ganttbar[name=impl]{Implementation}{2016-02-15}{2016-05-01} \\
-        \ganttbar[name=int-test]{Int. Testing}{2016-05-01}{2016-05-30}
+        \ganttbar[name=impl]{Implementation}{2016-02-15}{2016-06-01} \\
+        \ganttbar[name=int-test]{IntTest}{2016-06-01}{2016-06-15}
         \ganttlink{rasd}{dd}
         \ganttlink{dd}{itpd}
         \ganttlink{impl}{int-test}

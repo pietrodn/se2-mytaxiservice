@@ -1,15 +1,39 @@
-\section{Effort Equation}
+\section{Effort}
 
-\[
-Effort = A \times EAF \times KSLOC^E
-\]
+\begin{equation}
+    \textrm{Effort} = A \times EAF \times KSLOC^E
+    \label{eq:effort}
+\end{equation}
 
 Where:
 \begin{itemize}
     \item $EAF = \prod_i C_i$: product of all cost drivers
     \item $E=0.91 + 0.01 \times \prod_{i}SF_i$: depends on the scale drivers.
-    \item $KSLOC$: Kilo-Source Lines of Code, as estimated in~\ref{chap:function-points}.
+    \item $KSLOC$: Kilo-Source Lines of Code, as estimated in~\autoref{chap:function-points}.
     \item $A=2.94$
 \end{itemize}
 
-Result: Effort = 280.5 person-months.
+The effort results \textbf{21.8 person-months}.
+
+\section{Duration}
+
+\begin{equation}
+    \textrm{Duration} = 3.67 \times (PM)^{0.28 + 0.2 \times (E-0.91)}
+    \label{eq:duration}
+\end{equation}
+
+Where:
+\begin{itemize}
+    \item $PM$ is the effort as calculated in~\autoref{eq:effort}.
+    \item $E$ is the exponent depending on the scale drivers (the same one of the effort equation).
+\end{itemize}
+
+The duration calculated from the COCOMO equation from~\cite{cocomo-manual} results \textbf{9.5 months}.
+This would result in 2.3 developers needed for this project.
+
+Since our group consists of 3 people, a reasonable development time would be:
+\[
+    \frac{21.8\textrm{ pm}}{3 \textrm{ people}}=7.3\textrm{ months}
+\]
+
+In order to be cautious with the task scheduling, we will approximate it to 8 months.
