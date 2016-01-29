@@ -1,17 +1,21 @@
 \chapter{Resource allocation to tasks}
 \label{chap:resource-allocation}
 
-This chapter has the purpose to show how the resource is allocated for the project. It does not aim to be specific, in fact the tasks are grouped with a high level of abstraction and resources are assigned to this generic tasks.
-The methodology used to schedule the tasks gives to all three people a general overview on the whole project. 
-Despite this enlarges the time needed for the completion of the project, it provides a greater awareness of all the members of the team and a more accurate control in order to limit the number of bugs and misunderstandings, due to inefficient communication. 
+This chapter has the purpose to show how the available resources are allocated to the project. It does not aim to be a very specific schedule, in fact the tasks are grouped with a high level of abstraction and resources are assigned to these high-level tasks. This is because micromanaging the work of people on a large project is of little use.
 
-The documents related to the project which have to be written are divided into arguments which mainly reflects the division in chapter, will be assigned to two people and the third will have the duty to revision it. 
-The code will be divided into tiers which reflect the package division of the code itself. Every tier will be assigned to two people and the third will write and execute unity tests on it.
+The resulting schedule gives to all the team members a general overview on the whole project: \emph{every task involves the contribution of each member}.
+This enlarges slightly the time needed for the completion of the project, but also induces a greater awareness of all the members of the team.
+It also enables a more accurate control on the work of each other in order to limit the number of bugs and misunderstandings.
 
-The division of the work is shown  according to the schedule \autoref{tab:schedule} and \autoref{fig:gantt}
+The documents to be written related to the project are divided into arguments which mainly reflect the division in chapters; each argument will be assigned to two people and the third will have the duty to revision it.
 
+The code will be divided into tiers which reflect the system architecture. Every tier will be assigned to two people; the third will write and execute unit tests.
 
-\begin{table}[h]
+The division of the work is elaborated according to the schedule (\autoref{tab:schedule}, \autoref{fig:gantt}).
+
+Tables \ref{tab:rasd-alloc}, \ref{tab:dd-alloc}, \ref{tab:itpd-alloc}, \ref{tab:planning-alloc}, \ref{tab:presentation-alloc}, \ref{tab:implementation-alloc}, \ref{tab:int-test-alloc} show the division of work among the team members.
+
+\begin{table}
     \centering
     \begin{small}
     \begin{tabular}{| l | l | l | l | l |}
@@ -20,9 +24,9 @@ The division of the work is shown  according to the schedule \autoref{tab:schedu
         \cline{2-5}
         & $1_{st}$ week & $2_{nd}$ week & $3_{rd} $ week & $4_{th}$ week\\
         \hline
-        Pietro        & Intro    & Overall desc     & System features & Revision Spec req    \\
-        Alex         & Overall desc     & Spec Req     & System features & Revision Intro   \\
-        Eleonora        & Spec req     & Intro     & Revision Overall desc &    Revision System features  \\
+        Pietro      & Intro         & Overall desc   & System features        & Revision Spec req    \\
+        Alex        & Overall desc  & Spec Req       & System features        & Revision Intro   \\
+        Eleonora    & Spec req      & Intro          & Revision Overall desc  &    Revision System features  \\
         \hline
     \end{tabular}
     \end{small}
@@ -30,8 +34,7 @@ The division of the work is shown  according to the schedule \autoref{tab:schedu
     \label{tab:rasd-alloc}
 \end{table}
 
-
-\begin{table}[h]
+\begin{table}
     \centering
     \begin{small}
     \begin{tabular}{| l | l | l | l | l |}
@@ -50,8 +53,7 @@ The division of the work is shown  according to the schedule \autoref{tab:schedu
     \label{tab:dd-alloc}
 \end{table}
 
-
-\begin{table}[h]
+\begin{table}
     \centering
     \begin{tabular}{| l | l | l |}
         \hline
@@ -68,7 +70,7 @@ The division of the work is shown  according to the schedule \autoref{tab:schedu
     \label{tab:itpd-alloc}
 \end{table}
 
-\begin{table}[h]
+\begin{table}
     \centering
     \begin{tabular}{| l | l | l |}
         \hline
@@ -85,11 +87,11 @@ The division of the work is shown  according to the schedule \autoref{tab:schedu
     \label{tab:planning-alloc}
 \end{table}
 
-\begin{table}[h]
+\begin{table}
     \centering
     \begin{tabular}{| l | l | l |}
         \hline
-        \multirow{2}{*}{\textbf{Resource}} & \multicolumn{2}{c|}{\textbf{2016-01-21 to 2016-02-09}} \\
+        \multirow{2}{*}{\textbf{Resource}} & \multicolumn{2}{c|}{\textbf{2016-02-02 to 2016-02-17}} \\
         \cline{2-3}
         & $1_{st}$ week & $2_{nd}$ week \\
         \hline
@@ -103,7 +105,7 @@ The division of the work is shown  according to the schedule \autoref{tab:schedu
 \end{table}
 
 
-\begin{table}[h]
+\begin{table}
     \centering
     \begin{tabular}{| l | l | l | l | l |}
         \hline
@@ -120,8 +122,7 @@ The division of the work is shown  according to the schedule \autoref{tab:schedu
     \label{tab:implementation-alloc}
 \end{table}
 
-
-\begin{table}[h]
+\begin{table}
     \centering
     \begin{tabular}{| l | l | l |}
         \hline
@@ -134,10 +135,6 @@ The division of the work is shown  according to the schedule \autoref{tab:schedu
         Eleonora        &   Business - Web  & Mobile - Business    \\
         \hline
     \end{tabular}
-    \caption{Resource allocation for Integration.}
+    \caption{Resource allocation for Integration Testing.}
     \label{tab:int-test-alloc}
 \end{table}
-
-
-
-

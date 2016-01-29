@@ -3,18 +3,20 @@
 
 The main tasks involving this project are:
 \begin{enumerate}
-    \item Deliver the \emph{Requirement Analysis and Specification Document}, containing the goals, the domain assumptions, and the functional and nonfunctional requirements of the software syste.
+    \item Deliver the \emph{Requirement Analysis and Specification Document}, containing the goals, the domain assumptions, and the functional and nonfunctional requirements of the software system.
     \item Deliver the \emph{Design Document}, containing the architecture and the design of the software system.
-    \item Deliver the \emph{Integration Testing Plan Document}, containing the strategy to perform integration testing on the system.
+    \item Deliver the \emph{Integration Testing Plan Document}, containing the strategy used to perform integration testing on the system.
     \item Deliver the \emph{Project Plan}, which is this document.
-    \item Prepare a brief presentation (\~15 min) of the delivered documents to our client, using slides.
-    \item Develop the software system and write unit tests.
+    \item Prepare a brief presentation ($\sim 15$ min) about the delivered documents, with slides.
+    \item Implement the software system and write unit tests.
     \item Perform integration testing on the system.
 \end{enumerate}
 
-Please note that, as new requirements can emerge, new choices are made and the development proceeds, all these tasks can be iterated before the conclusion of the development. In particular, unit and integration testing will be continuously performed throughout the development process. The dependency graph for the tasks is shown in~\autoref{fig:tasks-dag}.
+Please note that, as new requirements can emerge, new choices are made and the development goes on, the process can be iterated multiple times. In particular, unit and integration testing will be continuously performed throughout the development process.
 
-The first five tasks for the project are already defined by the document about the project rules~\cite{se-project-rules}, together with the deadlines for the delivery of the RASD, the Design Document and the ITPD.
+However, some tasks need to be concluded before some other can begin: the \textbf{dependency graph} for the tasks is shown in~\autoref{fig:tasks-dag}.
+
+The first five tasks for the project are already defined by the document about the project rules~\cite{se-project-rules}, together with the deadlines for the delivery of the RASD, the Design Document and the ITPD. The date for the presentation is also fixed.
 So, those activities are already scheduled.
 
 There are no fixed deadlines, instead, for the development of the software. From the COCOMO estimation performed in~\autoref{chap:cocomo}, we expect the entire project to last 8 months, so it will be presumably finished by June 2016.
@@ -38,8 +40,8 @@ The schedule for our project is outlined in~\autoref{tab:schedule}. The Gantt ch
         DD                  & 2015-11-11            & 2015-12-04        \\
         ITPD                & 2016-01-07            & 2016-01-21        \\
         Project Plan        & 2016-01-21            & 2016-02-02        \\
-        Presentation        & 2016-01-21            & 2016-02-09        \\
-        Implementation      & 2016-02-15            & 2016-06-01        \\
+        Presentation        & 2016-02-02            & 2016-02-17        \\
+        Implementation      & 2016-02-18            & 2016-06-01        \\
         Integration Testing & 2016-06-01            & 2016-06-15        \\
         \hline
     \end{tabular}
@@ -65,8 +67,8 @@ The schedule for our project is outlined in~\autoref{tab:schedule}. The Gantt ch
         \ganttbar[name=dd]{DD}{2015-11-11}{2015-12-04} \\
         \ganttbar[name=itpd]{ITPD}{2016-01-07}{2016-01-21} \\
         \ganttbar[name=pplan]{Plan}{2016-01-21}{2016-02-02} \\
-        \ganttbar[name=pres]{Present.}{2016-01-21}{2016-02-09} \\
-        \ganttbar[name=impl]{Implementation}{2016-02-15}{2016-06-01} \\
+        \ganttbar[name=pres]{Present.}{2016-02-02}{2016-02-17} \\
+        \ganttbar[name=impl]{Implementation}{2016-02-18}{2016-06-01} \\
         \ganttbar[name=int-test]{IntTest}{2016-06-01}{2016-06-15}
         \ganttlink{rasd}{dd}
         \ganttlink{dd}{itpd}

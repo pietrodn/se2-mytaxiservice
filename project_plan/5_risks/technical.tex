@@ -4,17 +4,17 @@ The technical risks are listed below. An evaluation of those risks is provided i
 
 \begin{description}
 
-    \item[Integration testing failure:] after developing some components, they may not pass the integration testing phase: this would require to rewrite large pieces of software. This risk can be mitigated by definining precisely the interfaces between components and subsystems, and by doing integration tests early using stubs and drivers.
+    \item[Integration testing failure:] after the implementation of some components, they may not pass the integration testing phase: this can require to rewrite large pieces of software. This risk can be mitigated by defining precisely the interfaces between components and subsystems, and by doing integration tests early using stubs and drivers.
 
     \item[Downtime:] the system could go down for excessive load, software bugs, hardware failures or power outages. This risk can be mitigated by building redundant systems and placing them in geographically separate data centers and by performing testing at all levels.
 
     \item[Scalability issues:] the system could not scale with a large number of users, requiring a major design rework. A possible plan is to use a cloud infrastructure from a third-party provider to host our system.
 
-    \item[Spaghetti code:] with the growth of the project, the code may become overloaded, badly structured and unreadable. This risk can be mitigated by writing a good Design Document before starting to code, and by performing periodically code inspection.
+    \item[Spaghetti code:] with the growth of the project, the code may become overloaded, badly structured and unreadable. This risk can be mitigated by writing a good Design Document before starting to code, and by performing code inspection periodically.
 
-    \item[Deployment difficulties:] if cities already have a taxi management system, it could be difficult to deploy our system by migrating the data. This problem can be solved by hiring professional system integrators, but of course this would increase the costs.
+    \item[Deployment difficulties:] if cities already have a taxi management system, it could be difficult to deploy our system by keeping and migrating the old data. This problem can be solved by hiring professional system integrators, but of course this would increase the costs.
 
-    \item[Data loss:] data can be lost because of hardware failures, misconfigured software or attacks. This problem can be prevented by enforcing a reliable backup plan. Backups should be kept in a separate place from the system, and offline.
+    \item[Data loss:] data can be lost because of hardware failures, misconfigured software or deliberate attacks. This problem can be prevented by enforcing a reliable backup plan. Backups should be kept in a separate place from the system, and offline.
 
     \item[Data leaks:] misconfiguration, software bugs and deliberate attacks can expose users' personal data. This risk must be prevented by adopting industry security standards, by encrypting communications and by doing regular penetration testing.
 

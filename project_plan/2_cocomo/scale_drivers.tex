@@ -1,23 +1,25 @@
 \section{Scale Drivers}
 
+Scale Drivers are the parameters that reflect the non-linearity of the effort with relation to the number of SLOC. They show up at the exponent of the Effort Equation (\autoref{eq:effort}).
+
 \begin{description}
 
-    \item[Precedentedness:] reflects the previous experience of the organisation with this type of project. Very low means no previous experience, Extra high means that the organisation is completely familiar with this application domain.
-    The precedentness is low because we have some experience of software deisgn but most of the notions used in this project are new to us.
+    \item[Precedentedness:] reflects the previous experience of the organization with this type of project. Very low means no previous experience, Extra high means that the organization is completely familiar with this application domain.
+    The precedentedness is low because we have some experience of software design but most of the notions used in this project are new to us.
 
     \item[Development flexibility:] reflects the degree of flexibility in the development process. Very low means a prescribed process is used; Extra high means that the client only sets general goals. We set it to Nominal because we have to follow a prescribed process, but we had a certain degree of flexibility in the definition of the requirements and in the design process.
 
-    \item[Risk resolution:] reflects the extent of risk analysis carried out. Very low means little analysis, Extra high means a complete a thorough risk analysis. We set it to high. The risk analysis is carried out in~\autoref{chap:risks}.
+    \item[Risk resolution:] reflects the extent of risk analysis carried out. Very low means little analysis, Extra high means a complete a thorough risk analysis. We set it to high, because a rather detailed risk analysis is carried out in~\autoref{chap:risks}.
 
-    \item[Team cohesion:] reflects how well the development team know each other and work together. Very low means very difficult interactions, Very high means an integrated and effective team with no communication problems. We set it to very high, since the cohesion among the three of us is very good.
+    \item[Team cohesion:] reflects how well the development team know each other and work together. Very low means very difficult interactions, Very high means an integrated and effective team with no communication problems. We set it to very high, since the cohesion among the three of us is optimal.
 
-    \item[Process maturity:] reflects the process maturity of the organisation. We set it at High, with corresponds to CMM Level 3: ``It is characteristic of processes at this level that there are sets of defined and documented standard processes established and subject to some degree of improvement over time. These standard processes are in place (i.e., they are the AS-IS processes) and used to establish consistency of process performance across the organization.''.
+    \item[Process maturity:] reflects the process maturity of the organization. We set it at High, with corresponds to CMM Level 3\footnote{\url{https://en.wikipedia.org/wiki/Capability_Maturity_Model\#Levels}}: ``It is characteristic of processes at this level that there are sets of defined and documented standard processes established and subject to some degree of improvement over time. These standard processes are in place (i.e., they are the AS-IS processes) and used to establish consistency of process performance across the organization.''
 
 \end{description}
 
-The estimated scale drivers for our project are shown in~\autoref{tab:scale-drivers}.
+The estimated scale drivers for our project, together with the formula to compute the exponent $E$, are shown in~\autoref{tab:scale-drivers}.
 
-\begin{table}[h]
+\begin{table}[p]
     \centering
     \begin{tabular}{| l | l | l | l | l |}
         \hline
