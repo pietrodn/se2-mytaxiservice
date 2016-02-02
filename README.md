@@ -13,6 +13,7 @@ This is the project for the Software Engineering 2 course of M.Sc. course of Com
 1. **DD**: [download the latest version here](https://github.com/pietrodn/se2-mytaxiservice/raw/master/Deliveries/DD.pdf).
 1. **Inspection**: [download the latest version here](https://github.com/pietrodn/se2-mytaxiservice/raw/master/Deliveries/Inspection.pdf).
 1. **Testing**: [download the latest version here](https://github.com/pietrodn/se2-mytaxiservice/raw/master/Deliveries/Testing.pdf).
+1. **Project Plan**: [download the latest version here](https://github.com/pietrodn/se2-mytaxiservice/raw/master/Deliveries/ProjectPlan.pdf).
 
 ## Project schedule
 * ~~Group registration 14/10/2015~~
@@ -33,5 +34,5 @@ This is the project for the Software Engineering 2 course of M.Sc. course of Com
 * ~~Presentation of testing document and peer review 22/01/2016~~
 * ~~Function points assignment 22/01/2016~~
 * ~~Open discussion on function points 28/01/2016~~
-* Function points document submission deadline 02/02/2016
-* Final presentation (to be scheduled)
+* ~~Function points document submission deadline 02/02/2016~~
+* Final presentation 17/02/2016
