@@ -14,6 +14,7 @@ This is the project for the Software Engineering 2 course of M.Sc. course of Com
 1. **Inspection**: [download the latest version here](https://github.com/pietrodn/se2-mytaxiservice/raw/master/Deliveries/Inspection.pdf).
 1. **Testing**: [download the latest version here](https://github.com/pietrodn/se2-mytaxiservice/raw/master/Deliveries/Testing.pdf).
 1. **Project Plan**: [download the latest version here](https://github.com/pietrodn/se2-mytaxiservice/raw/master/Deliveries/ProjectPlan.pdf).
+1. **Slides for final presentation**: [download the latest version here](https://github.com/pietrodn/se2-mytaxiservice/raw/master/Deliveries/SlideSE2Project.pdf).
 
 ## Project schedule
 * ~~Group registration 14/10/2015~~
